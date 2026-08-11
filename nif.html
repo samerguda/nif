@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة المعلومات - NIF</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px; /* زيادة عرض البطاقة لعرض صور أكبر */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #e1e8ed;
+        }
+
+        .card-header {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            direction: ltr;
+        }
+
+        .card-body {
+            padding: 24px 20px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        /* تعديلات معرض الصور لعرض صور أكبر وأوضح */
+        .images-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* جعل الشبكة تتكيف مع عرض الشاشة */
+            gap: 20px; /* زيادة الفجوة بين الصور */
+            margin-bottom: 20px;
+        }
+
+        .image-box {
+            position: relative;
+            width: 100%;
+            /* إزالة تحديد الارتفاع الثابت للسماح للصورة بأخذ ارتفاعها الطبيعي */
+            /* height: 160px; */ 
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto; /* تغيير الارتفاع ليكون تلقائيًا */
+            object-fit: contain; /* تغيير ملاءمة الكائن لعرض الصورة بالكامل دون قص */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.02); /* تقليل تأثير التكبير قليلاً */
+        }
+
+        .entry-link {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s ease;
+            margin-bottom: 20px;
+        }
+
+        .entry-link:hover {
+            background-color: #1d4ed8;
+        }
+
+        .meta-info {
+            font-size: 0.88rem;
+            color: #64748b;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #334155;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn-full {
+            grid-column: span 2;
+            background-color: #059669;
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-full:hover {
+            background-color: #047857;
+        }
+
+        .btn-whatsapp {
+            color: #16a34a;
+            border-color: #bbf7d0;
+            background-color: #f0fdf4;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #dcfce7;
+        }
+
+        .toast {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f172a;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        @media print {
+            body {
+                background: none;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+            .actions-grid {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="printableCard">
+        <div class="card-header">
+            <span>Current Date & Time:</span>
+            <span>8/11/2026, 8:49:07 AM</span>
+        </div>
+
+        <div class="card-body">
+            <h1 class="title">NIF</h1>
+            
+            <!-- قسم الصور المعدل لعرض صور أكبر -->
+            <div class="images-container">
+                <div class="image-box">
+                    <img src="1.jpg.webp" alt="الصورة الأولى">
+                </div>
+                <div class="image-box">
+                    <img src="2.jpg.webp" alt="الصورة الثانية">
+                </div>
+            </div>
+
+            <a href="#" class="entry-link" target="_blank">للدخول للموقع</a>
+
+            <div class="meta-info">
+                <strong>Written Date:</strong> September 14, 2024
+            </div>
+
+            <div class="actions-grid">
+                <a href="tel:+1234567890" class="btn btn-full">
+                    📞 Call +1234567890
+                </a>
+
+                <button class="btn" onclick="window.print()">
+                    🖨️ Print
+                </button>
+
+                <button class="btn" onclick="copyCardContent()">
+                    📋 Copy
+                </button>
+
+                <a href="https://wa.me/1234567890?text=NIF%20-%20September%2014,%202024" class="btn btn-whatsapp" target="_blank">
+                    💬 Send by WhatsApp
+                </a>
+
+                <a href="mailto:info@example.com?subject=NIF%20Info&body=NIF%0AWritten%20Date:%20September%2014,%202024" class="btn">
+                    ✉️ Send by Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">تم النسخ بنجاح!</div>
+
+    <script>
+        function copyCardContent() {
+            const textToCopy = `NIF\nWritten Date: September 14, 2024\nCall: +1234567890`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
