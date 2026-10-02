@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المواد - Vakken</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e2e8f0;
+            --arabic-btn: #27ae60;
+            --dutch-btn: #e67e22;
+            --code-btn: #8e44ad;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .summary-box {
+            background-color: var(--card-bg);
+            border-right: 5px solid var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .summary-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .summary-box ul {
+            margin: 0;
+            padding-right: 20px;
+        }
+
+        .courses-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .course-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .course-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .course-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .dutch-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            direction: ltr;
+            text-align: right;
+        }
+
+        .arabic-title {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .course-meta {
+            font-size: 0.88rem;
+            color: #666;
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            transition: opacity 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-dutch {
+            background-color: var(--dutch-btn);
+        }
+
+        .btn-arabic {
+            background-color: var(--arabic-btn);
+        }
+
+        .btn-code {
+            background-color: var(--code-btn);
+        }
+
+        /* Toast notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.3s, fadeout 0.3s 1.7s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📚 المواد — Vakken</h1>
+
+    <div class="summary-box">
+        <h3>🔹 ملخص سريع</h3>
+        <ul>
+            <li>عدد المواد: 16</li>
+            <li>بالهولندية: 15 مادة</li>
+            <li>بالإنجليزية: مادة واحدة</li>
+            <li>بالفرنسية: مادة واحدة من حيث الموضوع (المدرس/النظام: Nederlands)</li>
+        </ul>
+    </div>
+
+    <div class="courses-list">
+
+        <!-- 1 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">1</span>
+                <div class="dutch-title" id="nl-1">Atelier: digitale tools</div>
+            </div>
+            <div class="arabic-title" id="ar-1">ورشة: الأدوات الرقمية</div>
+            <div class="course-meta">
+                <span id="code-1">CURGRADJURA2089972026</span> — CORDONNIER Cleo — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-1', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-1', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-1', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">2</span>
+                <div class="dutch-title" id="nl-2">Atelier: juridische kantoororganisatie</div>
+            </div>
+            <div class="arabic-title" id="ar-2">ورشة: تنظيم المكتب القانوني</div>
+            <div class="course-meta">
+                <span id="code-2">CURGRADJURA2089932026</span> — CORDONNIER Cleo — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-2', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-2', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-2', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">3</span>
+                <div class="dutch-title" id="nl-3">Atelier: professioneel communiceren Engels 2026</div>
+            </div>
+            <div class="arabic-title" id="ar-3">ورشة: التواصل المهني باللغة الإنجليزية 2026</div>
+            <div class="course-meta">
+                <span id="code-3">CURGRADJURA2089882026</span> — BRAEKMAN Martine — English
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-3', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-3', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-3', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">4</span>
+                <div class="dutch-title" id="nl-4">Atelier: professioneel communiceren Frans</div>
+            </div>
+            <div class="arabic-title" id="ar-4">ورشة: التواصل المهني باللغة الفرنسية</div>
+            <div class="course-meta">
+                <span id="code-4">CURGRADJURA2089952026</span> — BOLLE Marieke — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-4', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-4', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-4', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">5</span>
+                <div class="dutch-title" id="nl-5">Atelier: professioneel communiceren Nederlands AJ 26-27</div>
+            </div>
+            <div class="arabic-title" id="ar-5">ورشة: التواصل المهني باللغة الهولندية 2026–2027</div>
+            <div class="course-meta">
+                <span id="code-5">CURGRADJURA2089962026</span> — BOLLE Marieke — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-5', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-5', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-5', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">6</span>
+                <div class="dutch-title" id="nl-6">Burgerlijk recht</div>
+            </div>
+            <div class="arabic-title" id="ar-6">القانون المدني</div>
+            <div class="course-meta">
+                <span id="code-6">CURGRADJURA2089832026</span> — REMY Patrick — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-6', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-6', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-6', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">7</span>
+                <div class="dutch-title" id="nl-7">Cases burgerlijk recht</div>
+            </div>
+            <div class="arabic-title" id="ar-7">دراسات حالة في القانون المدني</div>
+            <div class="course-meta">
+                <span id="code-7">CURGRADJURA2089842026</span> — REMY Patrick — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-7', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-7', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-7', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">8</span>
+                <div class="dutch-title" id="nl-8">Cases staatsrecht</div>
+            </div>
+            <div class="arabic-title" id="ar-8">دراسات حالة في القانون الدستوري</div>
+            <div class="course-meta">
+                <span id="code-8">CURGRADJURA2089912026</span> — SLEURS Stéphanie — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-8', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-8', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-8', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">9</span>
+                <div class="dutch-title" id="nl-9">Cases strafrecht</div>
+            </div>
+            <div class="arabic-title" id="ar-9">دراسات حالة في القانون الجنائي</div>
+            <div class="course-meta">
+                <span id="code-9">CURGRADJURA2089922026</span> — D’HONDT Jeroen — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-9', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-9', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-9', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">10</span>
+                <div class="dutch-title" id="nl-10">Deontologisch en ethisch handelen</div>
+            </div>
+            <div class="arabic-title" id="ar-10">السلوك المهني والأخلاقي</div>
+            <div class="course-meta">
+                <span id="code-10">CURGRADJURA2089862026</span> — HULPIA Franky — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-10', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-10', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-10', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">11</span>
+                <div class="dutch-title" id="nl-11">Inleiding tot het recht</div>
+            </div>
+            <div class="arabic-title" id="ar-11">مقدمة في القانون</div>
+            <div class="course-meta">
+                <span id="code-11">CURGRADJURA2089822026</span> — SLEURS Stéphanie — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-11', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-11', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-11', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">12</span>
+                <div class="dutch-title" id="nl-12">Professioneel Nederlands</div>
+            </div>
+            <div class="arabic-title" id="ar-12">الهولندية المهنية</div>
+            <div class="course-meta">
+                <span id="code-12">CURGRADJURA2089872026</span> — BOLLE Marieke — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-12', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-12', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-12', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">13</span>
+                <div class="dutch-title" id="nl-13">Staatsrecht</div>
+            </div>
+            <div class="arabic-title" id="ar-13">القانون الدستوري</div>
+            <div class="course-meta">
+                <span id="code-13">CURGRADJURA2089892026</span> — SLEURS Stéphanie — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-13', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-13', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-13', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">14</span>
+                <div class="dutch-title" id="nl-14">Strafrecht</div>
+            </div>
+            <div class="arabic-title" id="ar-14">القانون الجنائي</div>
+            <div class="course-meta">
+                <span id="code-14">CURGRADJURA2089902026</span> — D’HONDT Jeroen — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-14', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-14', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-14', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">15</span>
+                <div class="dutch-title" id="nl-15">Werkveldverdieping</div>
+            </div>
+            <div class="arabic-title" id="ar-15">التعمق في مجال العمل المهني</div>
+            <div class="course-meta">
+                <span id="code-15">CURGRADJURA2089942026</span> — SLEURS Stéphanie — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-15', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-15', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-15', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="course-card">
+            <div class="course-header">
+                <span class="course-number">16</span>
+                <div class="dutch-title" id="nl-16">Werkveldverkenning</div>
+            </div>
+            <div class="arabic-title" id="ar-16">استكشاف مجال العمل المهني</div>
+            <div class="course-meta">
+                <span id="code-16">CURGRADJURA2089852026</span> — LEUNTJENS Veronique — Nederlands
+            </div>
+            <div class="btn-group">
+                <button class="btn-dutch" onclick="copyText('nl-16', 'العنوان الهولندي')">📋 نسخ العنوان (هولندي)</button>
+                <button class="btn-arabic" onclick="copyText('ar-16', 'العنوان العربي')">📋 نسخ العنوان (عربي)</button>
+                <button class="btn-code" onclick="copyText('code-16', 'كود المادة')">🔢 نسخ الكود</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="toast">تم النسخ بنجاح!</div>
+
+<script>
+    function copyText(elementId, label) {
+        const textToCopy = document.getElementById(elementId).innerText;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast(`تم نسخ ${label}: "${textToCopy}"`);
+        }).catch(err => {
+            // طريقة بديلة في حال لم يشتغل clipboard API
+            const tempInput = document.createElement("input");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast(`تم نسخ ${label}: "${textToCopy}"`);
+        });
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.className = "show";
+        setTimeout(() => { 
+            toast.className = toast.className.replace("show", ""); 
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
