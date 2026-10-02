@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وثيقة تعريف المستخدم - DOCUMENTO DE IDENTIFICAÇÃO DO UTENTE</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --accent: #dbeafe;
+            --success: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .btn-copy {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-copy.copied {
+            background-color: var(--success);
+        }
+
+        .doc-image-container {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .doc-image-container img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .data-list {
+            list-style: none;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .data-value {
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: left;
+            direction: ltr;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>DOCUMENTO DE IDENTIFICAÇÃO DO UTENTE</h1>
+            <p>وثيقة تعريف المستخدم - المركز الصحي أويراس (Centro De Saúde Oeiras)</p>
+        </header>
+
+        <div class="main-grid">
+            <!-- العمود الأيمن: صورة المستند -->
+            <div class="doc-image-container">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">صورة المستند الأصلية</span>
+                    </div>
+                    <!-- يمكنك وضع مسار الصورة الخاص بك هنا -->
+                    <img src="image.png" alt="Documento de Identificação do Utente">
+                </div>
+            </div>
+
+            <!-- العمود الأيسر: البيانات باللغتين والزرارين المنفصلين -->
+            <div>
+                <!-- قسم البيانات بالعربية -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">المعلومات باللغة العربية</span>
+                        <button class="btn-copy" onclick="copyArabicData(this)">
+                            📋 نسخ البيانات بالعربية
+                        </button>
+                    </div>
+                    <ul class="data-list">
+                        <li class="data-item">
+                            <span class="data-label">الاسم الكامل:</span>
+                            <span class="data-value">سامر جودة نصر السعدني</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">رقم المستخدم (Utente):</span>
+                            <span class="data-value" style="background-color: #fef08a; padding: 0 4px; border-radius: 4px;">325551155</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">تاريخ الميلاد:</span>
+                            <span class="data-value">07-07-1981</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">الجنس:</span>
+                            <span class="data-value">ذكر</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">الجنسية:</span>
+                            <span class="data-value">مصر</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">رقم جواز السفر:</span>
+                            <span class="data-value">A3498545</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">الرقم الضريبي (NIF):</span>
+                            <span class="data-value">328404560</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">رقم الضمان الاجتماعي (NSS):</span>
+                            <span class="data-value">12178343006</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">العنوان:</span>
+                            <span class="data-value" style="direction: rtl; text-align: right;">Rua Rebelo Da Silva Nº 18 Rc Esquerdo, Linda A Velha 2795-166</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">المركز الصحي:</span>
+                            <span class="data-value">UCSP Paço De Arcos</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">تاريخ الإصدار:</span>
+                            <span class="data-value">06-11-2025</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- قسم البيانات بالبرتغالية -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Informações em Português</span>
+                        <button class="btn-copy" onclick="copyPortugueseData(this)">
+                            📋 Copiar Dados (PT)
+                        </button>
+                    </div>
+                    <ul class="data-list">
+                        <li class="data-item">
+                            <span class="data-label">Nome Completo:</span>
+                            <span class="data-value">Samer Guda Nasr Alsaadni</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Nº de Utente:</span>
+                            <span class="data-value" style="background-color: #fef08a; padding: 0 4px; border-radius: 4px;">325551155</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Data de Nascimento:</span>
+                            <span class="data-value">07-07-1981</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Sexo:</span>
+                            <span class="data-value">Masculino</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Nacionalidade / Naturalidade:</span>
+                            <span class="data-value">Egipto</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Passaporte:</span>
+                            <span class="data-value">A3498545</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">NIF:</span>
+                            <span class="data-value">328404560</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Nº Seg. Social:</span>
+                            <span class="data-value">12178343006</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Morada:</span>
+                            <span class="data-value">Rua Rebelo Da Silva Nº 18 Rc Esquerdo, Linda A Velha 2795-166</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Unidade de Saúde:</span>
+                            <span class="data-value">UCSP Paço De Arcos</span>
+                        </li>
+                        <li class="data-item">
+                            <span class="data-label">Data de Emissão:</span>
+                            <span class="data-value">06-11-2025</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">تم نسخ البيانات بنجاح!</div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // دالة نسخ البيانات العربية
+        function copyArabicData(btn) {
+            const arData = `المعلومات المهمة من وثيقة المستخدم:
+• الاسم الكامل: سامر جودة نصر السعدني
+• رقم المستخدم (Utente): 325551155
+• تاريخ الميلاد: 07-07-1981
+• الجنس: ذكر
+• الجنسية: مصر
+• رقم جواز السفر: A3498545
+• الرقم الضريبي (NIF): 328404560
+• رقم الضمان الاجتماعي (NSS): 12178343006
+• العنوان: Rua Rebelo Da Silva Nº 18 Rc Esquerdo Linda A Velha 2795-166 Linda A Velha
+• المركز الصحي: UCSP Paço De Arcos (Centro De Saúde Oeiras)
+• تاريخ الإصدار: 06-11-2025`;
+
+            navigator.clipboard.writeText(arData).then(() => {
+                showToast('تم نسخ المعلومات باللغة العربية بنجاح!');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ تم النسخ!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '📋 نسخ البيانات بالعربية';
+                }, 2500);
+            });
+        }
+
+        // دالة نسخ البيانات البرتغالية
+        function copyPortugueseData(btn) {
+            const ptData = `Informações Importantes do Documento do Utente:
+• Nome: Samer Guda Nasr Alsaadni
+• Nº de Identificação do Utente: 325551155
+• Data de Nascimento: 07-07-1981
+• Sexo: Masculino
+• Nacionalidade: Egipto
+• Passaporte: A3498545
+• NIF: 328404560
+• Nº Seg. Social: 12178343006
+• Morada: Rua Rebelo Da Silva Nº 18 Rc Esquerdo Linda A Velha 2795-166 Linda A Velha
+• Unidade de Saúde: UCSP Paço De Arcos (Centro De Saúde Oeiras)
+• Data de Emissão: 06-11-2025`;
+
+            navigator.clipboard.writeText(ptData).then(() => {
+                showToast('Dados em português copiados com sucesso!');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ Copiado!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '📋 Copiar Dados (PT)';
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+</html>
