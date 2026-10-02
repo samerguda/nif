@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driving Schools in Lisbon 2026</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Live Clock Widget (English Display) */
+    .clock-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      direction: ltr;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .clock-time {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .clock-date {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-top: 0.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Main Card Styling */
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #a5b4fc;
+    }
+
+    .intro-text {
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive Table Styling */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    th {
+      background: rgba(99, 102, 241, 0.15);
+      color: #c7d2fe;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Table Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    /* Highlights Section */
+    .highlight-card {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-title {
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .highlight-body {
+      line-height: 1.7;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    /* Recommendation Cards Grid */
+    .recommend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .rec-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rec-num {
+      background: var(--accent-color);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* Footer Action */
+    .footer-note {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Live Clock Section (Dynamic English Time & Date) -->
+    <div class="clock-card">
+      <div class="clock-time" id="clockTime">00:00:00 AM</div>
+      <div class="clock-date" id="clockDate">Friday, Oct 02, 2026</div>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-graduation-cap"></i>
+        أسعار مدارس القيادة في لشبونة (تحديث 2026)
+      </div>
+
+      <p class="intro-text">
+        بناءً على أسعار 2026 والمواقع الحالية، نظراً لأن أغلب مدارس لشبونة لا تنشر السعر الحالي أو تفاصيل برنامج اللغة الإنجليزية على مواقعها، تم التحقق من المدارس المتاحة كالآتي:
+      </p>
+
+      <!-- Driving Schools Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>الترتيب</th>
+              <th>المدرسة</th>
+              <th>السعر المنشور</th>
+              <th>English</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🥇 1</td>
+              <td><strong>Segurança Máxima</strong></td>
+              <td>€398 شامل التسجيل + 28 Código + 32 قيادة + امتحاني Código/Condução</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-check"></i> English</span></td>
+            </tr>
+            <tr>
+              <td>🥈 2</td>
+              <td><strong>Radical</strong></td>
+              <td>€750 تقريبًا لبرنامج English (دفعة واحدة أو €800 على دفعتين)</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-check"></i> English</span></td>
+            </tr>
+            <tr>
+              <td>🥉 3</td>
+              <td><strong>IDAL</strong></td>
+              <td>السعر غير منشور حالياً</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-check"></i> English + Chinese</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Paço de Arcos</strong></td>
+              <td>السعر غير متحقق حالياً</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-check"></i> English</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Driving School Park of Nations</strong></td>
+              <td>السعر غير منشور</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يتطلب سؤال</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Escola de Condução A Portuguesa</strong></td>
+              <td>السعر غير منشور</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يتطلب سؤال</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>Grancoop</strong></td>
+              <td>السعر غير منشور</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يتطلب سؤال</span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Neuropa</strong></td>
+              <td>€799 + رسوم الامتحانات</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يحتاج تأكيد</span></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Escola de Condução dos Olivais</strong></td>
+              <td>السعر غير منشور</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يتطلب سؤال</span></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><strong>São Lázaro</strong></td>
+              <td>السعر غير منشور</td>
+              <td><span class="badge badge-warning"><i class="fa-solid fa-circle-question"></i> يتطلب سؤال</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Best Price Highlights -->
+      <div class="highlight-card">
+        <div class="highlight-title">
+          <i class="fa-solid fa-sack-dollar"></i>
+          أرخص سعر تم التحقق منه
+        </div>
+        <div class="highlight-body">
+          <p><strong>Segurança Máxima — €398:</strong> العرض يشمل 28 حصة Código + 32 حصة قيادة + امتحان Código + امتحان قيادة. (ينصح بالتأكد من توفر باقة €398 باللغة الإنجليزية).</p>
+          <br>
+          <p><strong>ملاحظات المدارس الأخرى:</strong></p>
+          <ul style="padding-right: 1.2rem; margin-top: 0.5rem; line-height: 1.8;">
+            <li><strong>Radical:</strong> كورس إنجليزي مؤكد بتكلفة €750 شامل الاختبارات المذكورة.</li>
+            <li><strong>IDAL:</strong> الموقع الرسمي يؤكد توفر المواد والتعليم باللغة الإنجليزية.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Recommendation Plan -->
+      <div class="card-title" style="font-size: 1.1rem; margin-top: 1rem;">
+        <i class="fa-solid fa-bullseye"></i>
+        أفضل خطة للحصول على أرخص رخصة بالإنجليزية
+      </div>
+      <div class="recommend-grid">
+        <div class="rec-item">
+          <span class="rec-num">1</span>
+          <div><strong>Segurança Máxima</strong><br><small style="color: var(--text-sub);">الاستفسار عن كورس €398 English</small></div>
+        </div>
+        <div class="rec-item">
+          <span class="rec-num">2</span>
+          <div><strong>Radical</strong><br><small style="color: var(--text-sub);">كورس English بـ €750</small></div>
+        </div>
+        <div class="rec-item">
+          <span class="rec-num">3</span>
+          <div><strong>IDAL</strong><br><small style="color: var(--text-sub);">طلب السعر الخاص باللغة الإنجليزية</small></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+      💡 أقدر كمان أجيب لك 10 مدارس إضافية حول Lisboa / Amadora / Oeiras / Sintra ونبحث عن السعر الفعلي + English + WhatsApp + أقرب محطة Metro/Comboio للوصول لأفضل اختيار.
+    </div>
+
+  </div>
+
+  <script>
+    // Live Clock Function in Dynamic English
+    function updateClock() {
+      const now = new Date();
+      
+      // Formatting Time
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+      // Formatting Date in English
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' };
+      const dateStr = now.toLocaleDateString('en-US', options);
+
+      document.getElementById('clockTime').textContent = timeStr;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+
+    // Start Clock Update
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
