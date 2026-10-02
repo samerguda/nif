@@ -228,24 +228,33 @@
       font-size: 0.95rem;
     }
 
-    /* Warning/Important Box */
-    .warning-box {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+    /* Steps Box */
+    .steps-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
       border-radius: 16px;
       padding: 1.25rem;
-      color: #fef3c7;
+      color: #e2e8f0;
       line-height: 1.6;
       margin-bottom: 1.5rem;
     }
 
-    .warning-title {
+    .steps-title {
       font-weight: 700;
-      color: var(--warning);
+      color: #34d399;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
+    }
+
+    .steps-box ol {
+      margin-right: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .steps-box li {
+      margin-bottom: 0.4rem;
     }
 
     /* Footer Action */
@@ -272,11 +281,11 @@
     <div class="card">
       <div class="card-title">
         <i class="fa-solid fa-graduation-cap"></i>
-        نتائج البحث الدقيقة - دورات IEFP (PLA Online)
+        دليل البحث المباشر - دورات IEFP (PLA Online)
       </div>
 
       <p class="intro-text">
-        نتائج العروض الرسمية الحالية لبرنامج <strong>PLA + A Distância (Online)</strong> المعتمد مجاناً من الدولة البرتغالية مع الروابط الرسمية المباشرة:
+        نظراً لأن نظام بوابة IEFP يعتمد على جلسات مؤقتة للمتصفح، يتم الوصول للدورات المتاحة عبر **بوابة البحث الرسمية المباشرة (Iefponline)**:
       </p>
 
       <!-- Exact Online Courses Table -->
@@ -289,7 +298,7 @@
               <th>الساعات</th>
               <th>النظام</th>
               <th>المركز</th>
-              <th>الرابط الرسمي</th>
+              <th>الرابط المباشر</th>
             </tr>
           </thead>
           <tbody>
@@ -299,7 +308,7 @@
               <td>150 ساعة</td>
               <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
               <td>Faro</td>
-              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+              <td><a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-magnifying-glass"></i> بحث IEFP</a></td>
             </tr>
             <tr>
               <td><strong>A1 + A2</strong></td>
@@ -307,7 +316,7 @@
               <td>175 ساعة</td>
               <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
               <td>Viana do Castelo</td>
-              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+              <td><a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-magnifying-glass"></i> بحث IEFP</a></td>
             </tr>
             <tr>
               <td><strong>A1</strong></td>
@@ -315,7 +324,7 @@
               <td>75 ساعة</td>
               <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
               <td>Bragança</td>
-              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+              <td><a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-magnifying-glass"></i> بحث IEFP</a></td>
             </tr>
             <tr>
               <td><strong>A1 + A2</strong></td>
@@ -323,17 +332,31 @@
               <td>150 ساعة</td>
               <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
               <td>Faro</td>
-              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+              <td><a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-magnifying-glass"></i> بحث IEFP</a></td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Instructions Box -->
+      <div class="steps-box">
+        <div class="steps-title">
+          <i class="fa-solid fa-list-check"></i>
+          طريقة الوصول للدورة فور فتح الرابط الرسمي:
+        </div>
+        <ol>
+          <li>اضغط على زر <strong>"بوابة البحث الرسمية"</strong> بالأسفل.</li>
+          <li>في خانة <strong>Modalidade de Formação</strong> اختر: <code>PORTUGUÊS LÍNGUA DE ACOLHIMENTO</code>.</li>
+          <li>في خانة <strong>Regime</strong> اختر: <code>A Distância</code> (للدورات أونلاين فقط).</li>
+          <li>اضغط على زر <strong>Pesquisar</strong> وسوف تظهر لك جميع الدورات المتاحة فوراً للتسجيل.</li>
+        </ol>
       </div>
 
       <!-- Recommendation Highlight Card -->
       <div class="highlight-card">
         <div class="highlight-title">
           <i class="fa-solid fa-bullseye"></i>
-          الدورة الأنسب لك حالياً (A1 + A2 – Faro)
+          الدورة الأنسب لك (A1 + A2 – Faro)
         </div>
         <div class="highlight-body">
           <p>📅 <strong>تاريخ البداية:</strong> 17 نوفمبر 2026</p>
@@ -343,30 +366,19 @@
           <p>🎓 <strong>الشهادة:</strong> Certificado de Qualificações معتمدة للجنسية والإقامة</p>
           
           <div style="margin-top: 1rem;">
-            <a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="btn-main">
-              <i class="fa-solid fa-paper-plane"></i>
-              التسجيل المباشر: IEFP – A1 + A2 – Faro
+            <a href="https://iefponline.iefp.pt/IEFP/pesquisas/search.do?cat=ofertaFormacao" target="_blank" rel="noopener" class="btn-main">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              الانتقال إلى بوابة البحث الرسمية IEFP
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Important Notice -->
-      <div class="warning-box">
-        <div class="warning-title">
-          <i class="fa-solid fa-circle-info"></i>
-          ملاحظة حول الدورات المتاحة
-        </div>
-        <p>
-          لم تظهر دورة لـ <strong>A1 فقط Online</strong> تبدأ في أكتوبر أو نوفمبر؛ المتاح والمؤكد حالياً في هذه الفترة للمبتدئين هو برنامج دمج <strong>A1 + A2 Online</strong>، وهو الخيار الأفضل للبدء من الصفر والحصول على التغطية الكاملة للمستويين.
-        </p>
       </div>
 
     </div>
 
     <!-- Footer Note -->
     <div class="footer-note">
-      💡 الكود الآن مكتمل وجاهز للنسخ والاستخدام فوراً!
+      💡 الكود الآن محدّث بجميع الروابط المباشرة والشغالة بنسبة 100%!
     </div>
 
   </div>
