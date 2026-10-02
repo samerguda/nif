@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard & Driving License Guide</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      direction: rtl; /* For Arabic text flow */
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Live Clock Widget (English Display) */
+    .clock-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      direction: ltr; /* Clock in LTR */
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .clock-time {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .clock-date {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-top: 0.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Contact & Info Cards */
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #a5b4fc;
+    }
+
+    /* Contact Details */
+    .number-display {
+      direction: ltr;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1.25rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1rem;
+    }
+
+    .phone-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .copy-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.03);
+    }
+
+    .info-sub-list {
+      direction: ltr;
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+    }
+
+    /* Driving License Guide Content */
+    .guide-intro {
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      color: #e2e8f0;
+    }
+
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-num {
+      background: var(--accent-color);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .step-details {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      padding-right: 2rem;
+      line-height: 1.6;
+    }
+
+    .step-details li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Required Documents Grid */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .doc-badge {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #c7d2fe;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      color: #fef3c7;
+      line-height: 1.6;
+    }
+
+    .warning-title {
+      font-weight: 700;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer Note */
+    .footer-note {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Live Clock Section (Dynamic English Time & Date) -->
+    <div class="clock-card">
+      <div class="clock-time" id="clockTime">00:00:00 AM</div>
+      <div class="clock-date" id="clockDate">Monday, Jan 01, 2026</div>
+    </div>
+
+    <!-- Phone & Pin Card -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-phone"></i>
+        معلومات الرقم البرتغالي
+      </div>
+      <div class="number-display">
+        <span class="phone-num" id="phoneNum">+351 912 123 741</span>
+        <button class="copy-btn" onclick="copyNumber()">
+          <i class="fa-regular fa-copy"></i> Copy Number
+        </button>
+      </div>
+      <div class="info-sub-list">
+        <p><strong>my portugal number:</strong> 351912123741</p>
+        <p style="margin-top: 0.25rem;"><strong>PIN Code:</strong> <span style="color: var(--success); font-weight: bold;">1877</span></p>
+      </div>
+    </div>
+
+    <!-- Driving License Guide Card -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-id-card"></i>
+        دليل الحصول على رخصة القيادة البرتغالية (Category B)
+      </div>
+
+      <p class="guide-intro">
+        يمكنك استخراج رخصة قيادة برتغالية من فئة <strong>Category B</strong> في لشبونة طالما أنك تمتلك إقامة برتغالية، بشرط استيفاء شرط الإقامة الفعلية في البرتغال لمدة <strong>185 يومًا على الأقل</strong>.
+      </p>
+
+      <!-- Steps -->
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">1</span>
+            التأكد من شرط الـ 185 يومًا
+          </div>
+          <ul class="step-details">
+            <li>إقامتك البرتغالية تكفي كإثبات للإقامة.</li>
+            <li>إقامة الطالب لا تمنعك من التقديم بحد ذاتها.</li>
+          </ul>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">2</span>
+            الفحص الطبي (Atestado Médico)
+          </div>
+          <ul class="step-details">
+            <li>إجراء فحص لدى طبيب معتمد لإصدار <em>Atestado Médico Eletrónico</em>.</li>
+            <li>يقوم الطبيب بإرسال الشهادة إلكترونيًا إلى هيئة النقل IMT.</li>
+          </ul>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">3</span>
+            التقييم النفسي (Psicotécnicos)
+          </div>
+          <ul class="step-details">
+            <li>غير مطلوب عادةً لرخصة السيارة العادية (B)، ويرتبط غالباً بالفئات المهنية والثقيلة.</li>
+          </ul>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">4</span>
+            التسجيل في مدرسة قيادة (Escola de Condução)
+          </div>
+          <ul class="step-details">
+            <li>التسجيل في مدرسة قيادة في لشبونة للحصول على الفئة B.</li>
+            <li>تتولى المدرسة إجراءات التسجيل للامتحانات الرسمية.</li>
+          </ul>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">5</span>
+            امتحان النظرية (Exame de Código)
+          </div>
+          <ul class="step-details">
+            <li>دراسة قانون المرور البرتغالي واجتياز الامتحان النظري.</li>
+          </ul>
+        </li>
+
+        <li class="step-item">
+          <div class="step-title">
+            <span class="step-num">6</span>
+            دروس القيادة والامتحان العملي
+          </div>
+          <ul class="step-details">
+            <li>إتمام حصص القيادة العملية المطلوبة.</li>
+            <li>اجتياز الامتحان العملي (Exame de Condução) لإصدار الرخصة.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Required Documents -->
+      <div class="card-title" style="font-size: 1.1rem; margin-top: 1.5rem;">
+        <i class="fa-solid fa-folder-open"></i>
+        الأوراق المطلوب تجهيزها
+      </div>
+      <div class="docs-grid">
+        <div class="doc-badge"><i class="fa-solid fa-passport"></i> جواز السفر</div>
+        <div class="doc-badge"><i class="fa-solid fa-address-card"></i> بطاقة الإقامة البرتغالية</div>
+        <div class="doc-badge"><i class="fa-solid fa-hashtag"></i> الرقم الضريبي NIF</div>
+        <div class="doc-badge"><i class="fa-solid fa-house"></i> إثبات السكن/العنوان</div>
+        <div class="doc-badge"><i class="fa-solid fa-file-medical"></i> الشهادة الطبية الإلكترونية</div>
+        <div class="doc-badge"><i class="fa-solid fa-image"></i> صور شخصية</div>
+      </div>
+
+      <!-- Warning Section -->
+      <div class="warning-box">
+        <div class="warning-title">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          ملاحظة هامة جدًا بشأن الإقامة
+        </div>
+        <p>
+          بما أنك تحمل إقامة طالب برتغالية وتقيم حالياً في بلجيكا، فإن توفر بطاقة الإقامة وحدها لا يعني تلقائياً استيفاء شرط الإقامة الفعلية (185 يومًا في البرتغال). يرجى التأكد من الموقف القانوني للإقامة قبل البدء في الإجراءات.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      💡 هل تحب أن أبحث لك عن أفضل مدارس القيادة في لشبونة التي تدرس باللغة الإنجليزية وتحديد التكاليف والأقرب للمترو؟
+    </div>
+
+  </div>
+
+  <script>
+    // Live Clock Function in Dynamic English
+    function updateClock() {
+      const now = new Date();
+      
+      // Formatting Time
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // convert 0 to 12
+      const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+      // Formatting Date in English
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' };
+      const dateStr = now.toLocaleDateString('en-US', options);
+
+      document.getElementById('clockTime').textContent = timeStr;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+
+    // Copy to clipboard function
+    function copyNumber() {
+      const numText = document.getElementById('phoneNum').innerText;
+      navigator.clipboard.writeText(numText).then(() => {
+        alert(' تم نسخ الرقم بنجاح: ' + numText);
+      });
+    }
+
+    // Start Clock
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
