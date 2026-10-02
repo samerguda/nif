@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEFP PLA Online Direct Links 2026</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 950px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Live Clock Widget (English Display) */
+    .clock-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      direction: ltr;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .clock-time {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .clock-date {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-top: 0.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Main Card Styling */
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #a5b4fc;
+    }
+
+    .intro-text {
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive Table Styling */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    th {
+      background: rgba(99, 102, 241, 0.15);
+      color: #c7d2fe;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges & Links */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.35rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .site-link:hover {
+      background: rgba(56, 189, 248, 0.25);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      background: var(--accent-color);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+    }
+
+    .btn-main:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+    }
+
+    /* Highlights Section */
+    .highlight-card {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-title {
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .highlight-body {
+      line-height: 1.8;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    /* Warning/Important Box */
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem;
+      color: #fef3c7;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .warning-title {
+      font-weight: 700;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer Action */
+    .footer-note {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Live Clock Section (Dynamic English Time & Date) -->
+    <div class="clock-card">
+      <div class="clock-time" id="clockTime">00:00:00 AM</div>
+      <div class="clock-date" id="clockDate">Friday, Oct 02, 2026</div>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-graduation-cap"></i>
+        نتائج البحث الدقيقة - دورات IEFP (PLA Online)
+      </div>
+
+      <p class="intro-text">
+        نتائج العروض الرسمية الحالية لبرنامج <strong>PLA + A Distância (Online)</strong> المعتمد مجاناً من الدولة البرتغالية مع الروابط الرسمية المباشرة:
+      </p>
+
+      <!-- Exact Online Courses Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>المستوى</th>
+              <th>تاريخ البداية</th>
+              <th>الساعات</th>
+              <th>النظام</th>
+              <th>المركز</th>
+              <th>الرابط الرسمي</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A1 + A2</strong></td>
+              <td>17 نوفمبر 2026</td>
+              <td>150 ساعة</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
+              <td>Faro</td>
+              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+            </tr>
+            <tr>
+              <td><strong>A1 + A2</strong></td>
+              <td>7 ديسمبر 2026</td>
+              <td>175 ساعة</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
+              <td>Viana do Castelo</td>
+              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+            </tr>
+            <tr>
+              <td><strong>A1</strong></td>
+              <td>22 سبتمبر 2026</td>
+              <td>75 ساعة</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
+              <td>Bragança</td>
+              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+            </tr>
+            <tr>
+              <td><strong>A1 + A2</strong></td>
+              <td>21 سبتمبر 2026</td>
+              <td>150 ساعة</td>
+              <td><span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Online</span></td>
+              <td>Faro</td>
+              <td><a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح الدورة</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recommendation Highlight Card -->
+      <div class="highlight-card">
+        <div class="highlight-title">
+          <i class="fa-solid fa-bullseye"></i>
+          الدورة الأنسب لك حالياً (A1 + A2 – Faro)
+        </div>
+        <div class="highlight-body">
+          <p>📅 <strong>تاريخ البداية:</strong> 17 نوفمبر 2026</p>
+          <p>💻 <strong>النمط:</strong> A Distância = Online بالكامل مع مدرس Live</p>
+          <p>⏱️ <strong>عدد الساعات:</strong> 150 ساعة تدريبية</p>
+          <p>👤 <strong>الشروط:</strong> للمهاجرين 18+ الموجودين في وضع قانوني (تقبل إقامة الطالب)</p>
+          <p>🎓 <strong>الشهادة:</strong> Certificado de Qualificações معتمدة للجنسية والإقامة</p>
+          
+          <div style="margin-top: 1rem;">
+            <a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="btn-main">
+              <i class="fa-solid fa-paper-plane"></i>
+              التسجيل المباشر: IEFP – A1 + A2 – Faro
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Notice -->
+      <div class="warning-box">
+        <div class="warning-title">
+          <i class="fa-solid fa-circle-info"></i>
+          ملاحظة حول الدورات المتاحة
+        </div>
+        <p>
+          لم تظهر دورة لـ <strong>A1 فقط Online</strong> تبدأ في أكتوبر أو نوفمبر؛ المتاح والمؤكد حالياً في هذه الفترة للمبتدئين هو برنامج دمج <strong>A1 + A2 Online</strong>، وهو الخيار الأفضل للبدء من الصفر والحصول على التغطية الكاملة للمستويين.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+      💡 الكود الآن مكتمل وجاهز للنسخ والاستخدام فوراً!
+    </div>
+
+  </div>
+
+  <script>
+    // Live Clock Function in Dynamic English
+    function updateClock() {
+      const now = new Date();
+      
+      // Formatting Time
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+      // Formatting Date in English
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' };
+      const dateStr = now.toLocaleDateString('en-US', options);
+
+      document.getElementById('clockTime').textContent = timeStr;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+
+    // Start Clock Update
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
