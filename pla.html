@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portuguese Language Courses - IEFP PLA 2026</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 950px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Live Clock Widget (English Display) */
+    .clock-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      direction: ltr;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .clock-time {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .clock-date {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-top: 0.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Main Card Styling */
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #a5b4fc;
+    }
+
+    .intro-text {
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Course Highlights Grid */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .course-badge {
+      align-self: flex-start;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .course-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .course-details {
+      list-style: none;
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .course-details li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Badges & Links */
+    .site-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.6rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      transition: all 0.2s ease;
+      width: fit-content;
+      margin-top: 0.5rem;
+    }
+
+    .site-link:hover {
+      background: rgba(56, 189, 248, 0.25);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Highlights Section */
+    .highlight-card {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-title {
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .highlight-body {
+      line-height: 1.8;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem;
+      color: #fef3c7;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .warning-title {
+      font-weight: 700;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer Action */
+    .footer-note {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Live Clock Section (Dynamic English Time & Date) -->
+    <div class="clock-card">
+      <div class="clock-time" id="clockTime">00:00:00 AM</div>
+      <div class="clock-date" id="clockDate">Friday, Oct 02, 2026</div>
+    </div>
+
+    <!-- Main Content Card -->
+    <div class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-language"></i>
+        دورات اللغة البرتغالية الرسمية Online (IEFP – PLA)
+      </div>
+
+      <p class="intro-text">
+        برامج حقيقية تابعة للدولة البرتغالية: برنامج <strong>Português Língua de Acolhimento (PLA)</strong> التابع لـ IEFP يوفر دورات <strong>À Distância (Online)</strong> ومجانية بالكامل مع مدرس مباشر وتدريب منظم وشهادة معتمدة.
+      </p>
+
+      <!-- Course Packages Grid -->
+      <div class="course-grid">
+        
+        <!-- Package 1 -->
+        <div class="course-card">
+          <span class="course-badge">مجاني + شهادة معتمدة</span>
+          <div class="course-title">مستوى A1 + A2 (Online)</div>
+          <ul class="course-details">
+            <li><i class="fa-solid fa-clock"></i> <strong>المدة:</strong> 150 ساعة تدريبية</li>
+            <li><i class="fa-solid fa-laptop-house"></i> <strong>النمط:</strong> Formação a distância (Live)</li>
+            <li><i class="fa-solid fa-users"></i> <strong>الفئة:</strong> المهاجرين المقيمين قانونياً</li>
+            <li><i class="fa-solid fa-certificate"></i> <strong>الشهادة:</strong> Qualifications الرسمية</li>
+          </ul>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="course-card">
+          <span class="course-badge" style="background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border-color: rgba(99, 102, 241, 0.4);">دورة نوفمبر 2026</span>
+          <div class="course-title">مستوى B1 + B2 (Online)</div>
+          <ul class="course-details">
+            <li><i class="fa-solid fa-clock"></i> <strong>المدة:</strong> 150 ساعة تدريبية</li>
+            <li><i class="fa-solid fa-calendar-days"></i> <strong>التاريخ:</strong> تبدأ في نوفمبر 2026</li>
+            <li><i class="fa-solid fa-chalkboard-user"></i> <strong>النمط:</strong> تفاعلي مع مدرس Live</li>
+            <li><i class="fa-solid fa-graduation-cap"></i> <strong>المؤهل:</strong> معتمد للمواطنة والإقامة</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Key Eligibility & Information -->
+      <div class="highlight-card">
+        <div class="highlight-title">
+          <i class="fa-solid fa-circle-check"></i>
+          الشروط والمميزات الخاصة بك
+        </div>
+        <div class="highlight-body">
+          <p><strong>قبول إقامة الطالب:</strong> بما أنك تحمل بطاقة إقامة طالب برتغالية (Título de Residência)، فإن برامج PLA تقبل التسجيل بها رسمياً.</p>
+          <p style="margin-top: 0.5rem;"><strong>التسجيل الإلكتروني:</strong> يحتوي موقع IEFP على خيار E-learning / Formação a distância في نموذج التسجيل الرسمي للـ PLA.</p>
+        </div>
+      </div>
+
+      <!-- Warning/Note Comparison -->
+      <div class="warning-box">
+        <div class="warning-title">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          الفرق بين IEFP و AIMA Online
+        </div>
+        <p>
+          برنامج <strong>AIMA Online</strong> مجاني ورسمي أيضاً، ولكنه تعلّم ذاتي (Self-learning) بدون مدرس. أما إذا كان شرطك <strong>(دولة برتغالية + مجاني + Online + مدرس Live)</strong> فالخيار المطلوب هو <strong>IEFP (PLA)</strong>.
+        </p>
+      </div>
+
+      <!-- Official Links Section -->
+      <div class="card-title" style="font-size: 1.1rem; margin-top: 1rem;">
+        <i class="fa-solid fa-link"></i>
+        رابط البحث والتسجيل الرسمي
+      </div>
+      <a href="https://www.iefp.pt/oferta-formativa" target="_blank" rel="noopener" class="site-link">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        البحث الرسمي عن دورات IEFP (PLA Online)
+      </a>
+
+    </div>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+      💡 لو تحب، أقدر أطلع لك الدورات الـ Online المفتوحة الآن في **أكتوبر 2026** فقط، وأرتبها لك حسب: A1 ← A2 ← B1 ← B2 + تاريخ البداية + المواعيد + رابط التسجيل المباشر.
+    </div>
+
+  </div>
+
+  <script>
+    // Live Clock Function in Dynamic English
+    function updateClock() {
+      const now = new Date();
+      
+      // Formatting Time
+      let hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const timeStr = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+      // Formatting Date in English
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: '2-digit' };
+      const dateStr = now.toLocaleDateString('en-US', options);
+
+      document.getElementById('clockTime').textContent = timeStr;
+      document.getElementById('clockDate').textContent = dateStr;
+    }
+
+    // Start Clock Update
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
