@@ -1,150 +1,173 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>خطوات Inburgering - Harelbeke</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
-      --text: #f8fafc;
-      --accent: #2563eb;
-      --accent-hover: #1d4ed8;
-      --success: #16a34a;
-      --highlight: #38bdf8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      padding: 2rem 1rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 650px;
-    }
-
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .item {
-      background-color: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      transition: border-color 0.2s, transform 0.1s;
-    }
-
-    .item:hover {
-      border-color: #475569;
-    }
-
-    .item.first-step {
-      border-color: var(--highlight);
-      background-color: #1e293b;
-    }
-
-    .text {
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.5;
-    }
-
-    .copy-btn {
-      background-color: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background-color 0.2s, transform 0.1s;
-      flex-shrink: 0;
-    }
-
-    .copy-btn:hover {
-      background-color: var(--accent-hover);
-    }
-
-    .copy-btn:active {
-      transform: scale(0.96);
-    }
-
-    .copy-btn.copied {
-      background-color: var(--success);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة الاندماج بعد البطاقة البرتقالية - هارلبيكة (Harelbeke)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            color: white;
+            padding: 45px 20px;
+            border-radius: 0 0 25px 25px;
+            margin-bottom: 30px;
+        }
+        .step-card {
+            background-color: white;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 25px;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background-color: #e7f1ff;
+            color: #0d6efd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .btn-custom {
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 8px 18px;
+            margin-top: 10px;
+            margin-left: 8px;
+        }
+        .badge-location {
+            background-color: #ffc107;
+            color: #000;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="list" id="list"></div>
-  </div>
+    <div class="header-banner text-center">
+        <span class="badge-location mb-2 d-inline-block"><i class="fa-solid fa-location-dot"></i> منطقة هارلبيكة - Harelbeke (Vlaanderen)</span>
+        <h1 class="fw-bold mt-2">خطوات الاندماج بعد البطاقة البرتقالية</h1>
+        <p class="lead mb-0">دليلك الشامل للمؤسسات والخطوات العملية والتسجيل المباشر</p>
+    </div>
 
-  <script>
-    const items = [
-      "🤝 تواصل مع Agentschap Integratie en Inburgering واحجز موعد.",
-      "📋 يعملوا لك تقييم لوضعك ويحددوا مسار الـInburgering المناسب لك.",
-      "🇳🇱 بما إنك خلصت A1، يتم تحديد مستوى الهولندي المناسب لك.",
-      "🇧🇪 تدرس Maatschappelijke Oriëntatie (MO) — الحياة والقوانين والعمل والصحة والسكن في بلجيكا.",
-      "🤝 تعمل Participatietraject — نشاط اجتماعي/تطوعي أو تدريب أو مجموعة محادثة حسب المسار.",
-      "💼 تحصل على توجيه بخصوص العمل أو الدراسة.",
-      "✅ بعد إكمال المتطلبات تحصل على Inburgeringsattest إذا كان مسارك يتطلبه."
-    ];
+    <div class="container mb-5">
+        <div class="row">
 
-    const listContainer = document.getElementById('list');
+            <!-- الخطوة 1: مسار الاندماج -->
+            <div class="col-12">
+                <div class="card step-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number me-3">1</div>
+                        <h3 class="h4 mb-0 fw-bold">التسجيل في مسار الاندماج (Inburgeringstraject)</h3>
+                    </div>
+                    <p>بما أنك مقيم في إقليم الفلاندرز (**Harelbeke**)، يتوجب عليك التواصل مع **Agentschap Integratie en Inburgering** لبدء مسار الاندماج الشامل (دورات التعريف بالمجتمع واللغة).</p>
+                    <ul>
+                        <li>تحديد موعد مقابلة أولية (Intake).</li>
+                        <li>توقيع عقد الاندماج البدء بدورة المعرفة المجتمعية (Maatschappelijke Oriëntatie).</li>
+                    </ul>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://www.integratie-inburgering.be" target="_blank" class="btn btn-primary btn-custom">
+                            <i class="fa-solid fa-globe me-2"></i> موقع وكالة الاندماج
+                        </a>
+                        <a href="https://www.integratie-inburgering.be/nl/contact" target="_blank" class="btn btn-outline-primary btn-custom">
+                            <i class="fa-solid fa-envelope me-2"></i> حجز موعد / التواصل
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    items.forEach((text, index) => {
-      const itemEl = document.createElement('div');
-      itemEl.className = 'item';
+            <!-- الخطوة 2: تعلم اللغة الهولندية -->
+            <div class="col-12">
+                <div class="card step-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number me-3">2</div>
+                        <h3 class="h4 mb-0 fw-bold">تعلم اللغة الهولندية (NT2)</h3>
+                    </div>
+                    <p>بعد تحديد مستواك مع وكالة الاندماج، سيتوجب عليك الالتحاق بأحد مراكز تعليم الكبار (**CVO**) بالقرب من منطقة Harelbeke / Kortrijk لبدء المستويات الأساسية (A1, A2).</p>
+                    <ul>
+                        <li>المركز الرئيسي القريب لمقاطعة Kortrijk / Harelbeke هو **CVO MIRAS** أو **CVO CRESCO**.</li>
+                    </ul>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://www.miras.be" target="_blank" class="btn btn-success btn-custom">
+                            <i class="fa-solid fa-graduation-cap me-2"></i> موقع CVO MIRAS
+                        </a>
+                        <a href="https://www.agendainburgering.be" target="_blank" class="btn btn-outline-success btn-custom">
+                            <i class="fa-solid fa-search me-2"></i> البحث عن دورات اللغة
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-      const textEl = document.createElement('span');
-      textEl.className = 'text';
-      textEl.textContent = `${index + 1}. ${text}`;
+            <!-- الخطوة 3: مكتب العمل ومعادلة الشهادات -->
+            <div class="col-12">
+                <div class="card step-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number me-3">3</div>
+                        <h3 class="h4 mb-0 fw-bold">التسجيل في مكتب العمل (VDAB) ومعادلة الشهادات (NARIC)</h3>
+                    </div>
+                    <p>تسجيل ملفك المهني لدى مكتب العمل الفلمنكي **VDAB** للبحث عن فرص عمل مناسبة وتلقي التدريبات، بالإضافة لتقديم طلب معادلة الشهادات عبر **NARIC Vlaanderen**.</p>
+                    <ul>
+                        <li>إنشاء حساب على موقع VDAB وتحديث السيرة الذاتية.</li>
+                        <li>تقديم الأوراق الرسمية لطلب معادلة الشهادة الدراسية/المهنية.</li>
+                    </ul>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://www.vdab.be" target="_blank" class="btn btn-warning text-dark btn-custom">
+                            <i class="fa-solid fa-briefcase me-2"></i> التسجيل في VDAB
+                        </a>
+                        <a href="https://www.naricvlaanderen.be" target="_blank" class="btn btn-outline-dark btn-custom">
+                            <i class="fa-solid fa-certificate me-2"></i> معادلة الشهادات NARIC
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-      const btnEl = document.createElement('button');
-      btnEl.className = 'copy-btn';
-      btnEl.textContent = 'نسخ';
-      btnEl.addEventListener('click', () => copyText(text, btnEl));
+            <!-- الخطوة 4: الإجراءات الإدارية وتأمين الصحة -->
+            <div class="col-12">
+                <div class="card step-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="step-number me-3">4</div>
+                        <h3 class="h4 mb-0 fw-bold">البلدية والتأمين الصحي (Ziekenfonds)</h3>
+                    </div>
+                    <p>متابعة صلاحية البطاقة البرتقالية وتجديدها في الوقت المناسب مع بلدية **Harelbeke**، والتسجيل لدى إحدى شركات التأمين الصحي (مثل CM أو Helan أو Solidaris) للحصول على التغطية الطبية.</p>
+                    <div class="d-flex flex-wrap">
+                        <a href="https://www.harelbeke.be" target="_blank" class="btn btn-info text-white btn-custom">
+                            <i class="fa-solid fa-building me-2"></i> موقع بلدية Harelbeke
+                        </a>
+                        <a href="https://www.cm.be" target="_blank" class="btn btn-outline-info btn-custom">
+                            <i class="fa-solid fa-notes-medical me-2"></i> التأمين الصحي CM
+                        </a>
+                        <a href="https://www.helan.be" target="_blank" class="btn btn-outline-info btn-custom">
+                            <i class="fa-solid fa-heart-pulse me-2"></i> التأمين الصحي Helan
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-      itemEl.appendChild(textEl);
-      itemEl.appendChild(btnEl);
-      listContainer.appendChild(itemEl);
-    });
+        </div>
+    </div>
 
-    function copyText(text, button) {
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = button.textContent;
-        button.textContent = 'تم النسخ ✓';
-        button.classList.add('copied');
+    <footer class="text-center py-4 bg-light border-top">
+        <p class="mb-0 text-muted">دليل الاندماج المخصص لـ Harelbeke - بلجيكا</p>
+    </footer>
 
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.classList.remove('copied');
-        }, 1500);
-      });
-    }
-  </script>
 </body>
 </html>
