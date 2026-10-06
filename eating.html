@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الوجبات والأكلات</title>
+    <!-- خط تجوال لتصميم حديث ونظيف -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success-color: #16a34a;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .food-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .food-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .food-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .food-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #334155;
+            flex: 1;
+            padding-left: 15px;
+        }
+
+        .food-number {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success-color);
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .food-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .food-content {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>قائمة الأكلات والوجبات</h1>
+        <p>اضغط على زر النسخ لنسخ تفاصيل أي وجبة بسهولة</p>
+    </div>
+
+    <div class="food-list">
+        
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">١</span>
+                <span class="food-text">بيبسي + دوريتس</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٢</span>
+                <span class="food-text">سلطة ( طماطم - خيار - ذرة - زيت زيتون - خل )</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٣</span>
+                <span class="food-text">طبق - سكينة</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٤</span>
+                <span class="food-text">بيتزا ١يورو - فريزر - فرن - طبق - سكينة</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٥</span>
+                <span class="food-text">مكرونة صغيرة ( حلة زيت ملح مية ) + صلصة ( ثوم سكينة زيت خل طاسة - صلصة كمون ملح فلفل )</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٦</span>
+                <span class="food-text">كرواسون + بلانشا</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٧</span>
+                <span class="food-text">سلمون</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٨</span>
+                <span class="food-text">تونة</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">٩</span>
+                <span class="food-text">باسطيلة</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">١٠</span>
+                <span class="food-text">كسكس</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">١١</span>
+                <span class="food-text">مسمن</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">١٢</span>
+                <span class="food-text">لحم برقوق</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+        <div class="food-item">
+            <div class="food-content">
+                <span class="food-number">١٣</span>
+                <span class="food-text">ملوخية و رز و لحم</span>
+            </div>
+            <button class="copy-btn" onclick="copyText(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>نسخ</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function copyText(button) {
+        // الوصول للنص الموجود داخل الـ food-text القريب من الزر
+        const foodItem = button.parentElement;
+        const textToCopy = foodItem.querySelector('.food-text').innerText.trim();
+
+        // استخدام Clipboard API للنسخ
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const btnText = button.querySelector('span');
+            const originalText = btnText.innerText;
+
+            // تغيير حالة الزر
+            button.classList.add('copied');
+            btnText.innerText = 'تم النسخ!';
+
+            // إعادة الزر لحالته الأصلية بعد ثانية ونصف
+            setTimeout(() => {
+                button.classList.remove('copied');
+                btnText.innerText = originalText;
+            }, 1500);
+        }).catch(err => {
+            console.error('فشل النسخ: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
