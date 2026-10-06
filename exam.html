@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عداد امتحانات الجامعة 2027</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --accent: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(to left, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-sub);
+            font-size: 16px;
+        }
+
+        /* Countdown Card */
+        .countdown-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 35px 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .time-unit {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 10px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-3px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .time-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .time-label {
+            font-size: 14px;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        /* Courses Section */
+        .courses-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .courses-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .courses-header h2 i {
+            color: var(--primary);
+        }
+
+        .course-count {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .course-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .course-card:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateX(-3px);
+        }
+
+        .course-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            flex-shrink: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .course-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #e2e8f0;
+            line-height: 1.4;
+            direction: ltr;
+            text-align: left;
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .timer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .time-value {
+                font-size: 32px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="badge">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>جامعة - الموعد النهائي</span>
+            </div>
+            <h1>العداد التنازلي للامتحانات النهائية</h1>
+            <p>بداية الامتحانات: 1 يناير 2027</p>
+        </div>
+
+        <!-- Timer Card -->
+        <div class="countdown-card">
+            <div class="timer-grid" id="timer">
+                <div class="time-unit">
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">أيام</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">ساعات</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">دقائق</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">ثواني</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Section -->
+        <div class="courses-section">
+            <div class="courses-header">
+                <h2>
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    قائمة المواد الدراسية
+                </h2>
+                <span class="course-count">6 مواد مقررة</span>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-number">01</div>
+                    <div class="course-name">Data Analysis</div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">02</div>
+                    <div class="course-name">Business Intelligence</div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">03</div>
+                    <div class="course-name">Applied Entrepreneurship and Innovation</div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">04</div>
+                    <div class="course-name">Management Seminars</div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">05</div>
+                    <div class="course-name">Business and Management Cases Analysis</div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-number">06</div>
+                    <div class="course-name">Operations Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>بالتوفيق والنجاح الدائم في مسيرتك الأكاديمية 🎓</p>
+        </div>
+    </div>
+
+    <!-- Script for Dynamic Countdown -->
+    <script>
+        // تاريخ امتحانات الجامعة: 1 يناير 2027 الساعة 00:00:00
+        const examTargetDate = new Date("January 1, 2027 00:00:00").getTime();
+
+        function updateExamTimer() {
+            const currentTime = new Date().getTime();
+            const timeDifference = examTargetDate - currentTime;
+
+            if (timeDifference > 0) {
+                // الحسابات الزمنية
+                const daysVal = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hoursVal = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutesVal = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsVal = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                // كتابة القيم مع إضافة 0 إذا كان الرقم أقل من 10
+                document.getElementById("days").innerText = daysVal.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hoursVal.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutesVal.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = secondsVal.toString().padStart(2, '0');
+            } else {
+                // عند حلول الموعد
+                document.getElementById("timer").innerHTML = `
+                    <div style="grid-column: span 4; font-size: 24px; font-weight: 700; color: #10b981; padding: 20px;">
+                        🎉 حان موعد الامتحانات! نتمنى لك التوفيق والنجاح.
+                    </div>
+                `;
+            }
+        }
+
+        // تشغيل الدالة مباشرة وتحديثها كل ثانية
+        updateExamTimer();
+        setInterval(updateExamTimer, 1000);
+    </script>
+</body>
+</html>
