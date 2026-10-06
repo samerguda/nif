@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orange eSIM - تفاصيل التفعيل</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      padding: 25px;
+      border-top: 6px solid #ff6600;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed #ddd;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6600;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    .info-group {
+      margin-bottom: 15px;
+      font-size: 15px;
+      color: #444;
+    }
+    .phone-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f9f9f9;
+      padding: 10px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+    .phone-number {
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 1px;
+      direction: ltr;
+    }
+    .copy-btn {
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .copy-btn:hover {
+      background-color: #e05500;
+    }
+    .instructions {
+      margin-top: 20px;
+    }
+    .instructions h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .step {
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    .step-num {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: #333;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    .sub-step {
+      margin-right: 30px;
+      font-size: 13px;
+      color: #555;
+      margin-top: 5px;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+    .footer a {
+      color: #ff6600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="header">
+      <span class="brand">orange</span>
+      <span class="title">eSIM رمز التفعيل</span>
+    </div>
+
+    <div class="info-group">
+      <strong>خطة التسعير (الباقة):</strong> Orange Mobile Small
+    </div>
+
+    <div class="info-group">
+      <strong>رقم الهاتف:</strong>
+      <div class="phone-box">
+        <span class="phone-number" id="phoneNumber">0032492862991</span>
+        <button class="copy-btn" onclick="copyPhone()">نسخ الرقم</button>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h3>التعليمات:</h3>
+      
+      <div class="step">
+        <span class="step-num">1</span>
+        تأكد من توصيل جهازك بشبكة الواي فاي (Wi-Fi).
+      </div>
+
+      <div class="step">
+        <span class="step-num">2</span>
+        الانتقال إلى قسم الـ eSIM في إعدادات الشبكة بجهازك:
+        <div class="sub-step">• <strong>iOS:</strong> الإعدادات > خلوي / شبكة الهاتف المحمول > إضافة خطة خلوية / إضافة eSIM.</div>
+        <div class="sub-step">• <strong>Android:</strong> الإعدادات > الشبكة والإنترنت > اضغط على (+) بجانب شبكة الهاتف المحمول > تنزيل شريحة SIM بدلاً من ذلك > التالي.</div>
+      </div>
+
+      <div class="step">
+        <span class="step-num">3</span>
+        امسح رمز الـ QR باستعمال الكاميرا لتثبيت الـ eSIM.
+      </div>
+
+      <div class="step">
+        <span class="step-num">4</span>
+        اتبع التعليمات التي تظهر على الشاشة.
+      </div>
+    </div>
+
+    <div class="footer">
+      لمزيد من المعلومات: <a href="https://www.orange.be/esim" target="_blank">www.orange.be/esim</a>
+    </div>
+  </div>
+
+  <script>
+    function copyPhone() {
+      const phoneNumber = document.getElementById('phoneNumber').innerText;
+      navigator.clipboard.writeText(phoneNumber).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'تم النسخ!';
+        btn.style.backgroundColor = '#28a745';
+        setTimeout(() => {
+          btn.innerText = 'نسخ الرقم';
+          btn.style.backgroundColor = '#ff6600';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
