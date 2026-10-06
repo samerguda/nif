@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متابعة تقديم مستندات لمّ الشمل / إثبات العلاقة - بلجيكا</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0b1329',
+                            950: '#050a18',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        crimson: {
+                            500: '#ef4444',
+                            600: '#dc2626',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b1329;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(245, 158, 11, 0.08) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, rgba(220, 38, 38, 0.08) 0px, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+        }
+
+        .timer-number {
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Custom Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #f59e0b;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+
+        .custom-checkbox:checked {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+        }
+
+        .custom-checkbox:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #0b1329;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .glass-panel, .glass-card {
+                background: none !important;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                color: black !important;
+            }
+            .text-gold-400, .text-gold-500, .text-slate-300, .text-slate-400 {
+                color: black !important;
+            }
+            .custom-checkbox {
+                border-color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-5xl mx-auto space-y-8">
+
+        <!-- Top Header & Actions Bar -->
+        <header class="flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-slate-800 pb-6">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-500 to-amber-700 flex items-center justify-center text-navy-950 font-bold text-2xl shadow-lg">
+                    <i class="fa-solid fa-passport"></i>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-1">
+                        <i class="fa-solid fa-flag"></i> بلجيكا - لمّ الشمل والإقامة الرسمية
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-white">متابعة المستندات المطلوبة (Duurzame Relatie)</h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 no-print">
+                <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> طباعة / حفظ PDF
+                </button>
+                <button onclick="resetChecklist()" class="px-4 py-2.5 rounded-xl bg-slate-800/60 hover:bg-red-950/40 text-slate-400 hover:text-red-400 text-sm font-semibold border border-slate-700/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> إعادة ضبط
+                </button>
+            </div>
+        </header>
+
+        <section class="glass-panel gold-glow rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800/80 pb-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-100 flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-gold-400 animate-pulse"></i> الموعد النهائي لتقديم الملف
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">يجب استكمال وتقديم جميع الوثائق الموضحة أدناه قبل تاريخ الاستحقاق المحدد قانونياً.</p>
+                </div>
+                <div class="bg-navy-950/80 border border-amber-500/30 px-5 py-3 rounded-2xl flex items-center gap-3">
+                    <i class="fa-solid fa-calendar-check text-gold-400 text-xl"></i>
+                    <div>
+                        <span class="block text-xs text-slate-400">آخر موعد للتقديم:</span>
+                        <span class="text-lg font-bold text-amber-400 font-inter">22 - 12 - 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Countdown Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="countdown-grid">
+                <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gold-500"></div>
+                    <span class="timer-number text-4xl sm:text-5xl font-extrabold text-white block mb-1" id="days">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 font-semibold">أيام (Days)</span>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gold-500"></div>
+                    <span class="timer-number text-4xl sm:text-5xl font-extrabold text-white block mb-1" id="hours">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 font-semibold">ساعات (Hours)</span>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-gold-500"></div>
+                    <span class="timer-number text-4xl sm:text-5xl font-extrabold text-white block mb-1" id="minutes">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 font-semibold">دقائق (Minutes)</span>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 right-0 h-1 bg-amber-400 animate-pulse"></div>
+                    <span class="timer-number text-4xl sm:text-5xl font-extrabold text-gold-400 block mb-1" id="seconds">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 font-semibold">ثواني (Seconds)</span>
+                </div>
+            </div>
+
+            <!-- Warning Notice -->
+            <div class="mt-6 bg-red-950/30 border border-red-500/30 rounded-2xl p-4 flex items-start gap-3">
+                <i class="fa-solid fa-triangle-exclamation text-crimson-500 text-lg mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <strong class="text-red-400 font-bold">تنبيه قانوني هام:</strong> تجنب التأخير عن تاريخ <span class="font-inter font-bold">22/12/2026</span>. عدم تقديم كامل المستندات قبل الموعد النهائى قد يؤدي إلى التأخير أو عدم قبول طلب الإقامة.
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+            
+            <!-- Progress Section Header -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-gold-400"></i> قائمة المستندات المطلوبة لاستكمال الملف
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">قم بتحديد المستندات التي تم تجهيزها لمتابعة مستوى الجاهزية</p>
+                </div>
+                
+                <div class="w-full sm:w-auto bg-navy-950/80 border border-slate-800 rounded-2xl p-3 flex items-center justify-between sm:justify-start gap-4">
+                    <span class="text-xs text-slate-400 font-semibold">نسبة الإنجاز:</span>
+                    <span class="text-lg font-bold text-gold-400 font-inter" id="progress-percent">0%</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar Bar -->
+            <div class="w-full bg-slate-900/90 rounded-full h-3 overflow-hidden border border-slate-800 p-0.5">
+                <div id="progress-bar" class="bg-gradient-to-r from-amber-500 to-gold-400 h-full rounded-full transition-all duration-500 ease-out w-0"></div>
+            </div>
+
+            <!-- Documents Checklist Cards -->
+            <div class="space-y-4 pt-2" id="checklist-container">
+
+                <!-- Requirement 1 -->
+                <div class="glass-card rounded-2xl p-5 border-slate-800 transition hover:border-gold-500/40" id="card-doc1">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" id="doc1" class="custom-checkbox mt-1" onchange="updateProgress()">
+                        <label for="doc1" class="cursor-pointer flex-1 select-none">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                <span class="text-lg font-bold text-slate-100">1. إثبات علاقة مستمرة (Duurzame relatie)</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20 font-inter">شكل دائم ومستقر</span>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                تقديم كافة الأدلة الإضافية التي تُثبت استمرارية واستقرار العلاقة (مثل: صور مشتركة، إثبات إقامة أو سكن سابق مشترك، مراسلات، حجز رحلات وتنقلات، أدلة التواصل، إلخ).
+                            </p>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Requirement 2 -->
+                <div class="glass-card rounded-2xl p-5 border-slate-800 transition hover:border-gold-500/40" id="card-doc2">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" id="doc2" class="custom-checkbox mt-1" onchange="updateProgress()">
+                        <label for="doc2" class="cursor-pointer flex-1 select-none">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                <span class="text-lg font-bold text-slate-100">2. إثبات الدخل المالي للكفيل (Bestaansmiddelen)</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20 font-inter">الحد الأدنى: ≥ 120%</span>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                إثبات وسائل كسب عيش ثابتة ومستقرة وكافية للطرف البلجيكي / الكفيل (ألا تقل عن <strong class="text-gold-400">120%</strong> من حد الدعم المعيشي المعمول به قانونياً) مصحوبة بكشف المصاريف وقسائم الراتب/الدخل لآخر الأشهر.
+                            </p>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Requirement 3 -->
+                <div class="glass-card rounded-2xl p-5 border-slate-800 transition hover:border-gold-500/40" id="card-doc3">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" id="doc3" class="custom-checkbox mt-1" onchange="updateProgress()">
+                        <label for="doc3" class="cursor-pointer flex-1 select-none">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                                <span class="text-lg font-bold text-slate-100">3. إثبات التأمين الصحي (Ziektekostenverzekering)</span>
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 border border-amber-500/20 font-inter">تغطية شاملة (Ziekenfonds)</span>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                وثيقة تغطية تأمينية صحية شاملة وصالحة في بلجيكا تكفل تغطية جميع المخاطر للطرفين (التسجيل في أحد صندوق التأمين الصحي البلجيكي Mutuelle/Ziekenfonds).
+                            </p>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-500 text-xs sm:text-sm py-4 border-t border-slate-800/60">
+            <p>لوحة تفاعلية لإدارة ومتابعة طلبات الشؤون المدنية والهجرة في بلجيكا © 2026</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Target Deadline Date: December 22, 2026 at 23:59:59
+        const targetDate = new Date("December 22, 2026 23:59:59").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById("countdown-grid").innerHTML = `
+                    <div class="col-span-4 bg-red-950/50 border border-red-500/50 rounded-2xl p-6 text-center text-red-300 font-bold text-lg">
+                        ⚠️ انتهت المهلة المحددة لتقديم المستندات (22-12-2026).
+                    </div>
+                `;
+            }
+        }
+
+        // Progress Tracking & LocalStorage Logic
+        const checkboxIds = ['doc1', 'doc2', 'doc3'];
+
+        function updateProgress() {
+            let checkedCount = 0;
+
+            checkboxIds.forEach(id => {
+                const checkbox = document.getElementById(id);
+                const card = document.getElementById(`card-${id}`);
+
+                if (checkbox.checked) {
+                    checkedCount++;
+                    card.classList.add('border-emerald-500/50', 'bg-emerald-950/20');
+                    card.classList.remove('border-slate-800');
+                } else {
+                    card.classList.remove('border-emerald-500/50', 'bg-emerald-950/20');
+                    card.classList.add('border-slate-800');
+                }
+
+                // Save status in localStorage
+                localStorage.setItem(`belgium_doc_${id}`, checkbox.checked);
+            });
+
+            const percentage = Math.round((checkedCount / checkboxIds.length) * 100);
+            
+            document.getElementById('progress-percent').innerText = `${percentage}%`;
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+        }
+
+        function loadSavedState() {
+            checkboxIds.forEach(id => {
+                const savedValue = localStorage.getItem(`belgium_doc_${id}`);
+                if (savedValue === 'true') {
+                    document.getElementById(id).checked = true;
+                }
+            });
+            updateProgress();
+        }
+
+        function resetChecklist() {
+            checkboxIds.forEach(id => {
+                document.getElementById(id).checked = false;
+                localStorage.removeItem(`belgium_doc_${id}`);
+            });
+            updateProgress();
+        }
+
+        // Initialize timer and checklist on window load
+        window.onload = function() {
+            loadSavedState();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        };
+    </script>
+</body>
+</html>
