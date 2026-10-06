@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل رخصة القيادة في Harelbeke بأقل تكلفة</title>
+    <!-- Google Fonts for modern Arabic typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-color: #10b981;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: #fff;
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Section Cards */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+        }
+
+        /* Steps Timeline */
+        .steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Table Styling */
+        .price-table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .total-row {
+            background-color: #e0f2fe;
+            font-weight: bold;
+            color: #0369a1;
+        }
+
+        .note-box {
+            background-color: #fef3c7;
+            border-right: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        /* Schools Grid */
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .school-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .school-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .school-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .school-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Action Buttons */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: #eff6ff;
+        }
+
+        /* Dutch Template Copy Box */
+        .template-box {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            margin-top: 15px;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            direction: rtl;
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .translation-text {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            header { padding: 25px 15px; }
+            .card { padding: 20px; }
+            .btn-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Section -->
+    <header>
+        <h1>دليل استخراج رخصة القيادة بأقل تكلفة</h1>
+        <p>يا سامر، لو عايز تطلع رخصة قيادة سيارة بلجيكية بأقل تكلفة ممكنة في Harelbeke، فأرخص طريق هو المذاكرة الذاتية والتدريب مع مُرافق مؤهل.</p>
+    </header>
+
+    <!-- Step 1: Steps -->
+    <section class="card">
+        <h2><i class="fa-solid fa-list-check"></i> 1. الخطوات خطوة بخطوة</h2>
+        <div class="steps-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>ذاكر امتحان النظري بنفسك</h3>
+                    <p>استخدم مواد تدريب مجانية أو رخيصة. رسوم الامتحان الرسمية 19 يورو (بالهولندية)، ويمكن طلب ترجمة صوتية للإنجليزية برسوم إضافية.</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>اختار التدريب مع مُرافق (M36)</h3>
+                    <p>بعد النجاح في النظري، اطلب رخصة مؤقتة تسمح بالتدريب مع مُرافق مستوفٍ للشروط. هذا يوفر عليك ثمن 20 ساعة دروس إجباري.</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>اتدرّب لمدة 5 أشهر على الأقل</h3>
+                    <p>تدرب بانتظام على الطرق والمناورات المطلوبة ثم احجز الامتحان العملي. (عند الرسوب مرتين متتاليتين يلزمك 6 ساعات دروس بمدرسة).</p>
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>استخرج الرخصة النهائية</h3>
+                    <p>بعد النجاح في العملي، قدّم طلب الرخصة في بلدية Harelbeke. الرسوم تختلف حسب البلدية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 2: Expected Cost -->
+    <section class="card">
+        <h2><i class="fa-solid fa-calculator"></i> 2. التكلفة المتوقعة بأقل سعر</h2>
+        <div class="price-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند</th>
+                        <th>التكلفة التقديرية</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>امتحان النظري</td>
+                        <td>€19</td>
+                    </tr>
+                    <tr>
+                        <td>الرخصة المؤقتة (M36)</td>
+                        <td>حوالي €25</td>
+                    </tr>
+                    <tr>
+                        <td>امتحان العملي</td>
+                        <td>€51</td>
+                    </tr>
+                    <tr>
+                        <td>الرخصة النهائية</td>
+                        <td>حوالي €25</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>الإجمالي الأساسي</td>
+                        <td>€120</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <i class="fa-solid fa-triangle-exclamation"></i> <strong>ملاحظات مهمة:</strong><br>
+            • المجموع لا يشمل رسوم المُرافق أو أي دروس إضافية.<br>
+            • في فلاندرز توجد <strong>دورة رجوع إلزامية</strong> (Terugkommoment) لبعض السائقين الجدد بتكلفة <strong>€128</strong> بعد الحصول على الرخصة.
+        </div>
+    </section>
+
+    <!-- Step 3: Schools Directory -->
+    <section class="card">
+        <h2><i class="fa-solid fa-id-card"></i> 3. مدارس قريبة منك — قارن الأسعار</h2>
+        <div class="schools-grid">
+
+            <!-- School 1 -->
+            <div class="school-card">
+                <div class="school-info">
+                    <h3>Harelbeekse rijschool Martin en Jose</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Marktplein 12, Harelbeke</p>
+                    <p><i class="fa-solid fa-phone"></i> 056 70 04 70</p>
+                </div>
+                <div class="btn-group">
+                    <a href="tel:056700470" class="btn btn-primary"><i class="fa-solid fa-phone"></i> اتصل الآن</a>
+                    <button class="btn btn-outline" onclick="alert('عنوان المدرسة: Marktplein 12, Harelbeke\nهاتف: 056 70 04 70')"><i class="fa-solid fa-circle-info"></i> التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- School 2 -->
+            <div class="school-card">
+                <div class="school-info">
+                    <h3>Lust Autorijscholen</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Gentsestraat 13, Harelbeke</p>
+                    <p><i class="fa-solid fa-phone"></i> 056 70 04 70</p>
+                </div>
+                <div class="btn-group">
+                    <a href="tel:056700470" class="btn btn-primary"><i class="fa-solid fa-phone"></i> اتصل الآن</a>
+                    <button class="btn btn-outline" onclick="alert('عنوان المدرسة: Gentsestraat 13, Harelbeke\nهاتف: 056 70 04 70')"><i class="fa-solid fa-circle-info"></i> التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- School 3 -->
+            <div class="school-card">
+                <div class="school-info">
+                    <h3>VTIR Driving School</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Burgemeester Danneelstraat 65b, Kortrijk</p>
+                    <p><i class="fa-solid fa-phone"></i> 056 20 64 00</p>
+                </div>
+                <div class="btn-group">
+                    <a href="tel:056206400" class="btn btn-primary"><i class="fa-solid fa-phone"></i> اتصل الآن</a>
+                    <button class="btn btn-outline" onclick="alert('عنوان المدرسة: Burgemeester Danneelstraat 65b, Kortrijk\nهاتف: 056 20 64 00')"><i class="fa-solid fa-circle-info"></i> التفاصيل</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Step 4: Action / Email Template -->
+    <section class="card">
+        <h2><i class="fa-solid fa-paper-plane"></i> 4. اعمل إيه دلوقتي؟</h2>
+        <p>ابعت للمدارس الرسالة دي بالهولندي عشان تعرف أقل سعر:</p>
+
+        <div class="template-box" id="dutchTemplate">
+Hallo,
+
+Ik woon in Harelbeke en wil mijn rijbewijs B zo goedkoop mogelijk behalen.
+Ik wil zelfstandig studeren voor het theorie-examen en daarna oefenen met een begeleider.
+
+Wat kost een losse rijles, en hoeveel kost het om het praktijkexamen met jullie auto af te leggen?
+
+Alvast bedankt.
+            <button class="copy-btn" onclick="copyTemplate()"><i class="fa-solid fa-copy"></i> نسخ النص</button>
+        </div>
+
+        <div class="translation-text">
+            <strong>المعنى بالعربي:</strong> أنا ساكن في هارلبيكة وعايز أطلع رخصة بأقل تكلفة، وهذاكر النظري بنفسي وأتدرب مع مرافق. كم سعر الحصة الواحدة، وكم تكلفة دخول الامتحان العملي بسيارة المدرسة؟
+        </div>
+
+        <div class="note-box" style="background-color: #eff6ff; border-color: #2563eb; color: #1e40af;">
+            <i class="fa-solid fa-circle-check"></i> <strong>تذكير مهم:</strong> أرخص خيار يعتمد تمامًا على وجود مُرافق مناسب وسيارة مؤمّنة تستوفي شروط التدريب والامتحان.
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function copyTemplate() {
+        const textToCopy = `Hallo,
+
+Ik woon in Harelbeke en wil mijn rijbewijs B zo goedkoop mogelijk behalen.
+Ik wil zelfstandig studeren voor het theorie-examen en daarna oefenen met een begeleider.
+
+Wat kost een losse rijles, en hoeveel kost het om het praktijkexamen met jullie auto af te leggen?
+
+Alvast bedankt.`;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert('تم نسخ الرسالة بنجاح!');
+        }).catch(err => {
+            console.error('حدث خطأ أثناء النسخ: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
