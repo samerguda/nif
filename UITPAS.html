@@ -3,309 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطاقة التواصل والحجز</title>
-    <!-- مكتبة أيقونات FontAwesome -->
+    <title>دليل بطاقة UiTPAS Zuidwest - Kortrijk & Harelbeke</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        uitpas: {
+                            green: '#10b981',
+                            orange: '#f59e0b',
+                            purple: '#8b5cf6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --bg-color: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-color: #1f2937;
-            --border-radius: 16px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         body {
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Tajawal', sans-serif;
         }
-
-        .card {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 420px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .modal-active {
             overflow: hidden;
-            text-align: center;
-            padding: 24px;
-        }
-
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #e5e7eb;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: var(--primary-color);
-            border: 3px solid var(--primary-color);
-        }
-
-        .name {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 4px;
-        }
-
-        .title {
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 16px;
-        }
-
-        .location-info {
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #4b5563;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            grid-column: span 2;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .btn-whatsapp {
-            background-color: #25d366;
-            color: white;
-        }
-
-        .btn-call {
-            background-color: #10b981;
-            color: white;
-        }
-
-        .btn-email {
-            background-color: #ea4335;
-            color: white;
-        }
-
-        .btn-map {
-            background-color: #4b5563;
-            color: white;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        /* نافذة الحجز المصغرة (Modal) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 24px;
-            border-radius: var(--border-radius);
-            width: 100%;
-            max-width: 400px;
-            text-align: right;
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            left: 16px;
-            top: 16px;
-            cursor: pointer;
-            font-size: 18px;
-            color: #6b7280;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 4px;
-            color: #374151;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
 
-    <div class="card">
-        <!-- الصورة الشخصية / الشعار -->
-        <div class="profile-img">
-            <i class="fa-solid fa-user"></i>
+    <!-- Navbar Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-slate-900 leading-none">UiTPAS Zuidwest</h1>
+                    <span class="text-xs text-slate-500 font-medium">دليل استخراج البطاقة في Kortrijk & Harelbeke</span>
+                </div>
+            </div>
+            <button onclick="openBookingModal()" class="hidden sm:flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition duration-200 shadow-md shadow-brand-500/20">
+                <i class="fa-solid fa-calendar-plus"></i>
+                <span>حجز ميعاد استفسار</span>
+            </button>
         </div>
+    </header>
 
-        <!-- الاسم والمسمى الوظيفي -->
-        <h2 class="name">سامر السعدني</h2>
-        <p class="title">مهندس / تقديم خدمات استشارية</p>
+    <!-- Hero Section -->
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow space-y-8">
+        
+        <section class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="relative z-10 max-w-3xl">
+                <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md inline-block mb-3">بطاقة الأنشطة والخصومات</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 leading-tight">ما هي بطاقة UiTPAS؟</h2>
+                <p class="text-blue-100 text-sm sm:text-base leading-relaxed mb-6">
+                    بطاقة <strong>UiTPAS</strong> هي بطاقتك الشخصية للمشاركة في مختلف الأنشطة الثقافية، الرياضية والترفيهية في منطقة Zuidwest (بما فيها Kortrijk وHarelbeke). تتيح لك جمع النقاط مع كل نشاط واستبدالها بكوبونات خصم، هدايا، أو تذاكر مجانية!
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#online-method" class="bg-white text-brand-700 hover:bg-blue-50 font-bold text-sm px-5 py-2.5 rounded-xl transition shadow">
+                        <i class="fa-solid fa-globe ml-2"></i>الشراء أونلاين
+                    </a>
+                    <a href="#locations-method" class="bg-brand-700/50 hover:bg-brand-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl backdrop-blur-md border border-white/20 transition">
+                        <i class="fa-solid fa-store ml-2"></i>منافذ البيع المباشر
+                    </a>
+                </div>
+            </div>
+            <!-- Decorative Icon Overlay -->
+            <i class="fa-solid fa-ticket absolute -bottom-6 -left-6 text-white/10 text-9xl pointer-events-none"></i>
+        </section>
 
-        <!-- الموقع الجغرافي القريب من هاره بيكه -->
-        <div class="location-info">
-            <i class="fa-solid fa-location-dot" style="color: #ef4444;"></i>
-            <span>Harelbeke (قرب Kortrijk)، بلجيكا</span>
-        </div>
-
-        <!-- زر الحجز الرئيسي -->
-        <button class="btn btn-primary" onclick="openModal()" style="margin-bottom: 12px;">
-            <i class="fa-solid fa-calendar-check"></i>
-            حجز ميعاد جديد
-        </button>
-
-        <!-- أزرار التواصل -->
-        <div class="btn-grid">
-            <a href="https://wa.me/32000000000" target="_blank" class="btn btn-whatsapp">
-                <i class="fa-brands fa-whatsapp"></i> واتساب
-            </a>
+        <!-- Methods Section -->
+        <div class="grid md:grid-cols-2 gap-6">
             
-            <a href="tel:+32000000000" class="btn btn-call">
-                <i class="fa-solid fa-phone"></i> اتصال
-            </a>
+            <!-- Online Section -->
+            <section id="online-method" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 text-brand-600 flex items-center justify-center font-bold text-lg">
+                            1
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">الشراء أونلاين (Online)</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600 mb-6">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+                            <span>أدخل إلى الموقع الرسمي <a href="https://uitpaszuidwest.be" target="_blank" class="text-brand-600 underline font-semibold">uitpaszuidwest.be</a> أو موقع بلدية كورترِيك.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+                            <span>قم بتسجيل الدخول باستخدام تطبيق <strong>itsme</strong> أو قارئ الهوية <strong>eID</strong> لإثبات شخصيتك وتأكيد الرقم الوطني (Rijksregisternummer).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500 mt-1"></i>
+                            <span>بعد الدفع (سعر البطاقة العادية حوالي 5€)، يتم ربطها بحسابك فوراً وتستطيع استخدامها إلكترونياً أو طلب استلام الكارت البلاستيكي بالبريد.</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="https://uitpaszuidwest.be" target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm py-3 px-4 rounded-xl text-center block transition">
+                    <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>الانتقال للموقع الرسمي
+                </a>
+            </section>
 
-            <a href="mailto:example@email.com" class="btn btn-email">
-                <i class="fa-solid fa-envelope"></i> البريد
-            </a>
+            <!-- Physical Locations summary -->
+            <section id="locations-method" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg">
+                            2
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900">الشراء المباشر من المنافذ</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">
+                        يمكنك التوجه شخصياً لأحد المكاتب مع إحضار بطاقة الهوية / الإقامة البلجيكية (eID):
+                    </p>
+                    <div class="space-y-2 text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600"></i> <span>المكتب السياحي Visit Kortrijk</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600"></i> <span>المكتبة العامة Bibliotheek Kortrijk</span></div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600"></i> <span>مكتب استقبال البلدية Stadhuis</span></div>
+                    </div>
+                </div>
+                <a href="#addresses-list" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-3 px-4 rounded-xl text-center block transition">
+                    <i class="fa-solid fa-list-check ml-2"></i>عرض تفاصيل العناوين والتواصل
+                </a>
+            </section>
 
-            <!-- رابط الموقع على الخريطة (هاره بيكه) -->
-            <a href="https://maps.google.com/?q=Harelbeke,Belgium" target="_blank" class="btn btn-map">
-                <i class="fa-solid fa-map-location-dot"></i> الموقع
-            </a>
         </div>
-    </div>
 
-    <!-- نافذة حجز الميعاد -->
-    <div class="modal" id="bookingModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="margin-bottom: 16px; font-size: 18px;">حجز ميعاد</h3>
+        <!-- Kansentarief Special Discount Box -->
+        <section class="bg-amber-50 border-2 border-amber-300/80 rounded-2xl p-6 sm:p-8 shadow-sm relative">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center text-2xl font-bold shrink-0 shadow-md">
+                    <i class="fa-solid fa-percent"></i>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <h3 class="text-xl font-extrabold text-amber-950">خصم ذوي الدخل المحدود (Kansentarief)</h3>
+                        <span class="bg-amber-200 text-amber-900 text-xs font-bold px-2.5 py-0.5 rounded-md">مهم جداً</span>
+                    </div>
+                    <p class="text-sm text-amber-900 leading-relaxed">
+                        إذا كنت مسجلاً لدى الـ <strong>OCMW</strong> أو تستحق التخفيض الاجتماعي (Kansentarief):
+                    </p>
+                    <ul class="space-y-2 text-sm text-amber-900 list-disc list-inside font-medium">
+                        <li>تحصل على بطاقة UiTPAS بسعر **1 يورو فقط** (أو مجاناً).</li>
+                        <li>تمنحك البطاقة خصماً ثابتاً بقيمة **80%** على جميع الأنشطة والاشتراكات الثقافية والرياضية!</li>
+                        <li><strong>طريقة التفعيل:</strong> يجب التوجه بنفسك إلى مكاتب الـ OCMW في مدينتك مع بطاقة إقامتك لتفعيل هذا الخصم مباشر.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Official Addresses & Contact Directory -->
+        <section id="addresses-list" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                <h3 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-building-user text-brand-600"></i>
+                    العناوين والتواصل الرسمي للمنافذ
+                </h3>
+                <span class="text-xs text-slate-500">اضغط على الرقم أو العنوان للتواصل المباشر</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Visit Kortrijk -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">Visit Kortrijk (المكتب السياحي)</h4>
+                            <p class="text-xs text-slate-500">منفذ شراء وتفعيل رئيسي</p>
+                        </div>
+                        <span class="bg-blue-50 text-brand-600 p-2 rounded-lg text-sm"><i class="fa-solid fa-compass"></i></span>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-map-pin text-rose-500 mt-1"></i>
+                            <span>Begijnhofstraat 2, 8500 Kortrijk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            <a href="tel:+3256277840" class="hover:underline dir-ltr text-right font-mono">+32 56 27 78 40</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-indigo-500"></i>
+                            <a href="mailto:visit@kortrijk.be" class="hover:underline font-mono text-xs">visit@kortrijk.be</a>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-100 flex gap-2">
+                        <a href="tel:+3256277840" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-phone ml-1"></i> اتصال
+                        </a>
+                        <a href="https://maps.google.com/?q=Begijnhofstraat+2,+8500+Kortrijk" target="_blank" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-map-location-dot ml-1"></i> الخريطة
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bibliotheek Kortrijk -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">Bibliotheek Kortrijk (المكتبة العامة)</h4>
+                            <p class="text-xs text-slate-500">منفذ شراء وتجميع نقاط</p>
+                        </div>
+                        <span class="bg-amber-50 text-amber-600 p-2 rounded-lg text-sm"><i class="fa-solid fa-book"></i></span>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-map-pin text-rose-500 mt-1"></i>
+                            <span>Leiestraat 30, 8500 Kortrijk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            <a href="tel:+3256277500" class="hover:underline dir-ltr text-right font-mono">+32 56 27 75 00</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-indigo-500"></i>
+                            <a href="mailto:bibliotheek@kortrijk.be" class="hover:underline font-mono text-xs">bibliotheek@kortrijk.be</a>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-100 flex gap-2">
+                        <a href="tel:+3256277500" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-phone ml-1"></i> اتصال
+                        </a>
+                        <a href="https://maps.google.com/?q=Leiestraat+30,+8500+Kortrijk" target="_blank" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-map-location-dot ml-1"></i> الخريطة
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stadhuis Kortrijk -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">Stadhuis Kortrijk (مركز البلدية)</h4>
+                            <p class="text-xs text-slate-500">خدمة المواطنين العامة</p>
+                        </div>
+                        <span class="bg-purple-50 text-purple-600 p-2 rounded-lg text-sm"><i class="fa-solid fa-landmark"></i></span>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-map-pin text-rose-500 mt-1"></i>
+                            <span>Casinostraat 11, 8500 Kortrijk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            <span><a href="tel:1777" class="hover:underline font-bold text-brand-600">1777</a> (مجاني) أو <a href="tel:+3256277000" class="hover:underline font-mono">+32 56 27 70 00</a></span>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-100 flex gap-2">
+                        <a href="tel:+3256277000" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-phone ml-1"></i> اتصال
+                        </a>
+                        <a href="https://maps.google.com/?q=Casinostraat+11,+8500+Kortrijk" target="_blank" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-map-location-dot ml-1"></i> الخريطة
+                        </a>
+                    </div>
+                </div>
+
+                <!-- OCMW Kortrijk -->
+                <div class="bg-amber-50/50 rounded-2xl p-5 border border-amber-200 shadow-sm hover:shadow-md transition space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">OCMW Kortrijk (المساعدة الاجتماعية)</h4>
+                            <p class="text-xs text-amber-800 font-medium">لتفعيل خصم الـ 80% (Kansentarief)</p>
+                        </div>
+                        <span class="bg-amber-100 text-amber-700 p-2 rounded-lg text-sm"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                    </div>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-map-pin text-rose-500 mt-1"></i>
+                            <span>Budastraat 27, 8500 Kortrijk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            <a href="tel:+3256244111" class="hover:underline font-mono">+32 56 24 41 11</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-indigo-500"></i>
+                            <a href="mailto:info@ocmwkortrijk.be" class="hover:underline font-mono text-xs">info@ocmwkortrijk.be</a>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-amber-200/60 flex gap-2">
+                        <a href="tel:+3256244111" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-phone ml-1"></i> اتصال OCMW
+                        </a>
+                        <a href="https://maps.google.com/?q=Budastraat+27,+8500+Kortrijk" target="_blank" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-map-location-dot ml-1"></i> الخريطة
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sociaal Huis Harelbeke -->
+                <div class="bg-indigo-50/50 rounded-2xl p-5 border border-indigo-200 shadow-sm hover:shadow-md transition space-y-4 md:col-span-2">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base">Sociaal Huis / OCMW Harelbeke (خاص بمدينة هاريلبيكه)</h4>
+                            <p class="text-xs text-indigo-800 font-medium">لسكان مدينة Harelbeke لاستخراج وتفعيل البطاقات المخفضة</p>
+                        </div>
+                        <span class="bg-indigo-100 text-indigo-700 p-2 rounded-lg text-sm"><i class="fa-solid fa-house-user"></i></span>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3 text-sm text-slate-600">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-map-pin text-rose-500 mt-1"></i>
+                            <span>Parelkerkstrak 20, 8530 Harelbeke</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            <a href="tel:+3256735100" class="hover:underline font-mono">+32 56 73 51 00</a>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-indigo-200/60 flex gap-2">
+                        <a href="tel:+3256735100" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-phone ml-1"></i> اتصل بـ Harelbeke
+                        </a>
+                        <a href="https://maps.google.com/?q=Parelkerkstrak+20,+8530+Harelbeke" target="_blank" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 rounded-lg text-center transition">
+                            <i class="fa-solid fa-map-location-dot ml-1"></i> موقع Harelbeke على الخريطة
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Action Callout Bar -->
+        <section class="bg-white border border-slate-200 rounded-2xl p-6 text-center space-y-4 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900">هل تحتاج لمساعدة في حجز موعد أو تجهيز أوراقك؟</h3>
+            <p class="text-sm text-slate-500 max-w-lg mx-auto">يمكنك حجز ميعاد مخصص لتوضيح كافة خطوات التفعيل واختيار المقر الأنسب لك.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="openBookingModal()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm px-6 py-3 rounded-xl transition shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-calendar-check ml-2"></i>احجز ميعاد استشارة الآن
+                </button>
+                <a href="mailto:visit@kortrijk.be" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm px-6 py-3 rounded-xl transition">
+                    <i class="fa-solid fa-envelope ml-2"></i>راسل البلدية بريدياً
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Booking Modal Window -->
+    <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative transform transition-all">
             
-            <form onsubmit="handleBooking(event)">
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" required placeholder="أدخل اسمك">
+            <button onclick="closeBookingModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-5">
+                <h3 class="text-xl font-extrabold text-slate-900">حجز ميعاد استفسار</h3>
+                <p class="text-xs text-slate-500 mt-1">سجل بياناتك وسيتم الإجابة والتنسيق معك لاستخراج كارت UiTPAS</p>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل</label>
+                    <input type="text" required placeholder="أدخل اسمك الكامل" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
                 </div>
-                <div class="form-group">
-                    <label>رقم الهاتف</label>
-                    <input type="tel" required placeholder="04xx xxx xxx">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف / الواتساب</label>
+                    <input type="tel" required placeholder="04xx xx xx xx" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dir-ltr text-right">
                 </div>
-                <div class="form-group">
-                    <label>تاريخ الميعاد</label>
-                    <input type="date" required>
-                </div>
-                <div class="form-group">
-                    <label>التوقيت المناسب</label>
-                    <select required>
-                        <option value="">اختر الوقت</option>
-                        <option value="10:00">10:00 صباحاً</option>
-                        <option value="14:00">02:00 ظهراً</option>
-                        <option value="16:00">04:00 عصراً</option>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">المدينة التي تسكن فيها</label>
+                    <select required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                        <option value="kortrijk">Kortrijk (كورترِيك)</option>
+                        <option value="harelbeke">Harelbeke (هاريلبيكه)</option>
+                        <option value="other">مدينة أخرى في Zuidwest</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">تأكيد طلب الحجز</button>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">نوع المساعدة المطلوبة</label>
+                    <select required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                        <option value="normal">استخراج بطاقة عادية (5€)</option>
+                        <option value="social">استخراج بطاقة الخصم الاجتماعي OCMW (1€)</option>
+                        <option value="info">استفسار عام</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">التاريخ المفضل للموعد</label>
+                    <input type="date" required class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500">
+                </div>
+
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-brand-500/20 text-sm">
+                    تأكيد طلب الحجز
+                </button>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+        <div class="max-w-5xl mx-auto px-4 space-y-2">
+            <p>دليل إرشادي غير رسمي لبطاقات UiTPAS بمنطقة Zuidwest (Kortrijk & Harelbeke)</p>
+            <p class="text-slate-600">جميع الحقوق والعلامات التجارية محفوظة للبلديات والمؤسسات الرسمية ذات الصلة.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
     <script>
-        function openModal() {
-            document.getElementById('bookingModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('bookingModal').style.display = 'none';
-        }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            alert('تم تقديم طلب الحجز بنجاح! سنتواصل معك عبر الهاتف للتأكيد.');
-            closeModal();
-        }
-
-        // إغلاق النافذة عند الضغط خارجها
-        window.onclick = function(event) {
+        function openBookingModal() {
             const modal = document.getElementById('bookingModal');
-            if (event.target == modal) {
-                closeModal();
-            }
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-active');
         }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('modal-active');
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            alert('تم استلام طلب الحجز بنجاح! سنتواصل معك قريباً لتأكيد الموعد والتفاصيل.');
+            closeBookingModal();
+        }
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('bookingModal');
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
     </script>
 </body>
 </html>
