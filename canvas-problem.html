@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسائل طلب دعم Canvas</title>
+  <style>
+    :root {
+      --bg-color: #f4f6f9;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --primary-color: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success-color: #16a34a;
+      --code-bg: #f8fafc;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 24px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 0;
+    }
+
+    .copy-btn {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .copy-btn.copied {
+      background-color: var(--success-color);
+    }
+
+    pre {
+      background-color: var(--code-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    [dir="ltr"] pre {
+      text-align: left;
+    }
+
+    [dir="rtl"] pre {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Arabic Card -->
+  <div class="card" dir="rtl">
+    <div class="card-header">
+      <h2 class="card-title">النسخة العربية (Arabic)</h2>
+      <button class="copy-btn" onclick="copyText('text-ar', this)">نسخ النص</button>
+    </div>
+    <pre id="text-ar">الموضوع: تحديث عاجل: عدم ظهور المواد على منصة Canvas - (50049405)
+
+السادة قسم الدعم الفني،
+
+تحية طيبة وبعد،
+
+أود التذكير بضرورة تفعيل وإتاحة الوصول إلى المواد التالية على حسابي في منصة Canvas:
+
+* Applied Entrepreneurship and Innovation
+* Management Seminars
+* Business and Management Cases Analysis
+* Operations Management
+
+يرجى معالجة المشكلة وتحديث الحساب في أقرب وقت ممكن.
+
+شاكراً تعاونكم،
+سامر جودة السعدني
+رقم الطالب: 50049405</pre>
+  </div>
+
+  <!-- English Card -->
+  <div class="card" dir="ltr">
+    <div class="card-header">
+      <h2 class="card-title">English Version</h2>
+      <button class="copy-btn" onclick="copyText('text-en', this)">Copy Text</button>
+    </div>
+    <pre id="text-en">Subject: URGENT: Missing Courses on Canvas - Samer Alsaadni (50049405)
+
+Dear IT / Canvas Support Team,
+
+I hope this email finds you well.
+
+I am writing to request urgent access to the following courses on my Canvas account:
+
+* Applied Entrepreneurship and Innovation
+* Management Seminars
+* Business and Management Cases Analysis
+* Operations Management
+
+Please resolve this issue and update my access as soon as possible.
+
+Thank you for your assistance.
+
+Best regards,
+Samer Guda Alsaadni
+Student ID: 50049405</pre>
+  </div>
+
+  <!-- Portuguese Card -->
+  <div class="card" dir="ltr">
+    <div class="card-header">
+      <h2 class="card-title">Versão em Português</h2>
+      <button class="copy-btn" onclick="copyText('text-pt', this)">Copiar Texto</button>
+    </div>
+    <pre id="text-pt">Assunto: URGENTE: Unidades Curriculares em falta no Canvas - Samer Alsaadni (50049405)
+
+Exmos. Senhores do Suporte Técnico / Canvas,
+
+Espero que se encontrem bem.
+
+Venho por este meio solicitar com urgência o acesso às seguintes unidades curriculares na minha conta do Canvas:
+
+* Applied Entrepreneurship and Innovation
+* Management Seminars
+* Business and Management Cases Analysis
+* Operations Management
+
+Agradeço a resolução deste problema e a atualização da minha conta com a maior brevidade possível.
+
+Com os melhores cumprimentos,
+Samer Guda Alsaadni
+Número de Estudante: 50049405</pre>
+  </div>
+
+</div>
+
+<script>
+  function copyText(elementId, buttonElement) {
+    const textToCopy = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = buttonElement.innerText;
+      buttonElement.innerText = "✓ تم النسخ / Copied";
+      buttonElement.classList.add("copied");
+
+      setTimeout(() => {
+        buttonElement.innerText = originalText;
+        buttonElement.classList.remove("copied");
+      }, 2000);
+    }).catch(err => {
+      console.error("فشل النسخ: ", err);
+    });
+  }
+</script>
+
+</body>
+</html>
