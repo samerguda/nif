@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جدول الصيانة اليومية</title>
+  <style>
+    :root {
+      --bg-color: #f4f6f9;
+      --card-bg: #ffffff;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --accent: #059669;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    .datetime-box {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      background-color: #ecfdf5;
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .content-list {
+      background-color: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 15px 20px;
+      white-space: pre-line;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .btn-copy {
+      width: 100%;
+      padding: 14px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-copy:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-copy:active {
+      transform: scale(0.98);
+    }
+
+    .copied {
+      background-color: var(--accent) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>الصيانة اليومية</h1>
+      <div class="datetime-box" id="datetime">جاري تحميل التاريخ والوقت...</div>
+    </header>
+
+    <div class="content-list" id="routineContent">
+١-حاجب ( مقص - فرشة سنان - مرايا - حمام ) 
+٢-شارب ( مقص مرايا حمام ) 
+٣-ذقن ( تحديد  + قص ) ( مكنة - شحن - مرايا - حمام - مناديل - سيفون - بيت فاضي - سجادة ) 
+٤- ذقن صبغة ( صبغة - جوانتي - مرايا - تي شيرت اسود - مية ) 
+٥- شعر اجناب + شعر ( مكنة - شحن - مناديل - بيت فاضي - دش ) 
+٦- اظافر ( قصافة - جيب - حمام ) 
+٧- عان ( ماكينة - شحن - اكشن - ماكينة يدوي - دش - صابون )
+٨- ابوطة ( ماكينة - شحن - اكشن - ماكينة يدوي - دش - صابون ) 
+٩- تنييم الشعر ( مية - غطاء سباحة - فرشة شعر - نوم )
+    </div>
+
+    <button class="btn-copy" id="copyBtn" onclick="copyText()">
+      📋 نسخ القائمة بالكامل
+    </button>
+  </div>
+
+  <script>
+    // تحديث الوقت والتاريخ ديناميكيًا
+    function updateDateTime() {
+      const now = new Date();
+      
+      const optionsDate = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      };
+      
+      const optionsTime = { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        hour12: true 
+      };
+
+      const dateStr = now.toLocaleDateString('ar-EG', optionsDate);
+      const timeStr = now.toLocaleTimeString('ar-EG', optionsTime);
+
+      document.getElementById('datetime').textContent = `${dateStr} - ${timeStr}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+
+    // وظيفة النسخ
+    function copyText() {
+      const dateTimeText = document.getElementById('datetime').textContent;
+      const contentText = document.getElementById('routineContent').textContent.trim();
+      const textToCopy = `الصيانة اليومية\nالتاريخ والوقت: ${dateTimeText}\n\n${contentText}`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✅ تم النسخ بنجاح!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+          btn.textContent = '📋 نسخ القائمة بالكامل';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        alert('حدث خطأ أثناء النسخ: ' + err);
+      });
+    }
+  </script>
+
+</body>
+</html>
