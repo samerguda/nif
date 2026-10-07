@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الانضمام إلى الدرس - Cours A1.3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #002b66;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .clock-box {
+            background-color: #eef2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .time {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .btn-join {
+            display: inline-block;
+            background-color: #464eb8; /* لون Microsoft Teams */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .btn-join:hover {
+            background-color: #333a91;
+        }
+
+        .details {
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Cours A1.3</h2>
+        <p>Institut Français d'Égypte - Mounira</p>
+
+        <!-- صندوق الوقت والتاريخ الديناميكي -->
+        <div class="clock-box">
+            <div id="date" class="date">جاري تحميل التاريخ...</div>
+            <div id="time" class="time">00:00:00</div>
+        </div>
+
+        <!-- زر الانضمام إلى الاجتماع -->
+        <a href="https://teams.microsoft.com/meet/3552197124409434?p=vPLGc3QlQ899H7zeII" target="_blank" class="btn-join">
+            الانضمام إلى الدرس (Teams)
+        </a>
+
+        <!-- تفاصيل الاجتماع -->
+        <div class="details">
+            <p><strong>Numéro de réunion:</strong> 355 219 712 440 943 4</p>
+            <p><strong>Code secret:</strong> hs9sq3jD</p>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // تنسيق التاريخ (مثال: الأربعاء، 7 أكتوبر 2026)
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const currentDate = now.toLocaleDateString('ar-EG', optionsDate);
+
+            // تنسيق الوقت (الساعة:الدقيقة:الثانية)
+            const currentTime = now.toLocaleTimeString('ar-EG');
+
+            // تحديث العناصر في الصفحة
+            document.getElementById('date').innerText = currentDate;
+            document.getElementById('time').innerText = currentTime;
+        }
+
+        // تشغيل الدالة فورًا ثم تحديثها كل ثانية (1000 مللي ثانية)
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>
