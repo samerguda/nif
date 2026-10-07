@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصادر تعلم وقراءة اللغة الهولندية للمبتدئين في بلجيكا</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        flanders: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            900: '#78350f',
+                        },
+                        belgium: {
+                            red: '#e63946',
+                            black: '#1d3557',
+                            yellow: '#ffb703',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .gold-border {
+            border: 2px solid #f59e0b;
+        }
+        .toast-animate {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px) translateX(-50%); }
+            to { opacity: 1; transform: translateY(0) translateX(-50%); }
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col justify-between min-h-screen">
+
+    <!-- Navigation Header -->
+    <header class="w-full bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            
+            <!-- Branding Logo & Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-amber-600 to-red-600 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0">
+                    <span class="text-xl font-extrabold">🇧🇪</span>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold text-slate-800 leading-tight">تعلم الهولندية في بلجيكا</h1>
+                    <p class="text-xs text-amber-700 font-semibold">10 مصادر ومواقع ممتازة للقراءة والتطوير (A1 - A2)</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Date & Time Widget -->
+            <div id="clockContainer" class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-200/80 shadow-inner">
+                <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                    <i class="fa-regular fa-clock text-sm"></i>
+                </div>
+                <div class="text-right">
+                    <div id="liveDate" class="text-xs font-bold text-slate-500">---</div>
+                    <div id="liveTime" class="text-sm font-extrabold text-slate-800 font-mono tracking-wider">00:00:00</div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow space-y-8">
+
+        <!-- Top Welcome Banner -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white p-6 sm:p-8 shadow-xl">
+            <!-- Decorative Flag Stripe -->
+            <div class="absolute top-0 right-0 left-0 h-1.5 flex">
+                <div class="w-1/3 bg-black"></div>
+                <div class="w-1/3 bg-amber-400"></div>
+                <div class="w-1/3 bg-red-600"></div>
+            </div>
+
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30 mb-3">
+                    <i class="fa-solid fa-graduation-cap"></i> دليل القراءة للمبتدئين في فلاندرز
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-3 leading-snug">
+                    أفضل 10 مواقع للقراءة باللغة الهولندية للمبتدئين
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    مجموعة مختارة بعناية من أفضل المواقع والتطبيقات الموصى بها في إقليم فلاندرز لتعلم وممارسة قراءة اللغة الهولندية، موجهة خصيصاً للمستوى A1 و A2 مع نصوص مبسطة وتمارين تفاعلية.
+                </p>
+            </div>
+            
+            <i class="fa-solid fa-book-open-reader absolute -left-6 -bottom-6 text-9xl text-white/5 pointer-events-none hidden sm:block"></i>
+        </div>
+
+        <!-- Top 3 Recommendations Section -->
+        <section class="space-y-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-crown text-amber-500 text-xl"></i>
+                <h3 class="text-xl font-bold text-slate-800">أفضل 3 ترشيحات للبدء فوراً</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Top 1: NedBox -->
+                <div class="bg-gradient-to-b from-amber-50 to-white rounded-2xl p-5 border-2 border-amber-300 shadow-md relative flex flex-col justify-between hover:shadow-xl transition duration-200">
+                    <span class="absolute -top-3 right-4 bg-amber-500 text-white text-xs font-extrabold px-3 py-0.5 rounded-full shadow-sm">
+                        🥇 المركز الأول
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-start mb-2 pt-1">
+                            <h4 class="text-xl font-extrabold text-slate-900">NedBox</h4>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-lg">A1 – B1</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            هولندي بلجيكي حقيقي ومحتوى ممتع مستخرج من التلفزيون والصحف البلجيكية اليومية مع تمارين وتدريبات تفاعلية ممتازة.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-3 border-t border-amber-100">
+                        <a href="https://www.nedbox.be" target="_blank" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold py-2 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+                            <span>زيارة NedBox</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyToClipboard('https://www.nedbox.be')" class="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-xl transition text-xs" title="نسخ الرابط">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Top 2: Zin in Nederlands -->
+                <div class="bg-gradient-to-b from-slate-50 to-white rounded-2xl p-5 border-2 border-slate-300 shadow-md relative flex flex-col justify-between hover:shadow-xl transition duration-200">
+                    <span class="absolute -top-3 right-4 bg-slate-700 text-white text-xs font-extrabold px-3 py-0.5 rounded-full shadow-sm">
+                        🥈 المركز الثاني
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-start mb-2 pt-1">
+                            <h4 class="text-xl font-extrabold text-slate-900">Zin in Nederlands</h4>
+                            <span class="bg-slate-200 text-slate-800 text-xs font-bold px-2.5 py-1 rounded-lg">A1 – B2</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            يقدم نصوصاً سهلة ومقالات قصيرة مفيدة جداً لتوسيع الحصيلة اللغوية والمفردات اليومية المستعملة في بلجيكا.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+                        <a href="https://www.zinninnederlands.be" target="_blank" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+                            <span>زيارة الموقع</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyToClipboard('https://www.zinninnederlands.be')" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition text-xs" title="نسخ الرابط">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Top 3: Wablieft -->
+                <div class="bg-gradient-to-b from-amber-50/50 to-white rounded-2xl p-5 border-2 border-amber-200 shadow-md relative flex flex-col justify-between hover:shadow-xl transition duration-200">
+                    <span class="absolute -top-3 right-4 bg-amber-700 text-white text-xs font-extrabold px-3 py-0.5 rounded-full shadow-sm">
+                        🥉 المركز الثالث
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-start mb-2 pt-1">
+                            <h4 class="text-xl font-extrabold text-slate-900">Wablieft</h4>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-lg">A1 – B1</span>
+                        </div>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                            جريدة وكتب ونصوص مكتوبة بـ (eenvoudig Nederlands) لغة هولندية مبسطة، مناسبة جداً للقراء المبتدئين البالغين.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 pt-3 border-t border-amber-100">
+                        <a href="https://www.wablieft.be" target="_blank" class="flex-1 bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold py-2 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+                            <span>زيارة Wablieft</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyToClipboard('https://www.wablieft.be')" class="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-xl transition text-xs" title="نسخ الرابط">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search, Filter & View Mode Controls Bar -->
+        <section class="glass-panel p-5 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+            <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+                
+                <!-- Search Box -->
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" placeholder="ابحث باسم الموقع أو الوصف..." 
+                        class="w-full pl-4 pr-11 py-3 bg-white rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm transition">
+                </div>
+
+                <!-- Level Filters -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none" id="levelFilters">
+                    <button data-level="ALL" class="filter-btn active bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition">
+                        الكل (10)
+                    </button>
+                    <button data-level="A1" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition">
+                        A1
+                    </button>
+                    <button data-level="A2" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition">
+                        A2
+                    </button>
+                    <button data-level="B1" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition">
+                        B1
+                    </button>
+                    <button data-level="FAV" class="filter-btn bg-white hover:bg-slate-100 text-amber-600 border border-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-amber-500"></i> المحفوظة (<span id="favCount">0</span>)
+                    </button>
+                </div>
+
+                <!-- View Switcher (Cards / Table) -->
+                <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-2xl border border-slate-200 shrink-0 self-end lg:self-auto">
+                    <button id="cardViewBtn" onclick="setViewMode('cards')" class="p-2.5 rounded-xl bg-white text-slate-800 shadow-sm transition text-xs font-bold flex items-center gap-2 px-3">
+                        <i class="fa-solid fa-grip"></i>
+                        <span class="hidden sm:inline">بطاقات</span>
+                    </button>
+                    <button id="tableViewBtn" onclick="setViewMode('table')" class="p-2.5 rounded-xl text-slate-500 hover:text-slate-800 transition text-xs font-bold flex items-center gap-2 px-3">
+                        <i class="fa-solid fa-list-ul"></i>
+                        <span class="hidden sm:inline">جدول</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Dynamic Content Display Container -->
+        <section id="contentDisplay">
+            <!-- Cards Grid View Container -->
+            <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- JavaScript will populate cards here -->
+            </div>
+
+            <!-- Table View Container -->
+            <div id="tableView" class="hidden glass-panel rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100/80 text-slate-700 text-xs font-extrabold uppercase border-b border-slate-200">
+                                <th class="p-4">الموقع</th>
+                                <th class="p-4">المستوى</th>
+                                <th class="p-4">التفاصيل والوصف</th>
+                                <th class="p-4 text-center">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody" class="divide-y divide-slate-100 text-sm">
+                            <!-- JavaScript will populate rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-white/60 rounded-3xl border border-slate-200">
+                <i class="fa-solid fa-circle-exclamation text-4xl text-slate-300 mb-3"></i>
+                <h4 class="text-lg font-bold text-slate-700">لم يتم العثور على نتائج</h4>
+                <p class="text-slate-500 text-xs mt-1">جرب تغيير كلمات البحث أو تغيير مستوى التصفية.</p>
+            </div>
+        </section>
+
+        <!-- Learning Roadmap & Progress Step Section -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800">خريطة طريق البدء الموصى بها (A1 Roadmap)</h3>
+                    <p class="text-xs text-slate-500">التسلسل الأمثل لتحقيق أقصى استفادة إذا كنت في المستوى A1</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <!-- Step 1 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-7 h-7 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-xs">1</span>
+                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">خطوة أولى</span>
+                    </div>
+                    <h4 class="font-extrabold text-slate-800 text-base">NedBox</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        ابدأ بمشاهدة الفيديوهات القصيرة مع قراءة النصوص المرفقة لربط النطق بالكلمات المكتوبة.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-7 h-7 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xs">2</span>
+                        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">خطوة ثانية</span>
+                    </div>
+                    <h4 class="font-extrabold text-slate-800 text-base">Wablieft</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        انتقل إلى قراءة الأخبار والمقالات المكتوبة بلغة هولندية بسيطة للغاية لتعتاد على شكل الجمل.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="w-7 h-7 bg-amber-700 text-white rounded-full flex items-center justify-center font-bold text-xs">3</span>
+                        <span class="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full">خطوة ثالثة</span>
+                    </div>
+                    <h4 class="font-extrabold text-slate-800 text-base">Zin in Nederlands</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        توسع في القراءة اليومية لبناء حصيلة مفردات وقواعد أعمق والمضي قدماً نحو مستوى A2 بثقة.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Helpful Study Tips Box -->
+            <div class="bg-slate-900 text-slate-200 rounded-2xl p-5 text-xs sm:text-sm space-y-2">
+                <div class="flex items-center gap-2 text-amber-400 font-bold">
+                    <i class="fa-solid fa-lightbulb text-base"></i>
+                    <span>نصيحة ذهبية لتعلم الهولندية في فلاندرز:</span>
+                </div>
+                <p class="text-slate-300 leading-relaxed">
+                    خصص 15 إلى 20 دقيقة يومياً للقراءة من أحد هذه المواقع بدلاً من الساعات الطويلة المتفرقة. القراءة المنتظمة للنصوص البسيطة تُسرّع الاستيعاب الشفهي وتساعدك على النجاح في اختبارات الـ Inburgering بسهولة.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-2">
+            <div class="flex items-center justify-center gap-2">
+                <span class="w-2.5 h-2.5 bg-black rounded-full"></span>
+                <span class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span>
+                <span class="w-2.5 h-2.5 bg-red-600 rounded-full"></span>
+            </div>
+            <p class="font-bold text-slate-700">دليل مصادر قراءة اللغة الهولندية للمبتدئين في بلجيكا</p>
+            <p class="text-slate-400">جميع الرابط مختارة لتناسب متعلمي اللغة الهولندية في فلاندرز وبروكسل (NT2)</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 hidden bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-sm z-50 toast-animate">
+        <div class="w-7 h-7 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <span id="toastMessage">تم النسخ بنجاح!</span>
+    </div>
+
+    <!-- Application Logic & Data Script -->
+    <script>
+        // Data Array of the 10 Websites
+        const resourcesData = [
+            {
+                id: 1,
+                title: "NedBox",
+                star: true,
+                badge: "🥇 الترشيح الأول",
+                level: "A1–B1",
+                levelsArray: ["A1", "A2", "B1"],
+                url: "https://www.nedbox.be",
+                description: "هولندي بلجيكي حقيقي ومحتوى ممتع مستخرج من التلفزيون والصحف البلجيكية اليومية مع تمارين وتدريبات مخصصة للمتعلمين.",
+                advice: "ممتاز لمشاهدة المقاطع مع قراءة النص المكتوب في نفس الوقت."
+            },
+            {
+                id: 2,
+                title: "Zin in Nederlands",
+                star: true,
+                badge: "🥈 الترشيح الثاني",
+                level: "A1–B2",
+                levelsArray: ["A1", "A2", "B1", "B2"],
+                url: "https://www.zinninnederlands.be",
+                description: "نصوص سهلة ومقالات قصيرة مفيدة لتوسيع المفردات وتنمية الحصيلة اللغوية اليومية بشكل تدريجي.",
+                advice: "ركز على قراءة المقالات القيرة وتدوين المفردات الجديدة."
+            },
+            {
+                id: 3,
+                title: "Wablieft",
+                star: true,
+                badge: "🥉 الترشيح الثالث",
+                level: "A1–B1",
+                levelsArray: ["A1", "A2", "B1"],
+                url: "https://www.wablieft.be",
+                description: "جريدة وكتب ونصوص مكتوبة بـ eenvoudig Nederlands (هولندية مبسطة)، مناسبة جداً للقراء المبتدئين البالغين.",
+                advice: "تصفح الأخبار اليومية المكتوبة بصياغة ميسرة."
+            },
+            {
+                id: 4,
+                title: "Lezen voor iedereen",
+                star: false,
+                badge: null,
+                level: "A1–B1",
+                levelsArray: ["A1", "A2", "B1"],
+                url: "https://www.lezenvoorieedereen.be",
+                description: "مجموعة من الكتب والقصص المعاد كتابتها بأسلوب مبسط يناسب كافة مستويات القرّاء الجدد.",
+                advice: "مناسب لقراءة القصص البسيطة والكاملة."
+            },
+            {
+                id: 5,
+                title: "Nederlands oefenen in Brussel",
+                star: false,
+                badge: null,
+                level: "Beginner–A2",
+                levelsArray: ["A1", "A2"],
+                url: "https://www.nederlandsoefeneninbrussel.be",
+                description: "منصة مخصصة للتدرب على اللغة الهولندية في منطقة بروكسل، تقدم أنشطة وقراءات ميسرة للتعلم.",
+                advice: "يتضمن أنشطة تفاعلية وفرص لممارسة اللغة."
+            },
+            {
+                id: 6,
+                title: "NT2 – Lezen",
+                star: false,
+                badge: null,
+                level: "A1–B2",
+                levelsArray: ["A1", "A2", "B1", "B2"],
+                url: "https://www.nt2oefenen.be",
+                description: "موقع متخصص في تمارين القراءة لمصممي مناهج اللغة الهولندية كلفة ثانية NT2.",
+                advice: "مثالي للتحضير لامتحانات القراءة الخاصة بـ NT2."
+            },
+            {
+                id: 7,
+                title: "Oefenen.nl",
+                star: false,
+                badge: null,
+                level: "Beginner–A2",
+                levelsArray: ["A1", "A2"],
+                url: "https://www.oefenen.nl",
+                description: "بيئة تعلم ممتعة وبسيطة جداً تغطي القراءة، الكتابة، والحياة اليومية مع تمارين تفاعلية خطوة بخطوة.",
+                advice: "مناسب للبدء من الصفر تماماً بطريقة مبسطة."
+            },
+            {
+                id: 8,
+                title: "NT2 TaalMenu",
+                star: false,
+                badge: null,
+                level: "A1–B2",
+                levelsArray: ["A1", "A2", "B1", "B2"],
+                url: "https://www.taalmenu.nl",
+                description: "قائمة شاملة من التدريبات والنصوص المقسمة بدقة حسب المستويات من A1 حتى B2.",
+                advice: "اختر مستوى A1 وابدأ بحل تمارين الاستيعاب."
+            },
+            {
+                id: 9,
+                title: "Inburgering.org – A1 Lezen",
+                star: false,
+                badge: null,
+                level: "A1",
+                levelsArray: ["A1"],
+                url: "https://www.inburgering.org",
+                description: "تمارين قراءة مخصصة لاختبارات الاندماج الاجتماعي مستوى A1 لتدريب المتعلم على النماذج الرسمية.",
+                advice: "ضروري لمن يستعد لاختبارات الاندماج A1."
+            },
+            {
+                id: 10,
+                title: "Vlaanderen.be – Nederlands leren",
+                star: false,
+                badge: null,
+                level: "جميع المستويات",
+                levelsArray: ["A1", "A2", "B1", "B2", "ALL"],
+                url: "https://www.vlaanderen.be/nederlands-leren",
+                description: "الموقع الرسمي لحكومة فلاندرز، يقدم الدليل الرسمي والروابط المعتمدة لدراسة وتعلم اللغة الهولندية.",
+                advice: "مرجع شامل للبحث عن مراكز التعليم المعتمدة والأنشطة."
+            }
+        ];
+
+        // State Management
+        let currentFilterLevel = 'ALL';
+        let currentSearchQuery = '';
+        let currentViewMode = 'cards';
+        let favoritesList = JSON.parse(localStorage.getItem('dutch_learning_favs') || '[]');
+
+        // Clock Updating Logic
+        function updateClock() {
+            const now = new Date();
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateStr = now.toLocaleDateString('ar-EG', dateOptions);
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('liveDate').textContent = dateStr;
+            document.getElementById('liveTime').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Favorite Toggle Logic
+        function toggleFavorite(id) {
+            if (favoritesList.includes(id)) {
+                favoritesList = favoritesList.filter(favId => favId !== id);
+            } else {
+                favoritesList.push(id);
+            }
+            localStorage.setItem('dutch_learning_favs', JSON.stringify(favoritesList));
+            updateFavCount();
+            renderContent();
+        }
+
+        function updateFavCount() {
+            document.getElementById('favCount').textContent = favoritesList.length;
+        }
+
+        // Copy Link to Clipboard
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showToast).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast();
+        }
+
+        function showToast(msg = "تم نسخ الرابط بنجاح!") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+
+        // View Mode Toggle (Cards / Table)
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            const cardBtn = document.getElementById('cardViewBtn');
+            const tableBtn = document.getElementById('tableViewBtn');
+
+            if (mode === 'cards') {
+                document.getElementById('cardsGrid').classList.remove('hidden');
+                document.getElementById('tableView').classList.add('hidden');
+                cardBtn.className = "p-2.5 rounded-xl bg-white text-slate-800 shadow-sm transition text-xs font-bold flex items-center gap-2 px-3";
+                tableBtn.className = "p-2.5 rounded-xl text-slate-500 hover:text-slate-800 transition text-xs font-bold flex items-center gap-2 px-3";
+            } else {
+                document.getElementById('cardsGrid').classList.add('hidden');
+                document.getElementById('tableView').classList.remove('hidden');
+                tableBtn.className = "p-2.5 rounded-xl bg-white text-slate-800 shadow-sm transition text-xs font-bold flex items-center gap-2 px-3";
+                cardBtn.className = "p-2.5 rounded-xl text-slate-500 hover:text-slate-800 transition text-xs font-bold flex items-center gap-2 px-3";
+            }
+        }
+
+        // Filter and Search Handler
+        function filterData() {
+            return resourcesData.filter(item => {
+                // Search filter
+                const matchesSearch = item.title.toLowerCase().includes(currentSearchQuery) || 
+                                      item.description.toLowerCase().includes(currentSearchQuery) ||
+                                      item.level.toLowerCase().includes(currentSearchQuery);
+                
+                // Level filter
+                let matchesLevel = false;
+                if (currentFilterLevel === 'ALL') {
+                    matchesLevel = true;
+                } else if (currentFilterLevel === 'FAV') {
+                    matchesLevel = favoritesList.includes(item.id);
+                } else {
+                    matchesLevel = item.levelsArray.includes(currentFilterLevel);
+                }
+
+                return matchesSearch && matchesLevel;
+            });
+        }
+
+        // Render Functions
+        function renderContent() {
+            const filtered = filterData();
+            const cardsGrid = document.getElementById('cardsGrid');
+            const tableBody = document.getElementById('tableBody');
+            const emptyState = document.getElementById('emptyState');
+
+            cardsGrid.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filtered.forEach(item => {
+                const isFav = favoritesList.includes(item.id);
+
+                // --- 1. Render Card Item ---
+                const card = document.createElement('div');
+                card.className = `bg-white rounded-3xl p-6 border transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between relative ${item.star ? 'border-amber-300' : 'border-slate-200'}`;
+                
+                card.innerHTML = `
+                    <div>
+                        <!-- Header & Level -->
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div>
+                                ${item.badge ? `<span class="inline-block bg-amber-100 text-amber-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full mb-1">${item.badge}</span>` : ''}
+                                <h4 class="text-xl font-extrabold text-slate-900 leading-tight">${item.title}</h4>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-lg whitespace-nowrap">${item.level}</span>
+                                <button onclick="toggleFavorite(${item.id})" class="p-1.5 rounded-lg text-slate-400 hover:text-amber-500 transition">
+                                    <i class="${isFav ? 'fa-solid fa-star text-amber-500' : 'fa-regular fa-star'} text-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">${item.description}</p>
+                        
+                        <!-- Usage Advice -->
+                        <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 mb-5">
+                            <p class="text-[11px] text-slate-500 flex items-start gap-1.5">
+                                <i class="fa-solid fa-lightbulb text-amber-500 mt-0.5 shrink-0"></i>
+                                <span><strong>إرشاد:</strong> ${item.advice}</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+                        <a href="${item.url}" target="_blank" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl text-center transition flex items-center justify-center gap-2">
+                            <span>زيارة الموقع</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                        <button onclick="copyToClipboard('${item.url}')" class="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition text-xs" title="نسخ الرابط">
+                            <i class="fa-regular fa-copy text-sm"></i>
+                        </button>
+                    </div>
+                `;
+                cardsGrid.appendChild(card);
+
+                // --- 2. Render Table Row ---
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition";
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-slate-800 whitespace-nowrap">
+                        <div class="flex items-center gap-2">
+                            <button onclick="toggleFavorite(${item.id})" class="text-slate-300 hover:text-amber-500">
+                                <i class="${isFav ? 'fa-solid fa-star text-amber-500' : 'fa-regular fa-star'}"></i>
+                            </button>
+                            <span>${item.title}</span>
+                            ${item.star ? '<i class="fa-solid fa-crown text-amber-500 text-xs" title="ترشيح ذهبي"></i>' : ''}
+                        </div>
+                    </td>
+                    <td class="p-4 whitespace-nowrap">
+                        <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-lg">${item.level}</span>
+                    </td>
+                    <td class="p-4 text-xs text-slate-600 max-w-md">
+                        <p class="font-semibold text-slate-700 mb-0.5">${item.description}</p>
+                        <p class="text-slate-400 text-[11px]">${item.advice}</p>
+                    </td>
+                    <td class="p-4 text-center whitespace-nowrap">
+                        <div class="flex items-center justify-center gap-2">
+                            <a href="${item.url}" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition">
+                                زيارة
+                            </a>
+                            <button onclick="copyToClipboard('${item.url}')" class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition text-xs">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // Event Listeners Setup
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearchQuery = e.target.value.toLowerCase().trim();
+            renderContent();
+        });
+
+        document.getElementById('levelFilters').addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = "filter-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition";
+            });
+
+            btn.className = "filter-btn active bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl whitespace-nowrap transition";
+            currentFilterLevel = btn.dataset.level;
+            renderContent();
+        });
+
+        // Initial Load
+        updateFavCount();
+        renderContent();
+    </script>
+</body>
+</html>
