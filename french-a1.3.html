@@ -4,271 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل كورس اللغة الفرنسية</title>
-    <!-- استدعاء خط Cairo و FontAwesome للأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #2563eb;
+            --accent-color: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
         }
 
         body {
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
             padding: 20px;
+            direction: rtl;
         }
 
-        .course-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 480px;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            overflow: hidden;
-            border: 1px solid #eef2f5;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        /* ملف المستخدم Header */
-        .user-header {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 20px 24px;
-            background-color: #ffffff;
-        }
-
-        .user-info {
-            text-align: right;
-            margin-left: 15px;
-        }
-
-        .user-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .user-email {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #34495e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            overflow: hidden;
-        }
-
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* كود الكورس */
-        .course-badge-container {
-            padding: 0 24px 15px;
-        }
-
-        .course-badge {
-            background-color: #1e3a8a;
-            color: #ffffff;
+        .header {
             text-align: center;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            direction: ltr;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* قسم الموعد القادم */
-        .next-lesson {
-            background-color: #f8fafc;
-            margin: 0 24px 20px;
-            padding: 15px;
-            border-radius: 12px;
-            border-right: 4px solid #1e3a8a;
+        .header h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 28px;
         }
 
-        .next-lesson-header {
-            display: flex;
-            align-items: center;
-            color: #1e3a8a;
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+        .code-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .next-lesson-header i {
-            margin-left: 8px;
+        .section-title {
+            color: var(--secondary-color);
+            border-right: 4px solid var(--secondary-color);
+            padding-right: 10px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
 
-        .lesson-time {
-            font-size: 1rem;
-            color: #1e293b;
-            font-weight: 600;
-            direction: ltr;
-            text-align: right;
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
 
-        .lesson-end-date {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 5px;
-        }
-
-        /* قائمة التفاصيل */
-        .details-list {
-            padding: 0 24px;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .detail-text {
-            color: #334155;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .detail-icon {
-            width: 32px;
-            height: 32px;
+        .info-card {
             background-color: #f1f5f9;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            font-size: 0.9rem;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
         }
 
-        /* قسم الحصص */
-        .sessions-section {
-            background-color: #f8fafc;
-            padding: 15px 24px;
+        .info-card .label {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .info-card .value {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 15px;
-            border-top: 1px solid #e2e8f0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        .sessions-title {
-            color: #1e3a8a;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
+        .schedule-table th, .schedule-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .sessions-info {
-            color: #475569;
-            font-size: 0.9rem;
+        .schedule-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #fef3c7;
+            border-right: 4px solid #f59e0b;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #92400e;
         }
     </style>
 </head>
 <body>
 
-    <div class="course-card">
-        <!-- معلومات المستخدم -->
-        <div class="user-header">
-            <div class="user-info">
-                <div class="user-name">Samer ALSAADNI</div>
-                <div class="user-email">samerguda@gmail.com</div>
-            </div>
-            <div class="user-avatar">
-                <i class="fa-solid fa-user"></i>
-            </div>
+<div class="container">
+    <div class="header">
+        <h1>كورس اللغة الفرنسية (Français général)</h1>
+        <div class="code-badge">A1.3_EXT_ENLIGNE_COMODAL_R_H</div>
+    </div>
+
+    <h2 class="section-title">معلومات الكورس العامة</h2>
+    <div class="grid-info">
+        <div class="info-card">
+            <div class="label">المستوى</div>
+            <div class="value">A1.3</div>
         </div>
-
-        <!-- كود الكورس -->
-        <div class="course-badge-container">
-            <div class="course-badge">
-                A1.3_EXT_ENLIGNE_COMODAL_R_H
-            </div>
+        <div class="info-card">
+            <div class="label">نوع الكورس</div>
+            <div class="value">Français général</div>
         </div>
-
-        <!-- الدرس المقبل -->
-        <div class="next-lesson">
-            <div class="next-lesson-header">
-                <i class="fa-regular fa-clock"></i>
-                <span>درسي المقبل</span>
-            </div>
-            <div class="lesson-time">
-                الأربعاء 7 أكتوبر 2026 &rlm;19:00 &gt; 21:30
-            </div>
-            <div class="lesson-end-date">
-                سينتهي الدرس بتاريخ الاثنين 30 نوفمبر 2026
-            </div>
+        <div class="info-card">
+            <div class="label">نمط الدراسة</div>
+            <div class="value">عن بُعد (En ligne / COMODAL)</div>
         </div>
-
-        <!-- تفاصيل الكورس -->
-        <div class="details-list">
-            <div class="detail-item">
-                <span class="detail-text">En ligne</span>
-                <div class="detail-icon"><i class="fa-solid fa-laptop"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">ADULTES</span>
-                <div class="detail-icon"><i class="fa-regular fa-user"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">الإطلاع على القاعة في الجدول الزمني</span>
-                <div class="detail-icon"><i class="fa-solid fa-chart-line"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">Français</span>
-                <div class="detail-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">Français général</span>
-                <div class="detail-icon"><i class="fa-regular fa-file-lines"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">A1.3</span>
-                <div class="detail-icon"><i class="fa-solid fa-signal"></i></div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-text">Nancy Zrc-alphonse Halim</span>
-                <div class="detail-icon"><i class="fa-solid fa-user-tie"></i></div>
-            </div>
+        <div class="info-card">
+            <div class="label">الفئة المستهدفة</div>
+            <div class="value">الكبار (ADULTES)</div>
         </div>
-
-        <!-- إحصائيات الحصص -->
-        <div class="sessions-section">
-            <div class="sessions-title">حصصي</div>
-            <div class="sessions-info">
-                16 حصص الدرس / 0 حصص أيام العطل / 16 مجموع الحصص
-            </div>
+        <div class="info-card">
+            <div class="label">المحاضر / المحاضرة</div>
+            <div class="value">Nancy Zrc-alphonse Halim</div>
+        </div>
+        <div class="info-card">
+            <div class="label">إجمالي الحصص</div>
+            <div class="value">16 حصة</div>
         </div>
     </div>
+
+    <h2 class="section-title">ملخص المواعيد والتوقيت</h2>
+    <div class="grid-info">
+        <div class="info-card">
+            <div class="label">أيام الدراسة الأسبوعية</div>
+            <div class="value">الإثنين والأربعاء</div>
+        </div>
+        <div class="info-card">
+            <div class="label">التوقيت اليومي</div>
+            <div class="value">من 19:00 إلى 21:30</div>
+        </div>
+        <div class="info-card">
+            <div class="label">تاريخ البداية</div>
+            <div class="value">الأربعاء 7 أكتوبر 2026</div>
+        </div>
+        <div class="info-card">
+            <div class="label">تاريخ النهاية</div>
+            <div class="value">الاثنين 30 نوفمبر 2026</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">جدول مواعيد الحصص التفصيلي (16 حصة)</h2>
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>رقم الحصة</th>
+                <th>اليوم</th>
+                <th>التاريخ</th>
+                <th>التوقيت</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>الأربعاء</td><td>7 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>2</td><td>الإثنين</td><td>12 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>3</td><td>الأربعاء</td><td>14 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>4</td><td>الإثنين</td><td>19 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>5</td><td>الأربعاء</td><td>21 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>6</td><td>الإثنين</td><td>26 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>7</td><td>الأربعاء</td><td>28 أكتوبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>8</td><td>الإثنين</td><td>2 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>9</td><td>الأربعاء</td><td>4 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>10</td><td>الإثنين</td><td>9 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>11</td><td>الأربعاء</td><td>11 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>12</td><td>الإثنين</td><td>16 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>13</td><td>الأربعاء</td><td>18 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>14</td><td>الإثنين</td><td>23 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>15</td><td>الأربعاء</td><td>25 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+            <tr><td>16</td><td>الإثنين</td><td>30 نوفمبر 2026</td><td>19:00 - 21:30</td></tr>
+        </tbody>
+    </table>
+
+    <div class="footer-note">
+        <strong>ملاحظة:</strong> يُعقد الكورس عبر الإنترنت في الأيام المحددة أعلاه، بواقع حصتين أسبوعياً (الإثنين والأربعاء).
+    </div>
+</div>
 
 </body>
 </html>
