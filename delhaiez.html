@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Harelbeke II - مواعيد العمل والتوقيت</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .header {
+            background-color: #d9232a; /* Delhaize Red */
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* العداد الديناميكي والتاريخ */
+        .live-clock-section {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 18px 15px;
+        }
+
+        .live-date {
+            font-size: 0.95rem;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .live-timer {
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            font-family: monospace;
+        }
+
+        /* حالة المتجر الحالية */
+        .status-bar {
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .status-open {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-closed {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        /* جدول المواعيد */
+        .hours-section {
+            padding: 20px 24px;
+        }
+
+        .hours-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #374151;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 8px;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            transition: background 0.2s;
+        }
+
+        .hours-item.active-day {
+            background-color: #eff6ff;
+            font-weight: bold;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .hours-item span.time {
+            direction: ltr;
+        }
+
+        /* معلومات العنوان والتواصل */
+        .info-footer {
+            background-color: #f9fafb;
+            padding: 16px 24px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            line-height: 1.6;
+        }
+
+        .info-footer div {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- العنوان -->
+        <div class="header">
+            <h1>AD HARELBEKE II</h1>
+            <p>Delhaize Supermarket</p>
+        </div>
+
+        <!-- عداد الوقت والتاريخ المباشر -->
+        <div class="live-clock-section">
+            <div class="live-date" id="current-date">--</div>
+            <div class="live-timer" id="current-time">00:00:00</div>
+        </div>
+
+        <!-- حالة المتجر (مفتوح / مغلق) -->
+        <div class="status-bar" id="store-status">
+            جاري التحقق من حالة المتجر...
+        </div>
+
+        <!-- قائمة مواعيد العمل -->
+        <div class="hours-section">
+            <h2>ساعات العمل الأسبوعية</h2>
+            <ul class="hours-list">
+                <li class="hours-item" id="day-1">
+                    <span>الإثنين (Monday)</span>
+                    <span class="time">08:00 - 20:00</span>
+                </li>
+                <li class="hours-item" id="day-2">
+                    <span>الثلاثاء (Tuesday)</span>
+                    <span class="time">08:00 - 20:00</span>
+                </li>
+                <li class="hours-item" id="day-3">
+                    <span>الأربعاء (Wednesday)</span>
+                    <span class="time">08:00 - 20:00</span>
+                </li>
+                <li class="hours-item" id="day-4">
+                    <span>الخميس (Thursday)</span>
+                    <span class="time">08:00 - 20:00</span>
+                </li>
+                <li class="hours-item" id="day-5">
+                    <span>الجمعة (Friday)</span>
+                    <span class="time">08:00 - 20:00</span>
+                </li>
+                <li class="hours-item" id="day-6">
+                    <span>السبت (Saturday)</span>
+                    <span class="time">08:00 - 19:00</span>
+                </li>
+                <li class="hours-item" id="day-0">
+                    <span>الأحد (Sunday)</span>
+                    <span class="time">08:00 - 12:30</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- العنوان والهاتف -->
+        <div class="info-footer">
+            <div>📍 Gaversstraat 21, 8530 Harelbeke, Belgium[span_1](start_span)[span_1](end_span)</div>
+            <div>📞 +32 56 70 53 86[span_2](start_span)[span_2](end_span)</div>
+            <div>🌐 stores.delhaize.be[span_3](start_span)[span_3](end_span)</div>
+        </div>
+    </div>
+
+    <script>
+        // مواعيد العمل بدقة حسب الصورة
+        // 0: الأحد, 1: الإثنين, 2: الثلاثاء, 3: الأربعاء, 4: الخميس, 5: الجمعة, 6: السبت
+        const schedule = {
+            0: { open: "08:00", close: "12:30" }, // الأحد
+            1: { open: "08:00", close: "20:00" }, // الإثنين
+            2: { open: "08:00", close: "20:00" }, // الثلاثاء
+            3: { open: "08:00", close: "20:00" }, // الأربعاء
+            4: { open: "08:00", close: "20:00" }, // الخميس
+            5: { open: "08:00", close: "20:00" }, // الجمعة
+            6: { open: "08:00", close: "19:00" }  // السبت
+        };
+
+        function updateClockAndStatus() {
+            const now = new Date();
+
+            // 1. تحديث التاريخ والوقت المباشر
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = now.toLocaleDateString('ar-EG', optionsDate);
+
+            const hoursStr = String(now.getHours()).padStart(2, '0');
+            const minutesStr = String(now.getMinutes()).padStart(2, '0');
+            const secondsStr = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('current-time').innerText = `${hoursStr}:${minutesStr}:${secondsStr}`;
+
+            // 2. تمييز اليوم الحالي في القائمة
+            const dayOfWeek = now.getDay();
+            document.querySelectorAll('.hours-item').forEach(el => el.classList.remove('active-day'));
+            const activeRow = document.getElementById(`day-${dayOfWeek}`);
+            if (activeRow) activeRow.classList.add('active-day');
+
+            // 3. التحقق مما إذا كان المتجر مفتوحاً أم مغلقاً الآن
+            const todaySchedule = schedule[dayOfWeek];
+            const currentTimeMinutes = now.getHours() * 60 + now.getMinutes();
+
+            const [openH, openM] = todaySchedule.open.split(':').map(Number);
+            const [closeH, closeM] = todaySchedule.close.split(':').map(Number);
+
+            const openTimeMinutes = openH * 60 + openM;
+            const closeTimeMinutes = closeH * 60 + closeM;
+
+            const statusElement = document.getElementById('store-status');
+
+            if (currentTimeMinutes >= openTimeMinutes && currentTimeMinutes < closeTimeMinutes) {
+                statusElement.innerText = "● المتجر مفتوح الآن (Open)";
+                statusElement.className = "status-bar status-open";
+            } else {
+                statusElement.innerText = "● المتجر مغلق الآن (Closed)";
+                statusElement.className = "status-bar status-closed";
+            }
+        }
+
+        // تشغيل العداد فوراً وتحديثه كل ثانية
+        updateClockAndStatus();
+        setInterval(updateClockAndStatus, 1000);
+    </script>
+</body>
+</html>
