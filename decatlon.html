@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواعيد العمل - Delhaize & Decathlon</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* العداد الديناميكي العلوي */
+        .live-clock-card {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .live-date {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .live-timer {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            font-family: monospace;
+        }
+
+        /* حاوي المتاجر (شبكة جانبية) */
+        .stores-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .store-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header {
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header.delhaize {
+            background-color: #d9232a; /* Delhaize Red */
+        }
+
+        .header.decathlon {
+            background-color: #0082c3; /* Decathlon Blue */
+        }
+
+        .header h2 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* شريط حالة المتجر */
+        .status-bar {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .status-open {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-closed {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        /* المواعيد */
+        .hours-section {
+            padding: 16px 20px;
+            flex-grow: 1;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .hours-item.active-day {
+            background-color: #eff6ff;
+            font-weight: bold;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .hours-item span.time {
+            direction: ltr;
+        }
+
+        /* أسفل البطاقة */
+        .info-footer {
+            background-color: #f9fafb;
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- العداد الديناميكي الموحد -->
+    <div class="live-clock-card">
+        <div class="live-date" id="current-date">--</div>
+        <div class="live-timer" id="current-time">00:00:00</div>
+    </div>
+
+    <!-- شبكة المتاجر -->
+    <div class="stores-container">
+
+        <!-- بطاقة AD Delhaize Harelbeke II -->
+        <div class="store-card">
+            <div>
+                <div class="header delhaize">
+                    <h2>AD HARELBEKE II</h2>
+                    <p>Delhaize Supermarket</p>
+                </div>
+                <div class="status-bar" id="delhaize-status">جاري التحقق...</div>
+
+                <div class="hours-section">
+                    <ul class="hours-list">
+                        <li class="hours-item delhaize-day-1"><span>الإثنين</span><span class="time">08:00 - 20:00</span></li>
+                        <li class="hours-item delhaize-day-2"><span>الثلاثاء</span><span class="time">08:00 - 20:00</span></li>
+                        <li class="hours-item delhaize-day-3"><span>الأربعاء</span><span class="time">08:00 - 20:00</span></li>
+                        <li class="hours-item delhaize-day-4"><span>الخميس</span><span class="time">08:00 - 20:00</span></li>
+                        <li class="hours-item delhaize-day-5"><span>الجمعة</span><span class="time">08:00 - 20:00</span></li>
+                        <li class="hours-item delhaize-day-6"><span>السبت</span><span class="time">08:00 - 19:00</span></li>
+                        <li class="hours-item delhaize-day-0"><span>الأحد</span><span class="time">08:00 - 12:30</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-footer">
+                <div>📍 Gaversstraat 21, 8530 Harelbeke[span_2](start_span)[span_2](end_span)</div>
+                <div>📞 +32 56 70 53 86[span_3](start_span)[span_3](end_span)</div>
+            </div>
+        </div>
+
+        <!-- بطاقة Decathlon Kortrijk -->
+        <div class="store-card">
+            <div>
+                <div class="header decathlon">
+                    <h2>Decathlon Kortrijk</h2>
+                    <p>Sports Store</p>
+                </div>
+                <div class="status-bar" id="decathlon-status">جاري التحقق...</div>
+
+                <div class="hours-section">
+                    <ul class="hours-list">
+                        <li class="hours-item decathlon-day-1"><span>الإثنين</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-2"><span>الثلاثاء</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-3"><span>الأربعاء</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-4"><span>الخميس</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-5"><span>الجمعة</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-6"><span>السبت</span><span class="time">09:00 - 19:00</span></li>
+                        <li class="hours-item decathlon-day-0"><span>الأحد</span><span class="time" style="color: #ef4444; font-weight: bold;">مغلق (Closed)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-footer">
+                <div>📍 Beneluxlaan 1, 8500 Kortrijk, Belgium[span_4](start_span)[span_4](end_span)</div>
+                <div>🛒 Book online available[span_5](start_span)[span_5](end_span)</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // جدول مواعيد Delhaize
+        const delhaizeSchedule = {
+            0: { open: "08:00", close: "12:30" },
+            1: { open: "08:00", close: "20:00" },
+            2: { open: "08:00", close: "20:00" },
+            3: { open: "08:00", close: "20:00" },
+            4: { open: "08:00", close: "20:00" },
+            5: { open: "08:00", close: "20:00" },
+            6: { open: "08:00", close: "19:00" }
+        };
+
+        // جدول مواعيد Decathlon
+        const decathlonSchedule = {
+            0: null, // مغلق الأحد
+            1: { open: "09:00", close: "19:00" },
+            2: { open: "09:00", close: "19:00" },
+            3: { open: "09:00", close: "19:00" },
+            4: { open: "09:00", close: "19:00" },
+            5: { open: "09:00", close: "19:00" },
+            6: { open: "09:00", close: "19:00" }
+        };
+
+        function updateSystem() {
+            const now = new Date();
+
+            // 1. تحديث الساعة والتاريخ المباشر
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = now.toLocaleDateString('ar-EG', optionsDate);
+
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('current-time').innerText = `${h}:${m}:${s}`;
+
+            const dayOfWeek = now.getDay();
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+            // 2. تحديث تمييز اليوم الحالي
+            document.querySelectorAll('.hours-item').forEach(el => el.classList.remove('active-day'));
+            
+            const activeDelhaize = document.querySelector(`.delhaize-day-${dayOfWeek}`);
+            if (activeDelhaize) activeDelhaize.classList.add('active-day');
+
+            const activeDecathlon = document.querySelector(`.decathlon-day-${dayOfWeek}`);
+            if (activeDecathlon) activeDecathlon.classList.add('active-day');
+
+            // 3. فحص حالة Delhaize
+            checkStatus(currentMinutes, delhaizeSchedule[dayOfWeek], 'delhaize-status');
+
+            // 4. فحص حالة Decathlon
+            checkStatus(currentMinutes, decathlonSchedule[dayOfWeek], 'decathlon-status');
+        }
+
+        function checkStatus(currentMins, storeToday, elementId) {
+            const statusEl = document.getElementById(elementId);
+            
+            if (!storeToday) {
+                statusEl.innerText = "● المغلق اليوم (Closed)";
+                statusEl.className = "status-bar status-closed";
+                return;
+            }
+
+            const [openH, openM] = storeToday.open.split(':').map(Number);
+            const [closeH, closeM] = storeToday.close.split(':').map(Number);
+
+            const openMins = openH * 60 + openM;
+            const closeMins = closeH * 60 + closeM;
+
+            if (currentMins >= openMins && currentMins < closeMins) {
+                statusEl.innerText = "● مفتوح الآن (Open)";
+                statusEl.className = "status-bar status-open";
+            } else {
+                statusEl.innerText = "● مغلق الآن (Closed)";
+                statusEl.className = "status-bar status-closed";
+            }
+        }
+
+        // تشغيل مباشر وتحديث كل ثانية
+        updateSystem();
+        setInterval(updateSystem, 1000);
+    </script>
+</body>
+</html>
