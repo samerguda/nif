@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات Orange Belgium</title>
+  <style>
+    :root {
+      --orange: #FF6600;
+      --dark: #000000;
+      --gray: #f4f4f9;
+      --card-bg: #ffffff;
+      --text: #333333;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--gray);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    header {
+      background-color: var(--dark);
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 5px solid var(--orange);
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      color: var(--orange);
+    }
+
+    /* العداد المباشر */
+    .clock-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--dark);
+      border-right: 4px solid var(--orange);
+      padding-right: 10px;
+      font-size: 18px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-title {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .item-desc {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* الأزرار */
+    .btn {
+      background-color: var(--orange);
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e55c00;
+    }
+
+    .btn-secondary {
+      background-color: var(--dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: #333;
+    }
+
+    .note-box {
+      background-color: #fff8e6;
+      border-right: 4px solid #ffc107;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- الهيدر والعداد المباشر -->
+  <header>
+    <h1>Orange Belgium Services</h1>
+    <div class="clock-box" id="liveClock">جاري تحميل الوقت...</div>
+  </header>
+
+  <!-- قسم معرفة الرصيد -->
+  <div class="card">
+    <h2>1. معرفة الرصيد (Check Balance)</h2>
+    
+    <div class="item">
+      <div class="item-info">
+        <span class="item-title">الكود المباشر السريع</span>
+        <span class="item-desc">يظهر الرصيد فوراً على الشاشة (#1*123#)</span>
+      </div>
+      <a href="tel:*123*1%23" class="btn">اتصال #1*123#</a>
+    </div>
+
+    <div class="item">
+      <div class="item-info">
+        <span class="item-title">الاتصال الصوتي المجاني</span>
+        <span class="item-desc">سماع الرصيد عبر الخدمة الصوتية (5100)</span>
+      </div>
+      <a href="tel:5100" class="btn">اتصل بـ 5100</a>
+    </div>
+
+    <div class="item">
+      <div class="item-info">
+        <span class="item-title">تطبيق My Orange</span>
+        <span class="item-desc">عرض تفصيلي للاستهلاك والرصيد</span>
+      </div>
+      <a href="https://www.orange.be/nl/mains/app" target="_blank" class="btn btn-secondary">فتح التطبيق</a>
+    </div>
+  </div>
+
+  <!-- قسم فتح الدولي -->
+  <div class="card">
+    <h2>2. تفعيل المكالمات الدولية (International Calls)</h2>
+
+    <div class="item">
+      <div class="item-info">
+        <span class="item-title">خدمة العملاء (Orange)</span>
+        <span class="item-desc">لطلب تفعيل الدولي من الموظف (5000)</span>
+      </div>
+      <a href="tel:5000" class="btn">اتصل بـ 5000</a>
+    </div>
+
+    <div class="item">
+      <div class="item-info">
+        <span class="item-title">موقع My Orange</span>
+        <span class="item-desc">إدارة الخيارات والخدمات عبر الويب</span>
+      </div>
+      <a href="https://my.orange.be" target="_blank" class="btn btn-secondary">دخول للموقع</a>
+    </div>
+
+    <div class="note-box" style="margin-top: 15px;">
+      💡 <strong>تنبيه للخطوط الدفع المسبق (Prepaid):</strong> الاتصال الدولي مفعل تلقائياً بشريط وجود رصيد أساسي (Credit) كافٍ، حيث لا تُخصم المكالمات الدولية من دقائق الباقة المدمجة.
+    </div>
+  </div>
+
+</div>
+
+<!-- JavaScript للعداد الداينامك -->
+<script>
+  function updateClock() {
+    const now = new Date();
+    
+    // تنسيق التاريخ والوقت باللغة العربية
+    const options = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric',
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit',
+      hour12: true 
+    };
+
+    const formattedDateTime = now.toLocaleDateString('ar-EG', options);
+    document.getElementById('liveClock').textContent = formattedDateTime;
+  }
+
+  // تحديث العداد كل ثانية
+  setInterval(updateClock, 1000);
+  
+  // التشغيل المباشر عند تحميل الصفحة
+  updateClock();
+</script>
+
+</body>
+</html>
