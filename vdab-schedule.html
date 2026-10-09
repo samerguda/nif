@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواعيد عمل VDAB</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 420px;
+            padding: 24px;
+        }
+
+        .header {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #0056b3;
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .location-info {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* العداد الديناميكي */
+        .clock-container {
+            background: #eef6ff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #d0e3ff;
+        }
+
+        .date-display {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .time-display {
+            font-size: 26px;
+            font-weight: bold;
+            color: #0056b3;
+            letter-spacing: 1px;
+        }
+
+        /* المواعيد */
+        .schedule-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-tag {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .status-closed {
+            background-color: #ffe5e5;
+            color: #d93025;
+        }
+
+        .status-open {
+            background-color: #e6f4ea;
+            color: #137333;
+        }
+
+        .schedule-list {
+            list-style: none;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .hours {
+            color: #555;
+            text-align: left;
+            direction: ltr;
+        }
+
+        .closed {
+            color: #888;
+            font-style: italic;
+        }
+
+        .footer-address {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- العنوان -->
+        <div class="header">
+            <h1>VDAB Kortrijk</h1>
+            <div class="location-info">مواعيد العمل الرسمية</div>
+        </div>
+
+        <!-- العداد الديناميكي للوقت والتاريخ -->
+        <div class="clock-container">
+            <div class="date-display" id="current-date">اليوم والوقت الحالي</div>
+            <div class="time-display" id="current-time">00:00:00</div>
+        </div>
+
+        <!-- قائمة المواعيد -->
+        <div class="schedule-title">
+            <span>ساعات العمل:</span>
+        </div>
+
+        <ul class="schedule-list">
+            <li class="schedule-item">
+                <span class="day">الإثنين (Monday)</span>
+                <span class="hours">8:30 AM – 12:00 PM</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">الثلاثاء (Tuesday)</span>
+                <span class="hours">8:30 AM – 12:00 PM<br>1:00 PM – 4:00 PM</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">الأربعاء (Wednesday)</span>
+                <span class="hours closed">مغلق (Closed)</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">الخميس (Thursday)</span>
+                <span class="hours">8:30 AM – 12:00 PM</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">الجمعة (Friday)</span>
+                <span class="hours closed">مغلق (Closed)</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">السبت (Saturday)</span>
+                <span class="hours closed">مغلق (Closed)</span>
+            </li>
+            <li class="schedule-item">
+                <span class="day">الأحد (Sunday)</span>
+                <span class="hours closed">مغلق (Closed)</span>
+            </li>
+        </ul>
+
+        <!-- العنوان المكتوب في الصورة -->
+        <div class="footer-address">
+            📍 Lekkerbeetstraat 5/7, 8500 Kortrijk, Belgium<br>
+            🌐 vdab.be
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // خيارات عرض التاريخ بالعربية
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const formattedDate = now.toLocaleDateString('ar-EG', dateOptions);
+
+            // خيارات عرض الوقت
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            };
+            const formattedTime = now.toLocaleTimeString('ar-EG', timeOptions);
+
+            // تحديث العناصر في الصفحة
+            document.getElementById('current-date').textContent = formattedDate;
+            document.getElementById('current-time').textContent = formattedTime;
+        }
+
+        // تحديث العداد كل ثانية
+        setInterval(updateClock, 1000);
+
+        // تشغيل الساعة فور تحميل الصفحة
+        updateClock();
+    </script>
+
+</body>
+</html>
