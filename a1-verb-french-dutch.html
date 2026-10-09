@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>70 الأفعال الأكثر استخداماً (عربي - Nederlands - Français)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border: #e2e8f0;
+            --nl-color: #d97706;
+            --fr-color: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: #f1f5f9;
+            color: var(--text-sub);
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .num {
+            background: #e0f2fe;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .arabic {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-top: 1px solid #f1f5f9;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .lang-label.nl {
+            background: #fef3c7;
+            color: var(--nl-color);
+        }
+
+        .lang-label.fr {
+            background: #dbeafe;
+            color: var(--fr-color);
+        }
+
+        .verb-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            direction: ltr;
+            text-align: left;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .audio-btn:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🇳🇱 70 الأفعال الأكثر استخداماً 🇫🇷</h1>
+        <p>جدول الأفعال الأساسية ثلاثي اللغات (العربية — Nederlands — Français)</p>
+    </header>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث بالعربية، الهولندية أو الفرنسية...">
+        </div>
+        <div class="tabs" id="categoryTabs">
+            <button class="tab-btn active" data-cat="all">الكل (70)</button>
+            <button class="tab-btn" data-cat="basic">أساسية</button>
+            <button class="tab-btn" data-cat="comm">تواصل</button>
+            <button class="tab-btn" data-cat="mind">تفكير وتعلّم</button>
+            <button class="tab-btn" data-cat="daily">أنشطة يومية</button>
+            <button class="tab-btn" data-cat="move">حركة وسفر</button>
+            <button class="tab-btn" data-cat="work">عمل وحياة</button>
+        </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+</div>
+
+<script>
+    const verbs = [
+        {id: 1, ar: "يَكُونُ", nl: "zijn", fr: "être", cat: "basic"},
+        {id: 2, ar: "يَصِيرُ", nl: "worden", fr: "devenir", cat: "basic"},
+        {id: 3, ar: "يَفْعَلُ / يَصْنَعُ", nl: "doen / maken", fr: "faire", cat: "basic"},
+        {id: 4, ar: "يَذْهَبُ", nl: "gaan", fr: "aller", cat: "move"},
+        {id: 5, ar: "يَجِيءُ", nl: "komen", fr: "venir", cat: "move"},
+        {id: 6, ar: "يَأْخُذُ", nl: "nemen", fr: "prendre", cat: "basic"},
+        {id: 7, ar: "يُعْطِي", nl: "geven", fr: "donner", cat: "basic"},
+        {id: 8, ar: "يَحْصُلُ عَلَى / يَسْتَلِمُ", nl: "krijgen / ontvangen", fr: "obtenir / recevoir", cat: "basic"},
+        {id: 9, ar: "يَرَى", nl: "zien", fr: "voir", cat: "daily"},
+        {id: 10, ar: "يَنْظُرُ", nl: "kijken", fr: "regarder", cat: "daily"},
+        {id: 11, ar: "يُشَاهِدُ", nl: "kijken", fr: "regarder", cat: "daily"},
+        {id: 12, ar: "يَسْمَعُ", nl: "horen", fr: "entendre", cat: "daily"},
+        {id: 13, ar: "يَسْتَمِعُ", nl: "luisteren", fr: "écouter", cat: "daily"},
+        {id: 14, ar: "يَقُولُ", nl: "zeggen", fr: "dire", cat: "comm"},
+        {id: 15, ar: "يُخْبِرُ", nl: "vertellen", fr: "dire / raconter", cat: "comm"},
+        {id: 16, ar: "يَتَكَلَّمُ", nl: "spreken", fr: "parler", cat: "comm"},
+        {id: 17, ar: "يَتَحَدَّثُ", nl: "praten", fr: "parler / discuter", cat: "comm"},
+        {id: 18, ar: "يَسْأَلُ", nl: "vragen", fr: "demander", cat: "comm"},
+        {id: 19, ar: "يُجِيبُ", nl: "antwoorden", fr: "répondre", cat: "comm"},
+        {id: 20, ar: "يَعْرِفُ (معلومة)", nl: "weten", fr: "savoir", cat: "mind"},
+        {id: 21, ar: "يَفْكِّرُ", nl: "denken", fr: "penser", cat: "mind"},
+        {id: 22, ar: "يَفْهَمُ", nl: "begrijpen", fr: "comprendre", cat: "mind"},
+        {id: 23, ar: "يَتَعَلَّمُ", nl: "leren", fr: "apprendre", cat: "mind"},
+        {id: 24, ar: "يَقْرَأُ", nl: "lezen", fr: "lire", cat: "mind"},
+        {id: 25, ar: "يَكْتُبُ", nl: "schrijven", fr: "écrire", cat: "mind"},
+        {id: 26, ar: "يَفْتَحُ", nl: "openen", fr: "ouvrir", cat: "daily"},
+        {id: 27, ar: "يُغْلِقُ", nl: "sluiten", fr: "fermer", cat: "daily"},
+        {id: 28, ar: "يَبْدَأُ", nl: "beginnen", fr: "commencer", cat: "work"},
+        {id: 29, ar: "يَنْتَهِي", nl: "eindigen", fr: "finir / se terminer", cat: "work"},
+        {id: 30, ar: "يَتَوَقَّفُ", nl: "stoppen", fr: "arrêter / s’arrêter", cat: "work"},
+        {id: 31, ar: "يَعْمَلُ", nl: "werken", fr: "travailler", cat: "work"},
+        {id: 32, ar: "يَدْرُسُ", nl: "studeren", fr: "étudier", cat: "work"},
+        {id: 33, ar: "يَعِيشُ", nl: "leven", fr: "vivre", cat: "work"},
+        {id: 34, ar: "يَسْكُنُ", nl: "wonen", fr: "habiter", cat: "work"},
+        {id: 35, ar: "يَبْقَى", nl: "blijven", fr: "rester", cat: "move"},
+        {id: 36, ar: "يَأْكُلُ", nl: "eten", fr: "manger", cat: "daily"},
+        {id: 37, ar: "يَشْرَبُ", nl: "drinken", fr: "boire", cat: "daily"},
+        {id: 38, ar: "يَطْبُخُ", nl: "koken", fr: "cuisiner", cat: "daily"},
+        {id: 39, ar: "يَشْتَرِي", nl: "kopen", fr: "acheter", cat: "daily"},
+        {id: 40, ar: "يَبِيعُ", nl: "verkopen", fr: "vendre", cat: "daily"},
+        {id: 41, ar: "يَدْفَعُ", nl: "betalen", fr: "payer", cat: "daily"},
+        {id: 42, ar: "يَسْتَخْدِمُ", nl: "gebruiken", fr: "utiliser", cat: "daily"},
+        {id: 43, ar: "يَحْتَاجُ", nl: "nodig hebben", fr: "avoir besoin de", cat: "basic"},
+        {id: 44, ar: "يُرِيدُ", nl: "willen", fr: "vouloir", cat: "basic"},
+        {id: 45, ar: "يُحِبُّ", nl: "houden van", fr: "aimer", cat: "mind"},
+        {id: 46, ar: "يُسَاعِدُ", nl: "helpen", fr: "aider", cat: "comm"},
+        {id: 47, ar: "يَتَّصِلُ هَاتِفِيًّا", nl: "bellen", fr: "appeler / téléphoner", cat: "comm"},
+        {id: 48, ar: "يَنْتَظِرُ", nl: "wachten", fr: "attendre", cat: "daily"},
+        {id: 49, ar: "يَجِدُ", nl: "vinden", fr: "trouver", cat: "daily"},
+        {id: 50, ar: "يَفْقِدُ / يَخْسَرُ", nl: "verliezen", fr: "perdre", cat: "daily"},
+        {id: 51, ar: "يُحْضِرُ", nl: "meebrengen / brengen", fr: "apporter", cat: "daily"},
+        {id: 52, ar: "يَحْمِلُ", nl: "dragen", fr: "porter", cat: "daily"},
+        {id: 53, ar: "يَضَعُ", nl: "leggen / zetten", fr: "mettre / poser", cat: "daily"},
+        {id: 54, ar: "يَحْتَفِظُ", nl: "bewaren", fr: "garder / conserver", cat: "daily"},
+        {id: 55, ar: "يُظْهِرُ", nl: "tonen", fr: "montrer", cat: "comm"},
+        {id: 56, ar: "يَلْعَبُ", nl: "spelen", fr: "jouer", cat: "daily"},
+        {id: 57, ar: "يَقُودُ", nl: "rijden", fr: "conduire", cat: "move"},
+        {id: 58, ar: "يَمْشِي", nl: "lopen / wandelen", fr: "marcher", cat: "move"},
+        {id: 59, ar: "يَرْكُضُ", nl: "rennen", fr: "courir", cat: "move"},
+        {id: 60, ar: "يَجْلِسُ", nl: "zitten", fr: "s'asseoir / être assis", cat: "move"},
+        {id: 61, ar: "يَقِفُ", nl: "staan", fr: "se tenir debout / être debout", cat: "move"},
+        {id: 62, ar: "يَنَامُ", nl: "slapen", fr: "dormir", cat: "daily"},
+        {id: 63, ar: "يَسْتَيْقِظُ", nl: "wakker worden", fr: "se réveiller", cat: "daily"},
+        {id: 64, ar: "يَغْسِلُ", nl: "wassen", fr: "laver", cat: "daily"},
+        {id: 65, ar: "يُنَظِّفُ", nl: "schoonmaken", fr: "nettoyer", cat: "daily"},
+        {id: 66, ar: "يَلْبَسُ / يَرْتَدِي", nl: "dragen / aandoen", fr: "porter / mettre", cat: "daily"},
+        {id: 67, ar: "يُسَافِرُ", nl: "reizen", fr: "voyager", cat: "move"},
+        {id: 68, ar: "يَزُورُ", nl: "bezoeken", fr: "visiter / rendre visite à", cat: "move"},
+        {id: 69, ar: "يَتَذَكَّرُ", nl: "zich herinneren", fr: "se souvenir de", cat: "mind"},
+        {id: 70, ar: "يَنْسَى", nl: "vergeten", fr: "oublier", cat: "mind"}
+    ];
+
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('searchInput');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    let currentCat = 'all';
+    let searchTerm = '';
+
+    function speak(text, lang) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    function render() {
+        grid.innerHTML = '';
+        const filtered = verbs.filter(v => {
+            const matchesCat = currentCat === 'all' || v.cat === currentCat;
+            const matchesSearch = v.ar.includes(searchTerm) || 
+                                  v.nl.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                  v.fr.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchesCat && matchesSearch;
+        });
+
+        filtered.forEach(v => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="num">#${v.id}</span>
+                </div>
+                <div class="arabic">${v.ar}</div>
+                <div class="lang-row">
+                    <span class="lang-label nl">NL</span>
+                    <span class="verb-text">${v.nl}</span>
+                    <button class="audio-btn" onclick="speak('${v.nl.replace(/'/g, "\\'")}', 'nl-NL')" title="نطق بالهولندية">🔊</button>
+                </div>
+                <div class="lang-row">
+                    <span class="lang-label fr">FR</span>
+                    <span class="verb-text">${v.fr}</span>
+                    <button class="audio-btn" onclick="speak('${v.fr.replace(/'/g, "\\'")}', 'fr-FR')" title="نطق بالفرنسية">🔊</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        render();
+    });
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCat = btn.dataset.cat;
+            render();
+        });
+    });
+
+    render();
+</script>
+</body>
+</html>
