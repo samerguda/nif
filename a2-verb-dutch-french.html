@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قاموس الأفعال الثلاثي: العربية — Nederlands — Français</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --border: #e2e8f0;
+            --nl-color: #0284c7;
+            --fr-color: #c026d3;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-sub);
+            font-size: 1.05rem;
+        }
+
+        .controls {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: #f1f5f9;
+            color: var(--text-sub);
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        .num {
+            background: #eff6ff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .ar-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+        }
+
+        .lang-row.nl {
+            color: var(--nl-color);
+            font-weight: 600;
+        }
+
+        .lang-row.fr {
+            color: var(--fr-color);
+            font-weight: 500;
+        }
+
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .audio-btn:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📚 قاموس 162 فعلاً شائعاً (ثلاثي اللغات)</h1>
+        <p>العربية — Nederlands — Français</p>
+    </header>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث بأي لغة (عربي، هولندي، فرنسي)...">
+        </div>
+        <div class="tabs" id="categoryTabs">
+            <button class="tab-btn active" data-cat="all">الكل (162)</button>
+            <button class="tab-btn" data-cat="daily">الحياة والمنزل (1-35)</button>
+            <button class="tab-btn" data-cat="work">الدراسة والعمل (36-70)</button>
+            <button class="tab-btn" data-cat="trade">التسوق والمال (71-100)</button>
+            <button class="tab-btn" data-cat="social">التواصل والمشاعر (101-135)</button>
+            <button class="tab-btn" data-cat="tech">المنزل والتقنية (136-162)</button>
+        </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+</div>
+
+<script>
+    const verbs = [
+        {id:1, cat:'daily', ar:"يتفق / يحدد موعدًا", nl:"afspreken", fr:"convenir / fixer un rendez-vous"},
+        {id:2, cat:'daily', ar:"يشرح", nl:"uitleggen", fr:"expliquer"},
+        {id:3, cat:'daily', ar:"يحضر معه", nl:"meebrengen", fr:"apporter avec soi"},
+        {id:4, cat:'daily', ar:"ينهي", nl:"afmaken", fr:"terminer / finir"},
+        {id:5, cat:'daily', ar:"يدعو", nl:"uitnodigen", fr:"inviter"},
+        {id:6, cat:'daily', ar:"ينتقيل إلى سكن جديد", nl:"verhuizen", fr:"déménager"},
+        {id:7, cat:'daily', ar:"يرتدي / يجذب", nl:"aantrekken", fr:"mettre / attirer"},
+        {id:8, cat:'daily', ar:"يخلع / يطفئ", nl:"uitdoen", fr:"enlever / éteindre"},
+        {id:9, cat:'daily', ar:"يرتدي / يشغّل", nl:"aandoen", fr:"mettre / allumer"},
+        {id:10, cat:'daily', ar:"يستلم / يذهب ليحضر", nl:"ophalen", fr:"récupérer / aller chercher"},
+        {id:11, cat:'daily', ar:"يعود", nl:"terugkomen", fr:"revenir"},
+        {id:12, cat:'daily', ar:"يأخذ معه", nl:"meenemen", fr:"emporter"},
+        {id:13, cat:'daily', ar:"يعيد شيئًا", nl:"terugbrengen", fr:"rapporter / ramener"},
+        {id:14, cat:'daily', ar:"يخرج", nl:"uitgaan", fr:"sortir"},
+        {id:15, cat:'daily', ar:"يدخل", nl:"binnenkomen", fr:"entrer"},
+        {id:16, cat:'daily', ar:"يغادر", nl:"weggaan", fr:"partir / s’en aller"},
+        {id:17, cat:'daily', ar:"يفتح", nl:"opendoen", fr:"ouvrir"},
+        {id:18, cat:'daily', ar:"يغلق", nl:"dichtdoen", fr:"fermer"},
+        {id:19, cat:'daily', ar:"يشغّل", nl:"aanzetten", fr:"allumer / mettre en marche"},
+        {id:20, cat:'daily', ar:"يطفئ", nl:"uitzetten", fr:"éteindre / arrêter"},
+        {id:21, cat:'daily', ar:"يرتب المكان", nl:"opruimen", fr:"ranger"},
+        {id:22, cat:'daily', ar:"يغسل الصحون", nl:"afwassen", fr:"faire la vaisselle"},
+        {id:23, cat:'daily', ar:"يرتدي ملابسه", nl:"aankleden", fr:"s’habiller"},
+        {id:24, cat:'daily', ar:"يخلع ملابسه", nl:"uitkleden", fr:"se déshabiller"},
+        {id:25, cat:'daily', ar:"يستيقظ", nl:"wakker worden", fr:"se réveiller"},
+        {id:26, cat:'daily', ar:"يغفو / ينام", nl:"inslapen", fr:"s’endormir"},
+        {id:27, cat:'daily', ar:"يستريح", nl:"uitrusten", fr:"se reposer"},
+        {id:28, cat:'daily', ar:"يتناول الفطور", nl:"ontbijten", fr:"prendre le petit-déjeuner"},
+        {id:29, cat:'daily', ar:"يلغي موعدًا", nl:"afzeggen", fr:"annuler"},
+        {id:30, cat:'daily', ar:"يستلم", nl:"afhalen", fr:"récupérer / retirer"},
+        {id:31, cat:'daily', ar:"يقدم طلبًا", nl:"aanvragen", fr:"faire une demande"},
+        {id:32, cat:'daily', ar:"يملأ استمارة", nl:"invullen", fr:"remplir"},
+        {id:33, cat:'daily', ar:"يوقّع", nl:"ondertekenen", fr:"signer"},
+        {id:34, cat:'daily', ar:"يتحقق / يفحص", nl:"controleren", fr:"vérifier / contrôler"},
+        {id:35, cat:'daily', ar:"يرتب / ينظم", nl:"regelen", fr:"organiser / arranger"},
+        {id:36, cat:'work', ar:"يناقش", nl:"bespreken", fr:"discuter de"},
+        {id:37, cat:'work', ar:"يقرر", nl:"beslissen", fr:"décider"},
+        {id:38, cat:'work', ar:"يحاول", nl:"proberen", fr:"essayer"},
+        {id:39, cat:'work', ar:"يغيّر", nl:"veranderen", fr:"changer / modifier"},
+        {id:40, cat:'work', ar:"ينسى", nl:"vergeten", fr:"oublier"},
+        {id:41, cat:'work', ar:"يتذكر", nl:"herinneren", fr:"se souvenir de / rappeler"},
+        {id:42, cat:'work', ar:"يخبر / يحكي", nl:"vertellen", fr:"raconter / dire"},
+        {id:43, cat:'work', ar:"يصف", nl:"beschrijven", fr:"décrire"},
+        {id:44, cat:'work', ar:"يقصد", nl:"bedoelen", fr:"vouloir dire"},
+        {id:45, cat:'work', ar:"يعني", nl:"betekenen", fr:"signifier"},
+        {id:46, cat:'work', ar:"ينطق", nl:"uitspreken", fr:"prononcer"},
+        {id:47, cat:'work', ar:"يكرر", nl:"herhalen", fr:"répéter"},
+        {id:48, cat:'work', ar:"يتدرب", nl:"oefenen", fr:"s’exercer / s’entraîner"},
+        {id:49, cat:'work', ar:"يدرس", nl:"studeren", fr:"étudier"},
+        {id:50, cat:'work', ar:"يراجع / يفحص", nl:"nakijken", fr:"vérifier / corriger"},
+        {id:51, cat:'work', ar:"يصحح / يحسّن", nl:"verbeteren", fr:"corriger / améliorer"},
+        {id:52, cat:'work', ar:"ينجح", nl:"slagen", fr:"réussir"},
+        {id:53, cat:'work', ar:"يرسب", nl:"zakken", fr:"échouer / rater"},
+        {id:54, cat:'work', ar:"يكسب المال", nl:"verdienen", fr:"gagner de l’argent"},
+        {id:55, cat:'work', ar:"يتقدم لوظيفة", nl:"solliciteren", fr:"postuler"},
+        {id:56, cat:'work', ar:"يعمل على", nl:"werken aan", fr:"travailler sur"},
+        {id:57, cat:'work', ar:"يتوقف", nl:"stoppen", fr:"arrêter / s’arrêter"},
+        {id:58, cat:'work', ar:"يستمر", nl:"doorgaan", fr:"continuer"},
+        {id:59, cat:'work', ar:"يبدأ بـ", nl:"beginnen met", fr:"commencer par"},
+        {id:60, cat:'work', ar:"يستسلم / يعطي", nl:"opgeven", fr:"abandonner / donner"},
+        {id:61, cat:'work', ar:"يثابر / يواصل", nl:"volhouden", fr:"persévérer / tenir bon"},
+        {id:62, cat:'work', ar:"يشارك", nl:"meedoen", fr:"participer"},
+        {id:63, cat:'work', ar:"يتعاون", nl:"meewerken", fr:"collaborer"},
+        {id:64, cat:'work', ar:"يساعد في", nl:"helpen met", fr:"aider à"},
+        {id:65, cat:'work', ar:"يعتني بـ", nl:"zorgen voor", fr:"s’occuper de"},
+        {id:66, cat:'work', ar:"يناسب / يجرّب الملابس", nl:"passen", fr:"convenir / essayer"},
+        {id:67, cat:'work', ar:"يختار", nl:"kiezen", fr:"choisir"},
+        {id:68, cat:'work', ar:"يقرر", nl:"besluiten", fr:"décider"},
+        {id:69, cat:'work', ar:"يقارن", nl:"vergelijken", fr:"comparer"},
+        {id:70, cat:'work', ar:"يطلب سلعة أو طعامًا", nl:"bestellen", fr:"commander"},
+        {id:71, cat:'trade', ar:"يستبدل", nl:"ruilen", fr:"échanger"},
+        {id:72, cat:'trade', ar:"يدفع مقابل", nl:"betalen voor", fr:"payer pour"},
+        {id:73, cat:'trade', ar:"ينفق", nl:"uitgeven", fr:"dépenser"},
+        {id:74, cat:'trade', ar:"يدّخر", nl:"sparen", fr:"économiser"},
+        {id:75, cat:'trade', ar:"يستعير / يقترض", nl:"lenen", fr:"emprunter / prêter"},
+        {id:76, cat:'trade', ar:"يسدد", nl:"terugbetalen", fr:"rembourser"},
+        {id:77, cat:'trade', ar:"يكلّف", nl:"kosten", fr:"coûter"},
+        {id:78, cat:'trade', ar:"يوفر المال", nl:"besparen", fr:"économiser"},
+        {id:79, cat:'trade', ar:"يرسل", nl:"verzenden", fr:"envoyer / expédier"},
+        {id:80, cat:'trade', ar:"يستلم", nl:"ontvangen", fr:"recevoir"},
+        {id:81, cat:'trade', ar:"يوصل", nl:"bezorgen", fr:"livrer"},
+        {id:82, cat:'trade', ar:"يحجز", nl:"reserveren", fr:"réserver"},
+        {id:83, cat:'trade', ar:"يلغي", nl:"annuleren", fr:"annuler"},
+        {id:84, cat:'trade', ar:"يغادر", nl:"vertrekken", fr:"partir"},
+        {id:85, cat:'trade', ar:"يصل", nl:"aankomen", fr:"arriver"},
+        {id:86, cat:'trade', ar:"يغيّر وسيلة النقل", nl:"overstappen", fr:"changer de ligne / correspondre"},
+        {id:87, cat:'trade', ar:"يصعد / يركب", nl:"instappen", fr:"monter"},
+        {id:88, cat:'trade', ar:"ينزل من وسيلة النقل", nl:"uitstappen", fr:"descendre"},
+        {id:89, cat:'trade', ar:"يقيم", nl:"verblijven", fr:"séjourner"},
+        {id:90, cat:'trade', ar:"يقضي الليل", nl:"overnachten", fr:"passer la nuit"},
+        {id:91, cat:'trade', ar:"يزور", nl:"bezoeken", fr:"visiter / rendre visite à"},
+        {id:92, cat:'trade', ar:"يتجول", nl:"rondlopen", fr:"se promener / déambuler"},
+        {id:93, cat:'trade', ar:"يضل الطريق", nl:"verdwalen", fr:"se perdre"},
+        {id:94, cat:'trade', ar:"يتبع", nl:"volgen", fr:"suivre"},
+        {id:95, cat:'trade', ar:"ينحرف / يخرج عن", nl:"afwijken", fr:"dévier / s’écarter de"},
+        {id:96, cat:'trade', ar:"يصل إلى", nl:"bereiken", fr:"atteindre"},
+        {id:97, cat:'trade', ar:"يعبر", nl:"oversteken", fr:"traverser"},
+        {id:98, cat:'trade', ar:"يعود", nl:"teruggaan", fr:"retourner / revenir"},
+        {id:99, cat:'trade', ar:"يرجع / يستدير", nl:"omkeren", fr:"faire demi-tour / se retourner"},
+        {id:100, cat:'trade', ar:"يذهب مع", nl:"meegaan", fr:"accompagner / aller avec"},
+        {id:101, cat:'social', ar:"يأتي مع", nl:"meekomen", fr:"venir avec"},
+        {id:102, cat:'social', ar:"يوصل / يأخذ بعيدًا", nl:"wegbrengen", fr:"emmener / déposer"},
+        {id:103, cat:'social', ar:"يتعرف على شخص", nl:"kennismaken", fr:"faire connaissance"},
+        {id:104, cat:'social', ar:"يهنئ", nl:"feliciteren", fr:"féliciter"},
+        {id:105, cat:'social', ar:"يشكر", nl:"bedanken", fr:"remercier"},
+        {id:106, cat:'social', ar:"يسامح", nl:"vergeven", fr:"pardonner"},
+        {id:107, cat:'social', ar:"يثق", nl:"vertrouwen", fr:"faire confiance"},
+        {id:108, cat:'social', ar:"يؤمن بـ", nl:"geloven in", fr:"croire en"},
+        {id:109, cat:'social', ar:"يشك / يتردد", nl:"twijfelen", fr:"douter / hésiter"},
+        {id:110, cat:'social', ar:"يأمل", nl:"hopen", fr:"espérer"},
+        {id:111, cat:'social', ar:"يتوقع", nl:"verwachten", fr:"s’attendre à / prévoir"},
+        {id:112, cat:'social', ar:"يفتقد", nl:"missen", fr:"manquer à / regretter l’absence de"},
+        {id:113, cat:'social', ar:"يحب", nl:"houden van", fr:"aimer"},
+        {id:114, cat:'social', ar:"يستمتع", nl:"genieten", fr:"profiter / apprécier"},
+        {id:115, cat:'social', ar:"يشعر", nl:"voelen", fr:"sentir / ressentir"},
+        {id:116, cat:'social', ar:"يضحك", nl:"lachen", fr:"rire"},
+        {id:117, cat:'social', ar:"يبكي", nl:"huilen", fr:"pleurer"},
+        {id:118, cat:'social', ar:"يبتسم", nl:"glimlachen", fr:"sourire"},
+        {id:119, cat:'social', ar:"يشرح / يصرح", nl:"verklaren", fr:"expliquer / déclarer"},
+        {id:120, cat:'social', ar:"يترجم", nl:"vertalen", fr:"traduire"},
+        {id:121, cat:'social', ar:"يلاحظ", nl:"opmerken", fr:"remarquer"},
+        {id:122, cat:'social', ar:"يفهم", nl:"begrijpen", fr:"comprendre"},
+        {id:123, cat:'social', ar:"يتذكر / يحفظ", nl:"onthouden", fr:"retenir / mémoriser"},
+        {id:124, cat:'social', ar:"يتعرف على / يميّز", nl:"herkennen", fr:"reconnaître"},
+        {id:125, cat:'social', ar:"يخلط / يربك", nl:"verwarren", fr:"confondre / embrouiller"},
+        {id:126, cat:'social', ar:"يشير إلى / يحيل إلى", nl:"verwijzen", fr:"renvoyer à / faire référence à"},
+        {id:127, cat:'social', ar:"يذكر", nl:"vermelden", fr:"mentionner"},
+        {id:128, cat:'social', ar:"يبلغ / يسجل", nl:"melden", fr:"signaler / déclarer"},
+        {id:129, cat:'social', ar:"يحذر", nl:"waarschuwen", fr:"avertir / prévenir"},
+        {id:130, cat:'social', ar:"ينصح", nl:"adviseren", fr:"conseiller"},
+        {id:131, cat:'social', ar:"ينصح بـ", nl:"aanraden", fr:"recommander"},
+        {id:132, cat:'social', ar:"يوازن / يدرس الخيارات", nl:"afwegen", fr:"peser / évaluer"},
+        {id:133, cat:'social', ar:"يفكر", nl:"nadenken", fr:"réfléchir"},
+        {id:134, cat:'social', ar:"يعيد التفكير", nl:"heroverwegen", fr:"reconsidérer"},
+        {id:135, cat:'social', ar:"ينظف", nl:"schoonmaken", fr:"nettoyer"},
+        {id:136, cat:'tech', ar:"يغسل", nl:"wassen", fr:"laver"},
+        {id:137, cat:'tech', ar:"يكوي", nl:"strijken", fr:"repasser"},
+        {id:138, cat:'tech', ar:"يكنس بالمكنسة الكهربائية", nl:"stofzuigen", fr:"passer l’aspirateur"},
+        {id:139, cat:'tech', ar:"يصلح", nl:"repareren", fr:"réparer"},
+        {id:140, cat:'tech', ar:"يبني", nl:"bouwen", fr:"construire"},
+        {id:141, cat:'tech', ar:"يؤثث / يرتب", nl:"inrichten", fr:"aménager / meubler"},
+        {id:142, cat:'tech', ar:"يدفئ", nl:"verwarmen", fr:"chauffer"},
+        {id:143, cat:'tech', ar:"يبرّد", nl:"afkoelen", fr:"refroidir"},
+        {id:144, cat:'tech', ar:"يشحن", nl:"opladen", fr:"recharger"},
+        {id:145, cat:'tech', ar:"ينزّل ملفًا", nl:"downloaden", fr:"télécharger"},
+        {id:146, cat:'tech', ar:"يرفع ملفًا", nl:"uploaden", fr:"téléverser / mettre en ligne"},
+        {id:147, cat:'tech', ar:"يطبع", nl:"afdrukken", fr:"imprimer"},
+        {id:148, cat:'tech', ar:"يحفظ ملفًا", nl:"opslaan", fr:"enregistrer / sauvegarder"},
+        {id:149, cat:'tech', ar:"يحذف / يزيل", nl:"verwijderen", fr:"supprimer / enlever"},
+        {id:150, cat:'tech', ar:"يثبت / ينصّب", nl:"installeren", fr:"installer"},
+        {id:151, cat:'tech', ar:"يستريح", nl:"rusten", fr:"se reposer"},
+        {id:152, cat:'tech', ar:"يهتم", nl:"zorgen", fr:"prendre soin / s’occuper"},
+        {id:153, cat:'tech', ar:"يقدّم الطعام", nl:"serveren", fr:"servir"},
+        {id:154, cat:'tech', ar:"يطبخ لـ", nl:"koken voor", fr:"cuisiner pour"},
+        {id:155, cat:'tech', ar:"يفوز على", nl:"winnen van", fr:"gagner contre"},
+        {id:156, cat:'tech', ar:"يمتص / يكنس", nl:"zuigen", fr:"aspirer / sucer"},
+        {id:157, cat:'tech', ar:"يلوّح", nl:"zwaaien", fr:"faire signe / saluer de la main"},
+        {id:158, cat:'tech', ar:"يتعرق", nl:"zweten", fr:"transpirer"},
+        {id:159, cat:'tech', ar:"يلتزم الصمت", nl:"zwijgen", fr:"se taire"},
+        {id:160, cat:'tech', ar:"يعيد شيئًا", nl:"teruggeven", fr:"rendre / restituer"},
+        {id:161, cat:'tech', ar:"يعثر عليه مجددًا", nl:"terugvinden", fr:"retrouver"},
+        {id:162, cat:'tech', ar:"يغادر من", nl:"vertrekken uit", fr:"partir de / quitter"}
+    ];
+
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('searchInput');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    let currentCat = 'all';
+    let searchTerm = '';
+
+    function speak(text, lang) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    function render() {
+        grid.innerHTML = '';
+        const filtered = verbs.filter(v => {
+            const matchesCat = currentCat === 'all' || v.cat === currentCat;
+            const matchesSearch = v.ar.includes(searchTerm) || 
+                                  v.nl.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                                  v.fr.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchesCat && matchesSearch;
+        });
+
+        filtered.forEach(v => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="num">#${v.id}</span>
+                    <span class="ar-title">${v.ar}</span>
+                </div>
+                <div class="lang-row nl">
+                    <span>🇳🇱 ${v.nl}</span>
+                    <button class="audio-btn" onclick="speak('${v.nl.replace(/'/g, "\\'")}', 'nl-NL')" title="Nl Pronunciation">🔊</button>
+                </div>
+                <div class="lang-row fr">
+                    <span>🇫🇷 ${v.fr}</span>
+                    <button class="audio-btn" onclick="speak('${v.fr.replace(/'/g, "\\'")}', 'fr-FR')" title="Fr Pronunciation">🔊</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        render();
+    });
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCat = btn.dataset.cat;
+            render();
+        });
+    });
+
+    render();
+</script>
+</body>
+</html>
