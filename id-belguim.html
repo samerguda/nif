@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض ID belguim </title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #16a34a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: 450px 1fr;
+            }
+        }
+
+        .image-card, .data-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .image-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .image-card h2, .data-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            width: 100%;
+        }
+
+        .doc-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            object-fit: contain;
+        }
+
+        .data-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .data-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            padding: 12px;
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .data-item:hover {
+            background-color: #e2e8f0;
+        }
+
+        .data-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .data-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .data-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            word-break: break-all;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .data-value.rtl-text {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .data-translation {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success-color);
+        }
+
+        .mrz-box {
+            font-family: monospace;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #0f172a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>بيانات وثيقة الإقامة البلجيكية</h1>
+    </div>
+
+    <div class="container">
+        <!-- قسم عرض الصورة -->
+        <div class="image-card">
+            <h2>صورة الوثيقة</h2>
+            <img src="image.png" alt="وثيقة الإقامة" class="doc-image" id="docImage">
+        </div>
+
+        <!-- قسم عرض البيانات والترجمة -->
+        <div class="data-card">
+            <h2>البيانات المستخرجة والترجمة</h2>
+            <div class="data-grid">
+
+                <!-- 1 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">1. نوع الوثيقة (Type)</span>
+                        <span class="data-value" id="val-1">AI</span>
+                        <span class="data-translation">الترجمة: نوع الوثيقة / الإقامة</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-1', this)">نسخ</button>
+                </div>
+
+                <!-- 2 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">2. بلد الإصدار (Issuing country)</span>
+                        <span class="data-value" id="val-2">BEL</span>
+                        <span class="data-translation">الترجمة: بلجيكا</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-2', this)">نسخ</button>
+                </div>
+
+                <!-- 3 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">3. رقم الوثيقة (Document number)</span>
+                        <span class="data-value" id="val-3">AI26A1067</span>
+                        <span class="data-translation">الترجمة: رقم الوثيقة</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-3', this)">نسخ</button>
+                </div>
+
+                <!-- 4 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">4. اللقب / اسم العائلة (Surname)</span>
+                        <span class="data-value" id="val-4">Alsaadni</span>
+                        <span class="data-translation">الترجمة: السعدني</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-4', this)">نسخ</button>
+                </div>
+
+                <!-- 5 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">5. الأسماء الشخصية (Forename)</span>
+                        <span class="data-value" id="val-5">Samer Guda N</span>
+                        <span class="data-translation">الترجمة: سامر جودة ن</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-5', this)">نسخ</button>
+                </div>
+
+                <!-- 6 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">6. الجنسية (Nationality)</span>
+                        <span class="data-value" id="val-6">EGY</span>
+                        <span class="data-translation">الترجمة: مصري (مصر)</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-6', this)">نسخ</button>
+                </div>
+
+                <!-- 7 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">7. تاريخ الميلاد (Date of birth)</span>
+                        <span class="data-value" id="val-7">07 07 1981</span>
+                        <span class="data-translation">الترجمة: 07 يوليو 1981</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-7', this)">نسخ</button>
+                </div>
+
+                <!-- 8 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">8. الرقم الوطني (National Register ID)</span>
+                        <span class="data-value" id="val-8">81.07.07-723.41</span>
+                        <span class="data-translation">الترجمة: رقم السجل الوطني البلجيكي</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-8', this)">نسخ</button>
+                </div>
+
+                <!-- 9 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">9. الجنس (Sex)</span>
+                        <span class="data-value" id="val-9">M/M</span>
+                        <span class="data-translation">الترجمة: ذكر</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-9', this)">نسخ</button>
+                </div>
+
+                <!-- 10 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">10. مكان الميلاد (Place of birth)</span>
+                        <span class="data-value" id="val-10">Gharbia</span>
+                        <span class="data-translation">الترجمة: الغربية</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-10', this)">نسخ</button>
+                </div>
+
+                <!-- 11 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">11. تاريخ الإصدار (Date of issue)</span>
+                        <span class="data-value" id="val-11">06 10 2026</span>
+                        <span class="data-translation">الترجمة: 06 أكتوبر 2026</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-11', this)">نسخ</button>
+                </div>
+
+                <!-- 12 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">12. الجهة المصدرة (Issuing authority)</span>
+                        <span class="data-value" id="val-12">Harelbeke</span>
+                        <span class="data-translation">الترجمة: بلدية هاريلبيك</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-12', this)">نسخ</button>
+                </div>
+
+                <!-- 13 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">13. تاريخ الانتهاء (Expiry date)</span>
+                        <span class="data-value" id="val-13">21 03 2027</span>
+                        <span class="data-translation">الترجمة: 21 مارس 2027</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-13', this)">نسخ</button>
+                </div>
+
+                <!-- 15 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">15. سوق العمل (Access to labour market)</span>
+                        <span class="data-value" id="val-15">Onbeperkt</span>
+                        <span class="data-translation">الترجمة: غير محدود (تصريح عمل مفتوح)</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-15', this)">نسخ</button>
+                </div>
+
+                <!-- 16 -->
+                <div class="data-item">
+                    <div class="data-info">
+                        <span class="data-label">16. سبب الإصدار (Reason for issue)</span>
+                        <span class="data-value" id="val-16">GH met Belg</span>
+                        <span class="data-translation">الترجمة: إقامة / لم شمل أسري مع مواطن بلجيكي</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('val-16', this)">نسخ</button>
+                </div>
+
+                <!-- MRZ -->
+                <div class="data-item" style="grid-template-columns: 1fr;">
+                    <div class="data-info">
+                        <span class="data-label">السطر الآلي المقروء (MRZ Zone)</span>
+                        <div class="mrz-box" id="val-mrz">AIBELALSAADNI<<SAMER<GUDA<N<<<<<<<<<<<<br>AI26A10674EGY8107075M2703213<<<<<<<6</div>
+                    </div>
+                    <button class="copy-btn" style="margin-top: 8px; width: fit-content;" onclick="copyText('val-mrz', this)">نسخ كود MRZ</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">تم النسخ بنجاح!</div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const element = document.getElementById(elementId);
+            let textToCopy = element.innerText || element.textContent;
+            
+            // تنظيف النص في حال كان كود MRZ يحتوي على أسطر جديدة
+            textToCopy = textToCopy.replace(/\n/g, '\n');
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'تم النسخ ✓';
+                btn.classList.add('copied');
+
+                showToast('تم نسخ: ' + textToCopy.split('\n')[0]);
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
+```eof
+
+تم إنشاء كود الـ HTML المطلوب بملف كامل ومصمم بشكل عصري ومتجاوب، ويشتمل على:
+1. **عرض الصورة:** مكان مخصص لإظهار الصورة بشكل متناسق مع باقي البيانات.
+2. **البيانات والترجمة:** جميع الحقول مجهزة مع الترجمة العربية لكل عنصر.
+3. **أزرار النسخ:** زر نسخ مخصص لكل معلومة، يعمل فورياً بمجرد الضغط عليه مع إظهار إشعار تأكيد النسخ.
