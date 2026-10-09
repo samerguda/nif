@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVO 9 November تفاصيل الكورس - Waystage Mondeling + Schriftelijk</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #933A19;
+            --primary-light: #fdf8f5;
+            --secondary-color: #2c3e50;
+            --text-color: #333333;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --border-color: #eef1f4;
+            --accent-color: #d97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 650px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            background-color: var(--primary-light);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f3e5dc;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            background: linear-gradient(135deg, var(--primary-color), #b84a21);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .countdown-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            direction: ltr; /* Keeping numbers LTR for correct order */
+        }
+
+        .timer-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 14px;
+            border-radius: 8px;
+            min-width: 70px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timer-box .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .timer-box .label {
+            font-size: 0.75rem;
+            margin-top: 5px;
+            opacity: 0.9;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* Details Section */
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .details-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .details-table td {
+            padding: 14px 20px;
+            font-size: 0.95rem;
+        }
+
+        .label-col {
+            font-weight: 700;
+            color: var(--secondary-color);
+            width: 35%;
+            background-color: #fafbfc;
+        }
+
+        .value-col {
+            color: #444;
+            width: 65%;
+            line-height: 1.5;
+        }
+
+        .sub-text {
+            display: block;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .badge {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            .timer-box {
+                min-width: 55px;
+                padding: 8px 10px;
+            }
+            .timer-box .number {
+                font-size: 1.2rem;
+            }
+            .details-table td {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>Waystage Mondeling + Schriftelijk</h1>
+        <p>4x per week (أربع مرات في الأسبوع)</p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-section">
+        <h3>الوقت المتبقي لبدء الكورس</h3>
+        <div class="timer-grid">
+            <div class="timer-box">
+                <span class="number" id="days">00</span>
+                <span class="label">أيام</span>
+            </div>
+            <div class="timer-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">ساعات</span>
+            </div>
+            <div class="timer-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">دقائق</span>
+            </div>
+            <div class="timer-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">ثواني</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Details Table -->
+    <table class="details-table">
+        <tr>
+            <td class="label-col">الشهر (Maand)</td>
+            <td class="value-col">نوفمبر (november)</td>
+        </tr>
+        <tr>
+            <td class="label-col">تاريخ البدء (Start)</td>
+            <td class="value-col">9 نوفمبر 2026 (9 november 2026)</td>
+        </tr>
+        <tr>
+            <td class="label-col">تاريخ الانتهاء (Einde)</td>
+            <td class="value-col">15 يناير 2027 (15 januari 2027)</td>
+        </tr>
+        <tr>
+            <td class="label-col">العنوان (Adres)</td>
+            <td class="value-col">Arendsstraat 62, Harelbeke</td>
+        </tr>
+        <tr>
+            <td class="label-col">أيام الدراسة (Lesdagen)</td>
+            <td class="value-col">
+                الإثنين + الثلاثاء + الخميس + الجمعة<br>
+                <small style="color:#666;">(Maandag + dinsdag + donderdag + vrijdag)</small>
+            </td>
+        </tr>
+        <tr>
+            <td class="label-col">ساعات الدراسة (Lesuren)</td>
+            <td class="value-col">من 8:40 صباحاً حتى 12:00 ظهراً <small>(8.40 uur – 12 uur)</small></td>
+        </tr>
+        <tr>
+            <td class="label-col">القاعة (Leslokaal)</td>
+            <td class="value-col"><span class="badge">47 A</span></td>
+        </tr>
+        <tr>
+            <td class="label-col">إجمالي الساعات (Lestijden)</td>
+            <td class="value-col">120 ساعة</td>
+        </tr>
+        <tr>
+            <td class="label-col">رسوم التسجيل (Inschrijvingsgeld)</td>
+            <td class="value-col">
+                <strong>€ 180,00</strong>
+                <span class="sub-text">• إعفاء جزئي: € 36,00 (gedeeltelijke vrijstelling)</span>
+                <span class="sub-text">• إعفاء كامل: € 0,00 (volledige vrijstelling)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="label-col">المواد الدراسية (Cursusmateriaal)</td>
+            <td class="value-col"><strong>€ 43</strong></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    // Set course start date: November 9, 2026 08:40:00
+    const startDate = new Date("November 9, 2026 08:40:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = startDate - now;
+
+        if (distance < 0) {
+            document.querySelector(".countdown-section").innerHTML = "<h3>قد بدأ الكورس بالفعل!</h3>";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Initial call & interval setup
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
