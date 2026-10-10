@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> moni behave </title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .content-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            white-space: pre-line; /* للحفاظ على تنسيق الأسطر */
+        }
+        .copy-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        .copy-btn.success {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>قائمة الحالات</h2>
+    
+    <!-- النص المطلوب عرضه ونسخه -->
+    <div class="content-box" id="infoText">١- قلب الوش و التعب النفسي و الهرمون ثم سكوتي 
+٢- التعب النفسي عدم عمل اي اكل و الصراخ الدائم على اي حد في الكلام 
+٣- القاء التهم الدائم</div>
+
+    <!-- زر النسخ -->
+    <button class="copy-btn" onclick="copyContent()">نسخ المعلومات</button>
+</div>
+
+<script>
+    function copyContent() {
+        const textElement = document.getElementById("infoText");
+        const button = document.querySelector(".copy-btn");
+        
+        // استخدام Clipboard API الحديث لنسخ النص
+        navigator.clipboard.writeText(textElement.innerText).then(() => {
+            // تغيير شكل الزر مؤقتاً لتأكيد النسخ
+            const originalText = button.innerText;
+            button.innerText = "تم النسخ بنجاح! ✓";
+            button.classList.add("success");
+            
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.classList.remove("success");
+            }, 2000);
+        }).catch(err => {
+            console.error("فشل النسخ: ", err);
+            alert("عذراً، لم يتم النسخ. حاول مرة أخرى.");
+        });
+    }
+</script>
+
+</body>
+</html>
