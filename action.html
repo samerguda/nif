@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حالة متجر Action - هارييلبيك</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .clock-section {
+            background: #0f172a;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        #live-date {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        #live-time {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        .status-box {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .status-open {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border-right: 5px solid #34d399;
+        }
+
+        .status-closed {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border-right: 5px solid #ef4444;
+        }
+
+        .details {
+            padding: 20px;
+        }
+
+        .details h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        .hours-list {
+            list-style: none;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .address {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <h2>Action Harelbeke</h2>
+            <p>متابعة الوقت وحالة المتجر المباشرة</p>
+        </div>
+
+        <div class="clock-section">
+            <div id="live-date">-- الجاري تحميل التاريخ --</div>
+            <div id="live-time">00:00:00</div>
+        </div>
+
+        <div id="status-container" class="status-box status-closed">
+            <span id="status-text">جاري التحقق...</span>
+            <span id="status-indicator">●</span>
+        </div>
+
+        <div class="details">
+            <h3>ساعات العمل الرسمية[span_3](start_span)[span_3](end_span):</h3>
+            <ul class="hours-list">
+                <li><span>الإثنين - السبت:</span> <span>09:00 ص – 06:30 م</span>[span_4](start_span)[span_4](end_span)</li>
+                <li><span>الأحد:</span> <span style="color: #f87171;">مغلق</span>[span_5](start_span)[span_5](end_span)</li>
+            </ul>
+            <div class="address">
+                📍 Gentsesteenweg 106/D, 8530 Harelbeke, Belgium[span_6](start_span)[span_6](end_span)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateClockAndStatus() {
+            const now = new Date();
+
+            // تحديث الوقت والتاريخ (بتوقيت الجهاز المحلي)
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('live-date').innerText = now.toLocaleDateString('ar-BE', optionsDate);
+            document.getElementById('live-time').innerText = now.toLocaleTimeString('ar-BE');
+
+            // حساب حالة المتجر (أيام العمل من الإثنين للسبت، من 9:00 إلى 18:30)
+            const day = now.getDay(); // 0 = الأحد, 1 = الإثنين, ... 6 = السبت
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTimeMinutes = hours * 60 + minutes;
+
+            // 9:00 ص = 9 * 60 = 540 دقيقة
+            // 6:30 م = 18 * 60 + 30 = 1110 دقيقة
+            const openingTime = 9 * 60;
+            const closingTime = 18 * 60 + 30;
+
+            const statusContainer = document.getElementById('status-container');
+            const statusText = document.getElementById('status-text');
+
+            // الأحد (0) مغلق تماماً، وباقي الأيام حسب الفترة الزمنية
+            if (day !== 0 && currentTimeMinutes >= openingTime && currentTimeMinutes < closingTime) {
+                statusContainer.className = 'status-box status-open';
+                statusText.innerText = 'المتجر مفتوح حالياً';
+            } else {
+                statusContainer.className = 'status-box status-closed';
+                statusText.innerText = 'المتجر مغلق حالياً';
+            }
+        }
+
+        // تحديث كل ثانية
+        setInterval(updateClockAndStatus, 1000);
+        updateClockAndStatus();
+    </script>
+
+</body>
+</html>
