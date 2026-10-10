@@ -3,251 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Action Harelbeke - Google Maps Style</title>
-    <!-- Google Fonts & Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    
+    <title>Action Harelbeke - Store Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
         body {
-            background-color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 16px;
-        }
-
-        /* Container matching Google Maps Place Sheet */
-        .place-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 28px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* Header Handle Bar */
-        .handle-bar {
-            width: 36px;
-            height: 4px;
-            background-color: #cbd5e1;
-            border-radius: 2px;
-            margin: 10px auto 14px;
-        }
-
-        /* Title & Top Bar */
-        .header-content {
-            padding: 0 20px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .place-title {
-            font-size: 24px;
-            font-weight: 500;
-            color: #1e293b;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .icon-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            cursor: pointer;
+        }
+        /* Custom scrollbar styling for tabs and bottom actions */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom pulse animation for live indicator */
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.6; }
+        }
+        .animate-pulse-dot {
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-2 sm:p-4 md:p-6 text-slate-800">
+
+    <div class="w-full max-w-[420px] bg-white rounded-[28px] shadow-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+        
+        <!-- Handle Bar (Google Maps Sheet Style) -->
+        <div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mt-3 mb-2"></div>
+
+        <div class="px-5 pt-1 pb-3 flex items-center justify-between">
+            <h1 class="text-[26px] font-semibold tracking-tight text-slate-900 leading-tight">Action Harelbeke</h1>
+            <div class="flex items-center gap-1.5">
+                <button id="btn-bookmark" onclick="toggleBookmark()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 active:scale-95 flex items-center justify-center text-slate-700 transition" title="Save">
+                    <i id="icon-bookmark" class="fa-regular fa-bookmark text-base"></i>
+                </button>
+                <button onclick="shareStore()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 active:scale-95 flex items-center justify-center text-slate-700 transition" title="Share">
+                    <i class="fa-solid fa-arrow-up-from-bracket text-sm"></i>
+                </button>
+                <button onclick="closeCard()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 active:scale-95 flex items-center justify-center text-slate-700 transition" title="Close">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6 px-5 border-b border-slate-200 overflow-x-auto no-scrollbar text-sm font-medium">
+            <button onclick="selectTab(this, 'overview')" class="tab-btn pb-3 text-teal-700 border-b-2 border-teal-600 font-semibold whitespace-nowrap">Overview</button>
+            <button onclick="selectTab(this, 'reviews')" class="tab-btn pb-3 text-slate-500 hover:text-slate-800 whitespace-nowrap transition">Reviews</button>
+            <button onclick="selectTab(this, 'photos')" class="tab-btn pb-3 text-slate-500 hover:text-slate-800 whitespace-nowrap transition">Photos</button>
+            <button onclick="selectTab(this, 'updates')" class="tab-btn pb-3 text-slate-500 hover:text-slate-800 whitespace-nowrap transition">Updates</button>
+            <button onclick="selectTab(this, 'about')" class="tab-btn pb-3 text-slate-500 hover:text-slate-800 whitespace-nowrap transition">About</button>
+        </div>
+
+        <div class="bg-slate-900 text-white px-5 py-3 flex items-center justify-between border-b border-slate-800 shadow-inner">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse-dot"></span>
+                <span class="text-xs font-medium tracking-wide text-slate-300 uppercase">Live Local Time</span>
+            </div>
+            <div class="text-right">
+                <div id="live-time" class="text-lg font-bold font-mono tracking-wider text-sky-400">00:00:00</div>
+                <div id="live-date" class="text-[11px] text-slate-400 font-medium">Loading Date...</div>
+            </div>
+        </div>
+
+        <div id="tab-overview" class="p-4 space-y-4">
+            
+            <!-- Know Before You Go Card -->
+            <div class="bg-[#f0f3ff] rounded-2xl p-4 transition-all duration-200 hover:shadow-md">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-blue-600 text-base"></i>
+                        <span class="font-bold text-slate-900 text-base">Know before you go</span>
+                        <span class="bg-emerald-200 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-md">New!</span>
+                    </div>
+                    <div class="flex items-center -space-x-1.5 overflow-hidden">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="user">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="user">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="user">
+                        <span class="text-xs font-semibold text-slate-600 pl-2">+2</span>
+                    </div>
+                </div>
+
+                <ul class="space-y-3 text-[13.5px] text-slate-700 leading-relaxed">
+                    <li class="flex items-center justify-between gap-2 group cursor-pointer" onclick="showToast('Review Highlight: Clean & Tidy')">
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>People say the store is clean and tidy with a wide selection of inexpensive goods</span>
+                        </div>
+                        <button class="w-7 h-7 rounded-full bg-indigo-100 group-hover:bg-indigo-200 flex items-center justify-center text-indigo-700 flex-shrink-0 transition">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </li>
+                    <li class="flex items-center justify-between gap-2 group cursor-pointer" onclick="showToast('Review Highlight: Affordable Inventory')">
+                        <div class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>Visitors highlight the constantly changing inventory of affordable household items</span>
+                        </div>
+                        <button class="w-7 h-7 rounded-full bg-indigo-100 group-hover:bg-indigo-200 flex items-center justify-center text-indigo-700 flex-shrink-0 transition">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-4 transition-all duration-200 border border-slate-100">
+                <div onclick="toggleHoursList()" class="flex items-center justify-between cursor-pointer select-none">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-regular fa-clock text-slate-700 text-lg"></i>
+                        <div class="flex items-center gap-2">
+                            <span id="store-status-text" class="font-bold text-base text-rose-600">Closed</span>
+                            <span id="next-change-time" class="text-xs text-slate-500 font-medium"></span>
+                        </div>
+                    </div>
+                    <button class="w-7 h-7 rounded-full hover:bg-slate-200/60 flex items-center justify-center text-slate-600 transition">
+                        <i id="hours-arrow" class="fa-solid fa-chevron-up text-sm transition-transform duration-300"></i>
+                    </button>
+                </div>
+
+                <!-- Hours List -->
+                <div id="hours-container" class="mt-4 pt-3 border-t border-slate-200/60 space-y-2 text-sm text-slate-700">
+                    <div id="day-6" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Saturday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+                    <div id="day-0" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Sunday</span>
+                        <span class="font-semibold text-rose-600">Closed</span>
+                    </div>
+                    <div id="day-1" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Monday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+                    <div id="day-2" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Tuesday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+                    <div id="day-3" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Wednesday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+                    <div id="day-4" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Thursday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+                    <div id="day-5" class="hours-row flex justify-between py-1 px-2 rounded-lg transition-colors">
+                        <span class="font-medium">Friday</span>
+                        <span class="font-semibold text-slate-900">9 AM–6:30 PM</span>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="showToast('Suggest new hours feature selected')" class="text-teal-700 hover:text-teal-800 font-medium text-xs hover:underline">
+                            Suggest new hours
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-4 flex items-center justify-between gap-3 border border-slate-100 hover:bg-slate-100/80 transition cursor-pointer" onclick="copyAddress()">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-location-dot text-slate-700 text-lg mt-0.5"></i>
+                    <p class="text-sm font-medium text-slate-700 leading-snug">
+                        Gentsesteenweg 106/D, 8530 Harelbeke, Belgium
+                    </p>
+                </div>
+                <button onclick="event.stopPropagation(); speakAddress()" class="w-9 h-9 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-600 transition flex-shrink-0" title="Listen address">
+                    <i id="speaker-icon" class="fa-solid fa-volume-high text-sm"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Alternate Dynamic Tabs Content -->
+        <div id="tab-reviews" class="hidden p-5 text-center text-slate-500 text-sm">
+            <i class="fa-solid fa-star text-amber-400 text-3xl mb-2"></i>
+            <p class="font-semibold text-slate-800">4.3 ★ (1,240+ Reviews)</p>
+            <p class="text-xs mt-1 text-slate-500">Visitors love the low prices, household goods & quick service.</p>
+        </div>
+
+        <div id="tab-photos" class="hidden p-5 text-center text-slate-500 text-sm">
+            <i class="fa-solid fa-image text-slate-400 text-3xl mb-2"></i>
+            <p class="font-medium text-slate-700">Photos & Store Aisles</p>
+            <p class="text-xs mt-1 text-slate-400">Over 150 customer uploaded photos available.</p>
+        </div>
+
+        <div id="tab-updates" class="hidden p-5 text-center text-slate-500 text-sm">
+            <i class="fa-solid fa-newspaper text-slate-400 text-3xl mb-2"></i>
+            <p class="font-medium text-slate-700">Latest Weekly Promotions</p>
+            <p class="text-xs mt-1 text-slate-400">Fresh stock discount items updated every Wednesday!</p>
+        </div>
+
+        <div id="tab-about" class="hidden p-5 text-center text-slate-500 text-sm">
+            <i class="fa-solid fa-circle-info text-slate-400 text-3xl mb-2"></i>
+            <p class="font-medium text-slate-700">About Action Harelbeke</p>
+            <p class="text-xs mt-1 text-slate-400">Non-food discount department store chain.</p>
+        </div>
+
+        <div class="px-5 py-4 border-t border-slate-100 flex items-center gap-2.5 overflow-x-auto no-scrollbar">
+            <button onclick="getDirections()" class="flex items-center justify-center w-11 h-11 bg-teal-600 hover:bg-teal-700 active:scale-95 text-white rounded-full flex-shrink-0 shadow-md transition" title="Get Directions">
+                <i class="fa-solid fa-diamond-turn-right text-lg"></i>
+            </button>
+            <button onclick="startNavigation()" class="flex items-center justify-center w-11 h-11 bg-teal-50 hover:bg-teal-100 active:scale-95 text-teal-700 rounded-full flex-shrink-0 transition" title="Start Route">
+                <i class="fa-solid fa-location-arrow text-base"></i>
+            </button>
+            <button onclick="callStore()" class="flex items-center gap-2 px-4 py-2.5 bg-teal-50 hover:bg-teal-100 active:scale-95 text-teal-700 font-medium text-sm rounded-full flex-shrink-0 transition">
+                <i class="fa-solid fa-phone text-xs"></i>
+                <span>Call</span>
+            </button>
+            <button onclick="shareStore()" class="flex items-center gap-2 px-4 py-2.5 bg-teal-50 hover:bg-teal-100 active:scale-95 text-teal-700 font-medium text-sm rounded-full flex-shrink-0 transition">
+                <i class="fa-solid fa-arrow-up-from-bracket text-xs"></i>
+                <span>Share</span>
+            </button>
+            <button onclick="openWebsite()" class="flex items-center gap-2 px-4 py-2.5 bg-teal-50 hover:bg-teal-100 active:scale-95 text-teal-700 font-medium text-sm rounded-full flex-shrink-0 transition">
+                <i class="fa-solid fa-globe text-xs"></i>
+                <span>Website</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/90 backdrop-blur text-white px-5 py-2.5 rounded-full text-xs font-medium shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-3 z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-info text-teal-400"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
+    <script>
+        let isBookmarked = false;
+        let isHoursExpanded = true;
+
+        function updateClockAndStoreStatus() {
+            const now = new Date();
+
+            // Format Live Time
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('live-time').innerText = `${hours}:${minutes}:${seconds}`;
+
+            // Format Live Date
+            const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            document.getElementById('live-date').innerText = now.toLocaleDateString('en-US', dateOptions);
+
+            // Store status calculation
+            // Opening schedule: Mon-Sat 9 AM - 6:30 PM (9:00 -> 18:30). Sunday: Closed.
+            const dayOfWeek = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+            const currentMinuteOfDay = (now.getHours() * 60) + now.getMinutes();
+
+            const openMinute = 9 * 60; // 09:00 AM = 540 mins
+            const closeMinute = (18 * 60) + 30; // 06:30 PM = 1110 mins
+
+            const statusTextEl = document.getElementById('store-status-text');
+            const nextChangeEl = document.getElementById('next-change-time');
+
+            // Highlight Today's Row in Schedule Table
+            document.querySelectorAll('.hours-row').forEach(row => {
+                row.classList.remove('bg-teal-100/60', 'border-l-4', 'border-teal-600', 'pl-3');
+            });
+            const activeTodayRow = document.getElementById(`day-${dayOfWeek}`);
+            if (activeTodayRow) {
+                activeTodayRow.classList.add('bg-teal-100/60', 'border-l-4', 'border-teal-600', 'pl-3');
+            }
+
+            // Determine Status
+            if (dayOfWeek === 0) {
+                // Sunday
+                statusTextEl.innerText = 'Closed';
+                statusTextEl.className = 'font-bold text-base text-rose-600';
+                nextChangeEl.innerText = '• Opens Mon 9 AM';
+            } else {
+                // Monday - Saturday
+                if (currentMinuteOfDay >= openMinute && currentMinuteOfDay < closeMinute) {
+                    statusTextEl.innerText = 'Open';
+                    statusTextEl.className = 'font-bold text-base text-emerald-600';
+                    nextChangeEl.innerText = '• Closes 6:30 PM';
+                } else if (currentMinuteOfDay < openMinute) {
+                    statusTextEl.innerText = 'Closed';
+                    statusTextEl.className = 'font-bold text-base text-rose-600';
+                    nextChangeEl.innerText = '• Opens 9 AM';
+                } else {
+                    statusTextEl.innerText = 'Closed';
+                    statusTextEl.className = 'font-bold text-base text-rose-600';
+                    nextChangeEl.innerText = dayOfWeek === 6 ? '• Opens Mon 9 AM' : '• Opens tomorrow 9 AM';
+                }
+            }
         }
 
-        /* Navigation Tabs */
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0 20px;
-            gap: 24px;
+        function toggleHoursList() {
+            const container = document.getElementById('hours-container');
+            const arrow = document.getElementById('hours-arrow');
+            isHoursExpanded = !isHoursExpanded;
+
+            if (isHoursExpanded) {
+                container.style.display = 'block';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                container.style.display = 'none';
+                arrow.style.transform = 'rotate(180deg)';
+            }
         }
 
-        .tab {
-            padding-bottom: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #64748b;
-            cursor: pointer;
-            position: relative;
+        function selectTab(buttonEl, tabName) {
+            // Update active tab styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn pb-3 text-slate-500 hover:text-slate-800 whitespace-nowrap transition';
+            });
+            buttonEl.className = 'tab-btn pb-3 text-teal-700 border-b-2 border-teal-600 font-semibold whitespace-nowrap';
+
+            // Show selected panel
+            const tabs = ['overview', 'reviews', 'photos', 'updates', 'about'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (el) {
+                    if (t === tabName) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
         }
 
-        .tab.active {
-            color: #0284c7;
+        function toggleBookmark() {
+            isBookmarked = !isBookmarked;
+            const icon = document.getElementById('icon-bookmark');
+            if (isBookmarked) {
+                icon.className = 'fa-solid fa-bookmark text-base text-teal-600';
+                showToast('Action Harelbeke saved to your places');
+            } else {
+                icon.className = 'fa-regular fa-bookmark text-base text-slate-700';
+                showToast('Removed from saved places');
+            }
         }
 
-        .tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: #0284c7;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
+        function copyAddress() {
+            const address = "Gentsesteenweg 106/D, 8530 Harelbeke, Belgium";
+            const tempInput = document.createElement("input");
+            tempInput.value = address;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast('Address copied to clipboard!');
         }
 
-        /* Dynamic Real-time Clock Banner */
-        .live-clock-banner {
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
+        function speakAddress() {
+            const speaker = document.getElementById('speaker-icon');
+            speaker.className = "fa-solid fa-volume-high text-sm text-teal-600 animate-pulse";
+            
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance("Gentsesteenweg 106 D, 8530 Harelbeke, Belgium");
+                utterance.lang = "en-US";
+                utterance.onend = () => {
+                    speaker.className = "fa-solid fa-volume-high text-sm";
+                };
+                window.speechSynthesis.speak(utterance);
+            } else {
+                setTimeout(() => {
+                    speaker.className = "fa-solid fa-volume-high text-sm";
+                }, 1500);
+            }
+            showToast('Playing address audio...');
         }
 
-        .clock-time {
-            font-family: monospace;
-            font-size: 16px;
-            font-weight: 700;
-            color: #38bdf8;
+        function getDirections() {
+            window.open('https://www.google.com/maps/dir/?api=1&destination=Gentsesteenweg+106/D,+8530+Harelbeke,+Belgium', '_blank');
         }
 
-        /* Main Scrollable Content Area */
-        .card-body {
-            padding: 16px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        function startNavigation() {
+            showToast('Starting GPS Navigation to Action Harelbeke...');
         }
 
-        /* Know before you go banner */
-        .info-box {
-            background-color: #f5f3ff;
-            border-radius: 16px;
-            padding: 16px;
+        function callStore() {
+            showToast('Calling Action Harelbeke store customer support...');
         }
 
-        .info-box-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
+        function shareStore() {
+            copyAddress();
         }
 
-        .badge-new {
-            background-color: #dcfce7;
-            color: #15803d;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 4px;
+        function openWebsite() {
+            window.open('https://www.action.com', '_blank');
         }
 
-        .avatars-group {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
+        function closeCard() {
+            showToast('Store details sheet closed');
         }
 
-        .avatar {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 2px solid #ffffff;
-            margin-left: -6px;
-            object-fit: cover;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+            }, 3000);
         }
 
-        .avatar-count {
-            font-size: 11px;
-            color: #475569;
-            margin-left: 4px;
-        }
-
-        .bullet-item {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 13.5px;
-            color: #334155;
-            line-height: 1.4;
-        }
-
-        .bullet-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .circle-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background-color: #e0e7ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #4338ca;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        /* Opening Hours Section */
-        .hours-card {
-            background-color: #f8fafc;
-            border-radius: 16px;
-            padding: 16px;
-        }
-
-        .hours-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .status-tag {
-            font-weight: 700;
-            font-size: 15px;
-        }
-
-        .status-tag.closed {
-            color: #dc2626;
-        }
-
-        .status-tag.open {
-            color: #16a34a;
-        }
-
-        .hours-list {
-            margin-top: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding-left: 36px;
-        }
-
-        .hours-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #334155;
-        }
-
-        .hours-row.today {
-            font-
+        // Initialize clock loop
+        setInterval(updateClockAndStoreStatus, 1000);
+        updateClockAndStoreStatus();
+    </script>
+</body>
+</html>
