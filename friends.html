@@ -93,7 +93,6 @@
             background-color: #006bde;
         }
         
-        /* تنبيه النجاح */
         #toast {
             visibility: hidden;
             min-width: 200px;
@@ -129,4 +128,164 @@
     <div class="container">
         <div class="header">
             <h2>قائمة الأصدقاء</h2>
-            <button class="btn-copy-all" onclick="copyAllNames()">📋 نسخ جميع الأسماء</button
+            <button class="btn-copy-all" onclick="copyAllNames()">📋 نسخ جميع الأسماء</button>
+        </div>
+
+        <ol class="friends-list" id="friendsList">
+            <li class="friend-item">
+                <span class="friend-name">1. رامز سامي (Ramez Sami)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">2. سعيد صبحي (Said sobhi)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">3. تامر صبحي (Tamer sobhi)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">4. تامر طلعت (Tamer talat)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">5. طارق السيد (Tarek al saied)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">6. أحمد محي</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">7. غمري</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">8. مصطفى عصام</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">9. عبد الله وفيق أبو المجد (Abd allah wafiq abo elmajd)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">10. عبد الله فاروق (Abdallah farouk)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">11. أحمد حلمي (Ahmed helmi)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">12. عمر الشافعي (Amr el shafei)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">13. عمرو هاشم (Amr hashem)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">14. بهاء البدوي (Bhaa el badwi)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">15. إيهاب مجدي (Ehab magdi)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">16. محمد ضاحي</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+            <li class="friend-item">
+                <span class="friend-name">17. محمد نعيم (Mohamed naiem)</span>
+                <div class="actions">
+                    <a href="https://wa.me/PHONE_NUMBER" class="btn btn-whatsapp" target="_blank">واتساب</a>
+                    <a href="https://m.me/USERNAME" class="btn btn-messenger" target="_blank">ماسينجر</a>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div id="toast">تم نسخ جميع الأسماء بنجاح! ✨</div>
+
+    <script>
+        function copyAllNames() {
+            const nameElements = document.querySelectorAll('.friend-name');
+            let namesText = '';
+            
+            nameElements.forEach((el) => {
+                namesText += el.innerText + '\n';
+            });
+
+            navigator.clipboard.writeText(namesText.trim()).then(() => {
+                showToast();
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = namesText.trim();
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast();
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
