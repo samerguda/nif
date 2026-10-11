@@ -3,142 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استفسار إثبات الدخل المالي</title>
+    <title>تعديلات قانون لم شمل الأسرة في بلجيكا</title>
     <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #3182ce;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --text-muted: #4a5568;
+            --border-color: #e2e8f0;
+            --danger-color: #c53030;
+            --danger-bg: #fff5f5;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
             margin: 0;
+            padding: 20px;
         }
-        .card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            max-width: 750px;
+
+        .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 25px;
-            border: 1px solid #e1e8ed;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+        }
+
         h2 {
-            color: #1a365d;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        ul {
-            list-style-type: none;
-            padding-right: 0;
-            padding-left: 0;
-        }
-        li {
-            background-color: #f8fafc;
-            margin-bottom: 10px;
-            padding: 12px 15px;
-            border-radius: 6px;
-            border-right: 4px solid #3182ce;
-        }
-        .section-title {
-            font-weight: bold;
-            color: #2b6cb0;
-        }
-        .box {
-            background-color: #edf2f7;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            position: relative;
-        }
-        .nl-box {
-            direction: ltr;
-            text-align: left;
-            border-left: 4px solid #38a169;
-        }
-        .ar-box {
-            direction: rtl;
-            text-align: right;
-            border-right: 4px solid #dd6b20;
-        }
-        .info-box {
-            background-color: #f8fafc;
-            border-radius: 8px;
-            padding: 15px;
+            color: var(--secondary-color);
+            margin-top: 40px;
             margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 12px;
         }
-        .copy-btn {
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 25px;
+        }
+
+        p, li {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-right: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
             font-weight: bold;
-            margin-top: 10px;
-            transition: background-color 0.2s;
-            display: inline-block;
+            color: var(--primary-color);
         }
-        .copy-btn:hover {
-            background-color: #2b6cb0;
+
+        .alert-box {
+            background-color: var(--danger-bg);
+            border-right: 4px solid var(--danger-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
-        .copied {
-            background-color: #38a169 !important;
+
+        .alert-box h3 {
+            color: var(--danger-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #edf2f7;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #ebf8ff;
+            border-radius: 8px;
+            border-right: 4px solid var(--accent-color);
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>المعلومات والشروط (Gegevens)</h2>
-    
-    <div class="info-box">
-        <div id="info-text">
-نوع الإقامة: تعايش مشترك مع مواطنة بلجيكية (Wettelijke samenwonen met een Belg)[span_0](start_span)[span_0](end_span)
-تركيبة العائلة: شخص بالغ واحد + 4 أطفال (1 volwassene + 4 kinderen)
-الدخل الحالي: 2200 يورو صافي شهرياً (€ 2.200 netto per maand)
-الشرط القانوني: ألا تقل وسائل كسب العيش عن 120% من حد الدعم المعيشي (Minimaal 120% van het leefloon)
-        </div>
-        <button class="copy-btn" onclick="copyToClipboard('info-text', this)">نسخ جميع المعلومات</button>
+<div class="container">
+    <h1>تعديلات قانون لم شمل الأسرة في بلجيكا</h1>
+
+    <!-- القسم الأول -->
+    <section>
+        <h2>1. الإطار الزمني للقانون</h2>
+        <ul>
+            <li><span class="highlight">تاريخ النشر:</span> 8 أغسطس 2025 في الجريدة الرسمية البلجيكية.</li>
+            <li><span class="highlight">تاريخ البدء والتنفيذ:</span> 18 أغسطس 2025.</li>
+        </ul>
+    </section>
+
+    <!-- القسم الثاني -->
+    <section>
+        <h2>2. الأحكام الانتقالية (تطبيق الأحكام القديمة)</h2>
+        <p>تستمر الأحكام المطبقة قبل 18 أغسطس 2025 (القديمة) في العمل ضمن الحالات التالية:</p>
+        <ul>
+            <li>الطلبات التي قُدمت قبل 18 أغسطس 2025 وظلت معلقة في ذلك التاريخ.</li>
+            <li>الطلبات المقدمة خلال الفترة من <span class="highlight">18 أغسطس 2025 حتى 18 أغسطس 2027</span>، بشرط أن يكون الشخص المُراد الانضمام إليه قد تم ترخيصه أو قبوله للإقامة في بلجيكا لأكثر من 3 أشهر <span class="highlight">قبل</span> تاريخ 18 أغسطس 2025.</li>
+        </ul>
+    </section>
+
+    <!-- القسم الثالث -->
+    <section>
+        <h2>3. نطاق تطبيق الأحكام الجديدة</h2>
+        <p>تسري الأحكام الجديدة لقانون 18 يوليو 2025 في الحالات الآتية:</p>
+        <ul>
+            <li>الطلبات المقدمة بين <span class="highlight">18 أغسطس 2025 و18 أغسطس 2027</span>، إذا <span class="highlight">لم</span> يتم ترخيص أو قبول الشخص المُراد الانضمام إليه للإقامة في بلجيكا لأكثر من 3 أشهر قبل 18 أغسطس 2025.</li>
+            <li><span class="highlight">بشكل كامل وتلقائي:</span> لجميع الطلبات المقدمة اعتباراً من <span class="highlight">18 أغسطس 2027</span> فصاعداً.</li>
+        </ul>
+    </section>
+
+    <!-- القسم الرابع -->
+    <section>
+        <h2>4. شروط الموارد المالية</h2>
+        <ul>
+            <li>يُشترط توفر وسائل معيشة <span class="highlight">مستقرة، منتظمة، وكافية</span> لتغطية الاحتياجات وتجنب الاعتماد على المساعدات الحكومية.</li>
+            <li>يجب تقديم مستندات تثبت ذلك عن فترة مرجعية كافية (ويُفضّل أن تغطي <span class="highlight">الأشهر الـ 12 السابقة</span> لتقديم الطلب، وتُمدد لفترة أطول إذا كان الشخص يعمل لحسابه الخاص).</li>
+        </ul>
+    </section>
+
+    <!-- القسم الخامس -->
+    <section>
+        <h2>5. الشروط المالية والمبالغ المرجعية</h2>
+        
+        <h3>أولاً: الأحكام القديمة (نسبة 120%)</h3>
+        <ul>
+            <li><span class="highlight">الأساس:</span> 120% من الحد الأدنى للاندماج الاجتماعي.</li>
+            <li><span class="highlight">المبلغ الحالي (منذ 1 مارس 2026):</span> 2,173.88 يورو صافي شهرياً.</li>
+            <li><span class="highlight">التعديل القادم (بدءاً من 1 سبتمبر 2026):</span> سيزداد المبلغ بعد الفهرسة ليصل إلى 2,217.47 يورو صافي شهرياً.</li>
+        </ul>
+
+        <h3>ثانياً: الأحكام الجديدة - قانون 18 يوليو 2025 (نسبة 110% + الزيادات)</h3>
+        <ul>
+            <li><span class="highlight">المبلغ الأساسي (مفهرس في 1 يوليو 2026):</span> 2,456.97 يورو صافي شهرياً (يمثل 110% من متوسط الحد الأدنى المضمون للدخل الشهري - GGMMI).</li>
+            <li><span class="highlight">زيادة عن كل فرد إضافي:</span> يُضاف 10% عن كل فرد معال في الأسرة، سواء كان يعيش بالفعل في بلجيكا أو يتقدم بطلب لم الشمل.</li>
+        </ul>
+
+        <h3>توضيح الأمثلة:</h3>
+        <ul>
+            <li><span class="highlight">مثال 1 (الشخص وحده ويريد استقدام الشريك وطفلين):</span> المبلغ المطلوب = 110% (للشريك) + 20% (10% لكل طفل) = <span class="highlight">130% من الحد الأساسي</span>.</li>
+            <li><span class="highlight">مثال 2 (الشخص مقيم مع طفل ويريد استقدام الشريك وطفلين آخرين):</span> المبلغ المطلوب = 110% (للشريك) + 20% (للطفلين المقيمين بالخارج) + 10% (للطفل المقيم حالياً) = <span class="highlight">140% من الحد الأساسي</span>.</li>
+        </ul>
+
+        <h3>ثالثاً: من يُعتبر من الأفراد "المعالين"؟</h3>
+        <ul>
+            <li>الأطفال القاصرون الذين يشكلون جزءاً من الأسرة.</li>
+            <li>البالغون في الأسرة الذين لا يستطيعون إثبات استقلالهم المالي دون الاستعانة بالمساعدات الاجتماعية.</li>
+        </ul>
+    </section>
+
+    <!-- القسم السادس -->
+    <section>
+        <h2>6. مصادر الدخل المقبولة لإثبات الملاءة المالية</h2>
+        <ul>
+            <li><span class="highlight">القاعدة العامة:</span> تقديم وثائق تثبت الدخل خلال <span class="highlight">الأشهر الـ 12 السابقة</span> لتقديم الطلب.</li>
+            <li><span class="highlight">العمل الحر:</span> يتطلب تقديم مستندات تغطي <span class="highlight">فترة أطول</span> لإثبات استقرار الدخل.</li>
+        </ul>
+
+        <h3>المستندات المقبولة للموظفين (الأُجراء):</h3>
+        <ul>
+            <li>عقد العمل وشغاف/قسائم الدفع (Loonfiches).</li>
+            <li>أحدث إشعار تقييم ضريبي من مكتب الضرائب (FPS Finance) أو شهادة بحجم الضريبة المستقبلي.</li>
+            <li>كشوفات الحسابات المصرفية.</li>
+            <li>إثبات دخل إيجار العقارات أو قسائم الراتب التقاعدي.</li>
+        </ul>
+
+        <h3>إعانات البطالة والعقود المؤقتة:</h3>
+        <ul>
+            <li><span class="highlight">إعانات البطالة:</span> تُقبل <span class="highlight">فقط</span> إذا أثبت الشخص أنه يبحث بنشاط عن عمل أو أنه معفي قانوناً من البحث عن عمل.</li>
+            <li><span class="highlight">العلاقات/العقود المؤقتة (Uitzendwerk):</span> تُحسب في التقييم إذا أتى هذا العمل بعد فترة بطالة وتمت ممارسته <span class="highlight">بشكل مستمر لمدة سنة واحدة على الأقل</span> وبدخل لا يقل عن المبلغ المرجعي المطلوب.</li>
+        </ul>
+
+        <h3>إعانات الأشخاص ذوي الإعاقة:</h3>
+        <ul>
+            <li>تُحسب وتُقبل جميع البدلات الرسمية المخصصة لذوي الإعاقة (مثل: بدل استبدال الدخل، بدل الاندماج، واستحقاق العجز) كدخل مقبول ومعترف به.</li>
+        </ul>
+    </section>
+
+    <!-- القسم السابع: تنبيه الدخل غير المقبول -->
+    <div class="alert-box">
+        <h3>7. أنواع الدخل والاستحقاقات التي <span style="text-decoration: underline;">لا تُحسب ولا تُقبل</span></h3>
+        <p><strong>المساعدات والإعانات الاجتماعية:</strong></p>
+        <ul>
+            <li>المساعدة الاجتماعية المالية المقدمة من مركز الرعاية الاجتماعية (CPAS / OCMW).</li>
+            <li>الأجر المعيشي (Leefloon) والزيادات التكميلية التابعة له.</li>
+            <li>إعانة الأطفال (Groeipakket / Allocations familiales) والإعانات التكميلية المخصصة للأطفال.</li>
+        </ul>
+        <p><strong>البدلات والاستحقاقات المؤقتة/الانتقالية:</strong></p>
+        <ul>
+            <li>إعانة الانتظار (Wachtuitkering / Allocation d'attente).</li>
+            <li>الاستحقاق/البدل الانتقالي (Overgangsuitkering).</li>
+        </ul>
+        <p><strong>العقود الخاصة للدمج الاجتماعي (المادة 60):</strong></p>
+        <ul>
+            <li>عقود العمل التابعة للمادة 60 (§ 7) من قانون المراكز العامة للرعاية الاجتماعية (CPAS/OCMW).</li>
+            <li><span class="highlight">السبب:</span> هذه العقود مؤقتة وتستهدف فقط إعطاء الشخص فترة عمل كافية للحصول على حقوق المساعدات الاجتماعية كاملة، ثم تنتهي تلقائياً، وبالتالي <span class="highlight">لا تُعتبر دخلاً مستقراً أو دائماً</span> وفقاً للقانون.</li>
+        </ul>
     </div>
 
-    <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 25px 0;">
+    <!-- القسم الثامن -->
+    <section>
+        <h2>8. احتساب دخل أفراد الأسرة الآخرين (الحالات الاستثنائية)</h2>
+        <p>يُؤخذ دخل أفراد الأسرة في الاعتبار حصراً في الحالتين التاليتين، وبشرط أساسي وهو <span class="highlight">أن تكون الخلية الأسرية قد تشكّلت مسبقاً في دولة عضو أخرى بالاتحاد الأوروبي</span>:</p>
+        <ul>
+            <li><span class="highlight">الحاصلون على إقامة أمد طويل في دولة أوروبية أخرى:</span> إذا كان الشخص الذي يقوم بلم شمل الأسرة أجنبياً مُنح صفة "مقيم لفترة طويلة" في دولة عضو أخرى في الاتحاد الأوروبي، وحصل لاحقاً على تصريح إقامة في بلجيكا لأكثر من 3 أشهر.</li>
+            <li><span class="highlight">أصحاب البطاقة الزرقاء الأوروبية (بطاقة H):</span> إذا كان الشخص الذي يقوم بلم شمل الأسرة يحمل "بطاقة زرقاء أوروبية".</li>
+        </ul>
+    </section>
 
-    <h2>السؤال الموجه للموظف (Vraag)</h2>
+    <!-- القسم التاسع -->
+    <section>
+        <h2>9. الحالات التي يكون فيها الدخل أقل من المبلغ المرجعي المطلوب</h2>
+        
+        <h3>القاعدة العامة (عدم الرفض التلقائي):</h3>
+        <ul>
+            <li><span class="highlight">انخفاض الدخل لا يعني الرفض المباشر:</span> عدم وصول دخل الكفيل (لم شمل الأسرة) إلى المبلغ المرجعي لا يؤدي تلقائياً إلى رفض طلب التأشيرة.</li>
+            <li><span class="highlight">التقييم الفردي:</span> تتولى دائرة الهجرة دراسة <span class="highlight">الوضع المالي العام</span> للأسرة لتحديد ما إذا كان الدخل المتوفر كافياً لتغطية الاحتياجات الأساسية وتجنب الاعتماد على المساعدات الحكومية.</li>
+        </ul>
 
-    <!-- النص الهولندي -->
-    <div class="box nl-box">
-        <strong style="color: #2f855a;">Nederlands:</strong>
-        <p id="nl-text" style="margin: 8px 0 0 0; font-size: 1.05em;">
-Wat is het minimale nettobedrag aan bestaansmiddelen dat vereist is voor mijn situatie met 1 volwassene en 4 kinderen?
-        </p>
-        <button class="copy-btn" onclick="copyToClipboard('nl-text', this)">نسخ السؤال الهولندي</button>
+        <h3>التزام جديد على مقدم الطلب (قانون 18 يوليو 2025):</h3>
+        <p>يلتزم مقدم الطلب قانوناً بتقديم ملف مالي شامل يوضح جميع الإيرادات والالتزامات عند تقديم الطلب، لمساعدة دائرة الهجرة في تقييم وضعه بدقة.</p>
+
+        <p><strong>المستندات والمعلومات المطلوبة:</strong></p>
+        <ul>
+            <li><span class="highlight">إثباتات الدخل:</span> وثائق تحدد المقدار الفعلي للوسائل المعيشية الاستثنائية أو المنتظمة.</li>
+            <li><span class="highlight">مصاريف والتزامات السكن:</span> عقد الإيجار ومبلغه، أو ما يثبت ملكية عقارات وتأجيرها.</li>
+            <li><span class="highlight">النفقات والالتزامات المالية الأخرى:</span>
+                <ul>
+                    <li>مبالغ النفقة (سواء كانت مدفوعة أو مستلمة).</li>
+                    <li>التخفيضات والإعانات الناتجة عن الوضع الشخصي.</li>
+                    <li><span class="highlight">شهادة بنكية (أو من البنك الوطني):</span> تثبت الخلو من أي متأخرات في سداد القروض (سواء كانت قروضاً عقارية أو استهلاكية).</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <div class="footer-note">
+        هل تود معرفة تفاصيل إضافية حول كيفية حساب هذه المبالغ أو المستندات المطلوبة لإثبات دخل العمل؟
     </div>
 
-    <!-- النص العربي -->
-    <div class="box ar-box">
-        <strong style="color: #c05621;">العربية:</strong>
-        <p id="ar-text" style="margin: 8px 0 0 0; font-size: 1.05em;">
-ما هو الحد الأدنى لصافي الدخل المطلوب لحالتي مع شخص بالغ و4 أطفال؟
-        </p>
-        <button class="copy-btn" onclick="copyToClipboard('ar-text', this)">نسخ السؤال العربي</button>
-    </div>
 </div>
-
-<script>
-function copyToClipboard(elementId, btn) {
-    const text = document.getElementById(elementId).innerText.trim();
-    navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerText;
-        btn.innerText = "تم النسخ! ✓";
-        btn.classList.add("copied");
-        setTimeout(() => {
-            btn.innerText = originalText;
-            btn.classList.remove("copied");
-        }, 2000);
-    });
-}
-</script>
 
 </body>
 </html>
