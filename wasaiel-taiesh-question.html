@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>النصوص الجاهزة للنسخ</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #059669;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .copy-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .copy-btn.copied {
+      background-color: var(--success);
+    }
+
+    .text-content {
+      white-space: pre-line;
+      color: var(--text-main);
+      font-size: 1rem;
+      background-color: #f1f5f9;
+      padding: 16px;
+      border-radius: 8px;
+      border-right: 4px solid var(--primary);
+      overflow-x: auto;
+    }
+
+    @media (max-width: 600px) {
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .copy-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>نماذج الرسائل والتحليل القانوني للنسخ</h1>
+    <p class="subtitle">اضغط على زر النسخ المخصص لكل قسم لنسخ النص كاملاً</p>
+  </header>
+
+  <!-- القسم الأول -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">القسم الأول: نماذج الاستفسار العامة (٣ نماذج + سؤال مخصص)</h2>
+      <button class="copy-btn" onclick="copySection('sec1', this)">
+        <span>📋 نسخ القسم الأول</span>
+      </button>
+    </div>
+    <div class="text-content" id="sec1">يمكنك صياغة السؤال بطريقة واضحة ومباشرة حسب الجهة أو الشخص الذي تتواصل معه. إليك عدة نماذج مصوغة باحترافية يمكنك استخدامها أو التعديل عليها:
+
+1. صيغة رسمية (لمخاطبة السفارة، مكتب الهجرة، أو محامي):
+الموضوع: استفسار بشأن المبلغ المرجعي المطلوب لوسائل المعيشة (لم شمل الأسرة)
+
+السلام عليكم ورحمة الله وبركاته،
+
+أود الاستفسار عن الشروط المالية المطبقة حالياً على طلبات لم شمل الأسرة، وتحديداً:
+
+- ما هو الحد الأدنى المحدّد لوسائل المعيشة الكافية (المبلغ الصافي الشهري) المطلوب توفره؟
+- 
+- كيف يتم حساب هذا المبلغ في حال وجود أفراد معالين إضافيين في الأسرة؟
+- 
+شاكراً لكم حسن تعاونكم وتزويدي بالمعلومات الدقيقة.
+
+مع خالص التحيات،
+
+[اسمك]
+
+2. صيغة قصيرة ومباشرة (للرسائل السريعة أو البريد الإلكتروني المباشر):
+"السلام عليكم، أرغب في معرفة الحد الأدنى الصافي المطلوب لوسائل المعيشة (الكفالة المالية) لتقديم طلب لم الشمل حالياً، وكم الزيادة المطلوبة لكل فرد معال؟ شكراً لكم."
+
+3. باللغتين الفرنسية أو الهولندية (إذا كنت تراسل جهة بلجيكية رسمية):
+- بالفرنسية (Français):
+- 
+"Bonjour,
+
+Je souhaiterais connaître le montant exact du moyen de subsistance stable, régulier et suffisant requis actuellement pour une demande de regroupement familial.
+
+Merci d'avance pour votre aide."
+
+- بالهولندية (Nederlands):
+- 
+"Goedendag,
+
+Ik zou graag willen weten wat het exacte bedrag is voor de voldoende, stabiele en regelmatige bestaansmiddelen die momenteel vereist zijn voor gezinshereniging.
+
+Bedankt voor uw hulp."
+
+هل تود إضافة معلومات خاصة بحالتك (مثل عدد أفراد الأسرة أو نوع إقامتك) لتخصيص السؤال بشكل أدق؟</div>
+  </div>
+
+  <!-- القسم الثاني -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">القسم الثاني: التحليل القانوني الدقيق وصيغة البريد الإلكتروني المخصص</h2>
+      <button class="copy-btn" onclick="copySection('sec2', this)">
+        <span>📋 نسخ القسم الثاني</span>
+      </button>
+    </div>
+    <div class="text-content" id="sec2">بناءً على المعطيات الخاصة بوضع الشريكة البلجيكية (التعايش المشترك) وجودة ملفها المالي، إليك التحليل القانوني الدقيق والشارح لحساب الشروط المادية وفق القانون الجديد لمنسوبي بلجيكا:
+
+1. المبلغ المرجعي المطلوبة قانوناً (الحساب النظري)
+- المبلغ الأساسي للشريكة (110% من GGMMI): هو 2,456.97 يورو صافي شهرياً.
+- 
+- الزيادة عن الأفراد المعالين في المنزل (10% عن كل طفل):
+- 
+  - لدى الشريكة 4 أطفال معالين مقيمين معها في بلجيكا.
+  - 
+  - النسبة الإضافية: 4 × 10% = 40% إضافية.
+  - 
+  - إجمالي النسبة المطلوبة: 150% من الحد الأساسي.
+  - 
+- المبلغ الإجمالي المرجعي المطلوب نظرياً:
+- 
+- 2,456.97 يورو + (4 × 245.70 يورو) ≈ 3,439.77 يورو صافي شهرياً
+2. تحليل الدخل المتوفر للشريكة (ما يُحسب وما لا يُحسب)
+1. الراتب الصافي من العمل (2,200 يورو):
+2. 
+  - مقبول بالكامل؛ وهو دخل مستقر ومنتظم يغطي جزءاً كبيراً من الحد الأدنى.
+  - 
+3. نفقة الأطفال المدفوعة من الطليق (400 يورو):
+4. 
+  - تُحسب وتُقبل؛ حيث يُطلب تقديم إثباتات الدخل والنفقات/مبالغ النفقة المستلمة (Alimentatiegeld / Pension alimentaire) ضمن الملف المالي المرفق.
+  - 
+5. مساعدات/إعانات الدولة (1,000 يورو - إعانة الأطفال Groeipakket / Allocations familiales):
+6. 
+  - لا تُحسب قانوناً؛ المساعدات الاجتماعية وإعانات الأطفال لا تُحسب ضمن "الدخل المباشر" لإثبات الملاءة.
+  - 
+3. كيف تُقيم دائرة الهجرة (Office des Étrangers) الملف؟
+- وجود دخل أقل من المبلغ النظري (3,439.77 يورو):
+- 
+  - الدخل المقبول رسمياً للشريكة (الراتب + النفقة) = 2,600 يورو.
+  - 
+  - هذا المبلغ أقل من النسبة النظرية للأسر الكبيرة (150%)، لكن القانون يمنع الرفض التلقائي.
+  - 
+- التقييم الفردي للوضع المالي (Individual Assessment):
+- 
+  - تتولى دائرة الهجرة دراسة مصاريف الأسرة المباشرة.
+  - 
+  - إذا كانت مصاريف السكن (الإيجار) والمصاريف الأخرى معقولة، وكان إجمالي الدخل كافياً لتغطية احتياجات الأسرة دون طلب "الأجر المعيشي/المساعدة الاجتماعية" (CPAS/OCMW)، يتم قبول الملف.
+  - 
+- تنويه هامة (اجتهاد المحكمة الدستورية البلجيكية):
+- 
+  - أصبح بإمكان دائرة الهجرة أيضاً احتساب أي دخل قانوني وخاص بك (المتقدم للطلب) لإكمال النقص في دخل الشريكة البلجيكية.
+  - 
+4. صيغة السؤال المخصصة لحالتك (لإرسالها للجهة المعنية أو المحامي)
+يمكنك استخدام هذه الصيغة المباشرة للبريد الإلكتروني:
+
+الموضوع: استفسار بشأن تقييم الملاءة المالية لطلب لم شمل (شريكة بلجيكية + 4 أطفال)
+
+السلام عليكم ورحمة الله وبركاته،
+
+أود الاستفسار عن كيفية تقييم دائرة الهجرة لشرط وسائل المعيشة الكافية في حالتي الخاصة:
+
+- طبيعة العلاقة: تعايش مشترك مع مواطنة بلجيكية (Cohabitation légale).
+- 
+- تركيبة الأسرة: الشريكة البلجيكية ولديها 4 أطفال قاصرين معالين مقيمين معها.
+- 
+- تفاصيل الدخل الصافي للشريكة:
+- 
+  1. راتب عمل صافي: 2,200 يورو شهرياً.
+  2. 
+  3. نفقة أطفال مستلمة قانوناً من الطليق: 400 يورو شهرياً.
+  4. 
+  5. إعانات أطفال حكومية: 1,000 يورو شهرياً.
+  6. 
+الأسئلة:
+
+1. هل يتم احتساب مبلغ النفقة (400 يورو) ضمن إجمالي الدخل المقبول لإثبات الملاءة المالية؟
+2. 
+3. في حال كان إجمالي الدخل المقبول (الراتب + النفقة = 2,600 يورو) أقل من المبلغ المرجعي النظري للأسرة المكونة من 5 أفراد، كيف يتم دراسة الملف المالي ومصاريف السكن ضمن التقييم الفردي تجنباً للرفض؟
+4. 
+5. هل يُسمح بإرفاق أي مصدر دخل خاص بي (المتقدم للطلب) لدعم الملف المالي؟
+6. 
+شاكراً لكم حسن تعاونكم وتزويدي بالتفاصيل القانونية المطبقة.
+
+مع خالص التحيات،
+
+[اسمك]</div>
+  </div>
+
+  <!-- القسم الثالث -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">القسم الثالث: صيغة السؤال المنظمة والمبسطة للموظف أو المحامي</h2>
+      <button class="copy-btn" onclick="copySection('sec3', this)">
+        <span>📋 نسخ القسم الثالث</span>
+      </button>
+    </div>
+    <div class="text-content" id="sec3">إليك صيغة سؤال منظمة، محددة، ومصوغة بنقاط واضحة ومبسطة يفهمها أي موظف أو محامٍ فوراً:
+
+الموضوع: استفسار عن الشروط المالية لطلب لم الشمل (شريكة بلجيكية + 4 أطفال)
+
+السلام عليكم ورحمة الله وبركاته،
+
+أود الاستفسار عن مدى استيفاء ملفنا المالي للشروط المطلوبة لتقديم طلب لم الشمل (تعايش مشترك - Cohabitation légale)، وإليكم تفاصيل وضعنا المالي والأسري بنقاط محددة:
+
+1. بيانات الأسرة:
+- الشريكة: مواطنة بلجيكية.
+- 
+- الأطفال: 4 أطفال قاصرين يعيشون معها في نفس المنزل.
+- 
+2. مصادر الدخل الشهري للشريكة البلجيكية:
+- راتب العمل الصافي: 2,200 يورو شهرياً (من عقد عمل ثابث).
+- 
+- نفقة الأطفال (من الطليق): 400 يورو شهرياً (تُدفع رسمياً للأولاد).
+- 
+- إعانة الأطفال الحكومية (Groeipakket / Child Benefit): 1,000 يورو شهرياً.
+- 
+3. أسئلتي المحددة لكم:
+1. احتساب الدخل المقبول:
+2. 
+  - هل تُحسب نفقة الأطفال (400 يورو) رسمياً مع الراتب الصافي ليصبح الدخل المقبول 2,600 يورو؟
+  - 
+3. الحد المالي المطلوب:
+4. 
+  - كم هو المبلغ الصافي المطلوب قانونياً لأسرة مكونة من (أم بلجيكية + 4 أطفال)؟
+  - 
+5. التقييم الفردي للملف:
+6. 
+  - في حال كان الدخل المقبول (2,600 يورو) أقل من الحد المرجعي المباشر، هل تقبل دائرة الهجرة دراسة الملف بشكل فردي مع تقديم عقد الإيجار ومصاريف السكن؟
+  - 
+7. دخل الزوج/المتقدم بالطلب:
+8. 
+  - هل يُسمح لي (كُمتقدم بالطلب) بإضافة أي إثباتات دخل خاصة بي لدعم الملف المالي وتغطية الفرق؟
+  - 
+شاكراً لكم وقتكم وتزويدي بالإجابة والدعم القانوني المناسب.
+
+اسم المتقدم: [اسمك]
+
+رقم التواصل: [رقم هاتفك]</div>
+  </div>
+
+</div>
+
+<script>
+  function copySection(elementId, btnElement) {
+    const textToCopy = document.getElementById(elementId).innerText;
+    
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = btnElement.innerHTML;
+      btnElement.classList.add('copied');
+      btnElement.innerHTML = '<span>تم النسخ بنجاح! ✓</span>';
+      
+      setTimeout(() => {
+        btnElement.classList.remove('copied');
+        btnElement.innerHTML = originalText;
+      }, 2500);
+    }).catch(err => {
+      console.error('فشل النسخ: ', err);
+      alert('حدث خطأ أثناء حاول نسخ النص.');
+    });
+  }
+</script>
+
+</body>
+</html>
