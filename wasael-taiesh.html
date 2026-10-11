@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استفسار إثبات الدخل المالي</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 25px;
+            border: 1px solid #e1e8ed;
+        }
+        h2 {
+            color: #1a365d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        li {
+            background-color: #f8fafc;
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-right: 4px solid #3182ce;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+        .box {
+            background-color: #edf2f7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .nl-box {
+            direction: ltr;
+            text-align: left;
+            border-left: 4px solid #38a169;
+        }
+        .ar-box {
+            direction: rtl;
+            text-align: right;
+            border-right: 4px solid #dd6b20;
+        }
+        .copy-btn {
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #2b6cb0;
+        }
+        .copied {
+            background-color: #38a169 !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>معلومات الملف والشروط (Gegevens en Voorwaarden)</h2>
+    <ul>
+        <li><span class="section-title">نوع الإقامة / Verblijfstype:</span> تعايش مشترك مع مواطنة بلجيكية (Wettelijke samenwonen met een Belg)[span_0](start_span)[span_0](end_span)</li>
+        <li><span class="section-title">تركيبة العائلة / Gezinssamenstelling:</span> شخص بالغ واحد + 4 أطفال (1 volwassene + 4 kinderen)</li>
+        <li><span class="section-title">الدخل الحالي / Huidig inkomen:</span> 2200 يورو صافي شهرياً (€ 2.200 netto per maand)</li>
+        <li><span class="section-title">الشرط القانوني / Wettelijk vereiste:</span> ألا تقل وسائل كسب العيش عن 120% من حد الدعم المعيشي (Minimaal 120% van het leefloon)</li>
+    </ul>
+
+    <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 25px 0;">
+
+    <h2>السؤال الموجه للموظف (Vraag voor de ambtenaar)</h2>
+
+    <!-- النص الهولندي -->
+    <div class="box nl-box">
+        <strong style="color: #2f855a;">Nederlands:</strong>
+        <p id="nl-text" style="margin: 8px 0 0 0; font-size: 1.05em;">
+            Wat is het minimale nettobedrag aan bestaansmiddelen dat vereist is voor mijn situatie met 1 volwassene en 4 kinderen?
+        </p>
+        <button class="copy-btn" onclick="copyToClipboard('nl-text', this)">Kopieer Nederlandse tekst (نسخ الهولندي)</button>
+    </div>
+
+    <!-- النص العربي -->
+    <div class="box ar-box">
+        <strong style="color: #c05621;">العربية:</strong>
+        <p id="ar-text" style="margin: 8px 0 0 0; font-size: 1.05em;">
+            ما هو الحد الأدنى لصافي الدخل المطلوب لحالتي مع شخص بالغ و4 أطفال؟
+        </p>
+        <button class="copy-btn" onclick="copyToClipboard('ar-text', this)">نسخ النص العربي</button>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(elementId, btn) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = "تم النسخ! ✓";
+        btn.classList.add("copied");
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.classList.remove("copied");
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
