@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقارنة قوانين لم الشمل في بلجيكا</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #d69e2e;
+            --bg-light: #f7fafc;
+            --text-dark: #2d3748;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #edf2f7;
+            color: var(--text-dark);
+            padding: 20px;
+            margin: 0;
+            direction: rtl;
+        }
+
+        .table-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .table-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.6;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .highlight-old {
+            color: #2c5282;
+            font-weight: 600;
+        }
+
+        .highlight-new {
+            color: #9b2c2c;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .badge-old {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+        }
+
+        .badge-new {
+            background-color: #fff5f5;
+            color: #c53030;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                background-color: #fff;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border-color);
+                position: relative;
+                padding-right: 50%;
+                text-align: left;
+            }
+
+            td::before {
+                position: absolute;
+                right: 15px;
+                width: 45%;
+                padding-left: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: var(--primary-color);
+                text-align: right;
+            }
+
+            td:nth-of-type(1)::before { content: "وجه المقارنة"; }
+            td:nth-of-type(2)::before { content: "القانون القديم"; }
+            td:nth-of-type(3)::before { content: "قانون 18 يوليو 2025"; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-container">
+    <div class="table-header">
+        <h2>مقارنة قوانين لم الشمل وإعادة تجميع العائلة في بلجيكا</h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>وجه المقارنة</th>
+                <th>القانون القديم (قبل 18 أغسطس 2025)</th>
+                <th>القانون الجديد (قانون 18 يوليو 2025)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>المعيار المالي المعتمد</strong></td>
+                <td><span class="badge badge-old">120% Leefloon</span><br>من الدعم المعيشي الأساسي</td>
+                <td><span class="badge badge-new">110% GGMMI</span><br>من الحد الأدنى المضمون للأجور</td>
+            </tr>
+            <tr>
+                <td><strong>تأثير عدد الأطفال والمعالين</strong></td>
+                <td><strong>مبلغ ثابت:</strong> يتوقف عند الفئة 3 (Gezin ten laste) ولا يرتفع بتعدد الأطفال.</td>
+                <td><strong>مبلغ تصاعدي:</strong> تُضاف <span class="highlight-new">10% إضافية</span> عن كل فرد معال جديد.</td>
+            </tr>
+            <tr>
+                <td><strong>المبلغ الأساسي للأسرة</strong></td>
+                <td><span class="highlight-old">2,217.47 €</span> صافي شهرياً (ثابت)</td>
+                <td><span class="highlight-new">2,456.97 €</span> صافي شهرياً (كحد أساسي)</td>
+            </tr>
+            <tr>
+                <td><strong>طريقة الحساب بحسب الأطفال</strong></td>
+                <td>
+                    • بدون أطفال: 1,093€ – 1,640€<br>
+                    • طفل واحد إلى 4 أطفال: <strong>2,217.47 €</strong>
+                </td>
+                <td>
+                    • بدون أطفال: ~2,233 €<br>
+                    • طفل واحد: 2,456.97 €<br>
+                    • 4 أطفال: يتجاوز <strong>3,100 €</strong> صافي
+                </td>
+            </tr>
+            <tr>
+                <td><strong>الحد الأدنى لسن الزوج/الشريك</strong></td>
+                <td>18 سنة</td>
+                <td>21 سنة</td>
+            </tr>
+            <tr>
+                <td><strong>مهلة الإعفاء للاجئين</strong></td>
+                <td>12 شهراً بعد القبول</td>
+                <td>6 أشهر فقط</td>
+            </tr>
+            <tr>
+                <td><strong>فترة الانتظار (الحماية الثانوية)</strong></td>
+                <td>لا توجد فترة انتظار إجبارية</td>
+                <td>سنتان انتظار (2 Years)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
