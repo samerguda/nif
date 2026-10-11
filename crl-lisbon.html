@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> october حجز رحلة طيران - بروكسل إلى ليشبونة</title>
-    <!-- استخدام Tailwind CSS للتصميم السريع والاحترافي -->
+    <title>حجز رحلة طيران - بروكسل إلى ليشبونة</title>
+    <!-- استخدام Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- خط عربي أنيق -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -22,38 +21,28 @@
         
         <!-- الهيدر العلوي -->
         <div>
-            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+            <div class="flex items-center justify-between p-4 border-b border-gray-100">
                 <button class="text-gray-800 hover:bg-gray-100 p-2 rounded-full transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <h1 class="text-lg font-bold text-gray-900">اختر التواريخ</h1>
-                <div class="w-6"></div> <!-- لتوازن المنتصف -->
-            </div>
-
-            <!-- مسار الرحلة والمعلومات الأساسية -->
-            <div class="px-5 py-3 bg-slate-50 flex items-center justify-between text-sm text-gray-600 border-b border-gray-100">
-                <div class="flex items-center gap-1 font-semibold text-slate-800">
-                    <span>✈️ بروكسل (BRU)</span>
-                    <span class="text-indigo-600">←</span>
-                    <span>ليشبونة (LIS)</span>
-                </div>
-                <span class="text-xs bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-full font-medium">مباشر</span>
+                <h1 class="text-lg font-bold text-gray-900">Dates</h1>
+                <div class="w-6"></div>
             </div>
 
             <!-- أزرار تبديل نوع التواريخ -->
             <div class="p-4 bg-white">
-                <div class="flex bg-gray-100 p-1 rounded-2xl">
-                    <button class="flex-1 py-2 text-sm font-bold bg-[#0a192f] text-white rounded-xl shadow-sm transition">تواريخ محددة</button>
-                    <button class="flex-1 py-2 text-sm font-medium text-gray-500 hover:text-gray-800 transition">تواريخ مرنة</button>
+                <div class="flex bg-slate-100 p-1.5 rounded-2xl">
+                    <button class="flex-1 py-2.5 text-sm font-bold bg-[#071931] text-white rounded-xl shadow-sm transition">Specific dates</button>
+                    <button class="flex-1 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-800 transition">Flexible dates</button>
                 </div>
 
                 <!-- اختيار نوع الرحلة -->
                 <div class="mt-4 relative">
                     <select class="w-full p-3.5 bg-white border border-gray-200 rounded-2xl text-sm font-semibold text-gray-800 appearance-none focus:outline-none focus:border-indigo-600">
-                        <option>اتجاه واحد (One-way)</option>
-                        <option>ذهاب وعودة (Round-trip)</option>
+                        <option>One-way</option>
+                        <option>Round-trip</option>
                     </select>
                     <div class="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                         ▼
@@ -61,95 +50,80 @@
                 </div>
 
                 <!-- التاريخ المختار حالياً -->
-                <div class="mt-3 flex items-center justify-between p-3.5 border-2 border-[#0a192f] rounded-2xl bg-white">
-                    <span class="text-sm font-bold text-gray-800">الثلاثاء، 13 أكتوبر 2026</span>
-                    <button class="text-gray-400 hover:text-gray-600 text-lg font-bold">×</button>
+                <div class="mt-3 flex items-center justify-between p-3.5 border-2 border-blue-500 rounded-2xl bg-white shadow-sm">
+                    <span class="text-sm font-bold text-gray-900">Tue, 13 Oct</span>
+                    <button class="w-6 h-6 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs font-bold hover:bg-gray-500">×</button>
                 </div>
             </div>
 
-            <!-- تقويم أكتوبر 2026 -->
-            <div class="px-4 pb-4">
-                <div class="text-center font-bold text-gray-900 mb-3 text-sm">أكتوبر 2026</div>
-                
-                <!-- أيام الأسبوع -->
-                <div class="grid grid-cols-7 text-center text-xs font-semibold text-gray-400 mb-2">
-                    <span>ح</span><span>ن</span><span>ث</span><span>ر</span><span>خ</span><span>ج</span><span>س</span>
+            <!-- أيام الأسبوع -->
+            <div class="px-4 mb-2">
+                <div class="grid grid-cols-7 text-center text-xs font-semibold text-gray-400">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
                 </div>
+            </div>
 
-                <!-- شبكة الأيام وأسعارها -->
-                <div class="grid grid-cols-7 gap-y-2 text-center text-xs">
+            <!-- تقويم أكتوبر 2026 (مطابق للصورة بدقة) -->
+            <div class="px-4 pb-4">
+                <div class="grid grid-cols-7 gap-y-3 text-center text-xs">
+                    
                     <!-- الأسبوع الأول -->
-                    <div class="py-1 text-gray-300">27</div>
-                    <div class="py-1 text-gray-300">28</div>
-                    <div class="py-1 text-gray-300">29</div>
-                    <div class="py-1 text-gray-300">30</div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">1</span><span class="text-[10px] text-gray-400">206€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">2</span><span class="text-[10px] text-gray-400">162€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">3</span><span class="text-[10px] text-gray-400">145€</span></div>
-
-                    <!-- الأسبوع الثاني -->
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">4</span><span class="text-[10px] text-gray-400">178€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">5</span><span class="text-[10px] text-gray-400">155€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">6</span><span class="text-[10px] text-gray-400">120€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">7</span><span class="text-[10px] text-gray-400">115€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">8</span><span class="text-[10px] text-gray-400">132€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">9</span><span class="text-[10px] text-gray-400">113€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">10</span><span class="text-[10px] text-gray-400">189€</span></div>
-
-                    <!-- الأسبوع الثالث (اليوم المختار 13) -->
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">11</span><span class="text-[10px] text-gray-400">203€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">12</span><span class="text-[10px] text-gray-400">137€</span></div>
-                    <div class="py-1 flex flex-col items-center">
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">11</span><span class="text-[10px] text-gray-500 mt-0.5">206 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">12</span><span class="text-[10px] text-gray-500 mt-0.5">162 €</span></div>
+                    <div class="flex flex-col items-center">
                         <span class="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow-md">13</span>
                     </div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">14</span><span class="text-[10px] text-gray-400">104€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">15</span><span class="text-[10px] text-gray-400">96€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">16</span><span class="text-[10px] text-gray-400">111€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">17</span><span class="text-[10px] text-gray-400">121€</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">14</span><span class="text-[10px] text-gray-500 mt-0.5">133 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">15</span><span class="text-[10px] text-gray-500 mt-0.5">187 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">16</span><span class="text-[10px] text-gray-500 mt-0.5">113 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">17</span><span class="text-[10px] text-gray-500 mt-0.5">189 €</span></div>
 
-                    <!-- الأسبوع الرابع -->
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">18</span><span class="text-[10px] text-gray-400">121€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">19</span><span class="text-[10px] text-gray-400">104€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">20</span><span class="text-[10px] text-gray-400">84€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">21</span><span class="text-[10px] text-gray-400">60€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">22</span><span class="text-[10px] text-gray-400">79€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">23</span><span class="text-[10px] text-gray-400">95€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">24</span><span class="text-[10px] text-gray-400">123€</span></div>
+                    <!-- الأسبوع الثاني -->
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">18</span><span class="text-[10px] text-gray-500 mt-0.5">203 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">19</span><span class="text-[10px] text-gray-500 mt-0.5">137 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">20</span><span class="text-[10px] text-gray-500 mt-0.5">104 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">21</span><span class="text-[10px] text-gray-500 mt-0.5">104 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">22</span><span class="text-[10px] text-gray-500 mt-0.5">96 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">23</span><span class="text-[10px] text-gray-500 mt-0.5">111 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">24</span><span class="text-[10px] text-gray-500 mt-0.5">121 €</span></div>
 
-                    <!-- الأسبوع الخامس -->
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">25</span><span class="text-[10px] text-gray-400">110€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">26</span><span class="text-[10px] text-gray-400">98€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">27</span><span class="text-[10px] text-gray-400">85€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">28</span><span class="text-[10px] text-gray-400">72€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">29</span><span class="text-[10px] text-gray-400">89€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">30</span><span class="text-[10px] text-gray-400">95€</span></div>
-                    <div class="py-1 text-gray-300">-</div>
+                    <!-- الأسبوع الثالث -->
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">25</span><span class="text-[10px] text-gray-500 mt-0.5">121 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">26</span><span class="text-[10px] text-gray-500 mt-0.5">104 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">27</span><span class="text-[10px] text-gray-500 mt-0.5">84 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">28</span><span class="text-[10px] text-gray-500 mt-0.5">60 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">29</span><span class="text-[10px] text-gray-500 mt-0.5">79 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">30</span><span class="text-[10px] text-gray-500 mt-0.5">95 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">31</span><span class="text-[10px] text-gray-500 mt-0.5">123 €</span></div>
                 </div>
             </div>
 
-            <!-- قسم نوفمبر 2026 (أرخص) -->
+            <!-- قسم نوفمبر 2026 (مطابق للصورة تماماً بالأرقام والألوان) -->
             <div class="px-4 pb-4 border-t border-gray-100 pt-3">
-                <div class="text-center font-bold text-gray-900 mb-3 text-sm">نوفمبر 2026</div>
-                <div class="grid grid-cols-7 gap-y-2 text-center text-xs">
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">1</span><span class="text-[10px] text-teal-600 font-semibold">105€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">2</span><span class="text-[10px] text-teal-600 font-semibold">64€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">3</span><span class="text-[10px] text-teal-600 font-bold">41€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">4</span><span class="text-[10px] text-teal-600 font-bold">23€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">5</span><span class="text-[10px] text-teal-600 font-semibold">35€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">6</span><span class="text-[10px] text-teal-600 font-semibold">38€</span></div>
-                    <div class="py-1 flex flex-col items-center"><span class="text-gray-800">7</span><span class="text-[10px] text-teal-600 font-semibold">50€</span></div>
+                <div class="font-bold text-gray-900 mb-3 text-sm">November 2026</div>
+                <div class="grid grid-cols-7 gap-y-3 text-center text-xs">
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">1</span><span class="text-[10px] text-teal-600 font-medium mt-0.5">105 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">2</span><span class="text-[10px] text-teal-600 font-medium mt-0.5">64 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">3</span><span class="text-[10px] text-teal-600 font-bold mt-0.5">41 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">4</span><span class="text-[10px] text-teal-600 font-bold mt-0.5">23 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">5</span><span class="text-[10px] text-teal-600 font-medium mt-0.5">35 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">6</span><span class="text-[10px] text-teal-600 font-medium mt-0.5">38 €</span></div>
+                    <div class="flex flex-col items-center"><span class="text-gray-900 font-medium">7</span><span class="text-[10px] text-teal-600 font-medium mt-0.5">50 €</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- الفوتر السفلي (زر المتابعة والسعر الإجمالي) -->
+        <!-- الفوتر السفلي (زر المتابعة والسعر) -->
         <div class="p-4 bg-white border-t border-gray-100 flex items-center justify-between">
             <div>
-                <div class="text-xs text-gray-500">رحلة ذهاب من</div>
-                <div class="text-base font-bold text-gray-900">101 €</div>
+                <div class="text-xs text-gray-500">One-way Trip <span class="text-gray-900 font-bold">from 101 €</span></div>
+                <div class="flex items-center gap-1 text-xs text-gray-500 mt-0.5 cursor-pointer hover:underline">
+                    <span>Estimated prices</span>
+                    <span class="w-3.5 h-3.5 bg-gray-300 text-white rounded-full inline-flex items-center justify-center text-[10px] font-bold">i</span>
+                </div>
             </div>
-            <button class="bg-[#0a192f] hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg transition duration-200">
-                متابعة
+            <button class="bg-[#071931] hover:bg-slate-800 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg transition duration-200">
+                Continue
             </button>
         </div>
 
