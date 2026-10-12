@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات مصنع Frostique</title>
+    <!-- خط عربي أنيق من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #bae6fd;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-group i {
+            font-size: 20px;
+            color: #38bdf8;
+            margin-top: 4px;
+        }
+
+        .info-content label {
+            display: block;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 2px;
+        }
+
+        .info-content span, .info-content a {
+            font-size: 16px;
+            color: #f1f5f9;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .info-content a:hover {
+            color: #38bdf8;
+            text-decoration: underline;
+        }
+
+        /* حاوية الخريطة */
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* أزرار النسخ والتحكم */
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+
+        .btn-copy {
+            background-color: #334155;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-copy:hover {
+            background-color: #475569;
+        }
+
+        .btn-map {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .btn-map:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+
+        /* إشعار النسخ (Toast Notification) */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <h1>Frostique</h1>
+            <p>بيانات وموقع المصنع الرسمي</p>
+        </div>
+
+        <div class="content">
+            <!-- العنوان -->
+            <div class="info-group">
+                <i class="fa-solid fa-location-dot"></i>
+                <div class="info-content">
+                    <label>عنوان المصنع</label>
+                    <span id="factory-address">Kazerneweg 2 Kruissem</span>
+                </div>
+            </div>
+
+            <!-- تاريخ بداية العمل -->
+            <div class="info-group">
+                <i class="fa-solid fa-calendar-days"></i>
+                <div class="info-content">
+                    <label>تاريخ بداية العمل</label>
+                    <span>١٢ أكتوبر ٢٠٢٦</span>
+                </div>
+            </div>
+
+            <!-- خريطة جوجل مضمنة -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.2!2d3.6!3d50.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDU0JzAwLjAiTiAzwrAzNicwMC4wIkU!5e0!3m2!1sar!2sbe!4v1!5m2!1sar!2sbe" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- أزرار العمليات -->
+            <div class="actions">
+                <button class="btn btn-copy" onclick="copyText('Kazerneweg 2 Kruissem', 'تم نسخ العنوان بنجاح!')">
+                    <i class="fa-regular fa-copy"></i> نسخ العنوان
+                </button>
+                <button class="btn btn-copy" onclick="copyText('https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic', 'تم نسخ رابط اللوكيشن!')">
+                    <i class="fa-solid fa-link"></i> نسخ اللوكيشن
+                </button>
+            </div>
+
+            <!-- زر التوجه المباشر للخريطة -->
+            <div style="margin-top: 10px;">
+                <a href="https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic" target="_blank" class="btn btn-map" style="width: 100%; text-decoration: none;">
+                    <i class="fa-solid fa-map-location-dot"></i> افتح في تطبيق خرائط جوجل
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- عنصر الإشعار المنبثق -->
+    <div id="toast" class="toast">تم النسخ بنجاح!</div>
+
+    <script>
+        function copyText(text, message) {
+            // استخدام واجهة الحافظة الحديثة
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(message);
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
