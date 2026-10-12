@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة استعدادات الشغل واليوم</title>
+    <!-- استخدام Tailwind CSS للتصميم الاحترافي -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- خط عربي أنيق (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        .completed { text-decoration: line-through; opacity: 0.5; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center py-10 px-4">
+
+    <!-- حاوية التطبيق الرئيسية -->
+    <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 md:p-8">
+        
+        <!-- رأس الصفحة مع عداد الوقت والتاريخ الدايناميك -->
+        <header class="flex flex-col md:flex-row justify-between items-center border-b border-slate-800 pb-6 mb-6 gap-4">
+            <div>
+                <h1 class="text-2xl font-black text-blue-400">⚡ خطة الاستعداد اليومية</h1>
+                <p class="text-slate-400 text-sm mt-1">نظم مهامك وانطلق بيومك بكل ثقة</p>
+            </div>
+            <div id="clock-container" class="bg-slate-800/80 border border-slate-700/50 px-4 py-3 rounded-xl text-center min-w-[200px]">
+                <div id="live-time" class="text-xl font-bold text-emerald-400">00:00:00</div>
+                <div id="live-date" class="text-xs text-slate-400 mt-1">التاريخ...</div>
+            </div>
+        </header>
+
+        <!-- قسم المهام والاستعدادات -->
+        <main class="space-y-6">
+            
+            <!-- التحضيرات المسبقة -->
+            <div>
+                <h2 class="text-lg font-bold text-slate-200 mb-3 flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                    التحضيرات والتجهيزات المسبقة
+                </h2>
+                <div class="space-y-2" id="tasks-list-1">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">اختيار الملابس وتجهيزها</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">كوي الملابس بدقة</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">تجهيز الأكل (بيبسي، شيبسي، ساندويتش - علبة الأكل)</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">تعديل ونيم الشعر</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">استخدام الديودرنت (الودوون)</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">وضع اللبس جاهزاً على الأرض/الشماعة</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">كتابة أوراق المذاكرة</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">تجهيز الشنطة بالكامل</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">شحن الفيتس (أو الأجهزة المتعلقة)</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">حجز تذاكر القطار</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- روتين الصبح -->
+            <div class="pt-4 border-t border-slate-800">
+                <h2 class="text-lg font-bold text-slate-200 mb-3 flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    روتين الصباح (الانطلاق)
+                </h2>
+                <div class="space-y-2" id="tasks-list-2">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">حمام دافئ ومنعش</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">الوضوء</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">ارتداء الملابس الجاهزة</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">أخذ الشنطة</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">مفتاح السيارة جاهز</span>
+                    </label>
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                        <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
+                        <span class="text-sm md:text-base">أخذ الفيتس والانطلاق 🚀</span>
+                    </label>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- تذييل الصفحة -->
+        <footer class="mt-8 text-center text-xs text-slate-500 border-t border-slate-800 pt-4">
+            تم تصميم هذه اللوحة خصيصاً لترتيب مهامك بكفاءة عالية.
+        </footer>
+    </div>
+
+    <!-- السكريبت الخاص بالعداد والمهام -->
+    <script>
+        // تحديث الوقت والتاريخ الديناميكي كل ثانية
+        function updateDateTime() {
+            const now = new Date();
+            
+            // الوقت بتنسيق 12 ساعة مع الصباح/المساء أو 24 ساعة حسب الرغبة (هنا 24 مع الثواني)
+            const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            // التاريخ بالعربي
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('ar-EG', options);
+
+            document.getElementById('live-time').innerText = timeString;
+            document.getElementById('live-date').innerText = dateString;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // تشغيل فوري عند الفتح
+
+        // دالة التفاعل مع المهام (شطب النص عند وضع علامة صح)
+        function toggleTask(checkbox) {
+            const span = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                span.classList.add('completed', 'text-slate-500');
+            } else {
+                span.classList.remove('completed', 'text-slate-500');
+            }
+        }
+    </script>
+</body>
+</html>
