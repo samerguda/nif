@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة استعدادات الشغل واليوم</title>
-    <!-- استخدام Tailwind CSS للتصميم الاحترافي -->
+    <title>استعدادات الشغل - اللوحة الشخصية</title>
+    <!-- استخدام Tailwind CSS للتصميم الاحترافي والسريع -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- خط عربي أنيق (Cairo) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -21,98 +21,119 @@
         <!-- رأس الصفحة مع عداد الوقت والتاريخ الدايناميك -->
         <header class="flex flex-col md:flex-row justify-between items-center border-b border-slate-800 pb-6 mb-6 gap-4">
             <div>
-                <h1 class="text-2xl font-black text-blue-400">⚡ خطة الاستعداد اليومية</h1>
-                <p class="text-slate-400 text-sm mt-1">نظم مهامك وانطلق بيومك بكل ثقة</p>
+                <h1 class="text-2xl font-black text-blue-400">⚡ استعدادات الشغل واليوم</h1>
+                <p class="text-slate-400 text-sm mt-1">تابع تجهيزاتك وخطواتك بدقة لتبدأ يومك بكل تركيز</p>
             </div>
             <div id="clock-container" class="bg-slate-800/80 border border-slate-700/50 px-4 py-3 rounded-xl text-center min-w-[200px]">
                 <div id="live-time" class="text-xl font-bold text-emerald-400">00:00:00</div>
-                <div id="live-date" class="text-xs text-slate-400 mt-1">التاريخ...</div>
+                <div id="live-date" class="text-xs text-slate-400 mt-1">جاري تحميل التاريخ...</div>
             </div>
         </header>
 
-        <!-- قسم المهام والاستعدادات -->
+        <!-- قائمة الاستعدادات -->
         <main class="space-y-6">
             
-            <!-- التحضيرات المسبقة -->
+            <!-- القسم الرئيسي: استعدادات الشغل -->
             <div>
-                <h2 class="text-lg font-bold text-slate-200 mb-3 flex items-center gap-2">
+                <h2 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                    التحضيرات والتجهيزات المسبقة
+                    قائمة الاستعدادات الأساسية
                 </h2>
-                <div class="space-y-2" id="tasks-list-1">
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                
+                <div class="space-y-2.5">
+                    <!-- 1 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">اختيار الملابس وتجهيزها</span>
+                        <span class="text-sm md:text-base">١- اختيار ملابس</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 2 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">كوي الملابس بدقة</span>
+                        <span class="text-sm md:text-base">٢- كوي ملابس</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 3 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">تجهيز الأكل (بيبسي، شيبسي، ساندويتش - علبة الأكل)</span>
+                        <span class="text-sm md:text-base">٣- تحضير أكل</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 4 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">تعديل ونيم الشعر</span>
+                        <span class="text-sm md:text-base">٤- نيم الشعر</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 5 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">استخدام الديودرنت (الودوون)</span>
+                        <span class="text-sm md:text-base">٥- ودوون (ديودرنت)</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 6 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">وضع اللبس جاهزاً على الأرض/الشماعة</span>
+                        <span class="text-sm md:text-base">٦- حط اللبس على الارض</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 7 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">كتابة أوراق المذاكرة</span>
+                        <span class="text-sm md:text-base">٧- كتابة أوراق المذاكرة</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 8 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">تجهيز الشنطة بالكامل</span>
+                        <span class="text-sm md:text-base">٨- شنطة (<span class="text-blue-300 font-semibold">أكل:</span> بيبسي و شيبسي و ساندويتش - علبة أكل)</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 9 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">شحن الفيتس (أو الأجهزة المتعلقة)</span>
+                        <span class="text-sm md:text-base">٩- شحن الفيتس</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    
+                    <!-- 10 -->
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-blue-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">حجز تذاكر القطار</span>
+                        <span class="text-sm md:text-base">١٠- حجز تذاكر قطار</span>
                     </label>
                 </div>
             </div>
 
             <!-- روتين الصبح -->
             <div class="pt-4 border-t border-slate-800">
-                <h2 class="text-lg font-bold text-slate-200 mb-3 flex items-center gap-2">
+                <h2 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    روتين الصباح (الانطلاق)
+                    ١١- الصبح (روتين الانطلاق)
                 </h2>
-                <div class="space-y-2" id="tasks-list-2">
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                
+                <div class="space-y-2.5">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">حمام دافئ ومنعش</span>
+                        <span class="text-sm md:text-base">حمام</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">الوضوء</span>
+                        <span class="text-sm md:text-base">وضوء</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">ارتداء الملابس الجاهزة</span>
+                        <span class="text-sm md:text-base">لبس</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">أخذ الشنطة</span>
+                        <span class="text-sm md:text-base">شنطة</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">مفتاح السيارة جاهز</span>
+                        <span class="text-sm md:text-base">مفتاح سيارة</span>
                     </label>
-                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800">
+                    <label class="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 p-3 rounded-xl cursor-pointer transition border border-slate-800/80">
                         <input type="checkbox" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" onchange="toggleTask(this)">
-                        <span class="text-sm md:text-base">أخذ الفيتس والانطلاق 🚀</span>
+                        <span class="text-sm md:text-base">أخذ الفيتس 🚀</span>
                     </label>
                 </div>
             </div>
@@ -121,20 +142,19 @@
 
         <!-- تذييل الصفحة -->
         <footer class="mt-8 text-center text-xs text-slate-500 border-t border-slate-800 pt-4">
-            تم تصميم هذه اللوحة خصيصاً لترتيب مهامك بكفاءة عالية.
+            تم إعداد هذا الكود خصيصاً لتنظيم مهامك بكفاءة عالية.
         </footer>
     </div>
 
-    <!-- السكريبت الخاص بالعداد والمهام -->
+    <!-- الكود البرمجي للوقت والتاريخ والتفاعل -->
     <script>
-        // تحديث الوقت والتاريخ الديناميكي كل ثانية
         function updateDateTime() {
             const now = new Date();
             
-            // الوقت بتنسيق 12 ساعة مع الصباح/المساء أو 24 ساعة حسب الرغبة (هنا 24 مع الثواني)
+            // تحديث الوقت (تنسيق 24 ساعة مع الثواني)
             const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             
-            // التاريخ بالعربي
+            // تحديث التاريخ بالعربي
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateString = now.toLocaleDateString('ar-EG', options);
 
@@ -142,10 +162,11 @@
             document.getElementById('live-date').innerText = dateString;
         }
 
+        // تشغيل العداد وتحديثه كل ثانية
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // تشغيل فوري عند الفتح
+        updateDateTime();
 
-        // دالة التفاعل مع المهام (شطب النص عند وضع علامة صح)
+        // دالة شطب العنصر عند وضع علامة صح
         function toggleTask(checkbox) {
             const span = checkbox.nextElementSibling;
             if (checkbox.checked) {
