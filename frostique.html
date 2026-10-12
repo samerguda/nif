@@ -70,7 +70,7 @@
         }
 
         .info-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
@@ -89,25 +89,19 @@
             margin-bottom: 2px;
         }
 
-        .info-content span, .info-content a {
+        .info-content span {
             font-size: 16px;
             color: #f1f5f9;
             font-weight: 600;
-            text-decoration: none;
-        }
-
-        .info-content a:hover {
-            color: #38bdf8;
-            text-decoration: underline;
         }
 
         /* حاوية الخريطة */
         .map-container {
             width: 100%;
-            height: 200px;
+            height: 180px;
             border-radius: 12px;
             overflow: hidden;
-            margin: 20px 0;
+            margin: 20px 0 15px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -117,19 +111,19 @@
             border: 0;
         }
 
-        /* أزرار النسخ والتحكم */
-        .actions {
-            display: flex;
+        /* شبكة الأزرار */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .btn {
-            flex: 1;
-            padding: 12px 15px;
+            padding: 12px 10px;
             border: none;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
@@ -138,6 +132,7 @@
             gap: 8px;
             transition: all 0.3s ease;
             color: #ffffff;
+            text-decoration: none;
         }
 
         .btn-copy {
@@ -151,6 +146,7 @@
 
         .btn-map {
             background: linear-gradient(135deg, #10b981, #059669);
+            grid-column: span 2;
         }
 
         .btn-map:hover {
@@ -193,7 +189,7 @@
                 <i class="fa-solid fa-location-dot"></i>
                 <div class="info-content">
                     <label>عنوان المصنع</label>
-                    <span id="factory-address">Kazerneweg 2 Kruissem</span>
+                    <span>Kazerneweg 2 Kruissem</span>
                 </div>
             </div>
 
@@ -206,24 +202,39 @@
                 </div>
             </div>
 
+            <!-- معلومات القطار -->
+            <div class="info-group">
+                <i class="fa-solid fa-train"></i>
+                <div class="info-content">
+                    <label>الوصول بالقطار</label>
+                    <span>النزول في محطة ( Deinze )</span>
+                </div>
+            </div>
+
             <!-- خريطة جوجل مضمنة -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.2!2d3.6!3d50.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDU0JzAwLjAiTiAzwrAzNicwMC4wIkU!5e0!3m2!1sar!2sbe!4v1!5m2!1sar!2sbe" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <!-- أزرار العمليات -->
-            <div class="actions">
+            <!-- شبكة الأزرار -->
+            <div class="actions-grid">
+                <!-- زر نسخ العنوان -->
                 <button class="btn btn-copy" onclick="copyText('Kazerneweg 2 Kruissem', 'تم نسخ العنوان بنجاح!')">
                     <i class="fa-regular fa-copy"></i> نسخ العنوان
                 </button>
-                <button class="btn btn-copy" onclick="copyText('https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic', 'تم نسخ رابط اللوكيشن!')">
-                    <i class="fa-solid fa-link"></i> نسخ اللوكيشن
-                </button>
-            </div>
 
-            <!-- زر التوجه المباشر للخريطة -->
-            <div style="margin-top: 10px;">
-                <a href="https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic" target="_blank" class="btn btn-map" style="width: 100%; text-decoration: none;">
+                <!-- زر نسخ اسم المحطة -->
+                <button class="btn btn-copy" onclick="copyText('Deinze', 'تم نسخ اسم المحطة (Deinze)!')">
+                    <i class="fa-solid fa-train-subway"></i> نسخ اسم المحطة
+                </button>
+
+                <!-- زر نسخ اللوكيشن -->
+                <button class="btn btn-copy" style="grid-column: span 2;" onclick="copyText('https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic', 'تم نسخ رابط اللوكيشن!')">
+                    <i class="fa-solid fa-link"></i> نسخ رابط اللوكيشن
+                </button>
+
+                <!-- زر التوجه المباشر للخريطة -->
+                <a href="https://maps.app.goo.gl/cYSY7EfoKKBMe8e26?g_st=ic" target="_blank" class="btn btn-map">
                     <i class="fa-solid fa-map-location-dot"></i> افتح في تطبيق خرائط جوجل
                 </a>
             </div>
@@ -235,7 +246,6 @@
 
     <script>
         function copyText(text, message) {
-            // استخدام واجهة الحافظة الحديثة
             navigator.clipboard.writeText(text).then(() => {
                 showToast(message);
             }).catch(err => {
