@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDAB 19 November Julia UKA </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+        .details {
+            background: #f8f9fa;
+            border-right: 4px solid #0056b3;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: right;
+            border-radius: 8px;
+        }
+        .details p {
+            margin: 8px 0;
+            color: #333;
+            font-size: 15px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        .time-box {
+            background: #0056b3;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+        .time-box span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .time-box label {
+            font-size: 12px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .btn-email { background: #ea4335; color: white; }
+        .btn-call { background: #34a853; color: white; }
+        .btn-whatsapp { background: #25d366; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>موعد مقابلة VDAB</h2>
+    <p style="color: #666; font-size: 14px;">Gesprek over je traject naar werk</p>
+
+    <div class="details">
+        <p><strong>المكان:</strong> LEKKERBEETSTRAAT 5/7, 8500 KORTRIJK</p>
+        <p><strong>التاريخ والوقت:</strong> 19 نوفمبر 2026 - 09:00 صباحاً</p>
+        <p><strong>المسؤولة:</strong> جوليا (Julia Uka)</p>
+    </div>
+
+    <h3>العداد التنازلي للموعد:</h3>
+    <div class="countdown" id="countdown">
+        <div class="time-box"><span id="days">0</span><label>يوم</label></div>
+        <div class="time-box"><span id="hours">0</span><label>ساعة</label></div>
+        <div class="time-box"><span id="minutes">0</span><label>دقيقة</label></div>
+        <div class="time-box"><span id="seconds">0</span><label>ثانية</label></div>
+    </div>
+
+    <div class="buttons">
+        <a href="mailto:julia.uka@vdab.be" class="btn btn-email">📧 إرسال إيميل لجوليا</a>
+        <a href="tel:+32492741574" class="btn btn-call">📞 الاتصال بهاتف جوليا</a>
+        <a href="https://wa.me/32492741574" target="_blank" class="btn btn-whatsapp">💬 مراسلة واتساب</a>
+    </div>
+</div>
+
+<script>
+    // تحديد موعد المقابلة: 19 نوفمبر 2026 الساعة 09:00 صباحاً بتوقيت بروكسل
+    const targetDate = new Date("November 19, 2026 09:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference < 0) {
+            document.getElementById("countdown").innerHTML = "<h3>لقد انقضى موعد المقابلة!</h3>";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+
+</body>
+</html>
