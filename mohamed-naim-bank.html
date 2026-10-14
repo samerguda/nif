@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mohamed naim  bank البنكي</title>
+    <title>بيانات الحساب البنكي</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,7 +19,7 @@
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 420px;
+            max-width: 440px;
             width: 100%;
         }
         .bank-header {
@@ -31,13 +31,22 @@
             margin-bottom: 15px;
         }
         .info-group {
-            margin-bottom: 12px;
-            text-align: right;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
         }
         .label {
             font-size: 13px;
             color: #777;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
+        }
+        .content-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
         .value {
             font-size: 15px;
@@ -45,32 +54,27 @@
             color: #222;
             word-break: break-all;
         }
-        .iban-box {
-            background-color: #f8f9fa;
-            border: 1px dashed #cccccc;
-            padding: 10px;
-            border-radius: 6px;
+        .iban-style {
             font-family: monospace;
-            font-size: 14px;
             direction: ltr;
-            text-align: center;
-            margin-top: 5px;
+            text-align: right;
         }
         .btn-copy {
-            width: 100%;
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-top: 15px;
+            white-space: nowrap;
             transition: background 0.3s ease;
         }
         .btn-copy:hover {
-            background-color: #218838;
+            background-color: #0056b3;
+        }
+        .btn-copy.copied {
+            background-color: #28a745;
         }
     </style>
 </head>
@@ -79,36 +83,57 @@
     <div class="bank-card">
         <div class="bank-header">🏦 تفاصيل الحساب البنكي</div>
         
+        <!-- البنك -->
         <div class="info-group">
             <div class="label">البنك</div>
-            <div class="value">بنك البلاد</div>
+            <div class="content-row">
+                <div class="value" id="bankName">بنك البلاد[span_0](start_span)[span_0](end_span)</div>
+                <button class="btn-copy" onclick="copyText('bankName', this)">نسخ</button>
+            </div>
         </div>
 
+        <!-- الاسم بالعربية -->
         <div class="info-group">
             <div class="label">اسم المستفيد (بالعربية)</div>
-            <div class="value">محمد نعيم عطيه السيد</div>
+            <div class="content-row">
+                <div class="value" id="arabicName">محمد نعيم عطيه السيد[span_1](start_span)[span_1](end_span)</div>
+                <button class="btn-copy" onclick="copyText('arabicName', this)">نسخ</button>
+            </div>
         </div>
 
+        <!-- الاسم بالإنجليزية -->
         <div class="info-group">
             <div class="label">اسم المستفيد (بالإنجليزية)</div>
-            <div class="value" style="direction: ltr; text-align: right;">mohamed naim atia elsayed</div>
+            <div class="content-row">
+                <div class="value" id="englishName" style="direction: ltr; text-align: right;">mohamed naim atia elsayed[span_2](start_span)[span_2](end_span)</div>
+                <button class="btn-copy" onclick="copyText('englishName', this)">نسخ</button>
+            </div>
         </div>
 
+        <!-- رقم الآيبان -->
         <div class="info-group">
             <div class="label">رقم الآيبان (IBAN)</div>
-            <div class="iban-box" id="ibanText">SA3015000900129645090002</div>
+            <div class="content-row">
+                <div class="value iban-style" id="ibanText">SA3015000900129645090002[span_3](start_span)[span_3](end_span)</div>
+                <button class="btn-copy" onclick="copyText('ibanText', this)">نسخ</button>
+            </div>
         </div>
-
-        <button class="btn-copy" onclick="copyIBAN()">📋 نسخ رقم الآيبان</button>
     </div>
 
     <script>
-        function copyIBAN() {
-            const iban = document.getElementById("ibanText").innerText;
-            navigator.clipboard.writeText(iban).then(() => {
-                alert("تم نسخ رقم الآيبان بنجاح: " + iban);
+        function copyText(elementId, btnElement) {
+            const text = document.getElementById(elementId).innerText.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "تم النسخ ✓";
+                btnElement.classList.add("copied");
+                
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove("copied");
+                }, 2000);
             }).catch(err => {
-                console.error("خطأ في النسخ: ", err);
+                console.error("فشل النسخ: ", err);
             });
         }
     </script>
