@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyadh Banco  Saudi Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .account-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+        .header {
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h2 {
+            margin: 0;
+            color: #0d47a1;
+            font-size: 20px;
+        }
+        .btn-copy-all {
+            background-color: #0d47a1;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+        .btn-copy-all:hover {
+            background-color: #082d68;
+        }
+        .field-group {
+            margin-bottom: 16px;
+        }
+        .field-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .field-box {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 8px 12px;
+        }
+        .field-value {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #212529;
+            font-weight: 600;
+            word-break: break-all;
+        }
+        .btn-copy-single {
+            background-color: transparent;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 8px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .btn-copy-single:hover {
+            background-color: #6c757d;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="account-card">
+    <div class="header">
+        <h2>Bank Account Details</h2>
+        <button class="btn-copy-all" onclick="copyAll()">Copy All Details</button>
+    </div>
+
+    <!-- Account Holder Name -->
+    <div class="field-group">
+        <div class="field-label">Account Holder Name</div>
+        <div class="field-box">
+            <span class="field-value" id="val-name">SAMER GODH ELSAADNY</span>
+            <button class="btn-copy-single" onclick="copySingle('val-name', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- Bank Name -->
+    <div class="field-group">
+        <div class="field-label">Bank Name</div>
+        <div class="field-box">
+            <span class="field-value" id="val-bank">Riyad Bank</span>
+            <button class="btn-copy-single" onclick="copySingle('val-bank', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- Account Number -->
+    <div class="field-group">
+        <div class="field-label">Current Account Number</div>
+        <div class="field-box">
+            <span class="field-value" id="val-account">4043032019940</span>
+            <button class="btn-copy-single" onclick="copySingle('val-account', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- IBAN -->
+    <div class="field-group">
+        <div class="field-label">IBAN</div>
+        <div class="field-box">
+            <span class="field-value" id="val-iban">SA2120000004043032019940</span>
+            <button class="btn-copy-single" onclick="copySingle('val-iban', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- SWIFT Code -->
+    <div class="field-group">
+        <div class="field-label">SWIFT / BIC Code</div>
+        <div class="field-box">
+            <span class="field-value" id="val-swift">RIBLSARIXXX</span>
+            <button class="btn-copy-single" onclick="copySingle('val-swift', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- ID Number -->
+    <div class="field-group">
+        <div class="field-label">National ID / Iqama</div>
+        <div class="field-box">
+            <span class="field-value" id="val-id">2439867256</span>
+            <button class="btn-copy-single" onclick="copySingle('val-id', this)">Copy</button>
+        </div>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="field-group">
+        <div class="field-label">Phone Number</div>
+        <div class="field-box">
+            <span class="field-value" id="val-phone">966595095885</span>
+            <button class="btn-copy-single" onclick="copySingle('val-phone', this)">Copy</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Copy a single value
+    function copySingle(elementId, btnElement) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = 'Copied!';
+            btnElement.style.backgroundColor = '#28a745';
+            btnElement.style.color = '#fff';
+            btnElement.style.borderColor = '#28a745';
+            
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.style.backgroundColor = '';
+                btnElement.style.color = '';
+                btnElement.style.borderColor = '';
+            }, 1500);
+        });
+    }
+
+    // Copy all details
+    function copyAll() {
+        const details = `Bank Name: ${document.getElementById('val-bank').innerText}
+Account Holder Name: ${document.getElementById('val-name').innerText}
+Current Account Number: ${document.getElementById('val-account').innerText}
+IBAN: ${document.getElementById('val-iban').innerText}
+SWIFT Code: ${document.getElementById('val-swift').innerText}
+ID Number: ${document.getElementById('val-id').innerText}
+Phone Number: ${document.getElementById('val-phone').innerText}`;
+
+        navigator.clipboard.writeText(details).then(() => {
+            const btn = document.querySelector('.btn-copy-all');
+            const originalText = btn.innerText;
+            btn.innerText = 'All Copied!';
+            btn.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = '';
+            }, 1500);
+        });
+    }
+</script>
+
+</body>
+</html>
