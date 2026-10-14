@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mohamed naim  bank البنكي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .bank-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 420px;
+            width: 100%;
+        }
+        .bank-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #eeeeee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .info-group {
+            margin-bottom: 12px;
+            text-align: right;
+        }
+        .label {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 4px;
+        }
+        .value {
+            font-size: 15px;
+            font-weight: bold;
+            color: #222;
+            word-break: break-all;
+        }
+        .iban-box {
+            background-color: #f8f9fa;
+            border: 1px dashed #cccccc;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            direction: ltr;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .btn-copy {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .btn-copy:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bank-card">
+        <div class="bank-header">🏦 تفاصيل الحساب البنكي</div>
+        
+        <div class="info-group">
+            <div class="label">البنك</div>
+            <div class="value">بنك البلاد</div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">اسم المستفيد (بالعربية)</div>
+            <div class="value">محمد نعيم عطيه السيد</div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">اسم المستفيد (بالإنجليزية)</div>
+            <div class="value" style="direction: ltr; text-align: right;">mohamed naim atia elsayed</div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">رقم الآيبان (IBAN)</div>
+            <div class="iban-box" id="ibanText">SA3015000900129645090002</div>
+        </div>
+
+        <button class="btn-copy" onclick="copyIBAN()">📋 نسخ رقم الآيبان</button>
+    </div>
+
+    <script>
+        function copyIBAN() {
+            const iban = document.getElementById("ibanText").innerText;
+            navigator.clipboard.writeText(iban).then(() => {
+                alert("تم نسخ رقم الآيبان بنجاح: " + iban);
+            }).catch(err => {
+                console.error("خطأ في النسخ: ", err);
+            });
+        }
+    </script>
+
+</body>
+</html>
