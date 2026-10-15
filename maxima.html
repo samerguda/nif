@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Máxima - Saldanha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        .card {
+            background: #fff;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a365d;
+            margin-bottom: 5px;
+        }
+        .price {
+            color: #2b6cb0;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .info-group {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .info-label {
+            font-size: 0.9em;
+            color: #718096;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 1em;
+            color: #2d3748;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        button, .btn-link {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .btn-copy {
+            background-color: #e2e8f0;
+            color: #4a5568;
+        }
+        .btn-copy:hover {
+            background-color: #cbd5e0;
+        }
+        .btn-call {
+            background-color: #319795;
+            color: white;
+        }
+        .btn-call:hover {
+            background-color: #2c7a7b;
+        }
+        .btn-web {
+            background-color: #3182ce;
+            color: white;
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .btn-web:hover {
+            background-color: #2b6cb0;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Segurança Máxima - Saldanha</h2>
+    <div class="price">السعر المنشور: €398 شامل الباقة</div>
+
+    <!-- رقم الهاتف الأول -->
+    <div class="info-group">
+        <div class="info-label">الهاتف الثابت (1)</div>
+        <div class="info-value" id="phone1">+351 213 193 780</div>
+        <div class="btn-container">
+            <button class="btn-copy" onclick="copyText('phone1')">نسخ</button>
+            <a href="tel:+351213193780" class="btn-call">اتصال</a>
+        </div>
+    </div>
+
+    <!-- رقم الهاتف الثاني -->
+    <div class="info-group">
+        <div class="info-label">الهاتف الثابت (2)</div>
+        <div class="info-value" id="phone2">+351 213 193 760</div>
+        <div class="btn-container">
+            <button class="btn-copy" onclick="copyText('phone2')">نسخ</button>
+            <a href="tel:+351213193760" class="btn-call">اتصال</a>
+        </div>
+    </div>
+
+    <!-- رقم المحمول -->
+    <div class="info-group">
+        <div class="info-label">الهاتف المحمول</div>
+        <div class="info-value" id="phone3">+351 967 238 104</div>
+        <div class="btn-container">
+            <button class="btn-copy" onclick="copyText('phone3')">نسخ</button>
+            <a href="tel:+351967238104" class="btn-call">اتصال</a>
+        </div>
+    </div>
+
+    <!-- العنوان -->
+    <div class="info-group">
+        <div class="info-label">العنوان</div>
+        <div class="info-value" id="address">Avenida Fontes Pereira de Melo 31, Galeria Esquerda, Lisboa, 1050-000</div>
+        <div class="btn-container">
+            <button class="btn-copy" onclick="copyText('address')">نسخ العنوان</button>
+        </div>
+    </div>
+
+    <!-- زر الموقع الإلكتروني -->
+    <a href="https://www.segurancamaxima.pt" target="_blank" class="btn-link btn-web">زيارة الموقع الإلكتروني</a>
+</div>
+
+<div id="toast" class="toast">تم النسخ بنجاح!</div>
+
+<script>
+    function copyText(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>
