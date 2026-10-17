@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستند VDAB الكامل والعداد التنازلي</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        vdab: {
+                            blue: '#004791',
+                            darkBlue: '#002e61',
+                            lightBg: '#f8fafc',
+                            cardBorder: '#e2e8f0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .pulse-slow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 text-slate-800">
+
+    <div class="max-w-3xl mx-auto space-y-6">
+
+        <!-- Countdown Banner -->
+        <div class="bg-gradient-to-r from-blue-900 via-vdab-blue to-indigo-900 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row items-center justify-between border-b border-blue-700/60 pb-4 mb-4 gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-emerald-400 pulse-slow"></span>
+                    <h2 class="font-bold text-lg">العداد التنازلي للمقابلة القادمة</h2>
+                </div>
+                <div class="text-xs bg-blue-800/80 px-3 py-1.5 rounded-lg border border-blue-600/50">
+                    <i class="fa-regular fa-calendar ml-1 text-yellow-400"></i> 19 نوفمبر 2026 - 09:00 صباحاً
+                </div>
+            </div>
+
+            <!-- Countdown Grid -->
+            <div class="grid grid-cols-4 gap-3 text-center">
+                <div class="bg-blue-950/60 rounded-2xl p-3 border border-blue-700/40">
+                    <span id="days" class="block text-2xl sm:text-4xl font-black text-white">00</span>
+                    <span class="text-[11px] text-blue-200 mt-0.5 block">أيام</span>
+                </div>
+                <div class="bg-blue-950/60 rounded-2xl p-3 border border-blue-700/40">
+                    <span id="hours" class="block text-2xl sm:text-4xl font-black text-white">00</span>
+                    <span class="text-[11px] text-blue-200 mt-0.5 block">ساعات</span>
+                </div>
+                <div class="bg-blue-950/60 rounded-2xl p-3 border border-blue-700/40">
+                    <span id="minutes" class="block text-2xl sm:text-4xl font-black text-white">00</span>
+                    <span class="text-[11px] text-blue-200 mt-0.5 block">دقائق</span>
+                </div>
+                <div class="bg-blue-950/60 rounded-2xl p-3 border border-blue-700/40">
+                    <span id="seconds" class="block text-2xl sm:text-4xl font-black text-yellow-400">00</span>
+                    <span class="text-[11px] text-blue-200 mt-0.5 block">ثواني</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Official Letter Container (Page 1) -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 relative space-y-8">
+            
+            <!-- Letter Header -->
+            <div class="flex flex-col sm:flex-row justify-between items-start border-b pb-6 gap-4">
+                <div>
+                    <div class="text-3xl font-black text-vdab-blue tracking-wider mb-2">VDAB</div>
+                    <div class="text-xs text-slate-400 leading-relaxed dir-ltr text-right">
+                        VDAB, Koning Albert II-laan 15 bus 514 1210 Brussel BE
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs space-y-1.5 w-full sm:w-auto">
+                    <div><span class="font-semibold text-slate-500">مرجعنا:</span> <span class="font-bold text-slate-700">ASB/3/document</span></div>
+                    <div><span class="font-semibold text-slate-500">رقم العميل:</span> <span class="font-bold text-slate-700">45256738</span></div>
+                    <div><span class="font-semibold text-slate-500">التاريخ:</span> <span class="font-bold text-slate-700">12-10-2026</span></div>
+                </div>
+            </div>
+
+            <!-- Recipient Info -->
+            <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 text-sm space-y-1">
+                <div class="font-bold text-slate-800 text-base">Samer Alsaadni (سامر السعدني)</div>
+                <div class="text-slate-600">Marktstraat 43</div>
+                <div class="text-slate-600">BE-8530 HARELBEKE</div>
+            </div>
+
+            <!-- Greeting & Intro -->
+            <div class="space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed">
+                <p class="font-bold text-lg text-slate-900">مرحباً سامر،</p>
+                <p>
+                    لقد قمنا بإعداد نظرة عامة على مقابلاتك ومهامك لدى <strong>VDAB</strong> أو لدى أحد شركائنا. في المرفقات تجد مقابلاتك ومهامك الجديدة (أو المعدلة). جميع المقابلات والمهام يمكن العثور عليها أيضاً في حسابك الإلكتروني على موقع <span class="text-blue-600 font-semibold dir-ltr inline-block">vdab.be</span>، تماماً مثل هذا المستند.
+                </p>
+            </div>
+
+            <!-- Section 1: Conversations (Gesprekken) -->
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-regular fa-comments text-vdab-blue"></i>
+                    المقابلات (Gesprekken)
+                </h3>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-100 text-vdab-blue rounded-xl p-3 text-center min-w-[70px]">
+                            <span class="block text-xs font-bold uppercase">نوفمبر</span>
+                            <span class="block text-xl font-black">19</span>
+                            <span class="block text-[10px] text-slate-500">09:00</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-bold text-slate-800 text-sm sm:text-base">
+                                مقابلة حول مسارك المهني نحو العمل
+                            </div>
+                            <div class="text-xs text-slate-600">
+                                <i class="fa-solid fa-user-tie text-slate-400 ml-1"></i> مع: <strong>Julia Uka</strong>
+                            </div>
+                            <div class="text-xs text-slate-600 dir-ltr text-right">
+                                <i class="fa-solid fa-location-dot text-slate-400 ml-1"></i> LEKKERBEETSTRAAT 5/7, 8500 KORTRIJK
+                            </div>
+                        </div>
+                    </div>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider self-start sm:self-center">
+                        جديد NIEUW
+                    </span>
+                </div>
+            </div>
+
+            <!-- Section 2: Tasks (Opdrachten) -->
+            <div class="space-y-3">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-regular fa-square-check text-vdab-blue"></i>
+                    المهام (Opdrachten)
+                </h3>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-200 text-slate-700 rounded-xl p-3 text-center min-w-[70px]">
+                            <span class="block text-xs font-bold uppercase">أكتوبر</span>
+                            <span class="block text-xl font-black">31</span>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-slate-400 uppercase">مهمة</div>
+                            <div class="font-bold text-slate-800 text-sm sm:text-base">
+                                سجّل بنفسك في دورة تدريبية للغة الهولندية العامة
+                            </div>
+                        </div>
+                    </div>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider self-start sm:self-center">
+                        جديد NIEUW
+                    </span>
+                </div>
+            </div>
+
+            <!-- Section 3: Legal & Rules -->
+            <div class="space-y-4 pt-4 border-t border-slate-200 text-sm">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">نطلب التزامك (We vragen jouw engagement)</h4>
+                    <p class="text-slate-600 leading-relaxed text-xs sm:text-sm">
+                        الاتفاقيات الواردة في هذا المستند قمت بوضعها جنباً إلى جنب مع المستشار/الوسيط الخاص بك. نحن نطلب التزامك بالوفاء بهذه الاتفاقيات وتطبيقها.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">ماذا لو لم ألتزم بالتزامي؟ (Wat als ik me niet aan mijn engagement hou?)</h4>
+                    <p class="text-slate-600 leading-relaxed text-xs sm:text-sm">
+                        في هذه الحالة، سنناقش الأمر معك ونرى معاً ما إذا كان استمرار التعاون لا يزال مرغوباً فيه.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">هل تتلقى إعانة مرض أو عجز؟</h4>
+                    <p class="text-slate-600 leading-relaxed text-xs sm:text-sm">
+                        عندها سنتواصل مع منسق العودة إلى العمل الخاص بك، وننظر معاً ما إذا كان من الأفضل إيقاف التوجيه والمتابعة لدى VDAB.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Page 1 Footer -->
+            <div class="flex justify-between items-center text-[11px] text-slate-400 border-t pt-4">
+                <span>تم التمويل المشترك بواسطة الاتحاد الأوروبي</span>
+                <span>الصفحة 1 من 4</span>
+                <span class="font-bold text-vdab-blue">VDAB</span>
+            </div>
+        </div>
+
+        <!-- Page 2 Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 relative space-y-6">
+            
+            <div class="flex justify-between items-center text-xs text-slate-400 border-b pb-4">
+                <span>المرجع: ASB/3/document</span>
+                <span>رقم العميل: 45256738</span>
+                <span>التاريخ: 12-10-2026</span>
+            </div>
+
+            <div class="text-sm font-bold text-slate-800">
+                مع خالص التحيات،<br>
+                <span class="text-vdab-blue">VDAB</span>
+            </div>
+
+            <!-- Digital Choice Box -->
+            <div class="bg-slate-50 border border-slate-300 rounded-2xl p-4 text-xs sm:text-sm text-slate-700 space-y-1">
+                <div class="font-bold text-slate-900">هل تختار "رقمياً فقط"؟ (Kies je voor 'enkel digitaal'?)</div>
+                <p class="leading-relaxed">
+                    عند اختيارك للتواصل الرقمي فقط، فإن للمراسلات الرقمية نفس القيمة القانونية للرسائل المسجلة (الرسمية) التي تتلقاها عبر البريد العادي.
+                </p>
+            </div>
+
+            <!-- Legal Citation -->
+            <div class="text-[11px] text-slate-500 italic leading-relaxed border-t pt-4">
+                المقابلات هي مقابلات متابعة وتقييم كما هو موضح في مرسوم الحكومة الفلمنكية الصادر بتاريخ 5 يونيو 2009 والمتعلق بتنظيم الوساطة في العمل والتدريب المهني. والمهام هي اتفاقيات كما هو موضح في نفس المرسوم.
+            </div>
+
+            <!-- Page 2 Footer -->
+            <div class="flex justify-between items-center text-[11px] text-slate-400 border-t pt-4">
+                <span>تم التمويل المشترك بواسطة الاتحاد الأوروبي</span>
+                <span>الصفحة 2 من 4</span>
+                <span class="font-bold text-vdab-blue">VDAB</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Countdown Logic Script -->
+    <script>
+        const targetDate = new Date("November 19, 2026 09:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
