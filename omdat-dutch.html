@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 جملة هولندية بلجيكية باستخدام Omdat</title>
+    <style>
+        :root {
+            --primary-color: #004085;
+            --secondary-color: #007bff;
+            --accent-color: #ffc107;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --dutch-color: #d9534f;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #004085, #007bff);
+            color: white;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        .flag {
+            font-size: 2rem;
+        }
+
+        .grammar-rule {
+            background-color: #e3f2fd;
+            border-right: 6px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .grammar-rule h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .highlight-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .search-container {
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            border: 2px solid #ced4da;
+            border-radius: var(--border-radius);
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .sentence-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sentence-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .sentence-number {
+            background-color: #f0f4f8;
+            color: var(--primary-color);
+            font-weight: bold;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .sentence-content {
+            flex-grow: 1;
+        }
+
+        .dutch-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dutch-color);
+            direction: ltr;
+            text-align: left;
+            margin-bottom: 4px;
+        }
+
+        .arabic-text {
+            color: #495057;
+            font-size: 1rem;
+        }
+
+        .quiz-section {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .quiz-question:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .options-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            background-color: #f1f3f5;
+            border: 1px solid #ced4da;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            direction: ltr;
+        }
+
+        .option-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        .option-btn.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+            border-color: #28a745 !important;
+        }
+
+        .option-btn.wrong {
+            background-color: #dc3545 !important;
+            color: white !important;
+            border-color: #dc3545 !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .sentence-card {
+                padding: 12px;
+                gap: 10px;
+            }
+            .dutch-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="flag">🇧🇪</span>
+        <h1>١٠٠ جملة هولندية بلجيكية باستخدام Omdat</h1>
+        <p>دليل شامل للتعلم والممارسة اليومية</p>
+    </header>
+
+    <div class="grammar-rule">
+        <h2>📌 القاعدة الجراماتيكية الأساسية</h2>
+        <p>كلمة <strong>Omdat</strong> معناها <em>"لأنَّ / بسبب أنَّ"</em>، ونستخدمها لتوضيح السبب.</p>
+        <p><strong>القاعدة:</strong> بعد <code>omdat</code> يأتي الفاعل، ثم باقي الجملة، ويأتي <strong>الفعل المصرف في نهاية الجملة التابعة</strong>.</p>
+        
+        <div class="highlight-box">
+            👉 مثال: Ik blijf thuis omdat ik ziek ben.<br>
+            <small>(أنا أبقى في المنزل لأنني مريض)</small>
+        </div>
+        <p style="margin-top: 8px; font-size: 0.9rem; color: #555;">💡 <strong>لاحظ:</strong> نقول <code>ik ziek ben</code> وليس <code>ik ben ziek</code> بعد omdat.</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث في الجمل بالهولندية أو العربية..." onkeyup="filterSentences()">
+    </div>
+
+    <div id="sentencesContainer">
+        <!-- Section 1 -->
+        <div class="section-title">١. جمل الحياة اليومية (1–20)</div>
+        
+        <div class="sentence-card">
+            <div class="sentence-number">1</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik blijf thuis omdat ik ziek ben.</div>
+                <div class="arabic-text">أنا أبقى في المنزل لأنني مريض.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">2</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben moe omdat ik weinig heb geslapen.</div>
+                <div class="arabic-text">أنا متعب لأنني نمت قليلًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">3</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik drink water omdat ik dorst heb.</div>
+                <div class="arabic-text">أنا أشرب الماء لأنني عطشان.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">4</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik eet omdat ik honger heb.</div>
+                <div class="arabic-text">أنا آكل لأنني جائع.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">5</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga vroeg slapen omdat ik moe ben.</div>
+                <div class="arabic-text">أذهب للنوم مبكرًا لأنني متعب.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">6</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem een jas mee omdat het koud is.</div>
+                <div class="arabic-text">آخذ معي معطفًا لأن الجو بارد.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">7</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem een paraplu mee omdat het regent.</div>
+                <div class="arabic-text">آخذ معي مظلة لأن المطر يهطل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">8</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik blijf binnen omdat het buiten koud is.</div>
+                <div class="arabic-text">أبقى في الداخل لأن الجو بارد في الخارج.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">9</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik open het raam omdat het warm is.</div>
+                <div class="arabic-text">أفتح النافذة لأن الجو حار.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">10</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik doe het licht aan omdat het donker is.</div>
+                <div class="arabic-text">أشغّل الضوء لأن الظلام يسود.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">11</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga naar de supermarkt omdat we eten nodig hebben.</div>
+                <div class="arabic-text">أذهب إلى السوبرماركت لأننا نحتاج إلى الطعام.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">12</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik kook thuis omdat ik geld wil besparen.</div>
+                <div class="arabic-text">أطبخ في المنزل لأنني أريد توفير المال.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">13</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik maak schoon omdat het huis vuil is.</div>
+                <div class="arabic-text">أنظف لأن المنزل متسخ.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">14</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik was mijn kleren omdat ze vuil zijn.</div>
+                <div class="arabic-text">أغسل ملابسي لأنها متسخة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">15</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem een douche omdat ik bezweet ben.</div>
+                <div class="arabic-text">أستحم لأنني متعرق.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">16</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik bel mijn vrouw omdat ik haar mis.</div>
+                <div class="arabic-text">أتصل بزوجتي لأنني أشتاق إليها.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">17</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik wacht hier omdat mijn vriend te laat is.</div>
+                <div class="arabic-text">أنتظر هنا لأن صديقي متأخر.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">18</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem de bus omdat mijn fiets kapot is.</div>
+                <div class="arabic-text">أستقل الحافلة لأن دراجتي معطلة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">19</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik vertrek nu omdat ik haast heb.</div>
+                <div class="arabic-text">أغادر الآن لأنني مستعجل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">20</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik blijf nog even omdat ik tijd heb.</div>
+                <div class="arabic-text">أبقى قليلًا لأن لدي وقتًا.</div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section-title">٢. العمل والبحث عن وظيفة (21–40)</div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">21</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik zoek werk omdat ik geld nodig heb.</div>
+                <div class="arabic-text">أبحث عن عمل لأنني أحتاج إلى المال.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">22</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik solliciteer omdat ik een nieuwe baan wil.</div>
+                <div class="arabic-text">أتقدم لوظيفة لأنني أريد عملًا جديدًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">23</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik stuur mijn cv omdat de vacature interessant is.</div>
+                <div class="arabic-text">أرسل سيرتي الذاتية لأن إعلان الوظيفة مثير للاهتمام.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">24</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga naar het werk omdat ik vandaag moet werken.</div>
+                <div class="arabic-text">أذهب إلى العمل لأن عليّ العمل اليوم.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">25</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik kom te laat omdat de trein vertraging heeft.</div>
+                <div class="arabic-text">أتأخر لأن القطار لديه تأخير.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">26</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik leer Nederlands omdat ik in België woon.</div>
+                <div class="arabic-text">أتعلم الهولندية لأنني أعيش في بلجيكا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">27</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik oefen elke dag omdat ik beter wil spreken.</div>
+                <div class="arabic-text">أتدرب كل يوم لأنني أريد التحدث بشكل أفضل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">28</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik vraag mijn collega om hulp omdat ik iets niet begrijp.</div>
+                <div class="arabic-text">أطلب المساعدة من زميلي لأنني لا أفهم شيئًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">29</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik draag veiligheidsschoenen omdat ik op een werf werk.</div>
+                <div class="arabic-text">أرتدي أحذية السلامة لأنني أعمل في موقع بناء.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">30</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik draag een helm omdat dat verplicht is.</div>
+                <div class="arabic-text">أرتدي خوذة لأن ذلك إلزامي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">31</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik controleer de installatie omdat ik zeker wil zijn.</div>
+                <div class="arabic-text">أفحص النظام لأنني أريد التأكد.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">32</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik maak een rapport omdat mijn manager erom vraagt.</div>
+                <div class="arabic-text">أعدّ تقريرًا لأن مديري يطلب ذلك.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">33</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik plan de werkzaamheden omdat we tijd moeten besparen.</div>
+                <div class="arabic-text">أخطط للأعمال لأن علينا توفير الوقت.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">34</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik controleer de tekeningen omdat er fouten kunnen zijn.</div>
+                <div class="arabic-text">أراجع الرسومات لأن هناك احتمالًا لوجود أخطاء.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">35</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik overleg met de klant omdat er een probleem is.</div>
+                <div class="arabic-text">أتشاور مع العميل لأن هناك مشكلة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">36</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik werk over omdat het project vertraging heeft.</div>
+                <div class="arabic-text">أعمل ساعات إضافية لأن المشروع متأخر.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">37</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben tevreden omdat mijn baas mij vertrouwt.</div>
+                <div class="arabic-text">أنا راضٍ لأن مديري يثق بي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">38</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik zoek een andere baan omdat mijn contract afloopt.</div>
+                <div class="arabic-text">أبحث عن وظيفة أخرى لأن عقدي ينتهي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">39</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik volg een opleiding omdat ik mijn vaardigheden wil verbeteren.</div>
+                <div class="arabic-text">أتابع دورة تدريبية لأنني أريد تطوير مهاراتي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">40</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben blij omdat ik een sollicitatiegesprek heb.</div>
+                <div class="arabic-text">أنا سعيد لأن لدي مقابلة عمل.</div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section-title">٣. العائلة والأصدقاء (41–60)</div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">41</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik bezoek mijn ouders omdat ik hen mis.</div>
+                <div class="arabic-text">أزور والديّ لأنني أشتاق إليهما.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">42</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik help mijn vrouw omdat ze moe is.</div>
+                <div class="arabic-text">أساعد زوجتي لأنها متعبة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">43</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik blijf thuis omdat mijn kinderen ziek zijn.</div>
+                <div class="arabic-text">أبقى في المنزل لأن أطفالي مرضى.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">44</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik koop een cadeau omdat mijn dochter jarig is.</div>
+                <div class="arabic-text">أشتري هدية لأن عيد ميلاد ابنتي اليوم.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">45</div>
+            <div class="sentence-content">
+                <div class="dutch-text">We eten samen omdat het zondag is.</div>
+                <div class="arabic-text">نأكل معًا لأن اليوم هو الأحد.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">46</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik bel mijn broer omdat ik zijn advies nodig heb.</div>
+                <div class="arabic-text">أتصل بأخي لأنني أحتاج إلى نصيحته.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">47</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik help mijn buurman omdat hij hulp nodig heeft.</div>
+                <div class="arabic-text">أساعد جاري لأنه يحتاج إلى المساعدة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">48</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik nodig mijn vrienden uit omdat ik jarig ben.</div>
+                <div class="arabic-text">أدعو أصدقائي لأن عيد ميلادي اليوم.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">49</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga naar het feest omdat mijn vriend mij heeft uitgenodigd.</div>
+                <div class="arabic-text">أذهب إلى الحفل لأن صديقي دعاني.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">50</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik geef mijn vrouw bloemen omdat ik van haar hou.</div>
+                <div class="arabic-text">أعطي زوجتي زهورًا لأنني أحبها.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">51</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Mijn zoon huilt omdat hij pijn heeft.</div>
+                <div class="arabic-text">ابني يبكي لأنه يشعر بالألم.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">52</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Mijn dochter lacht omdat ze blij is.</div>
+                <div class="arabic-text">ابنتي تضحك لأنها سعيدة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">53</div>
+            <div class="sentence-content">
+                <div class="dutch-text">De kinderen slapen omdat ze moe zijn.</div>
+                <div class="arabic-text">الأطفال نائمون لأنهم متعبون.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">54</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Mijn vrouw werkt vandaag omdat ze veel te doen heeft.</div>
+                <div class="arabic-text">زوجتي تعمل اليوم لأن لديها الكثير لتفعله.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">55</div>
+            <div class="sentence-content">
+                <div class="dutch-text">We blijven thuis omdat de kinderen huiswerk moeten maken.</div>
+                <div class="arabic-text">نبقى في المنزل لأن الأطفال يجب أن تؤدوا واجباتهم.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">56</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik maak eten klaar omdat mijn familie komt.</div>
+                <div class="arabic-text">أحضّر الطعام لأن عائلتي قادمة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">57</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben trots op mijn zoon omdat hij hard studeert.</div>
+                <div class="arabic-text">أنا فخور بابني لأنه يدرس بجد.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">58</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Mijn vriend is boos omdat ik te laat ben.</div>
+                <div class="arabic-text">صديقي غاضب لأنني متأخر.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">59</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik bied mijn excuses aan omdat ik een fout heb gemaakt.</div>
+                <div class="arabic-text">أعتذر لأنني ارتكبت خطأً.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">60</div>
+            <div class="sentence-content">
+                <div class="dutch-text">We praten samen omdat we een probleem willen oplossen.</div>
+                <div class="arabic-text">نتحدث معًا لأننا نريد حل مشكلة.</div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section-title">٤. الدراسة وتعلم الهولندية (61–75)</div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">61</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik studeer Nederlands omdat ik in Vlaanderen woon.</div>
+                <div class="arabic-text">أدرس الهولندية لأنني أعيش في فلاندرز.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">62</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik herhaal de woorden omdat ik ze wil onthouden.</div>
+                <div class="arabic-text">أكرر الكلمات لأنني أريد حفظها.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">63</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik schrijf de zinnen op omdat ik ze wil oefenen.</div>
+                <div class="arabic-text">أكتب الجمل لأنني أريد التدرب عليها.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">64</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik luister naar de leraar omdat ik de uitspraak wil leren.</div>
+                <div class="arabic-text">أستمع إلى المعلم لأنني أريد تعلم النطق.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">65</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik stel een vraag omdat ik iets niet begrijp.</div>
+                <div class="arabic-text">أطرح سؤالًا لأنني لا أفهم شيئًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">66</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik maak mijn huiswerk omdat ik morgen een toets heb.</div>
+                <div class="arabic-text">أؤدي واجبي لأن لدي اختبارًا غدًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">67</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik lees elke dag omdat ik sneller wil leren.</div>
+                <div class="arabic-text">أقرأ كل يوم لأنني أريد التعلم بشكل أسرع.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">68</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik kijk naar Vlaamse televisie omdat ik mijn luistervaardigheid wil verbeteren.</div>
+                <div class="arabic-text">أشاهد التلفزيون الفلمنكي لأنني أريد تحسين مهارة الاستماع.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">69</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik spreek Nederlands met mijn buren omdat ik wil oefenen.</div>
+                <div class="arabic-text">أتحدث الهولندية مع جيراني لأنني أريد التدرب.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">70</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik gebruik een woordenboek omdat ik nieuwe woorden tegenkom.</div>
+                <div class="arabic-text">أستخدم قاموسًا لأنني أصادف كلمات جديدة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">71</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben zenuwachtig omdat ik morgen examen doe.</div>
+                <div class="arabic-text">أنا متوتر لأنني سأمتحن غدًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">72</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben blij omdat ik de toets heb gehaald.</div>
+                <div class="arabic-text">أنا سعيد لأنني اجتزت الاختبار بنجاح.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">73</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik oefen de grammatica omdat die moeilijk is.</div>
+                <div class="arabic-text">أتدرب على القواعد لأنها صعبة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">74</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik volg online les omdat ik thuis wil studeren.</div>
+                <div class="arabic-text">أتابع درسًا عبر الإنترنت لأنني أريد الدراسة في المنزل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">75</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik leer nieuwe zinnen omdat ik beter wil communiceren.</div>
+                <div class="arabic-text">أتعلم جملًا جديدة لأنني أريد التواصل بشكل أفضل.</div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="section-title">٥. الصحة والمشاعر والمواقف المختلفة (76–90)</div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">76</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga naar de dokter omdat ik koorts heb.</div>
+                <div class="arabic-text">أذهب إلى الطبيب لأن لدي حمى.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">77</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem medicijnen omdat mijn dokter dat heeft aangeraden.</div>
+                <div class="arabic-text">أتناول الأدوية لأن طبيبي نصحني بذلك.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">78</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik sport omdat ik gezond wil blijven.</div>
+                <div class="arabic-text">أمارس الرياضة لأنني أريد الحفاظ على صحتي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">79</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik wandel elke dag omdat beweging belangrijk is.</div>
+                <div class="arabic-text">أمشي كل يوم لأن الحركة مهمة.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">80</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik eet fruit omdat het gezond is.</div>
+                <div class="arabic-text">آكل الفاكهة لأنها صحية.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">81</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben gelukkig omdat alles goed gaat.</div>
+                <div class="arabic-text">أنا سعيد لأن كل شيء يسير على ما يرام.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">82</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben verdrietig omdat mijn vriend verhuist.</div>
+                <div class="arabic-text">أنا حزين لأن صديقي ينتقل إلى مكان آخر.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">83</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben bang omdat ik alleen thuis ben.</div>
+                <div class="arabic-text">أنا خائف لأنني وحدي في المنزل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">84</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik lach omdat de film grappig is.</div>
+                <div class="arabic-text">أضحك لأن الفيلم مضحك.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">85</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben verrast omdat je hier bent.</div>
+                <div class="arabic-text">أنا مندهش لأنك هنا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">86</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik vertrouw hem omdat hij eerlijk is.</div>
+                <div class="arabic-text">أثق به لأنه صادق.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">87</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik begrijp je omdat ik hetzelfde heb meegemaakt.</div>
+                <div class="arabic-text">أتفهمك لأنني مررت بالتجربة نفسها.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">88</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ben voorzichtig omdat de weg glad is.</div>
+                <div class="arabic-text">أنا حذر لأن الطريق زلق.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">89</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik doe de deur op slot omdat ik veiligheid belangrijk vind.</div>
+                <div class="arabic-text">أقفل الباب لأنني أعتبر الأمان مهمًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">90</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem rust omdat ik me niet goed voel.</div>
+                <div class="arabic-text">أستريح لأنني لا أشعر أنني بخير.</div>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="section-title">٦. جمل أطول ومتقدمة قليلًا (91–100)</div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">91</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik ga vandaag niet naar buiten omdat ik veel werk moet doen.</div>
+                <div class="arabic-text">لن أخرج اليوم لأن لدي الكثير من العمل الذي يجب إنجازه.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">92</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik heb de trein gemist omdat ik te laat van huis ben vertrokken.</div>
+                <div class="arabic-text">فاتني القطار لأنني غادرت المنزل متأخرًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">93</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik kan niet komen omdat mijn auto niet wil starten.</div>
+                <div class="arabic-text">لا أستطيع الحضور لأن سيارتي لا تريد أن تعمل.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">94</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik heb geld gespaard omdat ik een nieuwe computer wilde kopen.</div>
+                <div class="arabic-text">ادخرت المال لأنني أردت شراء جهاز كمبيوتر جديد.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">95</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik heb hem gebeld omdat ik wilde weten wat er gebeurd was.</div>
+                <div class="arabic-text">اتصلت به لأنني أردت معرفة ما الذي حدث.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">96</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik blijf Nederlands oefenen omdat ik later een goede baan wil vinden.</div>
+                <div class="arabic-text">أواصل التدرب على الهولندية لأنني أريد العثور على وظيفة جيدة لاحقًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">97</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik heb een afspraak gemaakt omdat ik mijn documenten moet regelen.</div>
+                <div class="arabic-text">حجزت موعدًا لأن عليّ ترتيب مستنداتي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">98</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik controleer mijn bankrekening omdat ik mijn uitgaven wil volgen.</div>
+                <div class="arabic-text">أراجع حسابي البنكي لأنني أريد متابعة مصروفاتي.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">99</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik neem de tijd om te leren omdat ik alles goed wil begrijpen.</div>
+                <div class="arabic-text">أخصص وقتًا للتعلم لأنني أريد فهم كل شيء جيدًا.</div>
+            </div>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">100</div>
+            <div class="sentence-content">
+                <div class="dutch-text">Ik wil in België blijven wonen omdat mijn vrouw en mijn toekomst hier zijn.</div>
+                <div class="arabic-text">أريد مواصلة العيش في بلجيكا لأن زوجتي ومستقبلي هنا.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section">
+        <h2 style="margin-top:0; color: var(--primary-color);">🧠 اختبر نفسك التفاعلي</h2>
+        <p>اختر الكلمة الصحيحة لإكمال الجملة وتأكد من فهمك لقاعدة Omdat:</p>
+
+        <div class="quiz-question">
+            <div class="quiz-title">1. Ik blijf thuis omdat ik ziek ___</div>
+            <div class="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, true)">ben</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">is</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">zijn</button>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <div class="quiz-title">2. Ik neem een jas mee omdat het koud ___.</div>
+            <div class="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, true)">is</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">ben</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">zijn</button>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <div class="quiz-title">3. Ik leer Nederlands omdat ik in België ___.</div>
+            <div class="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, true)">woon</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">woont</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">wonen</button>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <div class="quiz-title">4. Ik ben blij omdat ik het examen ___</div>
+            <div class="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, true)">heb gehaald</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">gehaald heb</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">heb</button>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <div class="quiz-title">5. Ik ga naar de dokter omdat ik pijn ___.</div>
+            <div class="options-container">
+                <button class="option-btn" onclick="checkAnswer(this, true)">heb</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">heeft</button>
+                <button class="option-btn" onclick="checkAnswer(this, false)">hebben</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>💡 تذكّر القاعدة الذهبية: عندما تستخدم <strong>omdat</strong>، ضع الفعل المصرف في نهاية الجملة التابعة.</p>
+    </footer>
+</div>
+
+<script>
+    function filterSentences() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.getElementsByClassName('sentence-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            const dutch = cards[i].querySelector('.dutch-text').innerText.toLowerCase();
+            const arabic = cards[i].querySelector('.arabic-text').innerText.toLowerCase();
+
+            if (dutch.includes(input) || arabic.includes(input)) {
+                cards[i].style.display = "flex";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+    function checkAnswer(button, isCorrect) {
+        const parent = button.parentElement;
+        const buttons = parent.querySelectorAll('.option-btn');
+        
+        buttons.forEach(btn => {
+            btn.classList.remove('correct', 'wrong');
+            btn.disabled = true;
+        });
+
+        if (isCorrect) {
+            button.classList.add('correct');
+        } else {
+            button.classList.add('wrong');
+        }
+    }
+</script>
+
+</body>
+</html>
