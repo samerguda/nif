@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تذكير بالموقع والموعد - cvo MIRAS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background-color: #eef2f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            color: #34495e;
+        }
+
+        /* العداد التنازلي */
+        .countdown-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .time-box {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .time-box label {
+            font-size: 0.8em;
+        }
+
+        /* أزرار العمليات */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 0;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .btn:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>تذكير بـ Trajectgesprek</h2>
+        <div class="subtitle">cvo MIRAS - Samer Alsaadni</div>
+
+        <!-- تفاصيل الموعد والموقع -->
+        <div class="info-box">
+            <p><strong>التاريخ:</strong> الاثنين، 19 أكتوبر 2026</p>
+            <p><strong>الوقت:</strong> 15:30 - 16:00 (بتوقيت بروكسل)</p>
+            <p><strong>الموقع:</strong> Nelson Mandelaplein 1, 8500 Kortrijk, Belgium</p>
+        </div>
+
+        <!-- العداد التنازلي -->
+        <h3>الوقت المتبقي للموعد:</h3>
+        <div class="countdown-container">
+            <div class="time-box">
+                <span id="days">00</span>
+                <label>أيام</label>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <label>ساعات</label>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <label>دقائق</label>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <label>ثواني</label>
+            </div>
+        </div>
+
+        <!-- زر الذهاب للوكيشن -->
+        <a href="https://www.google.com/maps/search/?api=1&query=Nelson+Mandelaplein+1,+8500+Kortrijk,+Belgium" 
+           target="_blank" 
+           class="btn">
+            📍 التوجه إلى الموقع (Google Maps)
+        </a>
+    </div>
+
+    <script>
+        // تحديد تاريخ ووقت الموعد (19 أكتوبر 2026 الساعة 15:30)
+        const targetDate = new Date("October 19, 2026 15:30:00").getTime();
+
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // حساب الأيام والساعات والدقائق والثواني
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // عرض النتيجة في العناصر
+            document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            // إذا انتهى الوقت
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector(".countdown-container").innerHTML = "<h4 style='color:red;'>حان موعد المقابلة الآن!</h4>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
