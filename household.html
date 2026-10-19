@@ -251,8 +251,8 @@
                 <td><span class="day-badge">الأحد | Sun | Zo</span></td>
                 <td><strong style="color: var(--samer-color);">Samer</strong></td>
                 <td>
-                    <strong>مشتريات الخضار</strong><br>
-                    <span style="color: var(--text-muted); font-size: 0.85rem;">Groenten Boodschappen | Vegetables Shopping</span>
+                    <strong>مشتريات اللحوم</strong><br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Vlees Boodschappen | Meat Shopping</span>
                 </td>
             </tr>
         </tbody>
@@ -264,7 +264,6 @@
     function updateClock() {
         const now = new Date();
         
-        // Options for formatting date and time
         const optionsDate = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
         const dateStr = now.toLocaleDateString('en-GB', optionsDate);
         const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -272,7 +271,6 @@
         document.getElementById('live-clock').innerText = `${dateStr} | ${timeStr}`;
     }
 
-    // Update clock immediately and then every second
     updateClock();
     setInterval(updateClock, 1000);
 </script>
