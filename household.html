@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول المهام المنزلية | Household Roster</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --samer-color: #3b82f6;
+            --moni-color: #ec4899;
+            --ayman-color: #10b981;
+            --salsabil-color: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Header & Dynamic Clock */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .clock-container {
+            background: #eff6ff;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            direction: ltr;
+        }
+
+        /* Sections Styling */
+        .section-title {
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        /* Task Cards */
+        .card {
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            border-right: 6px solid #ccc;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card.samer { border-color: var(--samer-color); }
+        .card.moni { border-color: var(--moni-color); }
+        .card.ayman { border-color: var(--ayman-color); }
+        .card.salsabil { border-color: var(--salsabil-color); }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .samer .name { color: var(--samer-color); }
+        .moni .name { color: var(--moni-color); }
+        .ayman .name { color: var(--ayman-color); }
+        .salsabil .name { color: var(--salsabil-color); }
+
+        .lang-item {
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .lang-ar { font-weight: 600; }
+        .lang-nl { color: var(--text-muted); font-size: 0.85rem; font-family: 'Poppins'; }
+        .lang-en { color: var(--text-muted); font-size: 0.85rem; font-family: 'Poppins'; }
+
+        /* Shopping Table */
+        .shopping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .shopping-table th, .shopping-table td {
+            padding: 12px 15px;
+            text-align: right;
+        }
+
+        .shopping-table th {
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .shopping-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .shopping-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .day-badge {
+            background: #e2e8f0;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header with Dynamic Time -->
+    <header>
+        <h1>📋 جدول الأعمال والمهام المنزلية</h1>
+        <div class="clock-container" id="live-clock">
+            Loading Date & Time...
+        </div>
+    </header>
+
+    <!-- Daily Household Tasks -->
+    <div class="section-title">
+        🧹 المهام المنزلية اليومية | Daily Tasks | Dagelijkse Taken
+    </div>
+
+    <div class="grid-container">
+        <!-- Samer -->
+        <div class="card samer">
+            <div class="name">Samer</div>
+            <div class="lang-item lang-ar">🍳 المطبخ</div>
+            <div class="lang-item lang-nl">Keuken</div>
+            <div class="lang-item lang-en">Kitchen</div>
+        </div>
+
+        <!-- Moni -->
+        <div class="card moni">
+            <div class="name">Moni</div>
+            <div class="lang-item lang-ar">🧼 الحمام</div>
+            <div class="lang-item lang-nl">Badkamer</div>
+            <div class="lang-item lang-en">Bathroom</div>
+        </div>
+
+        <!-- Ayman -->
+        <div class="card ayman">
+            <div class="name">Ayman</div>
+            <div class="lang-item lang-ar">🛋️ الصالون + 🗑️ القمامة</div>
+            <div class="lang-item lang-nl">Woonkamer + Afval</div>
+            <div class="lang-item lang-en">Living Room + Trash</div>
+        </div>
+
+        <!-- Salsabil -->
+        <div class="card salsabil">
+            <div class="name">Salsabil</div>
+            <div class="lang-item lang-ar">🍽️ سفرة الطعام</div>
+            <div class="lang-item lang-nl">Eettafel</div>
+            <div class="lang-item lang-en">Dining Table</div>
+        </div>
+    </div>
+
+    <!-- Shopping Schedule -->
+    <div class="section-title">
+        🛒 جدول المشتريات | Shopping Schedule | Boodschappenschema
+    </div>
+
+    <table class="shopping-table">
+        <thead>
+            <tr>
+                <th>اليوم / Day / Dag</th>
+                <th>المسؤول / Person</th>
+                <th>المهمة / Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="day-badge">السبت | Sat | Za</span></td>
+                <td><strong style="color: var(--moni-color);">Moni</strong></td>
+                <td>
+                    <strong>مشتريات Lidl</strong><br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Lidl Boodschappen | Lidl Groceries</span>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="day-badge">الأحد | Sun | Zo</span></td>
+                <td><strong style="color: var(--samer-color);">Samer</strong></td>
+                <td>
+                    <strong>مشتريات الخضار</strong><br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Groenten Boodschappen | Vegetables Shopping</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Dynamic Clock Script -->
+<script>
+    function updateClock() {
+        const now = new Date();
+        
+        // Options for formatting date and time
+        const optionsDate = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+        const dateStr = now.toLocaleDateString('en-GB', optionsDate);
+        const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+        document.getElementById('live-clock').innerText = `${dateStr} | ${timeStr}`;
+    }
+
+    // Update clock immediately and then every second
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
