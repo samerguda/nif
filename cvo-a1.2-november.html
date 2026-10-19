@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>استمارة تسجيل دارس A1.2- GO! CVO Pro</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm 15mm;
+            background-color: #f8fafc;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1e293b;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .header-table td {
+            padding: 15px;
+            vertical-align: top;
+        }
+        .logo-title-cell {
+            width: 65%;
+            border-left: 2px solid #e2e8f0;
+        }
+        .org-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+        .org-subtitle {
+            font-size: 12pt;
+            color: #2563eb;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+        .school-year {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 9.5pt;
+        }
+        .contact-cell {
+            width: 35%;
+            font-size: 8.5pt;
+            color: #475569;
+            background-color: #f8fafc;
+        }
+        .contact-cell strong {
+            color: #0f172a;
+        }
+
+        /* Section Titles */
+        .section-header {
+            background: #1e293b;
+            color: #ffffff;
+            padding: 8px 14px;
+            font-size: 11pt;
+            font-weight: bold;
+            border-radius: 6px 6px 0 0;
+            margin-top: 15px;
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+            margin-bottom: 15px;
+        }
+        .data-table td, .data-table th {
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            text-align: right;
+            vertical-align: middle;
+        }
+        .data-table th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+            font-size: 9.5pt;
+        }
+        .label {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+            width: 18%;
+            font-size: 9pt;
+        }
+        .value {
+            color: #0f172a;
+            width: 32%;
+            font-size: 9.5pt;
+        }
+
+        /* Course Cards */
+        .course-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 0 0 6px 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        .course-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #1e40af;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Inner Course Table */
+        .course-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .course-details-table th {
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 6px 10px;
+            font-size: 8.5pt;
+            text-align: right;
+        }
+        .course-details-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 9pt;
+        }
+
+        /* Summary & Badge */
+        .badge {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: 600;
+        }
+        .amount {
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        /* Terms Box */
+        .terms-box {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 8pt;
+            color: #64748b;
+            line-height: 1.4;
+            margin-top: 15px;
+        }
+        .terms-box p {
+            margin: 3px 0;
+        }
+
+        .signature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .signature-cell {
+            width: 50%;
+            vertical-align: top;
+            padding: 10px;
+            background: #ffffff;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+        }
+        .signature-title {
+            font-weight: bold;
+            font-size: 9.5pt;
+            color: #334155;
+            margin-bottom: 40px;
+        }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .dir-ltr { direction: ltr; unicode-bidi: embed; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Table -->
+    <table class="header-table">
+        <tr>
+            <td class="logo-title-cell">
+                <div class="org-title">Inschrijvingsformulier cursist</div>
+                <div class="org-subtitle">GO! Centrum voor Volwassenenonderwijs hét CVO Pro</div>
+                <div class="school-year">العام الدراسي 2026 - 2027 (Schooljaar 2026 - 2027)</div>
+            </td>
+            <td class="contact-cell dir-ltr">
+                <strong>CVO PRO</strong><br>
+                Keizersplein 19, 9300 Aalst<br>
+                Tel: 053 46 19 00<br>
+                Email: info@cvopro.be<br>
+                <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 6px 0;">
+                <strong>Hét CVO</strong><br>
+                Bergstraat 36, 9700 Oudenaarde<br>
+                Tel: 055 30 94 49<br>
+                Email: info@hetcvo.be
+            </td>
+        </tr>
+    </table>
+
+    <!-- Section 1: Student Information -->
+    <div class="section-header">أولاً: بيانات الدارس (Cursist Gegevens)</div>
+    <table class="data-table">
+        <tr>
+            <td class="label">اسم الدارس:</td>
+            <td class="value"><strong>Alsaadni Samer Guda Nasr</strong></td>
+            <td class="label">الجنسية:</td>
+            <td class="value">مصرية (Egyptische)</td>
+        </tr>
+        <tr>
+            <td class="label">تاريخ الميلاد:</td>
+            <td class="value">7 / 7 / 1981</td>
+            <td class="label">البريد الإلكتروني:</td>
+            <td class="value dir-ltr text-left">samerguda@gmail.com</td>
+        </tr>
+        <tr>
+            <td class="label">العنوان:</td>
+            <td class="value">Marktstraat 43 8530 HARELBEKE</td>
+            <td class="label">الهاتف المحمول:</td>
+            <td class="value dir-ltr text-left">+32492862991</td>
+        </tr>
+        <tr>
+            <td class="label">المستوى التعليمي:</td>
+            <td class="value">بكالوريوس (مصر) - Bachelor (Egypte)</td>
+            <td class="label">معرف الطالب (ID):</td>
+            <td class="value">13074</td>
+        </tr>
+        <tr>
+            <td class="label">الجنس:</td>
+            <td class="value">ذكر (Man)</td>
+            <td class="label">الرقم الوطني (Rijksregisternr):</td>
+            <td class="value">81070772341</td>
+        </tr>
+        <tr>
+            <td class="label">حالة العمل:</td>
+            <td class="value" colspan="3"><span class="badge" style="background:#fef3c7; color:#92400e;">باحث عن عمل (Werkzoekend)</span></td>
+        </tr>
+    </table>
+
+    <!-- Section 2: Registration Details -->
+    <div class="section-header">ثانياً: تفاصيل المساق والدورات التدريبية (Opleiding & Cursussen)</div>
+    <div class="course-box">
+        <div class="course-title">
+            برنامج اللغة الهولندية لغير الناطقين بها - المستوى الأول 
+            <br><span style="font-size: 9pt; color: #475569; font-weight: normal;">Nederlands tweede taal - richtgraad 1 (830-10135) | ODB-Y00368</span>
+        </div>
+
+        <!-- Course 1 -->
+        <table class="course-details-table">
+            <thead>
+                <tr>
+                    <th style="width: 45%;">اسم الدورة والرمز</th>
+                    <th style="width: 25%;">سبب الإعفاء من الرسوم</th>
+                    <th style="width: 15%;">الساعات</th>
+                    <th style="width: 15%;">الرسوم</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>O_Harelbeke_Arendsstraat_NT2 1.2 MON</strong><br>
+                        <span style="font-size: 8pt; color: #64748b;">70000422 - NT2 - Waystage mondeling ODB-Y00368-007</span>
+                    </td>
+                    <td><span class="badge">إعفاء كامل (مادة 109 §3)</span><br><span style="font-size: 7.5pt; color: #64748b;">Tariefsuggestie volledige vrijstelling</span></td>
+                    <td class="text-center">60 ساعة</td>
+                    <td class="text-center amount">€ 0,-</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #f8fafc;">
+                        <strong>التاريخ والوقت:</strong> 9/11/2026 - 4/12/2026 | الإثنين، الثلاثاء، الخميس، الجمعة (08:40 - 12:00)<br>
+                        <strong>الموقع:</strong> Arendsstraat 62 8530 HARELBEKE (Lokaal 47A - taalklas)<br>
+                        <strong>المعلم:</strong> Verbeke Wouter
+                    </td>
+                    <td class="text-center" style="background-color: #f8fafc;">رسوم النسخ:</td>
+                    <td class="text-center amount" style="background-color: #f8fafc;">€ 4,-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="height: 10px;"></div>
+
+        <!-- Course 2 -->
+        <table class="course-details-table">
+            <thead>
+                <tr>
+                    <th style="width: 45%;">اسم الدورة والرمز</th>
+                    <th style="width: 25%;">سبب الإعفاء من الرسوم</th>
+                    <th style="width: 15%;">الساعات</th>
+                    <th style="width: 15%;">الرسوم</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>O_Harelbeke_Arendsstraat_NT2 1.2 SCHR</strong><br>
+                        <span style="font-size: 8pt; color: #64748b;">70000423 - NT2 - Waystage schriftelijk ODB-Y00368-003</span>
+                    </td>
+                    <td><span class="badge">إعفاء كامل (مادة 109 §3)</span><br><span style="font-size: 7.5pt; color: #64748b;">Tariefsuggestie volledige vrijstelling</span></td>
+                    <td class="text-center">60 ساعة</td>
+                    <td class="text-center amount">€ 0,-</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #f8fafc;">
+                        <strong>التاريخ والوقت:</strong> 7/12/2026 - 18/01/2027 | الإثنين، الثلاثاء، الخميس، الجمعة (08:40 - 12:00)<br>
+                        <strong>الموقع:</strong> Arendsstraat 62 8530 HARELBEKE (Lokaal 47A - taalklas)<br>
+                        <strong>المعلم:</strong> Verbeke Wouter
+                    </td>
+                    <td class="text-center" style="background-color: #f8fafc;">رسوم النسخ:</td>
+                    <td class="text-center amount" style="background-color: #f8fafc;">€ 4,-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 3: Payment Summary -->
+    <div class="section-header">ثالثاً: الملخص المالي وتأكيد الدفع (Betaling)</div>
+    <table class="data-table">
+        <tr>
+            <td class="label">المبلغ الإجمالي (Totaal bedrag):</td>
+            <td class="value" style="font-size: 12pt; color: #166534; font-weight: bold;">€ 8,-</td>
+            <td class="label">تاريخ التسجيل:</td>
+            <td class="value">19 / 10 / 2026</td>
+        </tr>
+        <tr>
+            <td class="label">تفاصيل الدفع:</td>
+            <td class="value" colspan="3">
+                تم دفع مبلغ <strong>€ 8,-</strong> بتاريخ 19/10/2026 عبر بطاقة مصرفية (Bancontact)<br>
+                <span class="dir-ltr" style="font-size: 8.5pt; color: #64748b;">Ref: +++000/0015/27950+++</span> | الموظف المسؤول: <strong>Patricia Versieren</strong>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Terms & Legal Notes -->
+    <div class="terms-box">
+        <p><strong>الإقرار والشروط (Verklaring & Reglementen):</strong></p>
+        <p>• يقر الموقع أدناه بالموافقة على اللوائح الخاصة بـ hét CVO Pro: المشروع التربوي، شروط التسجيل، لائحة التقييم والأنظمة الخاصة بالقسم.</p>
+        <p>• رقم الاعتماد (Authorisatie ID) لشيكات التدريب: 626309 | رقم اعتماد KMO-portefeuille: DV.O100065.</p>
+        <p>• يشير رمز ODB إلى أن الدورة تدعم نظام إجازة التدريب الفلمنكية (VOV)، بينما تعني (NVT) عدم انطباق الشروط.</p>
+        <p>• <strong>ملاحظة:</strong> يتم تخزين جميع البيانات في قاعدة بيانات معتمدة ويتم تبادلها رسمياً مع الحكومة الفلمنكية (Vlaamse Overheid).</p>
+    </div>
+
+    <!-- Signatures -->
+    <table class="signature-table">
+        <tr>
+            <td class="signature-cell">
+                <div class="signature-title">توقيع الدارس (Handtekening cursist):</div>
+                <div style="font-size: 8.5pt; color: #64748b; margin-top: 30px;">
+                    المكان والتعميد: HARELBEKE - 19/10/2026
+                </div>
+            </td>
+            <td style="width: 4%;"></td>
+            <td class="signature-cell">
+                <div class="signature-title">عن المركز (Voor ontvangst / Handtekening centrum):</div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <span style="display: inline-block; border: 1px solid #2563eb; color: #2563eb; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 9pt;">[توقيع وختم المركز معتمد]</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
