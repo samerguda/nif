@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samer Alsaadni - HVAC & Pipeline Job request Email</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0265d2',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-10 h-10 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-brand-500/20">
+                    SA
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-slate-900 leading-tight">Samer Alsaadni</h1>
+                    <p class="text-xs text-slate-500 font-medium">Senior Mechanical Engineer | HVAC & Piping</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-4 rtl:space-x-reverse text-xs sm:text-sm">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+                    Harelbeke, Belgium
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Left Column: Controls & Dynamic Customization -->
+        <div class="w-full lg:w-5/12 space-y-6">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 sm:p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-brand-600"></i>
+                    Email Customization
+                </h2>
+                
+                <form id="emailForm" onsubmit="event.preventDefault();" class="space-y-4">
+                    <!-- Recipient Field -->
+                    <div>
+                        <label for="recipientName" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                            Recipient / Hiring Manager
+                        </label>
+                        <input type="text" id="recipientName" value="Hiring Manager" 
+                            class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition"
+                            placeholder="e.g. Mr. John Doe / Hiring Manager">
+                    </div>
+
+                    <!-- Company Name -->
+                    <div>
+                        <label for="companyName" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                            Company / Project Name (Optional)
+                        </label>
+                        <input type="text" id="companyName" value="" 
+                            class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm transition"
+                            placeholder="e.g. CTRL-F / Merelbeke Project">
+                    </div>
+
+                    <!-- Target Focus Area -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                            Specialization Focus
+                        </label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" onclick="setFocus('all')" id="btnFocusAll" 
+                                class="px-3 py-2 text-xs font-medium rounded-lg border border-brand-600 bg-brand-50 text-brand-700 transition">
+                                Both
+                            </button>
+                            <button type="button" onclick="setFocus('hvac')" id="btnFocusHvac" 
+                                class="px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition">
+                                HVAC
+                            </button>
+                            <button type="button" onclick="setFocus('piping')" id="btnFocusPiping" 
+                                class="px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition">
+                                Pipeline
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Language Option -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                            Email Language
+                        </label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="setLanguage('en')" id="btnLangEn" 
+                                class="px-3 py-2 text-xs font-medium rounded-lg border border-brand-600 bg-brand-50 text-brand-700 transition flex items-center justify-center gap-2">
+                                <span>🇬🇧</span> English
+                            </button>
+                            <button type="button" onclick="setLanguage('nl')" id="btnLangNl" 
+                                class="px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center justify-center gap-2">
+                                <span>🇧🇪</span> Dutch / Nederlands
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Subject Line Preview -->
+                    <div>
+                        <label for="emailSubject" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                            Subject Line
+                        </label>
+                        <input type="text" id="emailSubject" 
+                            class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm font-medium text-slate-800 transition">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Profile Summary Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-3">
+                <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider text-slate-500">Applicant Quick Info</h3>
+                <div class="text-xs space-y-2 text-slate-600">
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-user text-brand-600 w-4"></i> <strong>Name:</strong> Samer Alsaadni</p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-briefcase text-brand-600 w-4"></i> <strong>Experience:</strong> 15+ Years (SWCC, Saudi Binladin, RTCC)</p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-600 w-4"></i> <strong>Email:</strong> samerguda@gmail.com</p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-600 w-4"></i> <strong>Phone:</strong> +32 492 86 29 91</p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> <strong>Location:</strong> Harelbeke, Belgium</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Live Email Editor & Actions -->
+        <div class="w-full lg:w-7/12 flex flex-col space-y-4">
+            
+            <!-- Actions Header Bar -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center space-x-2">
+                    <span class="inline-block w-3 h-3 rounded-full bg-emerald-500"></span>
+                    <span class="text-sm font-semibold text-slate-700">Email Draft Ready</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <!-- Reset Button -->
+                    <button onclick="resetTemplate()" title="Reset text to default"
+                        class="p-2.5 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 transition text-sm">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    
+                    <!-- Copy Button -->
+                    <button id="copyBtn" onclick="copyEmailToClipboard()" 
+                        class="px-5 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-medium text-sm shadow-md shadow-brand-500/20 flex items-center gap-2 transition-all transform active:scale-95">
+                        <i class="fa-regular fa-copy"></i>
+                        <span>Copy Email Text</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Email Body Canvas (Editable Area) -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex-1 flex flex-col">
+                <!-- Mock Email Header -->
+                <div class="bg-slate-100/70 border-b border-slate-200 p-4 space-y-2 text-xs text-slate-600">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-slate-500 w-16">Subject:</span>
+                        <span id="displaySubject" class="font-medium text-slate-800"></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-slate-500 w-16">From:</span>
+                        <span class="text-slate-800">Samer Alsaadni &lt;samerguda@gmail.com&gt;</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-slate-500 w-16">Attachment:</span>
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-200 text-slate-700 text-xs">
+                            <i class="fa-solid fa-paperclip"></i> CV_Samer_Alsaadni_Senior_Mechanical_Engineer.pdf
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Editable Textarea -->
+                <div class="p-5 flex-1 bg-white relative">
+                    <textarea id="emailBody" 
+                        class="w-full h-96 lg:h-full min-h-[380px] p-2 resize-y border-0 focus:ring-0 text-slate-800 text-sm leading-relaxed font-sans outline-none"
+                        placeholder="Loading template..."></textarea>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 ease-in-out z-50 flex items-center gap-3 bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-xl">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <p class="text-sm font-semibold">Email Copied to Clipboard!</p>
+            <p class="text-xs text-slate-400">Ready to paste into your email client.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State variables
+        let currentFocus = 'all'; // 'all', 'hvac', 'piping'
+        let currentLang = 'en';  // 'en', 'nl'
+
+        // Elements
+        const recipientInput = document.getElementById('recipientName');
+        const companyInput = document.getElementById('companyName');
+        const subjectInput = document.getElementById('emailSubject');
+        const displaySubject = document.getElementById('displaySubject');
+        const emailBody = document.getElementById('emailBody');
+
+        // Initial setup
+        window.onload = function() {
+            updateEmailTemplate();
+
+            // Event Listeners for dynamic updates
+            recipientInput.addEventListener('input', updateEmailTemplate);
+            companyInput.addEventListener('input', updateEmailTemplate);
+            subjectInput.addEventListener('input', function() {
+                displaySubject.textContent = subjectInput.value;
+            });
+        };
+
+        function setFocus(focus) {
+            currentFocus = focus;
+            
+            // Update button styles
+            ['All', 'Hvac', 'Piping'].forEach(f => {
+                const btn = document.getElementById('btnFocus' + f);
+                if (f.toLowerCase() === focus) {
+                    btn.className = "px-3 py-2 text-xs font-medium rounded-lg border border-brand-600 bg-brand-50 text-brand-700 transition";
+                } else {
+                    btn.className = "px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition";
+                }
+            });
+
+            updateEmailTemplate();
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+
+            const btnEn = document.getElementById('btnLangEn');
+            const btnNl = document.getElementById('btnLangNl');
+
+            if (lang === 'en') {
+                btnEn.className = "px-3 py-2 text-xs font-medium rounded-lg border border-brand-600 bg-brand-50 text-brand-700 transition flex items-center justify-center gap-2";
+                btnNl.className = "px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center justify-center gap-2";
+            } else {
+                btnNl.className = "px-3 py-2 text-xs font-medium rounded-lg border border-brand-600 bg-brand-50 text-brand-700 transition flex items-center justify-center gap-2";
+                btnEn.className = "px-3 py-2 text-xs font-medium rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition flex items-center justify-center gap-2";
+            }
+
+            updateEmailTemplate();
+        }
+
+        function updateEmailTemplate() {
+            const recipient = recipientInput.value.trim() || 'Hiring Manager';
+            const company = companyInput.value.trim() ? ` at ${companyInput.value.trim()}` : '';
+            
+            let subject = '';
+            let body = '';
+
+            if (currentLang === 'en') {
+                let focusTitle = "HVAC & Pipeline Project Execution";
+                if (currentFocus === 'hvac') focusTitle = "HVAC Systems Project Execution";
+                if (currentFocus === 'piping') focusTitle = "Pipeline & Piping Systems Execution";
+
+                subject = `Application for Senior Mechanical Engineer / ${focusTitle} - Samer Alsaadni`;
+
+                let focusText = "large-scale HVAC, pumping stations, and piping systems (CS, DI, HDPE)";
+                if (currentFocus === 'hvac') focusText = "advanced HVAC systems (Chilled Water, VRF, DX units, Air Compressors, and Ventilation)";
+                if (currentFocus === 'piping') focusText = "major Pipeline Networks, Pumping Stations, and Station Piping (Carbon Steel, DI, HDPE)";
+
+                body = `Dear ${recipient},
+
+I am writing to express my strong interest in joining your team for project execution${company}, specializing in ${focusTitle.toLowerCase()}.
+
+With over 15 years of rich experience as a Senior Mechanical Engineer and Site Manager, I have successfully executed complex infrastructure projects, including ${focusText}. My background includes working on prestigious projects with leading contractors and consultants such as Saudi Binladin Group, AL RASHID RTCC, and SWCC projects, strictly complying with international engineering standards and specifications.
+
+Key strengths I bring to your projects:
+• Extensive hands-on experience in installation, testing, balancing, and commissioning of mechanical systems.
+• Proven expertise in Revit MEP, AutoCAD, shop drawing reviews, and NDT welding inspection.
+• Strong leadership skills in managing subcontractors, site coordination, and multidisciplinary project integration.
+• Currently based in Harelbeke, Belgium, fully available for project execution across Belgium and Europe.
+
+I have attached my detailed resume for your review. I would welcome the opportunity to discuss how my technical expertise and field experience align with your current and upcoming project execution needs.
+
+Thank you for your time and consideration.
+
+Best regards,
+
+Samer Alsaadni
+Senior Mechanical Engineer & Site Manager
+Phone: +32 492 86 29 91
+Email: samerguda@gmail.com
+Location: Harelbeke, Belgium`;
+
+            } else {
+                // Dutch version
+                let focusTitle = "HVAC & Piping Project Uitvoering";
+                if (currentFocus === 'hvac') focusTitle = "HVAC Project Uitvoering";
+                if (currentFocus === 'piping') focusTitle = "Piping & Pijpleidingen Uitvoering";
+
+                subject = `Sollicitatie Senior Mechanical Engineer / ${focusTitle} - Samer Alsaadni`;
+
+                let focusText = "grootschalige HVAC-installaties, pompstations en leidingnetwerken (CS, DI, HDPE)";
+                if (currentFocus === 'hvac') focusText = "hoogwaardige HVAC-systemen (Chilled Water, VRF, DX-units, compressoren en ventilatie)";
+                if (currentFocus === 'piping') focusText = "complexe leidingnetwerken, pompstations en station piping (Koolstofstaal, DI, HDPE)";
+
+                body = `Beste ${recipient},
+
+Met grote belangstelling solliciteer ik naar een positie voor projectuitvoering${company}, gespecialiseerd in ${focusTitle.toLowerCase()}.
+
+Als Senior Mechanical Engineer en Site Manager heb ik meer dan 15 jaar ervaring in het succesvol opleveren van omvangrijke mechanische- en infrastructuurprojecten, waaronder ${focusText}. Tijdens mijn loopbaan bij gerenommeerde bedrijven zoals Saudi Binladin Group en AL RASHID RTCC heb ik grote projecten geleid volgens de hoogste internationale kwaliteits- en veiligheidsnormen.
+
+Mijn belangrijkste kwaliteiten:
+• Uitgebreide praktische ervaring met installatie, testen, inregeling en inbedrijfstelling van mechanische systemen.
+• Grondige kennis van Revit MEP, AutoCAD, werktekeningencontrole en NDT lasinspectie.
+• Sterke leiderschapskwaliteiten in het aansturen van onderaannemers en multidisciplinaire site-coördinatie.
+• Woonachtig in Harelbeke, België en direct beschikbaar voor projecten in België en Europa.
+
+In de bijlage vindt u mijn CV voor meer details over mijn werkervaring. Ik licht mijn kandidatuur graag toe in een persoonlijk gesprek.
+
+Met vriendelijke groet,
+
+Samer Alsaadni
+Senior Mechanical Engineer & Site Manager
+Tel: +32 492 86 29 91
+E-mail: samerguda@gmail.com
+Woonplaats: Harelbeke, België`;
+            }
+
+            subjectInput.value = subject;
+            displaySubject.textContent = subject;
+            emailBody.value = body;
+        }
+
+        function resetTemplate() {
+            recipientInput.value = 'Hiring Manager';
+            companyInput.value = '';
+            setFocus('all');
+            setLanguage('en');
+        }
+
+        function copyEmailToClipboard() {
+            const textToCopy = `Subject: ${subjectInput.value}\n\n${emailBody.value}`;
+
+            // Create temporary textarea element for fallback copying
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                console.error('Copy failed: ', err);
+            } finally {
+                document.body.removeChild(tempTextArea);
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
