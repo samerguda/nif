@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معامل اللغة والثقافة | LAB' LANGUE & CULTURE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 35px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Sections */
+        .section {
+            padding: 30px 35px;
+            border-bottom: 2px solid #eef1f7;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #1e3c72;
+        }
+
+        .section-title .number {
+            background: #1e3c72;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title h2 {
+            font-size: 1.5rem;
+            color: #1e3c72;
+        }
+
+        .section-title .fr-title {
+            font-size: 0.95rem;
+            color: #6b7c9e;
+            font-weight: normal;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Original text block */
+        .original-text {
+            background: #f8f9fc;
+            border-right: 5px solid #1e3c72;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.02rem;
+            color: #2c3e50;
+            direction: ltr;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .original-text .label {
+            display: inline-block;
+            background: #1e3c72;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+            direction: rtl;
+        }
+
+        .original-text blockquote {
+            margin: 0;
+            padding: 0;
+            font-style: italic;
+            color: #34495e;
+        }
+
+        /* Arabic translation block */
+        .arabic-text {
+            background: #fff8e7;
+            border-right: 5px solid #e67e22;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+            color: #3d2c0e;
+        }
+
+        .arabic-text .label {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .arabic-text blockquote {
+            margin: 0;
+            padding: 0;
+            font-style: italic;
+        }
+
+        /* Sub-items */
+        .sub-item {
+            margin-bottom: 16px;
+        }
+
+        .sub-item h3 {
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+
+        /* Vocabulary list */
+        .vocab-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .vocab-item {
+            background: #f0f4ff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border-right: 4px solid #2a5298;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.98rem;
+        }
+
+        .vocab-item .fr {
+            font-weight: 600;
+            color: #1e3c72;
+            direction: ltr;
+        }
+
+        .vocab-item .ar {
+            color: #444;
+        }
+
+        /* True/False list */
+        .tf-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tf-list li {
+            padding: 8px 0;
+            padding-right: 28px;
+            position: relative;
+            font-size: 1rem;
+            border-bottom: 1px dashed #e0e5ef;
+        }
+
+        .tf-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tf-list li::before {
+            content: '❓';
+            position: absolute;
+            right: 0;
+            top: 8px;
+            font-size: 1rem;
+        }
+
+        /* Grammar box */
+        .grammar-box {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f7ff 100%);
+            border: 1px solid #b8d4e3;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 16px 0;
+        }
+
+        .grammar-box .grammar-title {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .grammar-box .grammar-title::before {
+            content: '📘';
+        }
+
+        .grammar-box p {
+            color: #2c3e50;
+            font-size: 0.98rem;
+        }
+
+        /* Email mockup */
+        .email-mockup {
+            background: #f8f9fc;
+            border: 1px solid #dce1ec;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 16px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        .email-mockup .header-line {
+            color: #6b7c9e;
+            font-size: 0.85rem;
+        }
+
+        .email-mockup .subject {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 0.95rem;
+            margin: 4px 0;
+        }
+
+        .email-mockup hr {
+            border: none;
+            border-top: 1px solid #dce1ec;
+            margin: 12px 0;
+        }
+
+        /* Pronoun table */
+        .pronoun-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.98rem;
+        }
+
+        .pronoun-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+        }
+
+        .pronoun-table td {
+            padding: 10px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e0e5ef;
+            background: #fafbff;
+        }
+
+        .pronoun-table tr:nth-child(even) td {
+            background: #f0f4ff;
+        }
+
+        /* Comparison box */
+        .comparison-box {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .comparison-card {
+            flex: 1;
+            min-width: 200px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            padding: 16px 20px;
+            border-top: 4px solid #2a5298;
+        }
+
+        .comparison-card h4 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .comparison-card p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* Mission box */
+        .mission-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #fff8e7 100%);
+            border: 1px solid #f0c36d;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .mission-box .mission-title {
+            font-weight: bold;
+            color: #8a6d1c;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mission-box .mission-title::before {
+            content: '🚀';
+        }
+
+        .mission-box ol {
+            padding-right: 22px;
+            color: #5a4a1c;
+        }
+
+        .mission-box li {
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+        }
+
+        /* Sound items */
+        .sound-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .sound-item {
+            background: #e8f4f8;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 0.95rem;
+            color: #1e3c72;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sound-item .fr {
+            font-weight: 600;
+            direction: ltr;
+        }
+
+        .sound-item .ar {
+            color: #444;
+        }
+
+        /* Family list */
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .family-item {
+            background: #f0f4ff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border-right: 4px solid #e67e22;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .family-item .fr {
+            font-weight: 600;
+            color: #1e3c72;
+            direction: ltr;
+        }
+
+        .family-item .ar {
+            color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 28px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 20px 18px;
+            }
+
+            .section-title h2 {
+                font-size: 1.2rem;
+            }
+
+            .vocab-list {
+                grid-template-columns: 1fr;
+            }
+
+            .family-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>معامل اللغة والثقافة</h1>
+            <p>LAB' LANGUE & CULTURE</p>
+        </div>
+
+        <!-- ================= SECTION 1 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">1</span>
+                <h2>عائلة ملوك فرنسا <span class="fr-title">LA FAMILLE DES ROIS DE FRANCE</span></h2>
+            </div>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    En 1533, Henri II épouse Catherine de Médicis. Ils ont trois enfants : François II, Charles IX et Henri III. Ils n'ont pas de petits-enfants. Le père de Henri II s'appelle François Ier. François Ier est le petit-fils de Jean d'Orléans.
+                </blockquote>
+            </div>
+
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    في عام 1533، تزوج هنري الثاني من كاتدرين دي ميديشي. ولديهما ثلاثة أطفال: فرانسوا الثاني، شارل التاسع، وهنري الثالث. ليس لديهم أحفاد. والد هنري الثاني يُدعى فرانسوا الأول. فرانسوا الأول هو حفيد جان دورليان.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 2 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">2</span>
+                <h2>الأصوات <span class="fr-title">LES SONS [œ] ET [ɛ]</span></h2>
+            </div>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>Écoutez et répétez. (استمع وأعِد)</blockquote>
+            </div>
+
+            <div class="sound-list">
+                <div class="sound-item"><span class="fr">a. ta mère</span> <span class="ar">أمك</span></div>
+                <div class="sound-item"><span class="fr">b. ta sœur</span> <span class="ar">أختك</span></div>
+                <div class="sound-item"><span class="fr">c. leur sœur</span> <span class="ar">أختهم</span></div>
+                <div class="sound-item"><span class="fr">d. leur frère</span> <span class="ar">أخوهم</span></div>
+                <div class="sound-item"><span class="fr">e. leur arrière-grand-père</span> <span class="ar">جدّهم الأكبر</span></div>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 3 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">3</span>
+                <h2>السكن في سويسرا <span class="fr-title">SE LOGER EN SUISSE</span></h2>
+            </div>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Vrai ou faux ? Lisez l'article et répondez. Justifiez votre choix à l'aide du texte.
+                </blockquote>
+            </div>
+
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    صح أم خطأ؟ اقرأ المقال وأجب. برر إجابتك مستعيناً بالنص.
+                </blockquote>
+            </div>
+
+            <ul class="tf-list">
+                <li><strong>أ.</strong> السكن يكلف غالياً في سويسرا. <span style="color:#6b7c9e;font-size:0.9rem;">(Se loger coûte cher en Suisse.)</span></li>
+                <li><strong>ب.</strong> في دول الاتحاد الأوروبي الأخرى، تكاليف السكن أغلى. <span style="color:#6b7c9e;font-size:0.9rem;">(Dans les autres pays de l'Union européenne, logements coûtent plus cher.)</span></li>
+                <li><strong>ج.</strong> استئجار مسكن يتطلب توفر عمل. <span style="color:#6b7c9e;font-size:0.9rem;">(Pour louer un logement, il faut avoir un travail.)</span></li>
+                <li><strong>د.</strong> للدفع بشكل أقل، يجب العيش في الريف. <span style="color:#6b7c9e;font-size:0.9rem;">(Pour payer moins cher, il faut vivre à la campagne.)</span></li>
+                <li><strong>هـ.</strong> في سويسرا، الدفع يتم باليورو. <span style="color:#6b7c9e;font-size:0.9rem;">(En Suisse, on paye en euros.)</span></li>
+            </ul>
+
+            <h3 style="margin-top: 20px; color: #1e3c72; font-size: 1.05rem;">محتوى المقال (SE LOGER EN SUISSE)</h3>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Se loger en Suisse, c'est cher ! Du studio à la villa luxueuse, tout est possible... quand on a de l'argent ! En moyenne, le prix du logement en Suisse est 60 % plus élevé que dans la moyenne des 28 pays de l'Union européenne. Pour une location, vous devez fournir votre contrat de travail et une pièce d'identité. Il faut savoir que les grandes villes sont 10 % plus chères, mais dans les zones rurales, les loyers sont 20 % moins chers. Dans le canton de Genève, un studio coûte en moyenne 800 CHF, un 3 pièces entre 1600 à 2000 CHF.
+                </blockquote>
+            </div>
+
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    السكن في سويسرا أمر مكلف! من الاستوديو إلى الفيلا الفاخرة، كل شيء ممكن... عندما تمتلك المال! في المتوسط، سعر السكن في سويسرا أعلى بنسبة 60% مقارنة بمتوسط 28 دولة في الاتحاد الأوروبي. للحصول على إيجار، يجب عليك تقديم عقد عملك وثيقة هوية. يجب أن تعلم أن المدن الكبرى أغلى بنسبة 10%، ولكن في المناطق الريفية، تكون الإيجارات أرخص بنسبة 20%. في كانتون جنيف، يكلف استوديو في المتوسط 800 فرنك سويسري، وشقة من 3 غرف بين 1600 إلى 2000 فرنك سويسري.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 4 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">4</span>
+                <h2>أثاث المنزل <span class="fr-title">LES OBJETS DE LA MAISON</span></h2>
+            </div>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Faites des devinettes avec les pronoms le, la, l', les.<br>
+                    Je l'ouvre le matin pour prendre du lait, des yaourts et du jus d'orange. → <strong>Le réfrigérateur</strong>
+                </blockquote>
+            </div>
+
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    قم بعمل حزازير أو ألغاز باستخدام ضمائر المفعول (le, la, l', les).<br>
+                    أنا أفتحه صباحاً لأخذ الحليب، الزبادي، وعصير البرتقال. → <strong>الثلاجة</strong>
+                </blockquote>
+            </div>
+
+            <h3 style="margin-top: 18px; color: #1e3c72; font-size: 1.05rem;">الكلمات مع الصور</h3>
+            <div class="vocab-list">
+                <div class="vocab-item"><span class="fr">un réfrigérateur</span> <span class="ar">ثلاجة</span></div>
+                <div class="vocab-item"><span class="fr">un lit</span> <span class="ar">سرير</span></div>
+                <div class="vocab-item"><span class="fr">un four</span> <span class="ar">فرن</span></div>
+                <div class="vocab-item"><span class="fr">un canapé</span> <span class="ar">أريكة / كنبة</span></div>
+                <div class="vocab-item"><span class="fr">un lavabo</span> <span class="ar">حوض غسيل</span></div>
+                <div class="vocab-item"><span class="fr">une bibliothèque</span> <span class="ar">مكتبة</span></div>
+                <div class="vocab-item"><span class="fr">une baignoire</span> <span class="ar">حوض استحمام (بانيو)</span></div>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 5 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">5</span>
+                <h2>الوجهة كندا <span class="fr-title">DESTINATION CANADA</span></h2>
+            </div>
+
+            <h3 style="color: #1e3c72; margin-bottom: 10px;">القسم الأول (أ)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Écoutez et répondez.<br>
+                    a. Quel est l'objectif du forum « Destination Canada » ?<br>
+                    b. Combien de Belges ont la possibilité de partir cette année ?<br>
+                    c. Pourquoi est-ce qu'ils partent au Canada ? (Indiquez 4 raisons).
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    استمع وأجب.<br>
+                    أ. ما هو هدف منتدى "وجهة كندا"؟<br>
+                    ب. كم عدد البلجيكيين الذين لديهم إمكانية المغادرة هذا العام؟<br>
+                    ج. لماذا يغادرون إلى كندا؟ (اذكر 4 أسباب).
+                </blockquote>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">القسم الثاني (ب)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Imaginez ! Vous êtes belge et vous venez d'arriver au Canada. Écrivez les réponses.<br>
+                    a. Vous venez de quel pays ?<br>
+                    b. Pourquoi est-ce que vous avez quitté la Belgique ?<br>
+                    c. Pourquoi est-ce que vous avez choisi le Canada ?
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    تخيل! أنت بلجيكي ووصلت للتو إلى كندا. اكتب الإجابات.<br>
+                    أ. من أي بلد أتيت؟<br>
+                    ب. لماذا غادرت بلجيكا؟<br>
+                    ج. لماذا اخترت كندا؟
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 6 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">6</span>
+                <h2>ورش عمل: الاتصال الهاتفي للحصول على معلومات <span class="fr-title">Ateliers : Téléphoner pour avoir des informations</span></h2>
+            </div>
+
+            <h3 style="color: #1e3c72; margin-bottom: 10px;">1. الفهم (COMPRÉHENSION)</h3>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي — الأسئلة (1)</span>
+                <blockquote>
+                    Regardez le Document 1 et répondez.<br>
+                    a. Où sont-ils ?<br>
+                    b. À votre avis, qu'est-ce qu'ils font ?
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    انظر إلى المستند 1 وأجب:<br>
+                    أ. أين هما؟<br>
+                    ب. في رأيك، ماذا يفعلان؟
+                </blockquote>
+            </div>
+
+            <div class="original-text" style="margin-top: 16px;">
+                <span class="label">النص الأصلي — الأسئلة (2)</span>
+                <blockquote>
+                    a. Regardez le Document 2. À votre avis, c'est qui ? Un super-héros ? Une société de déménagement ? Une soirée festive ?<br>
+                    b. Écoutez et répondez.<br>
+                    &nbsp;&nbsp;&nbsp;a. La femme appelle qui ?<br>
+                    &nbsp;&nbsp;&nbsp;b. Qu'est-ce qu'elle demande ?<br>
+                    &nbsp;&nbsp;&nbsp;c. Quel est le problème ?<br>
+                    &nbsp;&nbsp;&nbsp;d. Qu'est-ce qu'elle va faire ?
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    أ. انظر إلى المستند 2. برأيك، من هذا؟ بطل خارق؟ شركة نقل أثاث؟ حفلة تنكرية؟<br>
+                    ب. استمع وأجب.<br>
+                    &nbsp;&nbsp;&nbsp;أ. من تتصل المرأة؟<br>
+                    &nbsp;&nbsp;&nbsp;ب. ماذا تطلب؟<br>
+                    &nbsp;&nbsp;&nbsp;ج. ما هي المشكلة؟<br>
+                    &nbsp;&nbsp;&nbsp;د. ماذا ستفعل؟
+                </blockquote>
+            </div>
+
+            <div class="grammar-box">
+                <div class="grammar-title">قاعدة التعلم (Apprendre)</div>
+                <p><strong>النص الأصلي:</strong> Au téléphone, je fais attention à parler clairement et à articuler.</p>
+                <p style="margin-top: 6px;"><strong>الترجمة:</strong> عبر الهاتف، أحرص على التحدث بوضوح ونطق الكلمات مخارج حروفها بدقة.</p>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">تحديد موضوع المكالمة (Dire l'objet d'un appel)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    • J'appelle pour avoir un renseignement.<br>
+                    • C'est au sujet de l'annonce.<br>
+                    • C'est pour une réservation.<br>
+                    • J'appelle pour avoir de tes nouvelles.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    • أتصل للحصول على معلومة.<br>
+                    • الأمر بخصوص الإعلان.<br>
+                    • هذا من أجل حجز.<br>
+                    • أتصل للاطمئنان عليك (لأخبار عنك).
+                </blockquote>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">2. التعبير (EXPRESSION)</h3>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي — السؤال (3)</span>
+                <blockquote>
+                    Par deux, échangez.<br>
+                    • Est-ce que vous avez déjà déménagé ?<br>
+                    • Qu'est-ce que vous avez fait ?
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    في ثنائيات، تباردا الحديث:<br>
+                    • هل سبق لك أن انتقلت إلى منزل جديد (نقلت أثاثك)؟<br>
+                    • ماذا فعلت؟
+                </blockquote>
+            </div>
+
+            <div class="original-text" style="margin-top: 16px;">
+                <span class="label">النص الأصلي — السؤال (4)</span>
+                <blockquote>
+                    Par deux, choisissez une situation et jouez-la.<br>
+                    <strong>Situation 1 :</strong> Vous décidez de partir à l'étranger. Vous appelez votre mère pour avoir de ses nouvelles et vous lui expliquez.<br>
+                    <strong>Situation 2 :</strong> Vous cherchez un logement. Vous avez vu une annonce. Vous appelez le propriétaire pour avoir des renseignements.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    في ثنائيات، اختر موقفاً وقم بتمثيله:<br>
+                    <strong>الموقف 1:</strong> قررت السفر إلى الخارج. تتصل بوالدتك للاطمئنان عليها وتشرح لها الأمر.<br>
+                    <strong>الموقف 2:</strong> أنت تبحث عن مسكن. لقد رأيت إعلاناً. تتصل بالمالك للحصول على معلومات.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 7 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">7</span>
+                <h2>الوحدة 7 — إبلاغ عن تغيير العنوان <span class="fr-title">UNITÉ 7 : Informer d'un changement d'adresse</span></h2>
+            </div>
+
+            <h3 style="color: #1e3c72; margin-bottom: 10px;">المستند 1: البريد الإلكتروني (DOCUMENT 1)</h3>
+
+            <div class="email-mockup">
+                <div class="header-line">De : m.tijou@orange.fr</div>
+                <div class="header-line">Date : 16 février 2019</div>
+                <div class="header-line">À : service-client</div>
+                <div class="subject">Objet : changement d'adresse</div>
+                <hr>
+                <p>Bonjour,</p>
+                <p>Mon adresse m.tijou@gmail.com ne va plus être valable à partir de la semaine prochaine.</p>
+                <p>Voici ma nouvelle adresse : <strong>m.tijou@orange.fr</strong>.</p>
+                <p>Merci de mettre votre carnet d'adresses à jour.</p>
+                <p>Cordialement,</p>
+                <p><strong>Mathieu Tijou</strong></p>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">1. الفهم (COMPRÉHENSION)</h3>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Lisez le DOCUMENT 1 et répondez.<br>
+                    a. Qui écrit ? À qui ?<br>
+                    b. Pour quelle raison ? Quand a lieu le changement ?<br>
+                    c. C'est un courriel pour :<br>
+                    &nbsp;&nbsp;&nbsp;• un ami.<br>
+                    &nbsp;&nbsp;&nbsp;• un service administratif.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    اقرأ المستند 1 وأجب:<br>
+                    أ. من يكتب؟ وإلى من؟<br>
+                    ب. لأي سبب؟ ومتى سيحدث التغيير؟<br>
+                    ج. هذا بريد إلكتروني موجه إلى:<br>
+                    &nbsp;&nbsp;&nbsp;• صديق<br>
+                    &nbsp;&nbsp;&nbsp;• قسم إداري
+                </blockquote>
+            </div>
+
+            <div class="grammar-box">
+                <div class="grammar-title">قاعدة التعلم (Apprendre)</div>
+                <p><strong>النص الأصلي:</strong> Avant d'écrire, je relis la consigne une dernière fois. Je vérifie les informations à donner.</p>
+                <p style="margin-top: 6px;"><strong>الترجمة:</strong> قبل أن أكتب، أعيد قراءة التوجيهات مرة أخيرة. وأتحقق من المعلومات الواجب تقديمها.</p>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">2. تحديد العناصر (Par deux, identifiez les éléments suivants)</h3>
+            <p style="margin-bottom: 10px;">في ثنائيات، حدد العناصر التالية:</p>
+            <div class="vocab-list">
+                <div class="vocab-item"><span class="fr">✔ le destinataire</span> <span class="ar">المستلم</span></div>
+                <div class="vocab-item"><span class="fr">✔ l'expéditeur</span> <span class="ar">المرسل</span></div>
+                <div class="vocab-item"><span class="fr">✔ la date</span> <span class="ar">التاريخ</span></div>
+                <div class="vocab-item"><span class="fr">✔ l'objet</span> <span class="ar">الموضوع</span></div>
+                <div class="vocab-item"><span class="fr">✔ la formule de politesse</span> <span class="ar">عبارة المجاملة / التحية الختامية</span></div>
+                <div class="vocab-item"><span class="fr">✔ l'information principale</span> <span class="ar">المعلومة الرئيسية</span></div>
+                <div class="vocab-item"><span class="fr">✔ la demande</span> <span class="ar">الطلب</span></div>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">3. التعبير (EXPRESSION)</h3>
+
+            <div class="original-text">
+                <span class="label">النص الأصلي — القسم (a)</span>
+                <blockquote>
+                    Par deux. Chacun choisit une situation.<br>
+                    <strong>Situation 1 :</strong> Vous écrivez un courriel à un ami pour l'informer de votre déménagement. Attention aux formules de politesse ! (Vous pouvez relire la e-carte postale de l'unité 3.)<br>
+                    <strong>Situation 2 :</strong> Vous écrivez un courriel à votre entreprise pour l'informer de votre changement d'adresse postale.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    في ثنائيات. يختار كل شخص موقفاً:<br>
+                    <strong>الموقف 1:</strong> تكتب بريداً إلكترونياً لصديق لإبلاغه بانتقالك (تغيير منزلك). انتبه لعبارات المجاملة والتحية! (يمكنك إعادة قراءة البطاقة البريدية الإلكترونية للوحدة 3.)<br>
+                    <strong>الموقف 2:</strong> تكتب بريداً إلكترونياً لشركتك لإبلاغهم بتغيير عنوان بريدك البريدي.
+                </blockquote>
+            </div>
+
+            <div class="original-text" style="margin-top: 16px;">
+                <span class="label">النص الأصلي — القسمان (b) و (c)</span>
+                <blockquote>
+                    b. Individuellement, écrivez le courriel.<br>
+                    c. Comparez vos deux courriels.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    ب. اكتب البريد الإلكتروني بشكل فردي.<br>
+                    ج. قارن بين البريدين الإلكترونيين الخاصين بكما.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 8 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">8</span>
+                <h2>ملخص القواعد والمفردات <span class="fr-title">MÉMO</span></h2>
+            </div>
+
+            <!-- 1 -->
+            <h3 style="color: #1e3c72; margin-bottom: 10px;">1. صفات الملكية (2) — Les adjectifs possessifs (2)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    servent à indiquer une appartenance<br>
+                    ➔ nom masculin : mon, ton, son, notre, votre, leur<br>
+                    ➔ nom féminin : ma, ta, sa, notre, votre, leur<br>
+                    ➔ nom pluriel : mes, tes, ses, nos, vos, leurs
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    تُستخدم للإشارة إلى الملكية أو الانتماء<br>
+                    ➔ اسم مذكر: mon, ton, son, notre, votre, leur (ملكي، ملكك، ملكه/ملكها، ملكنا، ملككم/ملككِ، ملكهم)<br>
+                    ➔ اسم مؤنث: ma, ta, sa, notre, votre, leur<br>
+                    ➔ اسم جمع: mes, tes, ses, nos, vos, leurs
+                </blockquote>
+            </div>
+
+            <!-- 2 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">2. العائلة — La famille</h3>
+            <div class="family-grid">
+                <div class="family-item"><span class="fr">le grand-père</span> <span class="ar">الجد</span></div>
+                <div class="family-item"><span class="fr">la grand-mère</span> <span class="ar">الجدة</span></div>
+                <div class="family-item"><span class="fr">le père</span> <span class="ar">الأب</span></div>
+                <div class="family-item"><span class="fr">la mère</span> <span class="ar">الأم</span></div>
+                <div class="family-item"><span class="fr">le fils</span> <span class="ar">الابن</span></div>
+                <div class="family-item"><span class="fr">la fille</span> <span class="ar">الابنة</span></div>
+                <div class="family-item"><span class="fr">le frère</span> <span class="ar">الأخ</span></div>
+                <div class="family-item"><span class="fr">la sœur</span> <span class="ar">الأخت</span></div>
+                <div class="family-item"><span class="fr">le beau-frère</span> <span class="ar">زوج الأخت أو أخو الزوج/الزوجة</span></div>
+                <div class="family-item"><span class="fr">la belle-sœur</span> <span class="ar">زوجة الأخ أو أخت الزوج/الزوجة</span></div>
+                <div class="family-item"><span class="fr">la nièce</span> <span class="ar">ابنة الأخت/الأخ</span></div>
+                <div class="family-item"><span class="fr">le neveu</span> <span class="ar">ابن الأخت/الأخ</span></div>
+            </div>
+            <p style="margin-top: 8px; color: #6b7c9e; font-size: 0.95rem;">🔊 الأصوات [ɛ] و [œ]</p>
+
+            <!-- 3 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">3. تدريب: بدون رأس أو ذيل! — SANS QUEUE NI TÊTE !</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Votre voisin(e) ne comprend pas les liens dans votre famille. Créez des phrases sans queue ni tête !<br>
+                    Leur sœur n'est pas ma sœur. Ce n'est pas non plus votre sœur. C'est leur sœur !
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    جارك (أو جارتك) لا يفهم صلة القرابة في عائلتك. أنشئ جملاً غير منطقية (عشوائية أو متناقضة)!<br>
+                    أختهم ليست أختي. وهي ليست أختكم أيضاً. إنها أختهم!
+                </blockquote>
+            </div>
+
+            <!-- 4 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">4. ضمائر المفعول به المباشرة — Les pronoms compléments directs</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    servent à remplacer une personne ou une chose<br>
+                    ➔ masc. sing. : le<br>
+                    ➔ fém. sing. : la &nbsp;+ verbe<br>
+                    ➔ pluriel : les
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    تُستخدم لتعويض شخص أو شيء<br>
+                    ➔ مفرد مذكر: le<br>
+                    ➔ مفرد مؤنث: la &nbsp;+ فعل<br>
+                    ➔ للجمع: les
+                </blockquote>
+            </div>
+
+            <!-- 5 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">5. غرف المنزل — Les pièces de la maison</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    un salon, un séjour, une cuisine, une chambre, une salle de bains, un balcon, une cour, les toilettes (WC)
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    صالون، غرفة معيشة، مطبخ، غرفة نوم، حمام، شرفة، فناء (حوش)، دورات المياه
+                </blockquote>
+            </div>
+
+            <!-- 6 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">6. تدريب: العب دور المحقق الخاص! — JOUEZ AU DÉTECTIVE PRIVÉ !</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    Vous observez l'appartement de vos voisins : il y a Mlle Rose, M. Moutarde, Mme Verte, des enfants, un chien et une chaussette. Décrivez ce que vous voyez à votre voisin(e) sans donner les noms.<br>
+                    • Je le vois dans le salon.<br>
+                    • Qui ? Monsieur Moutarde ?<br>
+                    • Non, le chien !
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    أنت تراقب شقة جيرانك: يوجد الآنسة روز، السيد موستارد، السيدة فيرت، أطفال، كلب، وجورب. صف ما تراه لجارك دون ذكر الأسماء.<br>
+                    • أراه في الصالون.<br>
+                    • من؟ السيد موستارد؟<br>
+                    • لا، الكلب!
+                </blockquote>
+            </div>
+
+            <!-- 7 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">7. المقارنة — La comparaison</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    indique une différence<br>
+                    • moins... que (adjectif) | moins de... que (nom)<br>
+                    • plus... que (adjectif) | plus de... que (nom)
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    تشير إلى وجود اختلاف أو مقارنة<br>
+                    • أقل... من (صفة) | أقل من... (اسم)<br>
+                    • أكثر... من (صفة) | أكثر من... (اسم)
+                </blockquote>
+            </div>
+
+            <!-- 8 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">8. السكن — Le logement</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    un appartement, un loft, un studio, une maison, un chalet, un logement meublé ≠ non meublé<br>
+                    3. صف سكنك لجارك (أو جارتك). اكتب 5 جمل للمقارنة بين سكنيكما.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    شقة، شقة واسعة مفتوحة (لوفت)، استوديو، منزل، شاليه، مسكن مفروش ≠ غير مفروش<br>
+                    3. صف سكنك لجارك (أو جارتك). اكتب 5 جمل للمقارنة بين سكنيكما.
+                </blockquote>
+            </div>
+
+            <!-- 9 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">9. الماضي المركب (4) — Le passé composé (4)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    être + participe passé (devenir, rentrer, partir, aller, sortir, naître, tomber, etc.)<br>
+                    Il est devenu avocat. Elle est rentrée chez elle. Ils sont allés à la piscine. Je suis sorti hier soir. Il est né le 8 janvier 1968. Elle est tombée.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    فعل مساعد être + اسم المفعول (للأفعال: يصبح، يعود، يرحل، يذهب، يخرج، يولد، يسقط، إلخ)<br>
+                    أصبح محامياً. عادت إلى منزلها. ذهبوا إلى المسبح. خرجت أمس مساءً. وُلِد في 8 يناير 1968. لقد سقطت.
+                </blockquote>
+            </div>
+
+            <!-- 10 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">10. الأصوات [y], [i] و [ɛ] — Les sons [y], [i] et [ɛ]</h3>
+            <p style="color: #444; margin-bottom: 10px;">رموز ونقاط صوتية للتمييز بين مخارج الحروف.</p>
+            <p style="color: #6b7c9e; font-size: 0.95rem;">تدريب 4: من هم Dr et Mrs P. Vandertramp؟ (استخدم الحروف الأولى لأفعال الماضي المركب التي تأخذ الفعل المساعد être).</p>
+
+            <!-- 11 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">11. الضمائر التوكيدية مع حروف الجر — Les pronoms toniques avec les prépositions</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    chez, avec, sans, pour, à côté de, en face de, autour de...<br>
+                    moi, toi, lui, elle, nous, vous, eux, elles
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    عند/في منزل، مع، بدون، لـِ، بجانب، في مواجهة، حول...<br>
+                    الضمائر: (أنا، أنت، هو، هي، نحن، أنتم/أنتِ، هم، هنّ)
+                </blockquote>
+            </div>
+
+            <!-- 12 -->
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">12. أشباه الحروف المتحركة وأنصاف الصوائت — Les semi-voyelles</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    [j] : ressemble au son « i »<br>
+                    [ɥ] : ressemble au son « u »<br>
+                    [w] : ressemble au son « ou »
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    [j] : يشبه صوت حرف « i »<br>
+                    [ɥ] : يشبه صوت حرف « u »<br>
+                    [w] : يشبه صوت حرف « ou »
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 9 ================= -->
+        <div class="section">
+            <div class="section-title">
+                <span class="number">9</span>
+                <h2>الوحدة 7: لماذا ننتقل (أو نغير مسكننا)؟ <span class="fr-title">UNITÉ 7 : Pourquoi déménager ?</span></h2>
+            </div>
+
+            <h3 style="color: #1e3c72; margin-bottom: 10px;">1. تبرير اختيار (Justifier un choix)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    • J'ai quitté Paris pour avoir plus de confort.<br>
+                    • J'ai quitté Paris parce que c'est cher.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    • غادرت باريس لأحصل على مزيد من الراحة.<br>
+                    • غادرت باريس لأنها مكلفة.
+                </blockquote>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">2. تغيير الحياة (Changer de vie)</h3>
+            <div class="vocab-list">
+                <div class="vocab-item"><span class="fr">déménager</span> <span class="ar">الانتقال / تغيير السكن</span></div>
+                <div class="vocab-item"><span class="fr">emménager</span> <span class="ar">الاستقرار في مسكن جديد</span></div>
+                <div class="vocab-item"><span class="fr">chercher</span> <span class="ar">يبحث</span></div>
+                <div class="vocab-item"><span class="fr">trouver</span> <span class="ar">يجد</span></div>
+                <div class="vocab-item"><span class="fr">quitter</span> <span class="ar">يغادر</span></div>
+                <div class="vocab-item"><span class="fr">louer</span> <span class="ar">يستأجر</span></div>
+                <div class="vocab-item"><span class="fr">acheter</span> <span class="ar">يشتري</span></div>
+                <div class="vocab-item"><span class="fr">vendre</span> <span class="ar">يبيع</span></div>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">3. تحديد موضوع الاتصال (Dire l'objet d'un appel)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    • J'appelle pour avoir un renseignement.<br>
+                    • C'est au sujet de l'annonce.<br>
+                    • C'est pour une réservation.<br>
+                    • J'appelle pour avoir de tes nouvelles.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    • أتصل للحصول على معلومة.<br>
+                    • الأمر بخصوص الإعلان.<br>
+                    • هذا من أجل حجز.<br>
+                    • أتصل للاطمئنان عليك (لأعرف أخبارك).
+                </blockquote>
+            </div>
+
+            <h3 style="color: #1e3c72; margin: 18px 0 10px;">4. الإشارة إلى حدث حديث (Indiquer une action récente)</h3>
+            <div class="original-text">
+                <span class="label">النص الأصلي</span>
+                <blockquote>
+                    • Je viens de déménager !<br>
+                    • Nous venons d'acheter une maison.<br>
+                    • Elle vient de se marier.
+                </blockquote>
+            </div>
+            <div class="arabic-text">
+                <span class="label">الترجمة العربية</span>
+                <blockquote>
+                    • لقد انتقلت للتو (إلى منزل جديد)!<br>
+                    • لقد اشترينا للتو منزلاً.<br>
+                    • لقد تزوجت للتو.
+                </blockquote>
+            </div>
+
+            <div class="mission-box">
+                <div class="mission-title">المهمة (Mission): ابدأوا! (Partez !!!)</div>
+                <ol>
+                    <li>
+                        <strong>أنت تسكن مع صديقك/صديقتك. لديك مشكلة تتعلق بشقتك (المساحة، الجيران...) ولقد قررتم للتو الانتقال وتغيير السكن.</strong>
+                        <br><span style="font-size:0.88rem;color:#6b5c2e;">(Vous habitez avec votre ami(e). Vous avez un problème lié à votre appartement (taille, voisinage...) et venez de décider de déménager.)</span>
+                    </li>
+                    <li>
+                        <strong>بشكل فردي، تبحث عن إعلانات على الإنترنت. وتختار الشقق بناءً على خياراتك (العيش في الأقاليم، السعر، المساحة...).</strong>
+                        <br><span style="font-size:0.88rem;color:#6b5c2e;">(Individuellement, vous cherchez des annonces sur Internet. Vous sélectionnez des appartements en fonction de vos choix (vivre en province, le prix, la superficie...).)</span>
+                    </li>
+                    <li>
+                        <strong>في ثنائيات، تناقشان خياراتكما وتصلان إلى اتفاق عبر الهاتف.</strong>
+                        <br><span style="font-size:0.88rem;color:#6b5c2e;">(Par deux, vous discutez de vos choix et vous trouvez un accord par téléphone.)</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
