@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loonbon / كشف الراتب - Acerta</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @media print {
+            body { background: white; -webkit-print-color-adjust: exact; }
+            .no-print { display: none; }
+        }
+        body { font-family: Arial, sans-serif; font-size: 11px; color: #000; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 2px 5px; vertical-align: top; }
+        .no-border td { border: none; }
+        .border-t { border-top: 1px solid #000; }
+        .border-b { border-bottom: 1px solid #000; }
+        .border-l { border-left: 1px solid #000; }
+        .border-r { border-right: 1px solid #000; }
+        .bg-gray { background-color: #d1d5db; }
+        .bg-light-gray { background-color: #e5e7eb; }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+
+    <!-- Language Switcher Bar (No Print) -->
+    <div class="max-w-[800px] mx-auto mb-4 flex justify-between items-center bg-white p-3 rounded shadow no-print">
+        <div class="flex gap-2">
+            <button onclick="setLang('nl')" id="btn-nl" class="px-3 py-1 bg-blue-600 text-white rounded text-xs font-bold">Nederlands (هولندي)</button>
+            <button onclick="setLang('ar')" id="btn-ar" class="px-3 py-1 bg-gray-200 text-black rounded text-xs font-bold">العربية (Arabic)</button>
+        </div>
+        <button onclick="window.print()" class="px-3 py-1 bg-green-600 text-white rounded text-xs font-bold">🖨️ طباعة / Print</button>
+    </div>
+
+    <!-- Main Document Container -->
+    <div class="max-w-[800px] mx-auto bg-white border border-black p-4 shadow-lg text-[11px] leading-tight">
+
+        <!-- Top Header: Logo & LOONBON -->
+        <div class="flex justify-between items-start mb-2">
+            <!-- Acerta Logo -->
+            <div>
+                <h1 class="text-3xl font-black italic tracking-tighter text-blue-700 font-sans">acerta</h1>
+                <div class="flex gap-1 mt-0.5">
+                    <div class="h-1 w-6 bg-blue-600"></div>
+                    <div class="h-1 w-6 bg-pink-500"></div>
+                    <div class="h-1 w-6 bg-purple-600"></div>
+                </div>
+            </div>
+
+            <!-- Loonbon Info Box -->
+            <div class="border border-black w-[280px]">
+                <div class="bg-gray px-2 py-0.5 font-bold flex justify-between border-b border-black">
+                    <span data-translate="loonbon">LOONBON</span>
+                    <span>p. 1/1</span>
+                </div>
+                <div class="p-1 space-y-0.5">
+                    <div class="flex"><span class="w-28" data-translate="aard">aard</span><span class="mr-1">:</span> <span data-translate="gewone_berekening">gewone berekening</span></div>
+                    <div class="flex"><span class="w-28" data-translate="periode">periode</span><span class="mr-1">:</span> 01/09/2026 - 30/09/2026</div>
+                    <div class="flex"><span class="w-28" data-translate="opgesteld_op">opgesteld op</span><span class="mr-1">:</span> 05/10/2026</div>
+                    <div class="flex"><span class="w-28" data-translate="munteenheid">munteenheid</span><span class="mr-1">:</span> EUR</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-b border-black mb-3"></div>
+
+        <!-- Employer & Employee Info Header -->
+        <div class="flex justify-between text-[10px] mb-3">
+            <div>
+                <div class="text-gray-500 mb-1">.</div>
+                <div class="font-bold text-xs" data-translate="ond_nr">Ond.nr. 0435.474.471</div>
+                <div class="font-bold text-sm mt-2">NV CLEANING MASTERS</div>
+                <div class="mt-1">OOSTKAAI 9-12A<br>2170 ANTWERPEN</div>
+            </div>
+            <div>
+                <div class="text-gray-500 mb-1">0050 X 0660005 0027114 001</div>
+                <div class="font-bold text-sm mt-3">HAFIDI MOUNYA</div>
+                <div class="mt-1">VELDSTRAAT 1 A<br>8500 KORTRIJK</div>
+            </div>
+        </div>
+
+        <!-- Basisgegevens van de berekeningen -->
+        <div class="border border-black mb-3">
+            <div class="bg-gray px-2 py-0.5 font-bold border-b border-black" data-translate="basisgegevens">
+                Basisgegevens van de berekeningen
+            </div>
+            <div class="grid grid-cols-2 p-1.5 gap-x-4">
+                <div class="space-y-0.5">
+                    <div class="flex"><span class="w-32" data-translate="geboortedatum">geboortedatum</span><span class="mr-1">:</span> 22/10/1986</div>
+                    <div class="flex"><span class="w-32" data-translate="datum_dienst">datum indienst</span><span class="mr-1">:</span> 06/01/2026</div>
+                    <div class="flex"><span class="w-32" data-translate="anc_vooropzeg">Anc. vooropzeg</span><span class="mr-1">:</span> </div>
+                    <div class="flex"><span class="w-32" data-translate="datum_uitdienst">datum uitdienst</span><span class="mr-1">:</span> </div>
+                    <div class="flex"><span class="w-32" data-translate="einde_vergoeding">einde vergoeding</span><span class="mr-1">:</span> </div>
+                    <div class="flex"><span class="w-32" data-translate="voornummer_rsz">voornummer rsz</span><span class="mr-1">:</span> 066</div>
+                    <div class="flex"><span class="w-32" data-translate="bv_schaal">BV-schaal</span><span class="mr-1">:</span> <span data-translate="alleenstaande">Alleenstaande</span></div>
+                    <div class="flex"><span class="w-32" data-translate="ten_laste">ten laste</span><span class="mr-1">:</span> <span class="text-[9px]" data-translate="ten_laste_val">partn. 0 &nbsp; kind. 0 &nbsp; and. &nbsp; werkn.</span></div>
+                    <div class="flex"><span class="w-32" data-translate="valide_65">valide / -65+</span><span class="mr-1">:</span> <span data-translate="neen">neen</span> &nbsp; 0 &nbsp; 0 / 0 &nbsp; ja</div>
+                    <div class="flex"><span class="w-32" data-translate="mindervalide">mindervalide / -65+</span><span class="mr-1">:</span> <span data-translate="neen">neen</span> &nbsp; 0 &nbsp; 0 / 0 &nbsp; neen</div>
+                </div>
+                <div class="space-y-0.5">
+                    <div class="flex"><span class="w-36" data-translate="paritair_comite">paritair comité</span><span class="mr-1">:</span> 121000</div>
+                    <div class="flex"><span class="w-36" data-translate="statuut">statuut</span><span class="mr-1">:</span> <span data-translate="arbeider">arbeid(st)er</span></div>
+                    <div class="flex"><span class="w-36" data-translate="loonschaal">loonschaal</span><span class="mr-1">:</span> </div>
+                    <div class="flex"><span class="w-36" data-translate="functie_enz">functie, enz.</span><span class="mr-1">:</span> </div>
+                    <div class="flex"><span class="w-36" data-translate="tewerkstelling">tewerkstelling</span><span class="mr-1">:</span> 37,00/ 37,00</div>
+                    <div class="flex"><span class="w-36" data-translate="werkplaats">werkplaats</span><span class="mr-1">:</span> ROESELARE</div>
+                    <div class="flex"><span class="w-36" data-translate="berekeningsfrequentie">berekeningsfrequentie</span><span class="mr-1">:</span> <span data-translate="per_maand">per maand</span></div>
+                    <div class="flex"><span class="w-36" data-translate="aantal_dagen">aantal dagen/week</span><span class="mr-1">:</span> 5.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prestaties en bedragen Table -->
+        <div class="border border-black mb-3">
+            <div class="bg-gray px-2 py-0.5 font-bold border-b border-black" data-translate="prestaties">
+                Prestaties en bedragen
+            </div>
+            <table>
+                <thead>
+                    <tr class="bg-gray-100 border-b border-black text-center font-bold">
+                        <td class="w-12" data-translate="col_dagen">dagen</td>
+                        <td class="w-14" data-translate="col_eenh">eenh.</td>
+                        <td class="w-20" data-translate="col_basis">basis</td>
+                        <td class="w-10" data-translate="col_procent">%</td>
+                        <td class="w-20" data-translate="col_bedrag">bedrag</td>
+                        <td class="w-12" data-translate="col_code">code</td>
+                        <td class="text-left px-2" data-translate="col_omschrijving">omschrijving</td>
+                    </tr>
+                </thead>
+                <tbody class="text-[10.5px]">
+                    <tr>
+                        <td class="text-right"></td>
+                        <td class="text-right">21,00</td>
+                        <td class="text-right">3,0700</td>
+                        <td></td>
+                        <td class="text-right">64,47</td>
+                        <td class="text-center">25</td>
+                        <td>ander vervoer dan openb./georg.</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">20,50</td>
+                        <td class="text-right">150,50</td>
+                        <td class="text-right">17,1660</td>
+                        <td></td>
+                        <td class="text-right">2583,49</td>
+                        <td class="text-center">100</td>
+                        <td>gewone prestaties</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"></td>
+                        <td class="text-right"></td>
+                        <td class="text-right"></td>
+                        <td></td>
+                        <td class="text-right">8,76</td>
+                        <td class="text-center">196</td>
+                        <td>verplaatsingstijd</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">0,50</td>
+                        <td class="text-right">4,00</td>
+                        <td class="text-right">17,1660</td>
+                        <td></td>
+                        <td class="text-right">68,66</td>
+                        <td class="text-center">248</td>
+                        <td>bestendige profess navorming</td>
+                    </tr>
+                    <tr class="font-bold border-t border-black">
+                        <td colspan="4"></td>
+                        <td class="text-right border-t border-black">2660,91</td>
+                        <td class="text-center border-t border-black">****</td>
+                        <td class="border-t border-black">TOTAAL BRUTO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">2873,7800</td>
+                        <td class="text-right">13,07</td>
+                        <td class="text-right">- 375,60</td>
+                        <td class="text-center">9000</td>
+                        <td>RSZ werknemer</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">2787,6200</td>
+                        <td class="text-right">95,00</td>
+                        <td class="text-right">130,85</td>
+                        <td class="text-center">9052</td>
+                        <td>RSZ WN vermindering - werkbonus A</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">2787,6200</td>
+                        <td class="text-right">95,00</td>
+                        <td class="text-right">41,60</td>
+                        <td class="text-center">9092</td>
+                        <td>RSZ WN vermindering - werkbonus B</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td class="text-right">22,77</td>
+                        <td class="text-center">9430</td>
+                        <td>belast ander vervoer</td>
+                    </tr>
+                    <tr class="font-bold border-t border-black">
+                        <td colspan="4"></td>
+                        <td class="text-right border-t border-black">2480,53</td>
+                        <td class="text-center border-t border-black">****</td>
+                        <td class="border-t border-black">TOTAAL BELASTBAAR</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">2480,5300</td>
+                        <td>-</td>
+                        <td class="text-right">372,68</td>
+                        <td class="text-center">9200</td>
+                        <td>baremieke voorheffing</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">41,6000</td>
+                        <td class="text-right">63,00</td>
+                        <td class="text-right">26,21</td>
+                        <td class="text-center">9351</td>
+                        <td>bv vermindering werkbonus B</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">130,8500</td>
+                        <td class="text-right">33,14</td>
+                        <td class="text-right">43,36</td>
+                        <td class="text-center">9388</td>
+                        <td>bv vermindering werkbonus A</td>
+                    </tr>
+                    <tr class="font-bold border-t border-black">
+                        <td colspan="4"></td>
+                        <td class="text-right border-t border-black">2177,42</td>
+                        <td class="text-center border-t border-black">****</td>
+                        <td class="border-t border-black">TUSSENTOTAAL</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="text-right">21,00</td>
+                        <td class="text-right">1,6300</td>
+                        <td></td>
+                        <td class="text-right">34,23</td>
+                        <td class="text-center">405</td>
+                        <td>ARAB-vergoeding - ernst.norm.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="text-right">0,50</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center">428</td>
+                        <td>gerechtvaardigde afwezigheid</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">1,00</td>
+                        <td class="text-right">7,00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center">429</td>
+                        <td>ongerechtvaardigde afwezigheid</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td class="text-right">7,00</td>
+                        <td class="text-center">4215</td>
+                        <td>Gebruik smartphone</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td class="text-right">41,70</td>
+                        <td class="text-center">9420</td>
+                        <td>onbelast ander vervoer</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">7133,4500</td>
+                        <td>-</td>
+                        <td class="text-right">37,18</td>
+                        <td class="text-center">9100</td>
+                        <td>bijz.bijdr.soc.zekerheid / kwartaal</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-right">-4259,6700</td>
+                        <td></td>
+                        <td class="text-right">21,24</td>
+                        <td class="text-center">9102</td>
+                        <td>bijz.bijdr.soc.zekerheid / maand</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="text-right">20,00</td>
+                        <td class="text-right">1,0900</td>
+                        <td>-</td>
+                        <td class="text-right">21,80</td>
+                        <td class="text-center">592</td>
+                        <td>maaltijdcheques (alternatief)</td>
+                    </tr>
+                    <tr class="font-bold border-t border-black">
+                        <td colspan="4"></td>
+                        <td class="text-right border-t border-black">2222,61</td>
+                        <td class="text-center border-t border-black">****</td>
+                        <td class="border-t border-black">TOTAAL NETTO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td class="text-right">600,00</td>
+                        <td class="text-center">500</td>
+                        <td>voorschot</td>
+                    </tr>
+                    <tr class="font-bold border-t border-black bg-light-gray">
+                        <td colspan="4"></td>
+                        <td class="text-right border-t border-black">1622,61</td>
+                        <td class="text-center border-t border-black">****</td>
+                        <td class="border-t border-black">NETTO TE BETALEN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Uitbetaling -->
+        <div class="border border-black mb-3">
+            <div class="bg-gray px-2 py-0.5 font-bold border-b border-black" data-translate="uitbetaling">
+                Uitbetaling
+            </div>
+            <div class="p-1 flex justify-between items-center">
+                <div><span class="font-bold" data-translate="netto_te_betalen">netto te betalen</span></div>
+                <div class="flex gap-4">
+                    <span class="font-bold text-sm">1622,61</span>
+                    <span><strong data-translate="iban">IBAN</strong> : BE80000432734477</span>
+                    <span><strong data-translate="bic">BIC</strong> : GEBABEBB</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bedrijfslasten -->
+        <div class="border border-black mb-2">
+            <div class="bg-gray px-2 py-0.5 font-bold border-b border-black" data-translate="bedrijfslasten">
+                Bedrijfslasten
+            </div>
+            <div class="grid grid-cols-2 p-1 text-[10px]">
+                <div class="flex justify-between border-r border-black pr-2">
+                    <span class="text-right w-20">20,00</span>
+                    <span class="text-right w-20">2,0000</span>
+                </div>
+                <div class="flex justify-between pl-2">
+                    <span class="font-bold text-right">1372,74</span>
+                    <span data-translate="totale_werkgeversbijdrage">Totale werkgeversbijdrage RSZ</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 p-1 text-[10px] border-t border-black">
+                <div></div>
+                <div class="flex justify-between pl-2">
+                    <span class="font-bold text-right">40,00</span>
+                    <span>692 <span data-translate="wg_bijdr_maaltijdch">wg bijdr maaltijdch (altern)</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="text-[9px] text-gray-700" data-translate="footer_note">
+            dit document maakt deel uit van de individuele rekening.
+        </div>
+
+    </div>
+
+    <script>
+        const translations = {
+            nl: {
+                loonbon: "LOONBON",
+                aard: "aard",
+                gewone_berekening: "gewone berekening",
+                periode: "periode",
+                opgesteld_op: "opgesteld op",
+                munteenheid: "munteenheid",
+                ond_nr: "Ond.nr. 0435.474.471",
+                basisgegevens: "Basisgegevens van de berekeningen",
+                geboortedatum: "geboortedatum",
+                datum_dienst: "datum indienst",
+                anc_vooropzeg: "Anc. vooropzeg",
+                datum_uitdienst: "datum uitdienst",
+                einde_vergoeding: "einde vergoeding",
+                voornummer_rsz: "voornummer rsz",
+                bv_schaal: "BV-schaal",
+                alleenstaande: "Alleenstaande",
+                ten_laste: "ten laste",
+                ten_laste_val: "partn. 0   kind. 0   and.   werkn.",
+                valide_65: "valide / -65+",
+                neen: "neen",
+                mindervalide: "mindervalide / -65+",
+                paritair_comite: "paritair comité",
+                statuut: "statuut",
+                arbeider: "arbeid(st)er",
+                loonschaal: "loonschaal",
+                functie_enz: "functie, enz.",
+                tewerkstelling: "tewerkstelling",
+                werkplaats: "werkplaats",
+                berekeningsfrequentie: "berekeningsfrequentie",
+                per_maand: "per maand",
+                aantal_dagen: "aantal dagen/week",
+                prestaties: "Prestaties en bedragen",
+                col_dagen: "dagen",
+                col_eenh: "eenh.",
+                col_basis: "basis",
+                col_procent: "%",
+                col_bedrag: "bedrag",
+                col_code: "code",
+                col_omschrijving: "omschrijving",
+                uitbetaling: "Uitbetaling",
+                netto_te_betalen: "netto te betalen",
+                iban: "IBAN",
+                bic: "BIC",
+                bedrijfslasten: "Bedrijfslasten",
+                totale_werkgeversbijdrage: "Totale werkgeversbijdrage RSZ",
+                wg_bijdr_maaltijdch: "wg bijdr maaltijdch (altern)",
+                footer_note: "dit document maakt deel uit van de individuele rekening."
+            },
+            ar: {
+                loonbon: "كشف الراتب (LOONBON)",
+                aard: "النوع",
+                gewone_berekening: "حساب اعتيادي",
+                periode: "الفترة",
+                opgesteld_op: "تاريخ الإصدار",
+                munteenheid: "عملة الحساب",
+                ond_nr: "رقم الشركة: 0435.474.471",
+                basisgegevens: "البيانات الأساسية للحسابات",
+                geboortedatum: "تاريخ الميلاد",
+                datum_dienst: "تاريخ الخدمة",
+                anc_vooropzeg: "الأقدمية للإشعار",
+                datum_uitdienst: "تاريخ انتهاء الخدمة",
+                einde_vergoeding: "تعويض النهاية",
+                voornummer_rsz: "رقم الضمان الاجتماعي البادئ",
+                bv_schaal: "مقياس الضريبة المسبقة",
+                alleenstaande: "أعزب/أعزبية",
+                ten_laste: "المعولون",
+                ten_laste_val: "شريك 0 | أطفال 0 | آخرون | موظف",
+                valide_65: "قادر / تحت 65+",
+                neen: "لا",
+                mindervalide: "ذو إعاقة / تحت 65+",
+                paritair_comite: "اللجنة المشتركة",
+                statuut: "الصفة الوظيفية",
+                arbeider: "عامل / عاملة",
+                loonschaal: "درجة الأجور",
+                functie_enz: "الوظيفة وما إليها",
+                tewerkstelling: "التوظيف (الدوام)",
+                werkplaats: "مكان العمل",
+                berekeningsfrequentie: "تكرار الحساب",
+                per_maand: "شهرياً",
+                aantal_dagen: "عدد الأيام / الأسبوع",
+                prestaties: "الأداء والمبالغ المستحقة",
+                col_dagen: "الأيام",
+                col_eenh: "الوحدات",
+                col_basis: "الأساس",
+                col_procent: "%",
+                col_bedrag: "المبلغ",
+                col_code: "الرمز",
+                col_omschrijving: "الوصف",
+                uitbetaling: "الدفع والصرف",
+                netto_te_betalen: "الصافي الواجب دفعه",
+                iban: "رقم الحساب IBAN",
+                bic: "رمز البنك BIC",
+                bedrijfslasten: "أعباء الشركة",
+                totale_werkgeversbijdrage: "إجمالي مساهمة صاحب العمل في الضمان الاجتماعي",
+                wg_bijdr_maaltijdch: "مساهمة صاحب العمل في شيكات الطعام",
+                footer_note: "هذه الوثيقة تشكل جزءاً من الحساب الفردي."
+            }
+        };
+
+        function setLang(lang) {
+            const html = document.documentElement;
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            if(lang === 'ar') {
+                document.getElementById('btn-ar').className = "px-3 py-1 bg-blue-600 text-white rounded text-xs font-bold";
+                document.getElementById('btn-nl').className = "px-3 py-1 bg-gray-200 text-black rounded text-xs font-bold";
+            } else {
+                document.getElementById('btn-nl').className = "px-3 py-1 bg-blue-600 text-white rounded text-xs font-bold";
+                document.getElementById('btn-ar').className = "px-3 py-1 bg-gray-200 text-black rounded text-xs font-bold";
+            }
+        }
+    </script>
+</body>
+</html>
