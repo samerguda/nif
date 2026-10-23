@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 مسارات عملية في بلجيكا | الهندسة والتغليف</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f5f9;
+      font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+      line-height: 1.7;
+      color: #1e2b3c;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0, 20, 40, 0.08);
+      padding: 2.5rem 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0a2942;
+      border-right: 6px solid #1e6f9f;
+      padding-right: 1.2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1e4f6b;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid #d0e2f0;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0f3b55;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #1f3a4e;
+    }
+
+    .intro {
+      background-color: #e9f2fa;
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 2rem;
+      border-right: 5px solid #1e6f9f;
+      font-weight: 500;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .path-card {
+      background-color: #f9fcff;
+      border: 1px solid #d9e8f2;
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 1.2rem;
+      transition: 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 20, 40, 0.02);
+    }
+
+    .path-card:hover {
+      border-color: #1e6f9f;
+      box-shadow: 0 10px 22px rgba(20, 80, 130, 0.08);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #1e6f9f;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      margin-right: 0.8rem;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .badge.secondary {
+      background-color: #7f9eb5;
+    }
+
+    .badge.warning {
+      background-color: #b27b5c;
+    }
+
+    .badge.gray {
+      background-color: #5e7a8c;
+    }
+
+    .job-titles {
+      background-color: #eef5fb;
+      border-radius: 14px;
+      padding: 0.8rem 1.2rem;
+      margin: 1rem 0 0.2rem;
+      font-size: 0.98rem;
+      border-right: 3px solid #1e6f9f;
+    }
+
+    .job-titles strong {
+      color: #0e3c56;
+    }
+
+    .flex-table {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #cbdde9;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 70px 1.2fr 1.5fr;
+      background-color: white;
+      border-bottom: 1px solid #dbe8f0;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .table-row.header {
+      background-color: #1e4f6b;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border-bottom: none;
+    }
+
+    .table-cell {
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+    }
+
+    .table-row.header .table-cell {
+      color: white;
+      font-weight: 600;
+    }
+
+    .table-row:not(.header):nth-child(even) {
+      background-color: #f7fbfe;
+    }
+
+    .number-cell {
+      font-weight: 700;
+      color: #1e6f9f;
+      justify-content: center;
+    }
+
+    .table-row.header .number-cell {
+      color: white;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .company-card {
+      background-color: #f0f7fc;
+      border-radius: 18px;
+      padding: 1.2rem 1.2rem;
+      border-right: 4px solid #1e6f9f;
+    }
+
+    .company-card .company-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #0a2942;
+      margin-bottom: 0.3rem;
+    }
+
+    .company-card .company-desc {
+      font-size: 0.92rem;
+      color: #3f5f75;
+      margin-bottom: 0.6rem;
+    }
+
+    .company-card .company-address {
+      font-size: 0.9rem;
+      color: #1f4b63;
+      margin-bottom: 0.2rem;
+    }
+
+    .company-card .company-phone {
+      direction: ltr;
+      text-align: right;
+      font-family: 'Segoe UI', monospace;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-top: 0.4rem;
+      border: 1px solid #c2d8e8;
+    }
+
+    .highlight-box {
+      background-color: #e3eff9;
+      border-radius: 20px;
+      padding: 1.4rem 1.8rem;
+      margin: 2rem 0 1.5rem;
+      border-right: 6px solid #b22222;
+    }
+
+    .highlight-box p {
+      font-weight: 500;
+    }
+
+    .highlight-box strong {
+      color: #a52a2a;
+    }
+
+    .question-box {
+      background-color: #0a2942;
+      color: white;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .question-box h3 {
+      color: white;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #38789e;
+      padding-bottom: 0.5rem;
+    }
+
+    .question-box p {
+      color: #d4e6f2;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .icon-small {
+      display: inline-block;
+      margin-left: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 0.8rem;
+      }
+
+      .container {
+        padding: 1.6rem 1.2rem;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        padding-right: 1rem;
+      }
+
+      .table-row {
+        grid-template-columns: 50px 1fr 1.2fr;
+      }
+
+      .table-cell {
+        padding: 0.8rem 0.6rem;
+        font-size: 0.88rem;
+      }
+
+      .company-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question-box {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>أيوه، صح جدًا. دي 4 مسارات عملية تقدر تشتغل عليها في بلجيكا</h1>
+
+  <div class="intro">
+    <p>والأفضل إنك تفصل بين المسار الهندسي اللي يناسب خبرتك، والمسار المؤقت اللي يساعدك تبدأ تحقق دخل بسرعة.</p>
+    <p>بما إن عندك خبرة طويلة في الهندسة الميكانيكية والتكييف ومكافحة الحريق والسباكة، فأنا أنصحك ما تحصرش نفسك في شغل المصانع، وفي نفس الوقت ما تستناش الوظيفة الهندسية المثالية قبل ما تبدأ تشتغل.</p>
+  </div>
+
+  <h2>المسارات الأربعة المناسبة ليك</h2>
+
+  <!-- المسار الأول -->
+  <div class="path-card">
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.2rem;">
+      <span class="badge">المسار الأول</span>
+      <h3 style="margin: 0;">مهندس تنفيذ ميكانيكا — HVAC / Firefighting / Plumbing</h3>
+    </div>
+    <p style="margin-top: 0.8rem;"><strong>الأولوية المهنية</strong> — المسار الأساسي لاستغلال خبرتك في تنفيذ الأعمال، ومراجعة الرسومات، وحصر الكميات، والإشراف على المقاولين، والاختبارات والتسليم.</p>
+    <div class="job-titles">
+      <strong>مسميات تبحث عنها:</strong> Mechanical Site Engineer، HVAC Project Engineer، MEP Engineer، Werfleider HVAC، Projectleider HVAC.
+    </div>
+  </div>
+
+  <!-- المسار الثاني -->
+  <div class="path-card">
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.2rem;">
+      <span class="badge secondary">المسار الثاني</span>
+      <h3 style="margin: 0;">مهندس BIM &amp; CAD</h3>
+    </div>
+    <p style="margin-top: 0.8rem;"><strong>مسار هندسي موازٍ</strong> — مناسب لو عندك خبرة أو استعداد لتطوير مهاراتك في Revit MEP وAutoCAD وNavisworks، وتنسيق الدكتات والمواسير واكتشاف التعارضات.</p>
+    <div class="job-titles">
+      <strong>مسميات تبحث عنها:</strong> BIM Modeler MEP، BIM Engineer، Mechanical Designer، HVAC Tekenaar، CAD Engineer.
+    </div>
+  </div>
+
+  <!-- المسار الثالث -->
+  <div class="path-card">
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.2rem;">
+      <span class="badge warning">المسار الثالث</span>
+      <h3 style="margin: 0;">التغليف والتعبئة في المصانع</h3>
+    </div>
+    <p style="margin-top: 0.8rem;"><strong>للدخول السريع لسوق العمل</strong> — مناسب كبداية مؤقتة عن طريق شركات الـ Interim، وقد لا يتطلب هولندية قوية في كل المصانع.</p>
+    <div class="job-titles">
+      <strong>مسميات تبحث عنها:</strong> Inpakker، Verpakker، Productiemedewerker، Operator Inpak.
+    </div>
+  </div>
+
+  <!-- المسار الرابع -->
+  <div class="path-card">
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.2rem;">
+      <span class="badge gray">المسار الرابع</span>
+      <h3 style="margin: 0;">تنظيف المصانع والمنشآت الصناعية</h3>
+    </div>
+    <p style="margin-top: 0.8rem;"><strong>مناسب كخيار احتياطي</strong> للدخول السريع للعمل، مع ضرورة التأكد من طبيعة التنظيف، والمواد المستخدمة، ومتطلبات السلامة.</p>
+    <div class="job-titles">
+      <strong>مسميات تبحث عنها:</strong> Industriële Reiniger، Industrieel Schoonmaker، Schoonmaker Productieomgeving.
+    </div>
+  </div>
+
+  <h2>ترتيب التنفيذ اللي أنصحك به</h2>
+
+  <div class="flex-table">
+    <div class="table-row header">
+      <div class="table-cell number-cell">الترتيب</div>
+      <div class="table-cell">المسار</div>
+      <div class="table-cell">هدفك</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell number-cell">1</div>
+      <div class="table-cell">التغليف والإنتاج</div>
+      <div class="table-cell">الحصول على دخل بأسرع فرصة</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell number-cell">2</div>
+      <div class="table-cell">مهندس تنفيذ HVAC / MEP</div>
+      <div class="table-cell">الوصول لوظيفتك الأساسية</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell number-cell">3</div>
+      <div class="table-cell">BIM &amp; CAD</div>
+      <div class="table-cell">توسيع فرصك الهندسية</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell number-cell">4</div>
+      <div class="table-cell">تنظيف المصانع</div>
+      <div class="table-cell">بديل احتياطي عند الحاجة</div>
+    </div>
+  </div>
+
+  <p style="background: #eef5fb; border-radius: 16px; padding: 0.9rem 1.4rem;">الترتيب ده حسب استراتيجية البحث، مش معناه إن فرص الهندسة أقل؛ فمثلًا نتائج VDAB التي راجعتها تعرض وظائف هندسية في HVAC وBIM، ومنها وظائف في هارلبكة وخنت ومناطق أخرى.</p>
+
+  <h2>تبدأ التقديم منين؟</h2>
+
+  <div class="company-grid">
+    <div class="company-card">
+      <div class="company-name">Dynamic Jobs</div>
+      <div class="company-desc">للعمل المؤقت والإنتاج</div>
+      <div class="company-address">Kortrijksesteenweg 1, Harelbeke</div>
+      <div class="company-phone">+32 56 14 62 30</div>
+    </div>
+    <div class="company-card">
+      <div class="company-name">Travo</div>
+      <div class="company-desc">الهندسة والإنشاءات وHVAC</div>
+      <div class="company-address">Plein 13, Kortrijk</div>
+      <div class="company-phone">+32 474 83 57 75</div>
+    </div>
+    <div class="company-card">
+      <div class="company-name">Noël Franklin</div>
+      <div class="company-desc">الهندسة والوظائف التقنية</div>
+      <div class="company-address">Stedestraat 51, Harelbeke</div>
+      <div class="company-phone">+32 56 89 35 50</div>
+    </div>
+    <div class="company-card">
+      <div class="company-name">Experza</div>
+      <div class="company-desc">الإنتاج واللوجستيات والوظائف التقنية</div>
+      <div class="company-address">Harelbeeksestraat 5, Kortrijk</div>
+      <div class="company-phone">+32 56 96 04 67</div>
+    </div>
+  </div>
+
+  <h2>أهم نقطة قبل ما تبدأ</h2>
+
+  <div class="highlight-box">
+    <p>بما إنك تريد العمل في بلجيكا أولًا، أنصحك تعمل مسارين للتقديم في نفس الوقت:</p>
+    <p>🔹 <strong>مسار الدخل السريع:</strong> سجّل لدى 3–5 شركات Interim، واطلب وظائف التغليف والإنتاج الصناعي، وليس التنظيف فقط.</p>
+    <p>🔹 <strong>مسار الهندسة:</strong> قدّم على وظائف مهندس تنفيذ، وProject Engineer HVAC، وMEP، بالتوازي مع وظائف BIM إذا كانت مهارات البرامج مناسبة.</p>
+  </div>
+
+  <p style="font-size: 1.05rem;">وبالنسبة لبطاقة الإقامة، تأكد أن وضعك يسمح بالعمل قبل بدء أي وظيفة؛ لا تعتمد على اسم البطاقة وحده، بل على القيد الخاص بسوق العمل وشروط إقامتك.</p>
+
+  <div class="question-box">
+    <h3>سؤالي المهم</h3>
+    <p>هل عندك خبرة فعلية في Revit MEP وAutoCAD، أم خبرتك الأساسية في التنفيذ والإشراف بالموقع؟ ده هيحدد هل الأفضل نركز على الهندسة التنفيذية أم BIM في المرحلة الأولى.</p>
+  </div>
+
+</div>
+</body>
+</html>
