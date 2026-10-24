@@ -103,7 +103,7 @@
                     </div>
                     <div>
                         <div class="text-xs text-slate-400 font-semibold">إجمالي العناصر</div>
-                        <div class="text-base font-bold text-slate-700" id="itemCount">13 وجبة وأكلة</div>
+                        <div class="text-base font-bold text-slate-700" id="itemCount">14 وجبة وأكلة</div>
                     </div>
                 </div>
 
@@ -317,6 +317,24 @@
                 </div>
             </div>
 
+            <!-- Item 14 (NEW) - بركوكش -->
+            <div class="food-card glass-card p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-card-hover border border-slate-200/60 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4 md:col-span-2">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/20">
+                    ١٤
+                </span>
+                <div class="flex-1">
+                    <p class="food-title font-bold text-slate-800 text-base sm:text-lg leading-snug">
+                        بركوكش
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                        نص كيلو ملج · حلة ضغط · زيت بصل متقطع صغير قوي و تشوح · بابريكا حلوة و حارة فلفل و ملح كزبرة و زنجبيل و قرفة و كركم و تشوحها · ملعقة صلصة · مية سخنة نص الحلة او اكتر ( نقفلها ٣٠ دق ) · زود مية لو نقصة و صلصة و مرقة دجاج مكعب · تحط ٢ كباية بركوكش و تقلبه ٢٠ دق
+                    </p>
+                    <span class="inline-block mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                        طبق تقليدي / رئيسي
+                    </span>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -336,7 +354,7 @@
     </footer>
 
     <script>
-        // Array of predefined food items matching the structure
+        // Array of predefined food items matching the structure (includes new item 14)
         const foodListItems = [
             "١. بيبسي + دوريتس",
             "٢. سلطة ( طماطم - خيار - ذرة - زيت زيتون - خل )",
@@ -350,8 +368,12 @@
             "١٠. كسكس",
             "١١. مسمن",
             "١٢. لحم برقوق",
-            "١٣. ملوخية و رز و لحم"
+            "١٣. ملوخية و رز و لحم",
+            "١٤. بركوكش — نص كيلو ملج، حلة ضغط (زيت بصل متقطع صغير قوي وتشوح)، بعدين بابريكا حلوة وحارة فلفل وملح كزبرة وزنجبيل وقرفة وكركم وتشوحها، ملعقة صلصة، مية سخنة نص الحلة او اكتر (نقفلها ٣٠ دق)، زود مية لو نقصة وصلصة ومرقة دجاج مكعب، وتحط ٢ كباية بركوكش وتقلبه ٢٠ دق"
         ];
+
+        // Update item count text dynamically
+        document.getElementById('itemCount').textContent = foodListItems.length + ' وجبة وأكلة';
 
         function copyAllFoodList() {
             const fullText = foodListItems.join('\n');
