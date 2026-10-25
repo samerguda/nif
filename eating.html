@@ -103,7 +103,7 @@
                     </div>
                     <div>
                         <div class="text-xs text-slate-400 font-semibold">إجمالي العناصر</div>
-                        <div class="text-base font-bold text-slate-700" id="itemCount">15 وجبة وأكلة</div>
+                        <div class="text-base font-bold text-slate-700" id="itemCount">16 وجبة وأكلة</div>
                     </div>
                 </div>
 
@@ -335,7 +335,7 @@
                 </div>
             </div>
 
-            <!-- Item 15 (NEW) - فيليه السمك -->
+            <!-- Item 15 - فيليه السمك -->
             <div class="food-card glass-card p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-card-hover border border-slate-200/60 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4 md:col-span-2">
                 <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/20">
                     ١٥
@@ -349,6 +349,24 @@
                     </p>
                     <span class="inline-block mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-md bg-cyan-50 text-cyan-700 border border-cyan-200/60">
                         مأكولات بحرية
+                    </span>
+                </div>
+            </div>
+
+            <!-- Item 16 (NEW) - سندويتش جمبري -->
+            <div class="food-card glass-card p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-card-hover border border-slate-200/60 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4 md:col-span-2">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-blue-500/20">
+                    ١٦
+                </span>
+                <div class="flex-1">
+                    <p class="food-title font-bold text-slate-800 text-base sm:text-lg leading-snug">
+                        سندويتش جمبري
+                    </p>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                        طاسة + بصل تقطيع صغير شوحه شوية + قطع فلفل ألوان وحطه بعد البصل + ثوم بودرة + كسبرة + كمون + بابريكا حلوة وحارة + ملح + ممكن شوي خل + بعدين جمبري ٢ دق. خبز مدور ليدل + خبز الدي طويل + صوص مايونيز وكاتشب وزيت وصوص برازيليان.
+                    </p>
+                    <span class="inline-block mt-2 text-xs font-semibold px-2.5 py-0.5 rounded-md bg-cyan-50 text-cyan-700 border border-cyan-200/60">
+                        مأكولات بحرية / سندويتش
                     </span>
                 </div>
             </div>
@@ -372,7 +390,7 @@
     </footer>
 
     <script>
-        // Array of predefined food items matching the structure (includes new item 15)
+        // Array of predefined food items matching the structure (includes new item 16)
         const foodListItems = [
             "١. بيبسي + دوريتس",
             "٢. سلطة ( طماطم - خيار - ذرة - زيت زيتون - خل )",
@@ -388,7 +406,8 @@
             "١٢. لحم برقوق",
             "١٣. ملوخية و رز و لحم",
             "١٤. بركوكش — نص كيلو ملج، حلة ضغط (زيت بصل متقطع صغير قوي وتشوح)، بعدين بابريكا حلوة وحارة فلفل وملح كزبرة وزنجبيل وقرفة وكركم وتشوحها، ملعقة صلصة، مية سخنة نص الحلة او اكتر (نقفلها ٣٠ دق)، زود مية لو نقصة وصلصة ومرقة دجاج مكعب، وتحط ٢ كباية بركوكش وتقلبه ٢٠ دق",
-            "١٥. فيليه السمك — ١- فيليه سمك يفك، ٢- تعصر الفيله (تنزل منه المية مهم)، ٣- ملح توم بودر + بهارات دجاج (قبل الزيت)، ٤- طاسة و زيت، ٥- كاس و عصير ليمون و شوية زيت و تحركه و تحطه فوق السمك بعد ما يستوي"
+            "١٥. فيليه السمك — ١- فيليه سمك يفك، ٢- تعصر الفيله (تنزل منه المية مهم)، ٣- ملح توم بودر + بهارات دجاج (قبل الزيت)، ٤- طاسة و زيت، ٥- كاس و عصير ليمون و شوية زيت و تحركه و تحطه فوق السمك بعد ما يستوي",
+            "١٦. سندويتش جمبري — طاسة + بصل تقطيع صغير شوحه شوية + قطع فلفل ألوان وحطه بعد البصل + ثوم بودرة + كسبرة + كمون + بابريكا حلوة وحارة + ملح + ممكن شوي خل + بعدين جمبري ٢ دق. خبز مدور ليدل + خبز الدي طويل + صوص مايونيز وكاتشب وزيت وصوص برازيليان"
         ];
 
         // Update item count text dynamically
