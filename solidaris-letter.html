@@ -1,201 +1,402 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ترجمة رسالة Solidaris</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        .document-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 40px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        .image-section {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 20px;
-        }
-        .image-section img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .header-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .header-table td {
-            vertical-align: top;
-            padding: 5px;
-        }
-        .logo-area {
-            text-align: left;
-            color: #b3222a;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-bottom: 20px;
-            color: #000;
-        }
-        .greeting {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .highlight-date {
-            font-weight: bold;
-            color: #b3222a;
-        }
-        .section-title {
-            font-weight: bold;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .signature-area {
-            margin-top: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .signature-details {
-            text-align: left;
-        }
-        .signature-img {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 28px;
-            color: #333;
-            transform: rotate(-10deg);
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        .footer {
-            margin-top: 50px;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
-            font-size: 11px;
-            color: #555;
-            text-align: center;
-        }
-        .footer p {
-            margin: 3px 0;
-            text-align: center;
-        }
-        .footer-logo {
-            color: #b3222a;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خطاب استحقاق التعويض الصحي المرتفع - Solidaris</title>
+  <style>
+    /* إعادة تعيين وأساسيات */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+      background: #f2f5f9;
+      color: #1e2b3c;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .letter {
+      max-width: 900px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 20, 40, 0.12);
+      padding: 2.5rem 3rem;
+      position: relative;
+      border-top: 6px solid #005a9c;
+    }
+
+    /* ترويسة */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #d9e2ec;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #005a9c;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-weight: 400;
+      color: #4a5c6e;
+      font-size: 1rem;
+      display: block;
+      letter-spacing: 0.3px;
+    }
+
+    .date {
+      background: #eef3f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      color: #1e3b5c;
+      font-weight: 500;
+    }
+
+    .date i {
+      font-style: normal;
+      display: inline-block;
+    }
+
+    /* بطاقة المستلم */
+    .recipient {
+      background: #f8fafd;
+      border-radius: 16px;
+      padding: 1.2rem 1.8rem;
+      margin: 1.5rem 0 2rem 0;
+      border: 1px solid #cfddee;
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+    }
+
+    .recipient .label {
+      font-weight: 600;
+      color: #005a9c;
+      white-space: nowrap;
+    }
+
+    .recipient .value {
+      color: #1e2b3c;
+    }
+
+    /* رقم الملف */
+    .file-number {
+      background: #fff6e5;
+      padding: 0.5rem 1.2rem;
+      border-radius: 10px;
+      display: inline-block;
+      font-weight: 600;
+      color: #8a6300;
+      border-right: 4px solid #f5b800;
+      margin-bottom: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    /* العناوين */
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #005a9c;
+      margin-bottom: 1.6rem;
+      border-right: 6px solid #f5b800;
+      padding-right: 1rem;
+      line-height: 1.4;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e3b5c;
+      margin: 2rem 0 1rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #eef3f9;
+    }
+
+    /* فقرات ونصوص */
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+      color: #243b53;
+    }
+
+    .greeting {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      color: #005a9c;
+    }
+
+    /* قوائم */
+    ul {
+      list-style: none;
+      padding-right: 0;
+      margin: 0.8rem 0 1.5rem 0;
+    }
+
+    ul li {
+      padding-right: 1.8rem;
+      position: relative;
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+    }
+
+    ul li::before {
+      content: "◆";
+      position: absolute;
+      right: 0;
+      color: #005a9c;
+      font-size: 1rem;
+      top: 0.1rem;
+    }
+
+    /* المزايا - بطاقات صغيرة */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .benefit-card {
+      background: #f8fafd;
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #d9e2ec;
+      transition: all 0.2s;
+    }
+
+    .benefit-card:hover {
+      border-color: #005a9c;
+      box-shadow: 0 5px 15px rgba(0, 90, 156, 0.08);
+    }
+
+    .benefit-card strong {
+      display: block;
+      color: #005a9c;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-card p {
+      margin-bottom: 0;
+      font-size: 0.98rem;
+      color: #2d4356;
+    }
+
+    /* قسم الأسئلة */
+    .contact-box {
+      background: #eef3f9;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0 1.8rem 0;
+      border-right: 5px solid #005a9c;
+    }
+
+    .contact-box p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* التوقيع */
+    .signature {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d9e2ec;
+      font-size: 1.05rem;
+    }
+
+    .signature strong {
+      color: #005a9c;
+      font-size: 1.1rem;
+    }
+
+    .signature .title {
+      color: #4a5c6e;
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    /* قسم الملاحظات العملية */
+    .practical-note {
+      background: #fcf9f0;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin: 2.5rem 0 1rem 0;
+      border: 1px solid #f0e2c0;
+    }
+
+    .practical-note h2 {
+      margin-top: 0;
+      border-bottom-color: #f5d98b;
+      color: #7a5d00;
+    }
+
+    .practical-note ol {
+      padding-right: 1.5rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    .practical-note ol li {
+      margin-bottom: 0.9rem;
+      padding-right: 0.8rem;
+      font-size: 1rem;
+    }
+
+    .practical-note ol li strong {
+      color: #7a5d00;
+    }
+
+    /* ملاحظة مهمة */
+    .important-note {
+      background: #fff1f0;
+      border-right: 6px solid #c0392b;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      margin-top: 1.8rem;
+      font-size: 0.98rem;
+      color: #2d1a1a;
+    }
+
+    .important-note strong {
+      color: #b03a2e;
+    }
+
+    /* تجاوب مع الشاشات الصغيرة */
+    @media (max-width: 650px) {
+      .letter {
+        padding: 1.8rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+
+      .recipient {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="letter">
 
-    <div class="document-container">
-        
-        <!-- قسم عرض الصورة الأصلية -->
-        <div class="image-section">
-            <!-- استبدل 'ضع_رابط_الصورة_هنا' برابط الصورة أو مسار الملف -->
-            <img src="ضع_رابط_الصورة_هنا" alt="صورة المستند الأصلي">
-        </div>
-
-        <!-- ترويسة المستند -->
-        <div class="logo-area">
-            Solidaris
-        </div>
-
-        <table class="header-table">
-            <tr>
-                <td style="width: 33%;">
-                    <strong>المرسل إليه:</strong><br>
-                    ALSAADNI SAMER GUDA NASR<br>
-                    MARKTSTRAAT 43<br>
-                    8530 HARELBEKE
-                </td>
-                <td style="width: 33%;">
-                    <strong>معلومات الاتصال:</strong><br>
-                    مكتب كورتريك (Kortrijk)<br>
-                    هاتف: 056 22 00 18<br>
-                    بريد إلكتروني: kantoor.kortrijk@solidaris.be
-                </td>
-                <td style="width: 33%; text-align: left;">
-                    <strong>الرقم المرجعي لدينا:</strong> 309/9632521<br>
-                    <strong>الرقم الوطني (RNN):</strong> 810707 723 41<br>
-                    <strong>التاريخ:</strong> 16 أكتوبر 2026
-                </td>
-            </tr>
-        </table>
-
-        <!-- محتوى الرسالة -->
-        <div class="title">لديك الحق في الحصول على التعويض المُحسّن (المُعزّز)</div>
-
-        <div class="greeting">عزيزي السيد ALSAADNI SAMER GUDA NASR،</div>
-
-        <p>
-            يحصل بعض الأشخاص تلقائياً على حق التعويض المُحسّن، لأنهم يستفيدون من ميزة اجتماعية أو وضع خاص. على سبيل المثال، الأشخاص الذين يتلقون إعانة (بدل) لأكثر من 3 أشهر، أو ضمان الدخل لكبار السن، أو تعويض للأشخاص ذوي الإعاقة.
-        </p>
-
-        <p>
-            في حالات أخرى، يُمنح حق التعويض المُحسّن للأسرة بأكملها بعد إجراء تحقيق في الدخل.
-        </p>
-
-        <p>
-            أنت تنتمي إلى إحدى المجموعات المذكورة أعلاه. لذلك، يحق لك اعتباراً من <span class="highlight-date">22.09.2026</span> الحصول على التعويض المُحسّن.
-        </p>
-
-        <div class="section-title">ما الذي سيتغير بالنسبة لك؟</div>
-
-        <p>
-            من خلال التعويض المُحسّن، ستدفع السعر التفضيلي (المخفض) عند الطبيب وفي المستشفى. ستحصل أيضاً على مزايا أخرى تعتمد على التعويض المُحسّن، مثل الخصم على النقل العام.
-        </p>
-
-        <p>
-            <strong>هل لديك أسئلة؟</strong> يرجى التواصل معنا. ستجد بيانات الاتصال الخاصة بنا في أعلى هذه الرسالة.
-        </p>
-
-        <!-- قسم التوقيع -->
-        <div class="signature-area">
-            <div></div> <!-- مساحة فارغة لليمين -->
-            <div class="signature-details">
-                <p>مع تحياتي،</p>
-                <div class="signature-img">Lieven Meert</div><br>
-                <strong>Lieven Meert</strong><br>
-                السكرتير الإقليمي
-            </div>
-        </div>
-
-        <!-- تذييل المستند -->
-        <div class="footer">
-            <div class="footer-logo">"Iedereen mee" (الجميع معنا)</div>
-            <p>Solidaris | President Kennedypark 2 – 8500 Kortrijk</p>
-            <p>هاتف: 056 230 230 | بريد إلكتروني: westvlaanderen@solidaris.be | الموقع الإلكتروني: www.solidaris.be | رقم المؤسسة: BE0411 776 183</p>
-            <p>التأمين الإلزامي: IBAN BE42 8782 7051 0154 - BIC BNAGBEBB</p>
-            <p>التأمين التكميلي: IBAN BE23 8783 6052 0191 - BIC BNAGBEBB | سجل التجارة كورتريك</p>
-        </div>
-
+    <!-- الترويسة -->
+    <div class="header">
+      <div class="logo">
+        Solidaris
+        <span>مكتب كورتريك – Kortrijk</span>
+      </div>
+      <div class="date">16 أكتوبر 2026</div>
     </div>
 
+    <!-- بطاقة المستلم -->
+    <div class="recipient">
+      <span class="label">الاسم:</span>
+      <span class="value">ALSAADNI SAMER GUDA NASR</span>
+      <span class="label">العنوان:</span>
+      <span class="value">Marktstraat 43</span>
+      <span class="label">الرمز البريدي والمدينة:</span>
+      <span class="value">8530 Harelbeke، بلجيكا</span>
+    </div>
+
+    <!-- رقم الملف -->
+    <div class="file-number">رقم الملف: 309/9632521</div>
+
+    <!-- الموضوع -->
+    <h1>خطاب استحقاق التعويض الصحي المرتفع</h1>
+
+    <p><strong>الموضوع:</strong> يحق لك الحصول على التعويض الصحي المرتفع (Verhoogde tegemoetkoming)</p>
+
+    <p class="greeting">السيد المحترم،</p>
+
+    <p>يحصل بعض الأشخاص تلقائيًا على الحق في الاستفادة من التعويض الصحي المرتفع بسبب حصولهم على ميزة اجتماعية أو تمتعهم بوضع اجتماعي خاص.</p>
+
+    <p>على سبيل المثال:</p>
+
+    <ul>
+      <li>الأشخاص الذين يحصلون على إعانة المعيشة الاجتماعية (Leefloon) لمدة تزيد على 3 أشهر.</li>
+      <li>الأشخاص الذين يحصلون على ضمان دخل لكبار السن.</li>
+      <li>الأشخاص الذين يحصلون على تعويضات خاصة بالأشخاص ذوي الإعاقة.</li>
+    </ul>
+
+    <p>وفي حالات أخرى، يُمنح الحق في التعويض الصحي المرتفع بعد إجراء دراسة للدخل، ويُحتسب ذلك على مستوى الأسرة بأكملها.</p>
+
+    <p>أنت تنتمي إلى إحدى الفئات المذكورة أعلاه، ولذلك أصبح لك الحق في الاستفادة من التعويض الصحي المرتفع اعتبارًا من <strong>22 سبتمبر 2026</strong>.</p>
+
+    <!-- ما الذي سيتغير -->
+    <h2>ما الذي سيتغير بالنسبة لك؟</h2>
+    <p>بفضل التعويض الصحي المرتفع، ستستفيد من المزايا التالية:</p>
+
+    <div class="benefits">
+      <div class="benefit-card">
+        <strong>💰 دفع أقل للطبيب</strong>
+        <p>ستدفع التعريفة المخفضة عند زيارة الطبيب.</p>
+      </div>
+      <div class="benefit-card">
+        <strong>🏥 تكاليف أقل في المستشفى</strong>
+        <p>ستستفيد من التعريفة الأكثر ملاءمة عند تلقي العلاج في المستشفى.</p>
+      </div>
+      <div class="benefit-card">
+        <strong>🚌 مزايا إضافية</strong>
+        <p>ستحصل على مزايا أخرى مرتبطة بهذا الاستحقاق، مثل الخصومات على وسائل النقل العام.</p>
+      </div>
+    </div>
+
+    <!-- هل لديك أسئلة -->
+    <div class="contact-box">
+      <h2 style="margin-top:0; border-bottom:none; padding-bottom:0;">هل لديك أسئلة؟</h2>
+      <p>إذا كانت لديك أي أسئلة، يُرجى التواصل معنا. ستجد بيانات الاتصال في أعلى هذا الخطاب.</p>
+    </div>
+
+    <!-- التوقيع -->
+    <div class="signature">
+      <p>مع أطيب التحيات،</p>
+      <p><strong>Lieven Meert</strong></p>
+      <p class="title">السكرتير الإقليمي – Solidaris</p>
+    </div>
+
+    <!-- قسم الملاحظات العملية -->
+    <div class="practical-note">
+      <h2>ماذا يعني هذا الخطاب بالنسبة لك عمليًا؟</h2>
+      <ol>
+        <li><strong>تمت الموافقة على استحقاقك</strong><br>الخطاب يؤكد صراحةً أنك تستحق التعويض الصحي المرتفع ابتداءً من 22 سبتمبر 2026.</li>
+        <li><strong>ستدفع أقل عند زيارة الطبيب</strong><br>ستستفيد من التعريفة المخفضة وفقًا لقواعد التأمين الصحي البلجيكي.</li>
+        <li><strong>قد تنخفض مصاريف علاجك</strong><br>قد تدفع أقل في المستشفى والصيدلية، بحسب نوع العلاج والتعويضات المطبقة.</li>
+        <li><strong>قد تستفيد من خصومات إضافية</strong><br>مثل بعض تخفيضات النقل العام، وفقًا لشروط كل جهة.</li>
+      </ol>
+
+      <div class="important-note">
+        <strong>ملاحظة مهمة:</strong> الخطاب يؤكد حقك في التعويض الصحي المرتفع، لكنه لا يحدد السبب التفصيلي الذي استندت إليه Solidaris لمنحك هذا الحق، ولا يؤكد تلقائيًا استحقاقك لكل المساعدات الاجتماعية الأخرى.
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
