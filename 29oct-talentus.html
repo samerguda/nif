@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l مدير اعمال التكييف و التهوية   - Projectleider HVAC</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+        h2 {
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+        }
+        .time-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 10px;
+            min-width: 70px;
+        }
+        .number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+        .label {
+            font-size: 12px;
+            color: #4b5563;
+        }
+        .info {
+            background-color: #f8fafc;
+            border-right: 4px solid #1d4ed8;
+            padding: 10px 15px;
+            text-align: right;
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>عداد المقابلة التلفونية</h2>
+    <p class="subtitle">وظيفة: Projectleider HVAC (Talentus)</p>
+    
+    <div class="timer">
+        <div class="time-box">
+            <span class="number" id="days">00</span>
+            <div class="label">أيام</div>
+        </div>
+        <div class="time-box">
+            <span class="number" id="hours">00</span>
+            <div class="label">ساعات</div>
+        </div>
+        <div class="time-box">
+            <span class="number" id="minutes">00</span>
+            <div class="label">دقائق</div>
+        </div>
+        <div class="time-box">
+            <span class="number" id="seconds">00</span>
+            <div class="label">ثواني</div>
+        </div>
+    </div>
+
+    <div class="info">
+        <strong>تفاصيل الموعد:</strong><br>
+        📅 Donderdag, 29 Oktober 2026<br>
+        🕓 4:30 PM (مدة المقابلة 30 دقيقة)<br>
+        👤 Kimberly Ceuterick
+    </div>
+</div>
+
+<script>
+    // موعد المقابلة: 29 أكتوبر 2026 - الساعة 16:30 بتوقيت بلجيكا (UTC+1)
+    const targetDate = new Date("October 29, 2026 16:30:00").getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference > 0) {
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        } else {
+            document.querySelector(".card").innerHTML = "<h2>حان موعد المقابلة! بالتوفيق يا مهندس سامر.</h2>";
+        }
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+</script>
+
+</body>
+</html>
