@@ -1,183 +1,291 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل خصم النقل العام - التعويض المُحسّن</title>
-    <style>
-        :root {
-            --primary-color: #b3222a; /* لون Solidaris */
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #e0e0e0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .intro-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            border-right: 5px solid var(--primary-color);
-        }
-
-        .intro-card p {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .transport-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-        }
-
-        .transport-card h2 {
-            margin-top: 0;
-            color: var(--primary-color);
-            font-size: 20px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .transport-card h3 {
-            font-size: 17px;
-            color: #444;
-            margin-bottom: 10px;
-            margin-top: 20px;
-        }
-
-        ul {
-            padding-right: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .sub-list {
-            list-style-type: circle;
-            margin-top: 8px;
-        }
-
-        .tip-box {
-            background-color: #fff3f3;
-            border-right: 4px solid var(--primary-color);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-size: 15px;
-        }
-
-        .note-box {
-            background-color: #eef2f5;
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 14px;
-            color: #555;
-            margin-top: 30px;
-        }
-
-        .price-tag {
-            font-weight: bold;
-            color: #2e7d32;
-            background-color: #e8f5e9;
-            padding: 2px 8px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تخفيضات المواصلات العامة في بلجيكا – Harelbeke</title>
+<style>
+  :root{
+    --primary:#0a6c74;
+    --primary-dark:#064e54;
+    --accent:#f4a261;
+    --bg:#f7f9fa;
+    --card:#ffffff;
+    --text:#1f2d2e;
+    --muted:#5f6f70;
+    --border:#e1e8e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI","Tahoma",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.8;
+    padding:20px;
+  }
+  .container{
+    max-width:900px;
+    margin:0 auto;
+  }
+  header{
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;
+    border-radius:16px;
+    padding:32px 28px;
+    margin-bottom:24px;
+    box-shadow:0 6px 20px rgba(10,108,116,.25);
+  }
+  header h1{
+    font-size:1.6rem;
+    margin-bottom:10px;
+  }
+  header p{
+    font-size:1rem;
+    opacity:.95;
+  }
+  .notice{
+    background:#fff8e6;
+    border-right:5px solid var(--accent);
+    padding:14px 18px;
+    border-radius:10px;
+    margin-bottom:24px;
+    font-size:.95rem;
+    color:#6b4c12;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px;
+    margin-bottom:22px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  .card h2{
+    color:var(--primary-dark);
+    font-size:1.25rem;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .card h2 .num{
+    background:var(--primary);
+    color:#fff;
+    width:32px;height:32px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:.95rem;
+    flex-shrink:0;
+  }
+  .price{
+    display:inline-block;
+    background:#e6f4f5;
+    color:var(--primary-dark);
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:.9rem;
+    margin-bottom:12px;
+  }
+  ul,ol{
+    padding-right:22px;
+    margin:12px 0;
+  }
+  li{margin-bottom:8px;}
+  a{
+    color:var(--primary);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px dashed var(--primary);
+    transition:.2s;
+  }
+  a:hover{
+    color:var(--primary-dark);
+    border-bottom-style:solid;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff!important;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    text-decoration:none!important;
+    border:none;
+    margin-top:10px;
+    transition:.2s;
+  }
+  .btn:hover{background:var(--primary-dark);}
+  .survey-options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:12px;
+  }
+  .survey-options label{
+    background:#f0f5f6;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 16px;
+    cursor:pointer;
+    transition:.2s;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .survey-options label:hover{
+    background:#e0eef0;
+    border-color:var(--primary);
+  }
+  .survey-options input[type="radio"]{
+    accent-color:var(--primary);
+    width:18px;height:18px;
+  }
+  .followup{
+    margin-top:16px;
+    padding:14px 18px;
+    background:#e6f4f5;
+    border-radius:10px;
+    display:none;
+    font-size:.95rem;
+  }
+  .followup.show{display:block;}
+  .followup strong{color:var(--primary-dark);}
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.85rem;
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .tag{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    font-size:.75rem;
+    padding:2px 10px;
+    border-radius:12px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+  @media(max-width:600px){
+    body{padding:12px;}
+    header{padding:24px 18px;}
+    header h1{font-size:1.3rem;}
+    .card{padding:18px;}
+  }
+</style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
+  <header>
+    <h1>🚌🚆 تخفيضات المواصلات العامة في بلجيكا</h1>
+    <p>بناءً على خطاب Solidaris: لديك <strong>Verhoogde tegemoetkoming</strong> اعتبارًا من <strong>22 سبتمبر 2026</strong>. يمكنك البدء الآن في التحقق من التخفيضات.</p>
+  </header>
 
-        <!-- مقدمة -->
-        <div class="intro-card">
-            <p>
-                بناءً على الرسالة التي تلقيتها، أنت مؤهل للحصول على <span class="highlight">"التعويض المُحسّن" (Verhoogde Tegemoetkoming)</span>. 
-                للحصول على خصم النقل العام في بلجيكا، تحتاج إلى التقدم بطلب للحصول على بطاقة خصم محددة مسبقاً، ثم استخدامها لشراء التذاكر أو الاشتراكات.
-            </p>
-        </div>
+  <div class="notice">
+    <strong>مهم:</strong> استحقاق التعويض الصحي المرتفع لا يعني أن كل التخفيضات تُمنح تلقائيًا؛ كل شركة لها شروطها وطريقة إثبات الاستحقاق.
+  </div>
 
-        <!-- قسم De Lijn -->
-        <div class="transport-card">
-            <h2>🚌 النقل بالحافلات والترام (De Lijn - فلاندرز)</h2>
-            <p>يمكنك شراء اشتراك سنوي (Omnipas أو Buzzy Pazz) بسعر مخفض.</p>
-            
-            <ul>
-                <li><strong>السعر:</strong> <span class="price-tag">68 يورو</span> فقط سنوياً. إذا لم يكن لديك بطاقة MoBIB، ستحتاج إلى دفع 10 يورو إضافية كرسوم إصدار البطاقة.</li>
-            </ul>
+  <!-- 1. De Lijn -->
+  <div class="card">
+    <h2><span class="num">1</span> تخفيض حافلات De Lijn والترام</h2>
+    <span class="price">€68 سنويًا + €10 رسوم بطاقة MOBIB إن لم تكن لديك</span>
+    <p>هذا هو السعر المنشور لاشتراك <strong>Omnipas</strong> للبالغين أو <strong>Buzzy Pazz</strong> للفئات العمرية المؤهلة.</p>
 
-            <h3>طريقة الشراء:</h3>
-            <ul>
-                <li>
-                    <strong>عبر الإنترنت:</strong> عند الشراء، حدد خيار "Verhoogde Tegemoetkoming"، وقم بالتحقق من الهوية باستخدام eID أو itsme.
-                </li>
-                <li>
-                    <strong>في المتجر:</strong> اذهب إلى نافذة Lijnwinkel، وأحضر بطاقة هويتك، وأخبر الموظف أنك مؤهل. 
-                    <em>(بموجب قانون الخصوصية، لا يمكن للموظف أن يسألك مباشرة، لذا يجب عليك الإشارة إليها بنفسك).</em>
-                </li>
-            </ul>
-        </div>
+    <h3 style="margin-top:16px;color:var(--primary-dark);">الخطوات:</h3>
+    <ol>
+      <li>خذ بطاقة هويتك البلجيكية أو وثيقة الهوية المقبولة، ومعك خطاب Solidaris.</li>
+      <li>يمكنك أولًا تنزيل شهادة التعويض الصحي المرتفع من موقع Solidaris الإلكتروني
+        <a href="https://www.solidaris.be/e-mut" target="_blank" rel="noopener">e-Mut</a>.</li>
+      <li>اذهب إلى متجر De Lijn، واطلب اشتراكًا سنويًا بسعر التعويض الصحي المرتفع.</li>
+      <li>إذا لم تكن لديك بطاقة MOBIB، اسألهم عن إصدارها.</li>
+      <li>تأكد من تفعيل الاشتراك بالسعر المخفض قبل الدفع.</li>
+    </ol>
 
-        <!-- قسم NMBS -->
-        <div class="transport-card">
-            <h2>🚆 القطارات (NMBS/SNCB - على مستوى بلجيكا)</h2>
-            <p>تحتاج أولاً إلى الحصول على "بطاقة الخصم" (Kortingskaart Verhoogde Tegemoetkoming) المجانية، المرتبطة ببطاقة MoBIB الخاصة بك.</p>
-            
-            <ul>
-                <li><strong>الخصم:</strong> شراء التذاكر يوفر خصم <span class="highlight">40%</span> (الدرجة الأولى والثانية).</li>
-            </ul>
+    <p>يمكنك أيضًا التقديم عبر الموقع الرسمي لـ De Lijn، حيث يمكنك التحقق من الاستحقاق إلكترونيًا:</p>
+    <a class="btn" href="https://www.delijn.be/nl/vervoerbewijzen/verhoogde-tegemoetkoming/" target="_blank" rel="noopener">زيارة موقع De Lijn الرسمي ↗</a>
+  </div>
 
-            <h3>طريقة الحصول عليها:</h3>
-            <ul>
-                <li>
-                    <strong>عبر الإنترنت:</strong> قم بتسجيل الدخول إلى حساب My NMBS، واختر "Statuut Verhoogde Tegemoetkoming" في القائمة، واتبع التعليمات للتحقق. سيتم ربط البطاقة تلقائياً بـ MoBIB الخاصة بك (إذا لم يكن لديك MoBIB، يمكنك الشراء عبر الإنترنت، وستصلك عن طريق البريد).
-                </li>
-                <li>
-                    <strong>في المحطة:</strong> اذهب إلى أي نافذة تذاكر، وأحضر بطاقة هويتك وبطاقة MoBIB (إذا لم يكن لديك، يمكنك الشراء في الموقع مقابل 6 يورو)، وسيتحقق الموظف من أهليتك ويطبع البطاقة.
-                </li>
-            </ul>
+  <!-- 2. NMBS -->
+  <div class="card">
+    <h2><span class="num">2</span> تخفيض القطارات NMBS/SNCB</h2>
+    <span class="price">خصم 40% على تذاكر القطار</span>
+    <p>يمكنك الاستفادة من الخصم على الرحلات داخل بلجيكا في الدرجة الأولى أو الثانية، بعد تفعيل بطاقة التخفيض الخاصة بك.</p>
 
-            <div class="tip-box">
-                💡 <strong>نصيحة إضافية:</strong> يمكنك التفكير في شراء اشتراك <strong>Train+</strong> (4 يورو شهرياً أو 32 يورو سنوياً)، والذي يمكنه خفض سعر التذكرة إلى <strong>5.5 يورو كحد أقصى</strong> (الدرجة الثانية) بناءً على خصم 40%، ومناسب للاستخدام المتكرر.
-            </div>
-        </div>
+    <h3 style="margin-top:16px;color:var(--primary-dark);">الخطوات:</h3>
+    <ol>
+      <li>اذهب إلى شباك بيع التذاكر في محطة قطار، مثل محطة <strong>Kortrijk</strong>.</li>
+      <li>خذ معك بطاقة الهوية البلجيكية وخطاب Solidaris.</li>
+      <li>إذا كانت لديك بطاقة MOBIB شخصية تحمل اسمك وصورتك، خذها أيضًا. إذا لم تكن لديك، يمكنك طلب واحدة من NMBS مقابل €6.</li>
+      <li>اطلب من الموظف تفعيل <strong>Kaart Verhoogde Tegemoetkoming</strong> على بطاقة MOBIB.</li>
+      <li>بعد التفعيل، اشترِ تذاكر القطار بسعر التخفيض.</li>
+    </ol>
 
-        <!-- ملاحظة -->
-        <div class="note-box">
-            📌 <strong>ملاحظة:</strong> قد تختلف سياسات الحافلات في بروكسل (MIVB/STIB) ووالونيا (TEC)، يُنصح بالتحقق من موقعها الرسمي أو الذهاب إلى النافذة للسؤال.
-        </div>
+    <a class="btn" href="https://www.belgiantrain.be/nl/tickets-and-railcards/verhoogde-tegemoetkoming" target="_blank" rel="noopener">زيارة موقع NMBS الرسمي ↗</a>
+  </div>
 
+  <!-- 3. النصيحة -->
+  <div class="card">
+    <h2><span class="num">3</span> ما الذي أنصحك به الآن؟</h2>
+    <p>ابدأ بـ <strong>De Lijn</strong> إذا كنت تستخدم الحافلات في Harelbeke وKortrijk، ثم فعّل خصم القطارات إذا كنت تسافر بالقطار.</p>
+  </div>
+
+  <!-- سؤال -->
+  <div class="card">
+    <h2>❓ سؤال مهم: هل لديك بالفعل بطاقة MOBIB؟</h2>
+    <div class="survey-options">
+      <label><input type="radio" name="mobib" value="yes" onchange="showFollow(this.value)"> نعم، لدي بطاقة MOBIB</label>
+      <label><input type="radio" name="mobib" value="no" onchange="showFollow(this.value)"> لا، ليس لدي بطاقة MOBIB</label>
+      <label><input type="radio" name="mobib" value="unsure" onchange="showFollow(this.value)"> لست متأكدًا</label>
     </div>
 
+    <div id="followYes" class="followup">
+      <strong>رائع!</strong> بما أن لديك بطاقة MOBIB:
+      <ul>
+        <li>اذهب مباشرة إلى متجر De Lijn لتفعيل اشتراكك المخفض على بطاقتك الحالية.</li>
+        <li>وفي محطة القطار (مثل Kortrijk)، اطلب تفعيل <em>Kaart Verhoogde Tegemoetkoming</em> على نفس البطاقة.</li>
+        <li>لا تحتاج لدفع €10 أو €6 لبطاقة جديدة.</li>
+      </ul>
+    </div>
+
+    <div id="followNo" class="followup">
+      <strong>لا مشكلة!</strong> ستحتاج إلى إصدار بطاقة MOBIB:
+      <ul>
+        <li><strong>من De Lijn:</strong> اطلب إصدار بطاقة MOBIB في المتجر مقابل €10 (رسوم لمرة واحدة عادةً).</li>
+        <li><strong>من NMBS:</strong> يمكنك طلب بطاقة MOBIB شخصية مقابل €6 من شباك التذاكر.</li>
+        <li>يمكنك استخدام نفس بطاقة MOBIB لكلا الشركتين إذا كانت شخصية (تحمل اسمك وصورتك).</li>
+      </ul>
+    </div>
+
+    <div id="followUnsure" class="followup">
+      <strong>يمكنك التحقق بسهولة:</strong>
+      <ul>
+        <li>ابحث عن بطاقة بلاستيكية تحمل شعار De Lijn أو NMBS واسمك وصورتك.</li>
+        <li>أو اسأل موظف الشباك في أقرب محطة أو متجر De Lijn — سيخبرك فورًا.</li>
+        <li>إذا لم تجدها، تعامل مع الأمر كأنك لا تملكها واطلب إصدار واحدة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    المصادر الرسمية: De Lijn • NMBS/SNCB • Solidaris e-Mut<br>
+    هذا الدليل إرشادي — تحقق دائمًا من الشروط الحالية على المواقع الرسمية.
+  </footer>
+
+</div>
+
+<script>
+  function showFollow(value){
+    document.querySelectorAll('.followup').forEach(el => el.classList.remove('show'));
+    if(value === 'yes') document.getElementById('followYes').classList.add('show');
+    if(value === 'no') document.getElementById('followNo').classList.add('show');
+    if(value === 'unsure') document.getElementById('followUnsure').classList.add('show');
+  }
+</script>
 </body>
 </html>
