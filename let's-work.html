@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b65">
+<title>موعد Let's Work</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Tahoma, Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172033;
+  line-height: 1.7;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  padding: 20px 16px 35px;
+}
+
+.header {
+  background: linear-gradient(135deg, #123b65, #1676a8);
+  color: white;
+  padding: 30px 24px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 25px #123b6520;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 20px;
+  background: #ffffff20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 5px 0 0;
+  color: #e1efff;
+}
+
+.card {
+  margin-top: 18px;
+  padding: 22px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px #152c4610;
+}
+
+.card h2 {
+  font-size: 19px;
+  margin: 0 0 17px;
+  color: #123b65;
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.info:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3ff;
+  border-radius: 13px;
+  font-size: 21px;
+}
+
+.label {
+  color: #718096;
+  font-size: 13px;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 650;
+  direction: ltr;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.address {
+  direction: ltr;
+  text-align: right;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #fff3d8;
+  color: #885700;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.appointment {
+  border: 1px solid #e3eaf3;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.appointment:last-child {
+  margin-bottom: 0;
+}
+
+.appointment h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.appointment p {
+  margin: 0;
+  color: #526176;
+  font-size: 14px;
+}
+
+.primary-date {
+  border: 2px solid #2378d4;
+  background: #f0f7ff;
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.map-btn {
+  background: #1676d2;
+  color: white;
+}
+
+.call-btn {
+  background: #13864b;
+  color: white;
+}
+
+.copy-btn {
+  background: white;
+  color: #123b65;
+  border: 1px solid #d9e2ed;
+}
+
+.note {
+  margin-top: 17px;
+  padding: 14px;
+  background: #fff8e8;
+  border-radius: 13px;
+  color: #76551a;
+  font-size: 13px;
+}
+
+.footer {
+  text-align: center;
+  color: #8490a0;
+  font-size: 12px;
+  padding-top: 23px;
+}
+
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+@media (max-width: 360px) {
+  .header h1 { font-size: 24px; }
+  .card { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <header class="header">
+    <div class="logo">💼</div>
+    <h1>Let's Work</h1>
+    <p>تفاصيل موعد المقابلة · Appointment Details</p>
+  </header>
+
+  <section class="card">
+    <h2>📋 بيانات الموعد</h2>
+
+    <div class="info">
+      <div class="icon">🏢</div>
+      <div>
+        <div class="label">الشركة</div>
+        <div class="value">Let's Work</div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="icon">📍</div>
+      <div>
+        <div class="label">العنوان</div>
+        <div class="value address">
+          Ter Biest 15<br>
+          8800 Roeselare, Belgium
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="icon">📞</div>
+      <div>
+        <div class="label">رقم الهاتف</div>
+        <div class="value">
+          <span class="ltr">+32 51 31 80 88</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>📅 المواعيد المتاحة</h2>
+
+    <div class="appointment primary-date">
+      <h3>الخيار الأول — الاثنين</h3>
+      <p>26 أكتوبر 2026</p>
+      <p>🕐 من الساعة 13:00 إلى 16:00</p>
+      <span class="badge">الموعد الأول</span>
+    </div>
+
+    <div class="appointment">
+      <h3>الخيار الثاني — الأربعاء</h3>
+      <p>28 أكتوبر 2026</p>
+      <p>🕘 من الساعة 09:00 إلى 12:00 صباحًا</p>
+      <span class="badge">موعد بديل</span>
+    </div>
+
+    <div class="note">
+      ⚠️ الرسالة الواردة من الشركة تؤكد موعدًا يوم
+      26/10/2026 الساعة 13:30. إذا كان بإمكانك اختيار
+      الموعد، تأكد من الشركة من اعتماد الوقت المناسب.
+    </div>
+  </section>
+
+  <div class="actions">
+
+    <a class="btn map-btn"
+       href="https://www.google.com/maps/search/?api=1&query=Ter+Biest+15%2C+8800+Roeselare%2C+Belgium"
+       target="_blank"
+       rel="noopener">
+      📍 افتح الموقع على Google Maps
+    </a>
+
+    <a class="btn call-btn"
+       href="tel:+3251318088">
+      📞 اتصال بالشركة
+    </a>
+
+    <button class="btn copy-btn" onclick="copyAddress()">
+      📋 نسخ العنوان
+    </button>
+
+  </div>
+
+  <footer class="footer">
+    Let's Work · Roeselare, Belgium
+  </footer>
+
+</main>
+
+<script>
+function copyAddress() {
+  const address = "Ter Biest 15, 8800 Roeselare, Belgium";
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(address)
+      .then(() => alert("تم نسخ العنوان بنجاح"))
+      .catch(() => fallbackCopy(address));
+  } else {
+    fallbackCopy(address);
+  }
+}
+
+function fallbackCopy(text) {
+  const input = document.createElement("textarea");
+  input.value = text;
+  input.style.position = "fixed";
+  input.style.opacity = "0";
+  document.body.appendChild(input);
+  input.select();
+
+  try {
+    document.execCommand("copy");
+    alert("تم نسخ العنوان");
+  } catch (error) {
+    alert(text);
+  }
+
+  input.remove();
+}
+</script>
+
+</body>
+</html>
