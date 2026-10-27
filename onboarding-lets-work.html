@@ -5,75 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notias Onboarding - Let's Work</title>
     <style>
+        /* إعادة تعيين أساسية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            color: #333333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #2d3748;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
         .container {
             max-width: 600px;
+            width: 100%;
             background-color: #ffffff;
-            margin: 0 auto;
-            border-radius: 8px;
+            margin: 20px auto;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
         }
+
+        .container:hover {
+            transform: translateY(-2px);
+        }
+
         .header {
-            background-color: #4a69bd;
+            background: linear-gradient(135deg, #4a69bd 0%, #3b5aa3 100%);
             color: #ffffff;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
+            position: relative;
         }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .header h1 {
             margin: 0;
             font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
+
         .content {
-            padding: 25px;
+            padding: 30px;
         }
+
         .greeting {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: 700;
             margin-bottom: 15px;
+            color: #1a202c;
         }
+
         .highlight-box {
             background-color: #eef5ff;
             border-right: 4px solid #4a69bd;
-            padding: 12px 15px;
-            margin: 15px 0;
-            border-radius: 4px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(74, 105, 189, 0.08);
         }
+
+        .highlight-box strong {
+            color: #2b4c9a;
+        }
+
         .links-list {
             list-style: none;
             padding: 0;
-            margin: 15px 0;
+            margin: 20px 0;
         }
+
         .links-list li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background-color: #f8fafc;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
         }
+
+        .links-list li:hover {
+            background-color: #eef2f7;
+        }
+
         .links-list a {
             color: #1a73e8;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
+
         .links-list a:hover {
+            color: #0d47a1;
             text-decoration: underline;
         }
+
         .contact-box {
-            background-color: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 20px;
+            background-color: #fff8e1;
+            border: 1px solid #ffe082;
+            color: #795548;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 25px;
         }
+
+        .contact-box a {
+            color: #795548;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
         .footer {
             margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .footer strong {
+            color: #2d3748;
+        }
+
+        .footer p {
+            margin-bottom: 6px;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 24px 16px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .greeting {
+                font-size: 18px;
+            }
+
+            .links-list li {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -98,16 +204,19 @@
             
             <h3>إليك الروابط التي ناقشناها:</h3>
             <ul class="links-list">
-                <li>* <strong>Adminbox:</strong> <a href="https://www.adminbox.eu/users/sign_in" target="_blank">رابط تسجيل الدخول</a></li>
-                <li>* <strong>Adminbox manual:</strong> <a href="https://help.unifiedpost.com/hc/en-us/articles/4402503811602" target="_blank">دليل الاستخدام</a></li>
-                <li>* <strong>MyLetsWork:</strong> <a href="https://qrco.de/myletswork" target="_blank">تطبيق Let's Work</a></li>
-                <li>* <strong>My Nxtplan:</strong> <a href="https://qrco.de/mynxtplan" target="_blank">جدول خطط العمل</a></li>
+                <li><strong>Adminbox:</strong> <a href="https://www.adminbox.eu/users/sign_in" target="_blank" rel="noopener">رابط تسجيل الدخول</a></li>
+                <li><strong>Adminbox manual:</strong> <a href="https://help.unifiedpost.com/hc/en-us/articles/4402503811602" target="_blank" rel="noopener">دليل الاستخدام</a></li>
+                <li><strong>MyLetsWork:</strong> <a href="https://qrco.de/myletswork" target="_blank" rel="noopener">تطبيق Let's Work</a></li>
+                <li><strong>My Nxtplan:</strong> <a href="https://qrco.de/mynxtplan" target="_blank" rel="noopener">جدول خطط العمل</a></li>
+                
+                
+                  <li><strong>My Nxtplan:</strong> <a href="https://barias.be" target="_blank" rel="noopener">  Barias Website </a></li>
             </ul>
             
             <div class="contact-box">
                 <strong>هل ستكون غائباً (متعذر عن الحضور)؟</strong><br>
                 يمكنك التواصل معنا على مدار الساعة طوال أيام الأسبوع على الرقم:<br>
-                <a href="tel:+32470912131" style="color: #856404; font-weight: bold;">+32470 91 21 31</a> 
+                <a href="tel:+32470912131">+32 470 91 21 31</a> 
                 <em>(مكالمات فقط، بدون رسائل نصية SMS)</em>
             </div>
             
