@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عداد تنازلي للموعد - Samer Alsaadni</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font - Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between p-4 sm:p-6 lg:p-8">
+
+  <!-- Main Container -->
+  <div class="max-w-3xl mx-auto w-full space-y-6 my-auto">
+    
+    <!-- Header Card -->
+    <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+      <div class="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <span class="bg-emerald-500/30 text-emerald-100 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-400/30">
+            تأكيد موعد رسمي
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold mt-2">موعد المقابلة القادم</h1>
+          <p class="text-emerald-100 text-sm mt-1">
+            مرحباً <span class="font-bold underline decoration-emerald-400">Samer Alsaadni</span>، إليك تفاصيل موعدك المحدد.
+          </p>
+        </div>
+        <div class="bg-white/20 p-3 rounded-2xl backdrop-blur-md self-center sm:self-auto text-center min-w-[90px]">
+          <i class="fa-regular fa-calendar-check text-3xl text-emerald-200"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countdown Timer Card -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200/80 text-center">
+      <h2 class="text-slate-500 font-bold text-sm tracking-wide uppercase mb-6 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-hourglass-half text-emerald-600 animate-pulse"></i>
+        الوقت المتبقي حتى الموعد
+      </h2>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" id="countdown-container">
+        <!-- Days -->
+        <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex flex-col items-center">
+          <span id="days" class="text-3xl sm:text-4xl font-extrabold text-emerald-600">00</span>
+          <span class="text-xs font-bold text-slate-400 mt-1">يوم</span>
+        </div>
+        <!-- Hours -->
+        <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex flex-col items-center">
+          <span id="hours" class="text-3xl sm:text-4xl font-extrabold text-slate-700">00</span>
+          <span class="text-xs font-bold text-slate-400 mt-1">ساعة</span>
+        </div>
+        <!-- Minutes -->
+        <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex flex-col items-center">
+          <span id="minutes" class="text-3xl sm:text-4xl font-extrabold text-slate-700">00</span>
+          <span class="text-xs font-bold text-slate-400 mt-1">دقيقة</span>
+        </div>
+        <!-- Seconds -->
+        <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl flex flex-col items-center">
+          <span id="seconds" class="text-3xl sm:text-4xl font-extrabold text-emerald-500">00</span>
+          <span class="text-xs font-bold text-slate-400 mt-1">ثانية</span>
+        </div>
+      </div>
+
+      <!-- Live Status Message -->
+      <div id="status-message" class="mt-4 text-xs font-medium text-slate-500">
+        الموعد المحدد: <span dir="ltr" class="font-bold text-slate-700">الثلاثاء 03/11/2026 - الساعة 14:00</span>
+      </div>
+    </div>
+
+    <!-- Appointment Details Grid -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-slate-200/80 space-y-6">
+      <h3 class="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+        <i class="fa-solid fa-circle-info text-teal-600"></i>
+        تفاصيل الموعد والجهة المعنية
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+        
+        <!-- Organizer Details -->
+        <div class="space-y-3">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">المسؤول / الجهة</div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-sm shrink-0">
+              MO
+            </div>
+            <div>
+              <div class="font-bold text-slate-800 text-base">Munira Omar <span class="text-xs font-normal text-slate-500">(zij/haar)</span></div>
+              <div class="text-teal-700 font-medium text-xs">Trajectbegeleider</div>
+              <div class="text-slate-500 text-xs mt-1">AGENTSCHAP INTEGRATIE EN INBURGERING</div>
+              <div class="text-xs text-slate-400">Contactpunt Kortrijk</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Time Details -->
+        <div class="space-y-3">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">التاريخ والوقت</div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <div class="font-bold text-slate-800 text-base">الثلاثاء، 3 نوفمبر 2026</div>
+              <div class="text-slate-600 font-medium dir-ltr text-right">14:00 ظهراً (14:00)</div>
+              <div class="text-xs text-amber-600 mt-1 bg-amber-50 px-2 py-0.5 rounded-md inline-block">
+                <i class="fa-solid fa-triangle-exclamation ml-1"></i> غير متواجدة يومي الأربعاء والخميس بعد الظهر
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address Details -->
+        <div class="space-y-3 md:col-span-2">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">عنوان الموعد</div>
+          <div class="flex items-start gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+            <div class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="grow">
+              <div class="font-bold text-slate-800 dir-ltr text-right">Wijngaardstraat 11, 8500 Kortrijk</div>
+              <div class="text-xs text-slate-500 mt-0.5">Kortrijk, Belgium</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="pt-4 border-t border-slate-100">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">إجراءات سريعة</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          
+          <!-- Google Maps Button -->
+          <a href="https://www.google.com/maps/search/?api=1&query=Wijngaardstraat+11,+8500+Kortrijk" target="_blank" 
+             class="flex items-center justify-center gap-2 px-4 py-3 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-xl transition text-xs border border-rose-200">
+            <i class="fa-solid fa-map-location-dot text-base"></i>
+            <span>فتح في الخرائط</span>
+          </a>
+
+          <!-- Calendar Button -->
+          <button onclick="downloadICS()" 
+                  class="flex items-center justify-center gap-2 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold rounded-xl transition text-xs border border-emerald-200">
+            <i class="fa-solid fa-calendar-plus text-base"></i>
+            <span>إضافة للتقويم</span>
+          </button>
+
+          <!-- Call Button -->
+          <a href="tel:0471665981" 
+             class="flex items-center justify-center gap-2 px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold rounded-xl transition text-xs border border-blue-200">
+            <i class="fa-solid fa-phone text-base"></i>
+            <span>اتصال بالهاتف</span>
+          </a>
+
+          <!-- Email Button -->
+          <a href="mailto:Munira.omar@integratie-inburgering.be" 
+             class="flex items-center justify-center gap-2 px-4 py-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold rounded-xl transition text-xs border border-indigo-200">
+            <i class="fa-solid fa-envelope text-base"></i>
+            <span>إرسال بريد</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center text-xs text-slate-400">
+      تم إنشاء هذه الصفحة استناداً إلى البريد الإلكتروني المستلم من Munira Omar.
+    </div>
+
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Target date: 03 November 2026 at 14:00:00 (Local / Belgium time standard)
+    const targetDate = new Date('2026-11-03T14:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        document.getElementById('status-message').innerHTML = '<span class="text-emerald-600 font-bold text-sm">حان الآن موعد المقابلة!</span>';
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Initial call & interval setup
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Generate and download .ics File for Calendar
+    function downloadICS() {
+      const icsData = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Appointment Reminder//Samer Alsaadni//EN
+BEGIN:VEVENT
+UID:${Date.now()}@integratie-inburgering.be
+DTSTAMP:${new Date().toISOString().replace(/-|:|\.\d+/g, "")}
+DTSTART:20261103T130000Z
+DTEND:20261103T140000Z
+SUMMARY:الموعد مع Munira Omar - Integratie en Inburgering
+DESCRIPTION:تأكيد موعد المقابلة مع Munira Omar (Trajectbegeleider)\\nالمكان: Wijngaardstraat 11, 8500 Kortrijk
+LOCATION:Wijngaardstraat 11, 8500 Kortrijk
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'appointment_03_11_2026.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
