@@ -38,7 +38,7 @@
             padding: 15px;
             margin-bottom: 20px;
             line-height: 1.8;
-            white-space: pre-line; /* للحفاظ على تنسيق الأسطر */
+            white-space: pre-line;
         }
         .copy-btn {
             background-color: #3498db;
@@ -64,14 +64,16 @@
 <div class="container">
     <h2>قائمة الحالات</h2>
     
-    <!-- النص المطلوب عرضه ونسخه -->
     <div class="content-box" id="infoText">١- قلب الوش و التعب النفسي و الهرمون ثم سكوتي 
 ٢- التعب النفسي عدم عمل اي اكل و الصراخ الدائم على اي حد في الكلام 
 ٣- القاء التهم الدائم
 ٤- صناعة حالة حزن او حالة خصام او حالة تجاهل او حالة سكوت و بعدين تبتدي تعمل مشاوير البيت لوحده و بعدين تعاتب على عدم مساعدتها
-٥- اهدار طاقتنا النفسية في الارض و عدم وجود قدرة على الابداع و العمل بسبب الحالات السابقة</div>
+٥- اهدار طاقتنا النفسية في الارض و عدم وجود قدرة على الابداع و العمل بسبب الحالات السابقة
+٦- حالة المرض و التجاهل و الزهق و فقد الحماس
+٧- عدم الاتصال طول اليوم
+٨- طلبات تعجيزية زي الخاتم
+٩- اعطاء ايحاء بأني مصدر عدم السعادة</div>
 
-    <!-- زر النسخ -->
     <button class="copy-btn" onclick="copyContent()">نسخ المعلومات</button>
 </div>
 
@@ -80,9 +82,7 @@
         const textElement = document.getElementById("infoText");
         const button = document.querySelector(".copy-btn");
         
-        // استخدام Clipboard API الحديث لنسخ النص
         navigator.clipboard.writeText(textElement.innerText).then(() => {
-            // تغيير شكل الزر مؤقتاً لتأكيد النسخ
             const originalText = button.innerText;
             button.innerText = "تم النسخ بنجاح! ✓";
             button.classList.add("success");
