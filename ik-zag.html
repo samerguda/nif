@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Vlaamse zinnen | Ik zag + Familie</title>
+<style>
+:root {
+  --navy: #172554;
+  --blue: #2563eb;
+  --light: #eff6ff;
+  --gold: #fbbf24;
+  --text: #1e293b;
+  --muted: #64748b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Tahoma, sans-serif;
+  background: #f1f5f9;
+  color: var(--text);
+  line-height: 1.9;
+}
+header {
+  background: linear-gradient(135deg, #172554, #2563eb);
+  color: white;
+  padding: 35px 18px;
+  text-align: center;
+}
+header h1 { margin: 0 0 10px; font-size: 28px; }
+header p { margin: 5px 0; }
+.badge {
+  display: inline-block;
+  background: var(--gold);
+  color: #172554;
+  padding: 3px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.container {
+  max-width: 900px;
+  margin: 22px auto;
+  padding: 0 14px;
+}
+.info {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-right: 5px solid var(--blue);
+}
+.info h2 { margin-top: 0; color: var(--navy); }
+.example {
+  direction: ltr;
+  text-align: left;
+  color: var(--blue);
+  font-size: 21px;
+  font-weight: bold;
+}
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: var(--navy);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+button:hover { background: var(--blue); }
+#search {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  font-size: 16px;
+}
+.counter { color: var(--muted); margin: 10px 0; }
+.sentence {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 5px #0f172a08;
+}
+.topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.number {
+  background: var(--navy);
+  color: white;
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-weight: bold;
+  direction: ltr;
+}
+.dutch {
+  direction: ltr;
+  text-align: left;
+  font-size: 19px;
+  font-weight: bold;
+  color: #1d4ed8;
+  flex: 1;
+}
+.arabic {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 8px;
+  color: #334155;
+}
+.hidden { display: none; }
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+}
+@media (max-width: 500px) {
+  header h1 { font-size: 23px; }
+  .dutch { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🇧🇪 100 Vlaamse zinnen</h1>
+  <p>تعلّم الفلمنكية البلجيكية مع أفراد العائلة</p>
+  <p><strong>Ik zag + Familieleden</strong></p>
+  <span class="badge">A1 – A2 | الماضي البسيط</span>
+</header>
+
+<main class="container">
+  <section class="info">
+    <h2>📘 شرح القاعدة</h2>
+    <p class="example">Ik zag = أنا رأيتُ</p>
+    <p>
+      الفعل <strong>zien</strong> (يرى) يصبح <strong>zag</strong>
+      في الماضي البسيط مع المفرد، و<strong>zagen</strong> مع الجمع.
+    </p>
+    <p class="example">Ik zag mijn moeder.</p>
+    <p>رأيتُ أمي.</p>
+    <p class="example">Ik zag mijn ouders.</p>
+    <p>رأيتُ والديَّ.</p>
+  </section>
+
+  <div class="toolbar">
+    <input id="search" type="search"
+      placeholder="ابحث عن جملة أو كلمة..." oninput="filterSentences()">
+    <button onclick="toggleArabic()">إظهار / إخفاء الترجمة</button>
+    <button onclick="window.print()">طباعة الجمل</button>
+  </div>
+  <p class="counter" id="counter">عدد الجمل: 100</p>
+  <div id="sentences"></div>
+</main>
+
+<footer>
+  Vlaamse Nederlands 🇧🇪 | تعلم جملة جديدة كل يوم
+</footer>
+
+<script>
+const data = [
+["Ik zag mijn moeder gisteren.","رأيتُ أمي أمس."],
+["Ik zag mijn vader op straat.","رأيتُ أبي في الشارع."],
+["Ik zag mijn broer in de winkel.","رأيتُ أخي في المتجر."],
+["Ik zag mijn zus bij haar thuis.","رأيتُ أختي في منزلها."],
+["Ik zag mijn ouders in het park.","رأيتُ والديَّ في الحديقة."],
+["Ik zag mijn grootmoeder op de markt.","رأيتُ جدتي في السوق."],
+["Ik zag mijn grootvader aan het station.","رأيتُ جدي في المحطة."],
+["Ik zag mijn oma bij de dokter.","رأيتُ جدتي عند الطبيب."],
+["Ik zag mijn opa in het café.","رأيتُ جدي في المقهى."],
+["Ik zag mijn ouders gisterenavond.","رأيتُ والديَّ مساء أمس."],
+["Ik zag mijn oudste broer op het werk.","رأيتُ أخي الأكبر في العمل."],
+["Ik zag mijn jongere broer op school.","رأيتُ أخي الأصغر في المدرسة."],
+["Ik zag mijn oudere zus in Gent.","رأيتُ أختي الكبرى في خنت."],
+["Ik zag mijn kleine zus in de keuken.","رأيتُ أختي الصغرى في المطبخ."],
+["Ik zag mijn zoon voor de school.","رأيتُ ابني أمام المدرسة."],
+["Ik zag mijn dochter bij de bushalte.","رأيتُ ابنتي عند موقف الحافلة."],
+["Ik zag mijn kinderen in de tuin.","رأيتُ أطفالي في الحديقة."],
+["Ik zag mijn man in de supermarkt.","رأيتُ زوجي في السوبرماركت."],
+["Ik zag mijn vrouw in het centrum.","رأيتُ زوجتي في وسط المدينة."],
+["Ik zag mijn echtgenoot op het werk.","رأيتُ شريك حياتي في العمل."],
+["Ik zag mijn tante bij mijn moeder.","رأيتُ عمتي/خالتي عند أمي."],
+["Ik zag mijn oom voor het huis.","رأيتُ عمي/خالي أمام المنزل."],
+["Ik zag mijn neef op een feestje.","رأيتُ ابن عمي/خالي في حفلة."],
+["Ik zag mijn nicht in de stad.","رأيتُ ابنة عمي/خالتي في المدينة."],
+["Ik zag mijn neefje met zijn vader.","رأيتُ ابن أخي الصغير مع أبيه."],
+["Ik zag mijn nichtje met haar moeder.","رأيتُ ابنة أختي الصغيرة مع أمها."],
+["Ik zag mijn schoonmoeder bij ons thuis.","رأيتُ حماتي في منزلنا."],
+["Ik zag mijn schoonvader aan de deur.","رأيتُ حماي عند الباب."],
+["Ik zag mijn schoonzus op bezoek.","رأيتُ أخت زوجتي/زوجي في زيارة."],
+["Ik zag mijn schoonbroer in Kortrijk.","رأيتُ أخا زوجتي/زوجي في كورترايك."],
+["Ik zag mijn schoonouders tijdens het weekend.","رأيتُ والدي زوجتي/زوجي خلال عطلة نهاية الأسبوع."],
+["Ik zag mijn schoonzoon op het familiefeest.","رأيتُ زوج ابنتي في الحفل العائلي."],
+["Ik zag mijn schoondochter in de woonkamer.","رأيتُ زوجة ابني في غرفة المعيشة."],
+["Ik zag mijn stiefvader in de garage.","رأيتُ زوج أمي في المرآب."],
+["Ik zag mijn stiefmoeder bij mijn vader.","رأيتُ زوجة أبي عند أبي."],
+["Ik zag mijn stiefbroer op school.","رأيتُ أخي غير الشقيق في المدرسة."],
+["Ik zag mijn stiefzus in de keuken.","رأيتُ أختي غير الشقيقة في المطبخ."],
+["Ik zag mijn halfbroer vorige week.","رأيتُ أخي من أحد الوالدين الأسبوع الماضي."],
+["Ik zag mijn halfzus op zondag.","رأيتُ أختي من أحد الوالدين يوم الأحد."],
+["Ik zag mijn petekind in de kerk.","رأيتُ طفلي الروحي في الكنيسة."],
+["Ik zag mijn peetvader op het feest.","رأيتُ عرّابي في الحفلة."],
+["Ik zag mijn meter bij mijn ouders.","رأيتُ عرّابتي عند والديَّ."],
+["Ik zag mijn overgrootmoeder op haar verjaardag.","رأيتُ جدتي الكبرى في عيد ميلادها."],
+["Ik zag mijn overgrootvader op de familiefoto.","رأيتُ جدي الأكبر في صورة العائلة."],
+["Ik zag mijn tweelingbroer in de stad.","رأيتُ أخي التوأم في المدينة."],
+["Ik zag mijn tweelingzus in de supermarkt.","رأيتُ أختي التوأم في السوبرماركت."],
+["Ik zag mijn broer en mijn zus samen.","رأيتُ أخي وأختي معًا."],
+["Ik zag mijn vader en mijn moeder wandelen.","رأيتُ أبي وأمي يتنزهان."],
+["Ik zag mijn ouders met mijn kinderen.","رأيتُ والديَّ مع أطفالي."],
+["Ik zag mijn hele familie tijdens het avondeten.","رأيتُ عائلتي كلها أثناء العشاء."],
+["Ik zag mijn moeder boodschappen doen.","رأيتُ أمي تتسوق لشراء احتياجات المنزل."],
+["Ik zag mijn vader naar zijn werk vertrekken.","رأيتُ أبي يغادر إلى عمله."],
+["Ik zag mijn broer voetballen met zijn vrienden.","رأيتُ أخي يلعب كرة القدم مع أصدقائه."],
+["Ik zag mijn zus Nederlands leren.","رأيتُ أختي تتعلم الهولندية."],
+["Ik zag mijn zoon met zijn speelgoed spelen.","رأيتُ ابني يلعب بألعابه."],
+["Ik zag mijn dochter een boek lezen.","رأيتُ ابنتي تقرأ كتابًا."],
+["Ik zag mijn oma een taart bakken.","رأيتُ جدتي تخبز كعكة."],
+["Ik zag mijn opa de krant lezen.","رأيتُ جدي يقرأ الجريدة."],
+["Ik zag mijn tante koffie drinken.","رأيتُ عمتي/خالتي تشرب القهوة."],
+["Ik zag mijn oom zijn auto wassen.","رأيتُ عمي/خالي يغسل سيارته."],
+["Ik zag mijn neef naar huis fietsen.","رأيتُ ابن عمي/خالي يذهب إلى المنزل بالدراجة."],
+["Ik zag mijn nicht met haar vriendinnen praten.","رأيتُ ابنة عمي/خالتي تتحدث مع صديقاتها."],
+["Ik zag mijn vrouw met haar zus praten.","رأيتُ زوجتي تتحدث مع أختها."],
+["Ik zag mijn man de kinderen ophalen.","رأيتُ زوجي يصطحب الأطفال."],
+["Ik zag mijn schoonmoeder het eten klaarmaken.","رأيتُ حماتي تحضّر الطعام."],
+["Ik zag mijn schoonvader in de tuin werken.","رأيتُ حماي يعمل في الحديقة."],
+["Ik zag mijn schoonzus haar baby dragen.","رأيتُ أخت زوجتي/زوجي تحمل طفلها."],
+["Ik zag mijn schoonbroer met de hond wandelen.","رأيتُ أخا زوجتي/زوجي يتمشى مع الكلب."],
+["Ik zag mijn kleinzoon in het speelpark.","رأيتُ حفيدي في حديقة الألعاب."],
+["Ik zag mijn kleindochter bij haar grootouders.","رأيتُ حفيدتي عند أجدادها."],
+["Ik zag mijn kleinkinderen op zondag.","رأيتُ أحفادي يوم الأحد."],
+["Ik zag mijn schoonfamilie met Kerstmis.","رأيتُ عائلة زوجتي/زوجي في عيد الميلاد."],
+["Ik zag mijn familie op mijn verjaardag.","رأيتُ عائلتي في عيد ميلادي."],
+["Ik zag mijn familie tijdens het weekend.","رأيتُ عائلتي خلال عطلة نهاية الأسبوع."],
+["Ik zag mijn broer op het trouwfeest.","رأيتُ أخي في حفل الزفاف."],
+["Ik zag mijn zus op haar verjaardag.","رأيتُ أختي في عيد ميلادها."],
+["Ik zag mijn moeder bij de bakker.","رأيتُ أمي عند الخبّاز."],
+["Ik zag mijn vader bij de apotheek.","رأيتُ أبي في الصيدلية."],
+["Ik zag mijn ouders in het ziekenhuis.","رأيتُ والديَّ في المستشفى."],
+["Ik zag mijn broer aan het treinstation.","رأيتُ أخي في محطة القطار."],
+["Ik zag mijn zus op de tram.","رأيتُ أختي في الترام."],
+["Ik zag mijn tante op de bus.","رأيتُ عمتي/خالتي في الحافلة."],
+["Ik zag mijn oom op de fiets.","رأيتُ عمي/خالي على الدراجة."],
+["Ik zag mijn neef in de bibliotheek.","رأيتُ ابن عمي/خالي في المكتبة."],
+["Ik zag mijn nicht in het winkelcentrum.","رأيتُ ابنة عمي/خالتي في مركز التسوق."],
+["Ik zag mijn ouders voor de kerk.","رأيتُ والديَّ أمام الكنيسة."],
+["Ik zag mijn grootouders in het restaurant.","رأيتُ جدي وجدتي في المطعم."],
+["Ik zag mijn broer bij de voetbalclub.","رأيتُ أخي في نادي كرة القدم."],
+["Ik zag mijn zus bij de kapper.","رأيتُ أختي عند مصفف الشعر."],
+["Ik zag mijn moeder met haar vriendinnen.","رأيتُ أمي مع صديقاتها."],
+["Ik zag mijn vader met zijn collega's.","رأيتُ أبي مع زملائه."],
+["Ik zag mijn zoon met zijn klasgenoten.","رأيتُ ابني مع زملائه في الصف."],
+["Ik zag mijn dochter met haar lerares.","رأيتُ ابنتي مع معلمتها."],
+["Ik zag mijn broer samen met mijn neef.","رأيتُ أخي مع ابن عمي/خالي."],
+["Ik zag mijn zus samen met mijn nicht.","رأيتُ أختي مع ابنة عمي/خالتي."],
+["Ik zag mijn ouders bij de ingang wachten.","رأيتُ والديَّ ينتظران عند المدخل."],
+["Ik zag mijn familie naar huis gaan.","رأيتُ عائلتي وهي تذهب إلى المنزل."],
+["Ik zag mijn moeder lachen.","رأيتُ أمي تضحك."],
+["Ik zag mijn vader glimlachen.","رأيتُ أبي يبتسم."],
+["Ik zag mijn broer huilen.","رأيتُ أخي يبكي."],
+["Ik zag mijn zus dansen op het feest.","رأيتُ أختي ترقص في الحفلة."],
+["Ik zag mijn hele familie samen aan tafel zitten.","رأيتُ عائلتي كلها تجلس معًا إلى المائدة."]
+];
+
+const root = document.getElementById("sentences");
+
+data.forEach((item, index) => {
+  const card = document.createElement("article");
+  card.className = "sentence";
+  card.dataset.search = item.join(" ").toLowerCase();
+
+  const top = document.createElement("div");
+  top.className = "topline";
+
+  const number = document.createElement("span");
+  number.className = "number";
+  number.textContent = index + 1;
+
+  const dutch = document.createElement("div");
+  dutch.className = "dutch";
+  dutch.textContent = item[0];
+
+  const arabic = document.createElement("div");
+  arabic.className = "arabic";
+  arabic.textContent = item[1];
+
+  top.append(number, dutch);
+  card.append(top, arabic);
+  root.appendChild(card);
+});
+
+function filterSentences() {
+  const query = document.getElementById("search").value.toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll(".sentence").forEach(card => {
+    const match = card.dataset.search.includes(query);
+    card.classList.toggle("hidden", !match);
+    if (match) visible++;
+  });
+  document.getElementById("counter").textContent =
+    "عدد الجمل الظاهرة: " + visible + " من " + data.length;
+}
+
+let arabicVisible = true;
+function toggleArabic() {
+  arabicVisible = !arabicVisible;
+  document.querySelectorAll(".arabic").forEach(el => {
+    el.style.display = arabicVisible ? "block" : "none";
+  });
+}
+</script>
+</body>
+</html>
