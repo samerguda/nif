@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>   Emmi Desserts Location </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen p-4 sm:p-6 md:p-10">
+
+    <div class="max-w-4xl mx-auto space-y-6">
+
+        <!-- Top Header Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-100 pb-5 mb-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center text-rose-600 text-xl font-bold">
+                        <i class="fa-solid font-bold">🍦</i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-rose-500 uppercase">Emmi Desserts</span>
+                        <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900">WORKSTATION SHEET</h1>
+                        <p class="text-xs text-slate-500 font-semibold">ICE CREAM OPERATOR</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-slate-600 w-full md:w-auto justify-start md:justify-end">
+                    <span class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                        <i class="fa-regular fa-calendar text-slate-400 ml-1"></i> التاريخ: <strong>09/09/2026</strong>
+                    </span>
+                    <span class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                        <i class="fa-solid fa-code-branch text-slate-400 ml-1"></i> الإصدار: <strong>6</strong>
+                    </span>
+                    <span class="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                        <i class="fa-regular fa-file-lines text-slate-400 ml-1"></i> الصفحة: <strong>9/10</strong>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Responsible Person -->
+            <div class="flex items-center justify-between text-sm bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                <span class="text-slate-500 font-medium">المسؤول (Responsible):</span>
+                <span class="font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fa-regular fa-user text-blue-500"></i> Valerie Van Craeyveld
+                </span>
+            </div>
+        </div>
+
+        <!-- Handwritten Notes Highlight Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Location Card -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 md:col-span-3 lg:col-span-1 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">موقع العمل</span>
+                        <i class="fa-solid fa-location-dot text-blue-500 text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">Vichtseweg 109</h3>
+                    <p class="text-slate-500 text-sm mb-4">Waregem</p>
+                </div>
+                <!-- Google Maps Button -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Vichtseweg+109,+Waregem" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 shadow-sm shadow-blue-200">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>فتح في خرائط جوجل</span>
+                </a>
+            </div>
+
+            <!-- Start Time Card -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md">وقت البدء</span>
+                    <i class="fa-regular fa-clock text-emerald-500 text-lg"></i>
+                </div>
+                <div>
+                    <div class="text-2xl font-black text-slate-900 mb-1">09:00 AM</div>
+                    <p class="text-slate-500 text-xs">ميعاد الحضور الرسمي</p>
+                </div>
+            </div>
+
+            <!-- Hourly Rate Card -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-md">الأجر / الساعة</span>
+                    <i class="fa-solid fa-euro-sign text-purple-500 text-lg"></i>
+                </div>
+                <div>
+                    <div class="text-2xl font-black text-slate-900 mb-1">€ 16,82</div>
+                    <p class="text-slate-500 text-xs">معدل الأجر المحدد</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Entrance & Contact Instructions -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                <div class="w-9 h-9 bg-amber-50 border border-amber-100 rounded-lg flex items-center justify-center text-amber-600">
+                    <i class="fa-solid fa-door-open"></i>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900">مدخل الموظفين والتعليمات (Staff entrance)</h2>
+            </div>
+
+            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                عند مكتب الاستقبال، ستجد <strong>هاتفًا عموديًا للاتصال المباشر</strong> بقسم إنتاج المخبوزات. إذا بدأ يوم عملك قبل ساعات العمل المكتبية، يجب عليك الاتصال من هناك.
+            </p>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-amber-500 text-white rounded-lg flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-amber-800 font-medium">رقم الاتصال المباشر (للإبلاغ عن الغياب أو المرض):</div>
+                        <a href="tel:056782815" class="text-lg font-black text-slate-900 hover:text-amber-700 dir-ltr inline-block">056/78.28.15</a>
+                    </div>
+                </div>
+                <a href="tel:056782815" class="w-full sm:w-auto bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2 px-4 rounded-lg transition text-center">
+                    اتصل الآن
+                </a>
+            </div>
+        </div>
+
+        <!-- Office Hours -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                <div class="w-9 h-9 bg-indigo-50 border border-indigo-100 rounded-lg flex items-center justify-center text-indigo-600">
+                    <i class="fa-regular fa-building"></i>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900">ساعات العمل المكتبية (Office hours)</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Mon - Thu -->
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="block text-xs text-slate-500 font-semibold mb-1">من الاثنين إلى الخميس</span>
+                        <span class="font-bold text-slate-800 dir-ltr inline-block">Mon - Thu</span>
+                    </div>
+                    <div class="text-left font-bold text-indigo-600 text-sm">
+                        <div>08:00 - 11:30</div>
+                        <div class="text-xs text-slate-400 font-normal">و</div>
+                        <div>13:00 - 16:00</div>
+                    </div>
+                </div>
+
+                <!-- Friday -->
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="block text-xs text-slate-500 font-semibold mb-1">الجمعة</span>
+                        <span class="font-bold text-slate-800 dir-ltr inline-block">Friday</span>
+                    </div>
+                    <div class="text-left font-bold text-indigo-600 text-sm">
+                        <div>08:00 - 11:30</div>
+                        <div class="text-xs text-slate-400 font-normal">و</div>
+                        <div>13:00 - 15:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
