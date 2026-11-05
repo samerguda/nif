@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>    Julia Uka 17 DEC 1 pm VDAB appointment   - VDAB</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .time-box {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
+        }
+    </style>
+</head>
+<body class="text-slate-100 flex items-center justify-center p-4 sm:p-6 md:p-8">
+
+    <div class="w-full max-w-2xl mx-auto space-y-6">
+
+        <!-- Card Header & Main Container -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl glow-effect space-y-8">
+            
+            <!-- Header Info -->
+            <div class="text-center space-y-3">
+                <div class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm px-4 py-1.5 rounded-full font-semibold">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>موعد محدد - VDAB</span>
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-l from-indigo-200 via-sky-200 to-white">
+                    العداد التنازلي للموعد القادم
+                </h1>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    تذكير بموعد تعديل البيانات / المقابلة الشخصية
+                </p>
+            </div>
+
+            <!-- Countdown Timer Display -->
+            <div id="countdown" class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                <!-- Days -->
+                <div class="time-box rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all hover:scale-105">
+                    <span id="days" class="text-2xl sm:text-5xl font-black text-indigo-400">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium">أيام</span>
+                </div>
+                <!-- Hours -->
+                <div class="time-box rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all hover:scale-105">
+                    <span id="hours" class="text-2xl sm:text-5xl font-black text-sky-400">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium">ساعات</span>
+                </div>
+                <!-- Minutes -->
+                <div class="time-box rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all hover:scale-105">
+                    <span id="minutes" class="text-2xl sm:text-5xl font-black text-emerald-400">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium">دقائق</span>
+                </div>
+                <!-- Seconds -->
+                <div class="time-box rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all hover:scale-105">
+                    <span id="seconds" class="text-2xl sm:text-5xl font-black text-rose-400">00</span>
+                    <span class="text-xs sm:text-sm text-slate-400 mt-1 sm:mt-2 font-medium">ثواني</span>
+                </div>
+            </div>
+
+            <!-- Finished Message Container (Hidden by default) -->
+            <div id="finished-message" class="hidden text-center py-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-emerald-300 font-bold text-xl">
+                🎉 حان موعدك الآن!
+            </div>
+
+            <!-- Appointment Details Card -->
+            <div class="bg-slate-900/60 rounded-2xl p-5 sm:p-6 border border-slate-800 space-y-4">
+                <h2 class="text-lg font-bold text-slate-200 border-b border-slate-800 pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-indigo-400"></i>
+                    <span>تفاصيل الموعد</span>
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <!-- Contact Person -->
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-xl mt-1">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-xs">المستشار / المسؤول</p>
+                            <p class="font-semibold text-slate-200">Julia Uka</p>
+                            <p class="text-xs text-indigo-300">Bemiddelaar</p>
+                        </div>
+                    </div>
+
+                    <!-- Organization -->
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-sky-500/10 text-sky-400 rounded-xl mt-1">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-xs">الجهة</p>
+                            <p class="font-semibold text-slate-200">VDAB Zuid-West-Vlaanderen</p>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time Info -->
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl mt-1">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-xs">التاريخ والوقت المحجوز</p>
+                            <p class="font-semibold text-slate-200">17 ديسمبر الساعة 13:00</p>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="flex items-start gap-3">
+                        <div class="p-2.5 bg-rose-500/10 text-rose-400 rounded-xl mt-1">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-xs">العنوان</p>
+                            <p class="font-semibold text-slate-200">Lekkerbeetstraat 5/7</p>
+                            <p class="text-xs text-slate-400">8500 Kortrijk</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact links -->
+                <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-4 text-xs text-slate-300">
+                    <a href="mailto:julia.uka@vdab.be" class="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+                        <i class="fa-solid fa-envelope text-indigo-400"></i>
+                        <span>julia.uka@vdab.be</span>
+                    </a>
+                    <a href="tel:+32492741574" class="flex items-center gap-2 hover:text-indigo-400 transition-colors" dir="ltr">
+                        <i class="fa-solid fa-phone text-indigo-400"></i>
+                        <span>+32 492 74 15 74</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Date & Time Picker Controls (Customizable) -->
+            <div class="bg-slate-800/40 p-4 rounded-2xl border border-slate-700/50 space-y-3">
+                <label for="datetime-picker" class="block text-xs font-medium text-slate-300 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-indigo-400"></i>
+                    <span>تعديل تاريخ الموعد (إذا كنت تريد تغيير السنة أو التاريخ):</span>
+                </label>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="datetime-local" id="datetime-picker" 
+                           class="bg-slate-900 border border-slate-700 text-white text-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 outline-none transition-all">
+                    <button id="reset-btn" 
+                            class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-indigo-500/20 whitespace-nowrap">
+                        إعادة ضبط (17 ديسمبر 13:00)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set default appointment date to Dec 17, 2026 at 13:00 (since November 2026 was shown in email context)
+        const currentYear = new Date().getFullYear();
+        let targetYear = currentYear;
+        
+        // If Dec 17 of current year has already passed, use current year or upcoming year
+        const now = new Date();
+        let defaultTargetDate = new Date(targetYear, 11, 17, 13, 0, 0); // Month is 0-indexed (11 = December)
+        if (now > defaultTargetDate) {
+            targetYear += 1;
+            defaultTargetDate = new Date(targetYear, 11, 17, 13, 0, 0);
+        }
+
+        const datePicker = document.getElementById('datetime-picker');
+        const resetBtn = document.getElementById('reset-btn');
+        
+        // Format Date for datetime-local input
+        function formatForInput(date) {
+            const pad = (n) => n < 10 ? '0' + n : n;
+            return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+        }
+
+        // Initialize Input Value
+        datePicker.value = formatForInput(defaultTargetDate);
+        let targetTime = defaultTargetDate.getTime();
+
+        // Update Target Date on Input Change
+        datePicker.addEventListener('change', (e) => {
+            const selectedDate = new Date(e.target.value);
+            if (!isNaN(selectedDate.getTime())) {
+                targetTime = selectedDate.getTime();
+                updateCountdown();
+            }
+        });
+
+        // Reset Button Action
+        resetBtn.addEventListener('click', () => {
+            datePicker.value = formatForInput(defaultTargetDate);
+            targetTime = defaultTargetDate.getTime();
+            updateCountdown();
+        });
+
+        // Countdown Timer Logic
+        function updateCountdown() {
+            const currentTime = new Date().getTime();
+            const difference = targetTime - currentTime;
+
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            const finishedMessage = document.getElementById('finished-message');
+            const countdownGrid = document.getElementById('countdown');
+
+            if (difference <= 0) {
+                // Time's up
+                daysElement.textContent = "00";
+                hoursElement.textContent = "00";
+                minutesElement.textContent = "00";
+                secondsElement.textContent = "00";
+                finishedMessage.classList.remove('hidden');
+                return;
+            }
+
+            finishedMessage.classList.add('hidden');
+
+            // Time Calculations
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Render Values with padding zero
+            daysElement.textContent = days < 10 ? '0' + days : days;
+            hoursElement.textContent = hours < 10 ? '0' + hours : hours;
+            minutesElement.textContent = minutes < 10 ? '0' + minutes : minutes;
+            secondsElement.textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        // Start Interval loop
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
