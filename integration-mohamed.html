@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرحبًا بك في دورة التوجيه الاجتماعي integration Mohamed </title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#0f4c81;
+    --primary-dark:#0a3557;
+    --accent:#e8a33d;
+    --accent-dark:#c9862a;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --text:#1f2d3d;
+    --muted:#5b6b7c;
+    --success:#1f9d55;
+    --border:#e2e8f0;
+    --shadow:0 10px 30px rgba(15,76,129,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Cairo',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, #dbe9f7 0%, transparent 40%),
+      radial-gradient(circle at 90% 10%, #fdf0d9 0%, transparent 35%),
+      var(--bg);
+    color:var(--text);
+    line-height:1.8;
+    min-height:100vh;
+    padding:24px 14px 60px;
+  }
+  .container{max-width:900px;margin:0 auto}
+
+  /* ===== Header ===== */
+  .hero{
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+    color:#fff;
+    border-radius:22px;
+    padding:40px 32px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .hero::before,.hero::after{
+    content:"";position:absolute;border-radius:50%;
+    background:rgba(255,255,255,.08);
+  }
+  .hero::before{width:220px;height:220px;top:-90px;left:-60px}
+  .hero::after{width:160px;height:160px;bottom:-70px;right:-40px}
+  .hero .badge{
+    display:inline-block;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);
+    padding:6px 18px;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:600;
+    letter-spacing:.3px;
+    margin-bottom:16px;
+    position:relative;z-index:1;
+  }
+  .hero h1{
+    font-size:clamp(1.5rem,4vw,2.2rem);
+    font-weight:800;
+    margin-bottom:10px;
+    position:relative;z-index:1;
+  }
+  .hero p{
+    opacity:.9;font-size:1rem;font-weight:400;
+    position:relative;z-index:1;
+  }
+  .hero .date-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:18px;
+    background:var(--accent);
+    color:#3a2600;
+    font-weight:700;
+    padding:10px 22px;
+    border-radius:14px;
+    position:relative;z-index:1;
+    font-size:1.05rem;
+  }
+
+  /* ===== Cards ===== */
+  .grid{display:grid;gap:18px}
+  @media(min-width:720px){
+    .grid.two{grid-template-columns:1fr 1fr}
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px 24px;
+    box-shadow:0 4px 16px rgba(15,76,129,.06);
+    transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(15,76,129,.12);
+  }
+  .card h2{
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--primary);
+    margin-bottom:12px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .card h2 .icon{
+    width:38px;height:38px;flex:0 0 38px;
+    display:grid;place-items:center;
+    background:#eaf2fa;
+    border-radius:10px;
+    font-size:1.1rem;
+  }
+  .card p{color:var(--muted);font-size:.97rem;margin-bottom:14px}
+  .card.wide{grid-column:1/-1}
+
+  /* ===== Alerts / Notes ===== */
+  .note{
+    display:flex;gap:12px;align-items:flex-start;
+    background:#fff8e8;
+    border:1px solid #f3d9a4;
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:.92rem;
+    color:#7a5200;
+    margin-top:12px;
+  }
+  .note strong{color:#5c3d00}
+  .note .n-icon{font-size:1.2rem;line-height:1.4}
+
+  /* ===== Buttons ===== */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    text-decoration:none;
+    font-family:inherit;
+    font-weight:700;
+    font-size:.97rem;
+    padding:12px 22px;
+    border-radius:12px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:all .22s ease;
+    margin:4px 4px 0 0;
+    white-space:nowrap;
+  }
+  .btn svg{width:18px;height:18px;flex:0 0 18px}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;
+    box-shadow:0 6px 16px rgba(15,76,129,.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,76,129,.36)}
+  .btn-accent{
+    background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+    color:#3a2600;
+    box-shadow:0 6px 16px rgba(232,163,61,.35);
+  }
+  .btn-accent:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(232,163,61,.45)}
+  .btn-outline{
+    background:#fff;
+    color:var(--primary);
+    border-color:var(--primary);
+  }
+  .btn-outline:hover{background:#eaf2fa;transform:translateY(-2px)}
+  .btn-success{
+    background:linear-gradient(135deg,#22b366,#178a4c);
+    color:#fff;
+    box-shadow:0 6px 16px rgba(31,157,85,.3);
+  }
+  .btn-success:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(31,157,85,.4)}
+  .btn:active{transform:translateY(0) scale(.98)}
+
+  /* ===== Classroom code ===== */
+  .code-box{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;
+    background:#f0f6ff;
+    border:2px dashed #b9d2ee;
+    border-radius:12px;
+    padding:12px 16px;
+    margin-top:10px;
+  }
+  .code-box .code{
+    font-family:'Courier New',monospace;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:2px;
+    color:var(--primary);
+  }
+
+  /* ===== Divider ===== */
+  .divider{
+    height:1px;background:linear-gradient(to left,transparent,var(--border),transparent);
+    margin:8px 0 18px;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    margin-top:34px;
+    text-align:center;
+    font-size:.9rem;
+    color:var(--muted);
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px 20px;
+    box-shadow:0 4px 16px rgba(15,76,129,.05);
+  }
+  footer .teacher{
+    font-weight:800;color:var(--primary);font-size:1.05rem;margin-bottom:4px;
+  }
+  footer .phone{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--success);font-weight:700;text-decoration:none;
+    direction:ltr;
+  }
+  footer .org{font-size:.82rem;color:#8a97a6;margin-top:10px;line-height:1.7}
+  footer .org strong{color:#5b6b7c}
+
+  /* ===== Animations ===== */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .anim{animation:fadeUp .6s ease both}
+  .anim-1{animation-delay:.05s}
+  .anim-2{animation-delay:.12s}
+  .anim-3{animation-delay:.19s}
+  .anim-4{animation-delay:.26s}
+
+  @media(max-width:520px){
+    body{padding:14px 10px 40px}
+    .hero{padding:30px 20px;border-radius:18px}
+    .card{padding:20px 18px}
+    .btn{width:100%;margin:6px 0 0 0}
+    .code-box{flex-direction:column;align-items:stretch;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero anim anim-1">
+    <span class="badge">🎓 دورة التوجيه الاجتماعي</span>
+    <h1>أهلًا بك في دورتك التدريبية</h1>
+    <p>دورة التوجيه الاجتماعي باللغة العربية — عبر الإنترنت</p>
+    <div class="date-chip">
+      <span>📅</span> تبدأ يوم السبت 07-11-2026
+    </div>
+  </header>
+
+  <!-- ===== MAIN GRID ===== -->
+  <main class="grid two">
+
+    <!-- الحساب الإلكتروني -->
+    <section class="card anim anim-2">
+      <h2><span class="icon">🔐</span> حسابك الإلكتروني الجديد</h2>
+      <p>
+        لقد تلقيت حسابًا إلكترونيًا باسمك من
+        <strong>welcome@mijninburgering.be</strong>
+        في صندوق بريدك مع كلمة المرور المصاحبة.
+      </p>
+      <div class="note">
+        <span class="n-icon">⚠️</span>
+        <div><strong>مهم:</strong> يجب تسجيل الدخول إلى هذا الحساب الجديد <u>قبل</u> بدء الدورة!</div>
+      </div>
+      <div style="margin-top:16px">
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/1TdYcNkiDNOZStEuKRSo2UAdwVpCksWOd/view?usp=sharing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          مشاهدة فيديو تسجيل الدخول
+        </a>
+      </div>
+    </section>
+
+    <!-- الدروس عبر Google Meet -->
+    <section class="card anim anim-2">
+      <h2><span class="icon">📡</span> الدروس عبر الإنترنت</h2>
+      <p>
+        تتم متابعة الدروس عبر الإنترنت باستخدام <strong>Google Meet</strong>.
+        يمكنك المشاركة في الفصل عبر الرابط التالي (باستخدام حساب mijninburgering.be الجديد!):
+      </p>
+      <div style="margin-top:14px">
+        <a class="btn btn-accent" href="https://meet.google.com/gem-dhmu-wfr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+          الدخول إلى Google Meet
+        </a>
+      </div>
+      <div class="note" style="margin-top:16px">
+        <span class="n-icon">🕘</span>
+        <div>يبدأ الدرس يوم <strong>السبت 07-11-2026</strong> على الساعة <strong>09:00</strong>. يرجى الوصول في الوقت المحدد.</div>
+      </div>
+    </section>
+
+    <!-- Google Classroom -->
+    <section class="card wide anim anim-3">
+      <h2><span class="icon">📚</span> المهام و Google Classroom</h2>
+      <p>
+        ستحصل أيضًا على مهام وسيتعين عليك العمل بشكل مستقل في المنزل لهذه الدورة التدريبية على
+        <strong>Google Classroom</strong>.
+      </p>
+
+      <div class="code-box">
+        <span>رمز الصف (Class Code):</span>
+        <span class="code" id="classCode">656ru27d</span>
+        <button class="btn btn-outline" style="margin:0;padding:8px 16px;font-size:.85rem" onclick="copyCode()" id="copyBtn">
+          📋 نسخ الرمز
+        </button>
+      </div>
+
+      <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px">
+        <a class="btn btn-success" href="https://classroom.google.com/c/MjU1MTYzNjY4OTha?cjc=656ru27d" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          فتح Google Classroom
+        </a>
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/1gB5t8CpdB-ccgnsLjNpXJ1ez2jwIJEOl/view?usp=sharing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          فيديو شرح تسجيل الدخول
+        </a>
+      </div>
+
+      <div class="note" style="margin-top:18px">
+        <span class="n-icon">❗</span>
+        <div>
+          من المهم الدخول إلى Google Classroom باستخدام <strong>حساب Google الجديد (mijninburgering.be)</strong>
+          وليس باستخدام Gmail الخاص. يرجى القيام بذلك قبل بدء الدورة.
+        </div>
+      </div>
+
+      <div class="divider" style="margin-top:22px"></div>
+      <p style="margin-bottom:0">
+        📎 يمكن العثور على التخطيط والمزيد من المعلومات حول الدورة التدريبية في المرفقات،
+        وخلال الدرس الأول سنتناول هذا معًا. سوف تتلقى المزيد من المعلومات من معلمك.
+      </p>
+    </section>
+
+    <!-- الأسئلة -->
+    <section class="card wide anim anim-4" style="background:linear-gradient(135deg,#eef6ff,#ffffff)">
+      <h2><span class="icon">💬</span> هل لديك أي أسئلة؟</h2>
+      <p>
+        إذا كان لديك أي أسئلة حول البداية، أو إذا كنت غير قادر على المشاركة،
+        يرجى الاتصال بمستشار المسار الخاص بك في أقرب وقت ممكن.
+      </p>
+      <a class="btn btn-primary" href="tel:+32489741031">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg>
+        اتصل بالأستاذ محمد — 0489741031
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="anim anim-4">
+    <div class="teacher">الأستاذ محمد</div>
+    <a class="phone" href="tel:+32489741031">📞 0489 74 10 31</a>
+    <div class="org">
+      <strong>Mohamed Abarkioui</strong> — leerkracht maatschappelijke oriëntatie<br>
+      AGENTSCHAP INTEGRATIE EN INBURGERING · Afdeling Vorming<br>
+      T 02 701 70 01 · M 0489 74 10 31<br>
+      Provinciehuis Universiteitslaan 1 | 3500 HASSELT<br>
+      www.integratie-inburgering.be
+    </div>
+    <div style="margin-top:14px;font-size:.85rem;color:#8a97a6">
+      مع أطيب التحيات 🌿
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function copyCode(){
+    const code = document.getElementById('classCode').textContent.trim();
+    const btn  = document.getElementById('copyBtn');
+    const done = () => {
+      const old = btn.textContent;
+      btn.textContent = '✅ تم النسخ!';
+      setTimeout(() => btn.textContent = old, 1800);
+    };
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(code).then(done).catch(() => fallbackCopy(code, done));
+    } else {
+      fallbackCopy(code, done);
+    }
+  }
+  function fallbackCopy(text, cb){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e){ alert('الرمز: ' + text); }
+    document.body.removeChild(ta);
+  }
+</script>
+</body>
+</html>
