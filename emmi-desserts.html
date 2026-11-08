@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   Emmi Desserts Location </title>
+    <title>Emmi Desserts Location · كلمة المرور</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
@@ -14,11 +14,52 @@
         body {
             font-family: 'Cairo', sans-serif;
         }
+        /* subtle password emphasis */
+        .password-glow {
+            background: linear-gradient(145deg, #fef2f2, #fff1f2);
+            border: 2px solid #fecdd3;
+            box-shadow: 0 8px 20px -6px rgba(225, 29, 72, 0.2);
+        }
+        .password-code {
+            font-family: 'Cairo', monospace;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 4px rgba(190, 18, 60, 0.15);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen p-4 sm:p-6 md:p-10">
 
     <div class="max-w-4xl mx-auto space-y-6">
+
+        <!-- ===== كلمة المرور – الرقم السري للبوابة ===== -->
+        <div class="password-glow bg-white rounded-2xl p-5 sm:p-6 border border-rose-200 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center text-rose-600 text-2xl shadow-inner">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-500 bg-rose-100/80 px-3 py-1 rounded-full">
+                            <i class="fa-regular fa-keyboard mr-1"></i> بوابة الدخول
+                        </span>
+                        <span class="text-xs text-slate-400 font-medium">(خاص بالموظفين)</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-800 mt-1">الرقم السري للبوابة</h2>
+                </div>
+            </div>
+
+            <!-- عرض الرقم السري بشكل بارز -->
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end bg-white/70 backdrop-blur-sm px-5 py-3 rounded-xl border border-rose-200">
+                <span class="text-sm font-semibold text-rose-600">الكود:</span>
+                <span class="password-code text-3xl sm:text-4xl font-black text-rose-700 tracking-widest px-2">2611</span>
+                <button onclick="navigator.clipboard.writeText('2611')" 
+                        class="mr-2 text-rose-400 hover:text-rose-600 transition p-2 rounded-lg hover:bg-rose-50"
+                        title="نسخ الرقم السري">
+                    <i class="fa-regular fa-copy text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- ===== نهاية كلمة المرور ===== -->
 
         <!-- Top Header Card -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
