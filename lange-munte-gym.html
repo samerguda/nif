@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness sportcampus Lange Munteجيم </title>
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* لون أحمر مشابه للصور */
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* رأس الصفحة */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* قسم معلومات الاتصال */
+        .contact-info {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 1.2rem;
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text a {
+            color: var(--text-color);
+            text-decoration: none;
+            direction: ltr; /* لضمان عرض الأرقام والإيميلات بشكل صحيح */
+            display: inline-block;
+        }
+        
+        .info-text a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* أزرار الإجراءات */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background-color: #fafafa;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 15px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b71c1c;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffebee;
+        }
+
+        /* جدول أوقات العمل */
+        .schedule {
+            padding: 20px;
+        }
+
+        .schedule h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .day-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .day-header {
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .day-header .day-name {
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        .day-header .day-date {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .day-times {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .time-slot {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .time-slot:last-child {
+            margin-bottom: 0;
+        }
+
+        .closed {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* أيام مغلقة */
+        .day-card.closed .day-header {
+            background-color: #ffebee;
+        }
+
+        /* تصميم متجاوب للشاشات الصغيرة */
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- الرأس -->
+        <div class="header">
+            <h1>Fitness sportcampus Lange Munte</h1>
+            <p>حرم الرياضة واللياقة البدنية</p>
+        </div>
+
+        <!-- معلومات الاتصال -->
+        <div class="contact-info">
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div class="info-text">
+                    Bad Godesberglaan 22<br>
+                    8500 Kortrijk<br>
+                    België
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div class="info-text">
+                    <a href="tel:056278000">056/278000</a>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">✉️</span>
+                <div class="info-text">
+                    <a href="mailto:sportservice@kortrijk.be">sportservice@kortrijk.be</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- أزرار تفاعلية -->
+        <div class="action-buttons">
+            <a href="tel:056278000" class="btn btn-primary">📞 اتصال</a>
+            <a href="mailto:sportservice@kortrijk.be" class="btn btn-secondary">✉️ إرسال بريد</a>
+            <a href="https://maps.google.com/?q=Bad+Godesberglaan+22,+8500+Kortrijk,+België" target="_blank" class="btn btn-secondary">🗺️ الخريطة</a>
+        </div>
+
+        <!-- أوقات العمل -->
+        <div class="schedule">
+            <h2>أوقات العمل (بناءً على التاريخ المحدد)</h2>
+
+            <!-- الاثنين -->
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">الاثنين</div>
+                    <div class="day-date">2 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="time-slot">08:30 - 11:00</div>
+                    <div class="time-slot">17:30 - 20:30</div>
+                </div>
+            </div>
+
+            <!-- الثلاثاء -->
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">الثلاثاء</div>
+                    <div class="day-date">3 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="time-slot">08:30 - 11:00</div>
+                    <div class="time-slot">17:30 - 20:30</div>
+                </div>
+            </div>
+
+            <!-- الأربعاء -->
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">الأربعاء</div>
+                    <div class="day-date">4 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="time-slot">08:30 - 11:00</div>
+                    <div class="time-slot">17:30 - 20:30</div>
+                </div>
+            </div>
+
+            <!-- الخميس -->
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">الخميس</div>
+                    <div class="day-date">5 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="time-slot">08:30 - 11:00</div>
+                    <div class="time-slot">17:30 - 20:30</div>
+                </div>
+            </div>
+
+            <!-- الجمعة -->
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-name">الجمعة</div>
+                    <div class="day-date">6 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="time-slot">08:30 - 11:00</div>
+                </div>
+            </div>
+
+            <!-- السبت -->
+            <div class="day-card closed">
+                <div class="day-header">
+                    <div class="day-name">السبت</div>
+                    <div class="day-date">7 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="closed">مغلق</div>
+                </div>
+            </div>
+
+            <!-- الأحد -->
+            <div class="day-card closed">
+                <div class="day-header">
+                    <div class="day-name">الأحد</div>
+                    <div class="day-date">8 نوفمبر</div>
+                </div>
+                <div class="day-times">
+                    <div class="closed">مغلق</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
