@@ -4,33 +4,99 @@
 <meta charset="UTF-8">
 <title>اكل الشغل</title>
 <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #fdf6e3 0%, #f0e6d2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    color: #222;
   }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    padding: 35px 40px;
+    max-width: 520px;
+    width: 100%;
+  }
+
   h1 {
-    color: #444;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
+    text-align: center;
+    color: #d35400;
+    font-size: 28px;
+    margin-bottom: 8px;
+    position: relative;
   }
-  ol {
-    font-size: 18px;
-    line-height: 2;
+
+  h1::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: #f39c12;
+    border-radius: 3px;
+    margin: 12px auto 0;
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 28px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fffaf2;
+    border: 1px solid #f3e5d0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-size: 17px;
+    color: #4a3728;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+  li:hover {
+    transform: translateX(-6px);
+    box-shadow: 0 4px 15px rgba(211,84,0,0.15);
+    background: #fff3e0;
+  }
+
+  .num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
   }
 </style>
 </head>
 <body>
-  <h1>اكل الشغل :</h1>
-  <ol>
-    <li>سندوتش جمبري</li>
-    <li>سندوتش تونة حار ذرة مايونيز</li>
-    <li>سندوتش بيض اومليت بجبنة موزريلا</li>
-    <li>بيض مسلوق مهروس ذرة افوكادو</li>
-    <li>بركوكوش حراق</li>
-    <li>رز كبسة</li>
-    <li>جمبري رز</li>
-  </ol>
+
+  <div class="card">
+    <h1>اكل الشغل</h1>
+    <ul>
+      <li><span class="num">١</span> سندوتش جمبري</li>
+      <li><span class="num">٢</span> سندوتش تونة حار ذرة مايونيز</li>
+      <li><span class="num">٣</span> سندوتش بيض اومليت بجبنة موزريلا</li>
+      <li><span class="num">٤</span> بيض مسلوق مهروس ذرة افوكادو</li>
+      <li><span class="num">٥</span> بركوكوش حراق</li>
+      <li><span class="num">٦</span> رز كبسة</li>
+      <li><span class="num">٧</span> جمبري رز</li>
+    </ul>
+  </div>
+
 </body>
 </html>
