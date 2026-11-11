@@ -1,0 +1,108 @@
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> zain </title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 420px;
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #f7f8fa;
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #e3e6ea;
+  }
+  .value {
+    font-size: 15px;
+    color: #222;
+    word-break: break-all;
+    direction: ltr;
+    text-align: left;
+    flex: 1;
+  }
+  button {
+    background: #4a7cf7;
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+    white-space: nowrap;
+  }
+  button:hover {
+    background: #3661d6;
+  }
+  button.copied {
+    background: #2ecc71;
+  }
+</style>
+</head>
+<body><div class="container">
+  <h2>اضغط لنسخ</h2><div class="item">
+    <span class="value">0595095885</span>
+    <button onclick="copyText(this, '0595095885')">نسخ</button>
+  </div><div class="item">
+    <span class="value">Samerguda40@gmail.com</span>
+    <button onclick="copyText(this, 'Samerguda40@gmail.com')">نسخ</button>
+  </div><div class="item">
+    <span class="value">Samergodh2012</span>
+    <button onclick="copyText(this, 'Samergodh2012')">نسخ</button>
+  </div>
+</div><script>
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = 'تم النسخ ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 1500);
+  }).catch(() => {
+    // طريقة بديلة إذا لم يعمل clipboard
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = 'تم النسخ ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'نسخ';
+      btn.classList.remove('copied');
+    }, 1500);
+  });
+}
+</script></body>
+</html>
