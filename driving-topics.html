@@ -1,771 +1,895 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>امتحان topics  النظري البلجيكي B – Rijbewijs B</title>
+<title>دليل امتحان النظري لرخصة القيادة البلجيكية B</title>
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: #0f1a2b;
-    color: #e8eef7;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-  header {
-    background: linear-gradient(135deg, #1e3a5f, #2c5282);
-    padding: 28px 20px;
-    text-align: center;
-    border-bottom: 4px solid #ecc94b;
-  }
-  header h1 { font-size: 1.8rem; color: #fff; margin-bottom: 8px; }
-  header p { color: #cbd5e0; font-size: 1rem; }
-  .badge {
-    display: inline-block;
-    background: #ecc94b;
-    color: #1a202c;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-top: 10px;
-  }
-  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+* {
+  box-sizing: border-box;
+}
 
-  /* شاشة الإعداد */
-  .setup-card {
-    background: #1a2a44;
-    border-radius: 16px;
-    padding: 30px;
-    margin-top: 20px;
-    border: 1px solid #2d4a6b;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  }
-  .setup-card h2 { color: #ecc94b; margin-bottom: 20px; font-size: 1.4rem; }
-  .setup-group { margin-bottom: 24px; }
-  .setup-group label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #a0c4e8;
-  }
-  .options { display: flex; flex-wrap: wrap; gap: 10px; }
-  .option-btn {
-    background: #243b5a;
-    color: #e8eef7;
-    border: 2px solid #2d4a6b;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-    font-family: inherit;
-  }
-  .option-btn:hover { background: #2d4a6b; }
-  .option-btn.active {
-    background: #ecc94b;
-    color: #1a202c;
-    border-color: #ecc94b;
-    font-weight: 700;
-  }
-  .start-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #38a169, #2f855a);
-    color: #fff;
-    border: none;
-    padding: 16px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: transform 0.15s;
-    font-family: inherit;
-  }
-  .start-btn:hover { transform: translateY(-2px); }
-  .start-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: #f2f5fa;
+  color: #253047;
+  line-height: 1.9;
+}
 
-  /* شاشة الامتحان */
-  .exam-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .progress-info {
-    background: #1a2a44;
-    padding: 10px 18px;
-    border-radius: 10px;
-    border: 1px solid #2d4a6b;
-    font-weight: 600;
-  }
-  .progress-info span { color: #ecc94b; }
-  .timer {
-    background: #1a2a44;
-    padding: 10px 18px;
-    border-radius: 10px;
-    border: 1px solid #2d4a6b;
-    font-weight: 700;
-    font-size: 1.1rem;
-    font-variant-numeric: tabular-nums;
-  }
-  .timer.warning { color: #fc8181; border-color: #fc8181; }
+header {
+  background: linear-gradient(135deg,#102b50,#1766a5);
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
+}
 
-  .progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #243b5a;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 22px;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ecc94b, #38a169);
-    width: 0%;
-    transition: width 0.3s;
-  }
+header h1 {
+  font-size: 27px;
+  margin: 0 0 10px;
+}
 
-  .question-card {
-    background: #1a2a44;
-    border-radius: 16px;
-    padding: 28px;
-    border: 1px solid #2d4a6b;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-  .category-tag {
-    display: inline-block;
-    background: #2c5282;
-    color: #bee3f8;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    margin-bottom: 14px;
-  }
-  .question-text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #fff;
-  }
-  .question-nl {
-    font-size: 0.95rem;
-    color: #a0c4e8;
-    margin-bottom: 20px;
-    direction: ltr;
-    text-align: right;
-    font-style: italic;
-  }
-  .answers { display: flex; flex-direction: column; gap: 12px; }
-  .answer-btn {
-    background: #243b5a;
-    color: #e8eef7;
-    border: 2px solid #2d4a6b;
-    padding: 14px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: right;
-    transition: all 0.2s;
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .answer-btn:hover { background: #2d4a6b; border-color: #4a7ab5; }
-  .answer-btn.selected {
-    background: #2c5282;
-    border-color: #63b3ed;
-  }
-  .answer-btn.correct {
-    background: #22543d;
-    border-color: #38a169;
-  }
-  .answer-btn.wrong {
-    background: #742a2a;
-    border-color: #e53e3e;
-  }
-  .answer-btn:disabled { cursor: default; }
-  .answer-letter {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #1a2a44;
-    border: 1px solid #4a7ab5;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .answer-btn.correct .answer-letter { background: #38a169; border-color: #38a169; }
-  .answer-btn.wrong .answer-letter { background: #e53e3e; border-color: #e53e3e; }
+header p {
+  margin: 5px;
+  color: #dcecff;
+}
 
-  .explanation {
-    margin-top: 18px;
-    padding: 16px;
-    background: #0f1a2b;
-    border-right: 4px solid #ecc94b;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: #cbd5e0;
-    display: none;
-  }
-  .explanation.show { display: block; }
-  .explanation strong { color: #ecc94b; }
+.container {
+  max-width: 1000px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
 
-  .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 24px;
-  }
-  .nav-btn {
-    flex: 1;
-    padding: 14px;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s;
-  }
-  .nav-btn.primary { background: #2c5282; color: #fff; }
-  .nav-btn.primary:hover { background: #2b6cb0; }
-  .nav-btn.secondary { background: #243b5a; color: #e8eef7; border: 1px solid #2d4a6b; }
-  .nav-btn.secondary:hover { background: #2d4a6b; }
-  .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.card {
+  background: white;
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 3px 15px #0000000c;
+}
 
-  /* شاشة النتائج */
-  .results-card {
-    background: #1a2a44;
-    border-radius: 16px;
-    padding: 36px;
-    margin-top: 20px;
-    border: 1px solid #2d4a6b;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  }
-  .result-icon { font-size: 4rem; margin-bottom: 12px; }
-  .result-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
-  .result-title.pass { color: #48bb78; }
-  .result-title.fail { color: #fc8181; }
-  .result-score {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #ecc94b;
-    margin: 16px 0;
-  }
-  .result-score small { font-size: 1.2rem; color: #a0c4e8; font-weight: 400; }
-  .result-details {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin: 24px 0;
-  }
-  .detail-item {
-    background: #0f1a2b;
-    padding: 14px 24px;
-    border-radius: 10px;
-    border: 1px solid #2d4a6b;
-  }
-  .detail-item .val { font-size: 1.5rem; font-weight: 800; color: #ecc94b; }
-  .detail-item .lbl { font-size: 0.85rem; color: #a0c4e8; }
-  .result-message {
-    background: #0f1a2b;
-    padding: 16px;
-    border-radius: 10px;
-    margin: 20px 0;
-    color: #cbd5e0;
-    font-size: 0.95rem;
-  }
-  .review-section { text-align: right; margin-top: 30px; }
-  .review-section h3 { color: #ecc94b; margin-bottom: 16px; }
-  .review-item {
-    background: #0f1a2b;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border-right: 4px solid #e53e3e;
-    font-size: 0.95rem;
-  }
-  .review-item.correct-item { border-right-color: #38a169; }
-  .review-item .rq { font-weight: 600; margin-bottom: 4px; }
-  .review-item .ra { color: #a0c4e8; font-size: 0.9rem; }
+h2 {
+  color: #145a91;
+  border-bottom: 2px solid #e4edf5;
+  padding-bottom: 10px;
+  font-size: 21px;
+}
 
-  @media (max-width: 600px) {
-    header h1 { font-size: 1.3rem; }
-    .setup-card, .question-card, .results-card { padding: 20px; }
-    .question-text { font-size: 1.05rem; }
-    .result-score { font-size: 2.2rem; }
-  }
+h3 {
+  color: #1766a5;
+}
+
+.topic {
+  border-right: 5px solid #247bb8;
+  padding: 12px 17px;
+  margin: 15px 0;
+  background: #f7faff;
+  border-radius: 8px;
+}
+
+.topic h3 {
+  margin-top: 0;
+}
+
+.dutch {
+  color: #1766a5;
+  font-weight: bold;
+  direction: ltr;
+  display: inline-block;
+}
+
+.translation {
+  color: #59677a;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.stat {
+  background: #eef6ff;
+  padding: 17px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 27px;
+  color: #1766a5;
+}
+
+.stat span {
+  font-size: 14px;
+}
+
+ul {
+  padding-right: 25px;
+}
+
+li {
+  margin-bottom: 7px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,td {
+  border: 1px solid #dce4ed;
+  padding: 11px;
+  text-align: right;
+}
+
+th {
+  background: #eaf3fc;
+  color: #145a91;
+}
+
+tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.warning {
+  background: #fff7e7;
+  border-right: 5px solid #e6a02d;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.success {
+  background: #eaf8ef;
+  border-right: 5px solid #279653;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+a {
+  color: #1766a5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background: #102b50;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 35px;
+}
+
+@media(max-width:600px) {
+  header h1 {font-size:22px;}
+  .stats {grid-template-columns:1fr 1fr;}
+  .card {padding:16px;}
+  table {font-size:13px;}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>🇧🇪 امتحان النظري – Rijbewijs B</h1>
-  <p>رخصة القيادة البلجيكية – فلاندرز (Harelbeke / Kortrijk)</p>
-  <span class="badge">50 سؤال · 30 دقيقة · 41/50 للنجاح</span>
+  <h1>🚗 دليل امتحان النظري البلجيكي</h1>
+  <p>Rijbewijs B – Theorie-examen</p>
+  <p>دليل شامل باللغة العربية والهولندية الفلمنكية</p>
+  <p>بلجيكا – فلاندرز</p>
 </header>
 
 <div class="container">
 
-  <!-- شاشة الإعداد -->
-  <div id="setupScreen" class="setup-card">
-    <h2>⚙️ إعداد الامتحان</h2>
+<!-- مقدمة -->
 
-    <div class="setup-group">
-      <label>عدد الأسئلة</label>
-      <div class="options" id="countOptions">
-        <button class="option-btn" data-count="10">10 أسئلة (تدريب سريع)</button>
-        <button class="option-btn active" data-count="20">20 سؤالاً</button>
-        <button class="option-btn" data-count="50">50 سؤالاً (امتحان كامل)</button>
-      </div>
-    </div>
+<section class="card">
+<h2>📘 مقدمة عن الامتحان</h2>
 
-    <div class="setup-group">
-      <label>اللغة</label>
-      <div class="options" id="langOptions">
-        <button class="option-btn active" data-lang="both">هولندي + عربي</button>
-        <button class="option-btn" data-lang="ar">عربي فقط</button>
-      </div>
-    </div>
+امتحان النظري البلجيكي هو الاختبار الذي يجب اجتيازه للحصول على رخصة قيادة السيارة من الفئة B.
 
-    <div class="setup-group">
-      <label>الوضع</label>
-      <div class="options" id="modeOptions">
-        <button class="option-btn active" data-mode="exam">وضع الامتحان (بدون شرح فوري)</button>
-        <button class="option-btn" data-mode="practice">وضع التدريب (شرح فوري)</button>
-      </div>
-    </div>
+اسم الامتحان باللغة الهولندية:
 
-    <div class="result-message" style="margin-bottom:0;">
-      📋 <strong>نظام النقاط:</strong> كل سؤال = 1 نقطة. للنجاح في امتحان الـ 50 سؤالاً تحتاج <strong>41 نقطة</strong>.
-      في هذا التدريب، النسبة المطلوبة هي <strong>82%</strong> للنجاح.
-    </div>
+<p class="dutch">Theorie-examen Rijbewijs B</p>
 
-    <button class="start-btn" id="startBtn">🚦 ابدأ الامتحان</button>
-  </div>
+الامتحان يشمل قوانين المرور، إشارات الطرق، الأولوية، السرعة، السلامة، ومواقف القيادة اليومية.
 
-  <!-- شاشة الامتحان -->
-  <div id="examScreen" style="display:none;">
-    <div class="exam-header">
-      <div class="progress-info">السؤال <span id="qCurrent">1</span> من <span id="qTotal">20</span></div>
-      <div class="timer" id="timer">30:00</div>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+هذا الدليل مخصص للتحضير للامتحان في إقليم فلاندرز، بما في ذلك Harelbeke وKortrijk.
+</section>
 
-    <div class="question-card">
-      <span class="category-tag" id="categoryTag">إشارات المرور</span>
-      <div class="question-text" id="questionText"></div>
-      <div class="question-nl" id="questionNl"></div>
-      <div class="answers" id="answers"></div>
-      <div class="explanation" id="explanation"></div>
-    </div>
+<!-- معلومات الامتحان -->
 
-    <div class="nav-buttons">
-      <button class="nav-btn secondary" id="prevBtn" disabled>⬅ السابق</button>
-      <button class="nav-btn primary" id="nextBtn" disabled>التالي ➡</button>
-    </div>
-  </div>
+<section class="card">
+<h2>📊 معلومات الامتحان الأساسية</h2>
 
-  <!-- شاشة النتائج -->
-  <div id="resultsScreen" class="results-card" style="display:none;">
-    <div class="result-icon" id="resultIcon"></div>
-    <div class="result-title" id="resultTitle"></div>
-    <div class="result-score" id="resultScore"></div>
-    <div class="result-details" id="resultDetails"></div>
-    <div class="result-message" id="resultMessage"></div>
-    <button class="start-btn" id="restartBtn">🔄 إعادة الامتحان</button>
-    <div class="review-section" id="reviewSection"></div>
-  </div>
+<div class="stats">
+
+<div class="stat">
+<strong>50</strong>
+<span>عدد الأسئلة</span>
+</div>
+
+<div class="stat">
+<strong>41/50</strong>
+<span>درجة النجاح</span>
+</div>
+
+<div class="stat">
+<strong>€19</strong>
+<span>رسوم الامتحان الأساسية</span>
+</div>
+
+<div class="stat">
+<strong>30 دقيقة</strong>
+<span>المدة التقريبية</span>
+</div>
 
 </div>
 
-<script>
-/* ============ بنك الأسئلة ============ */
-const QUESTIONS = [
-  // 1. إشارات المرور
-  { cat:"إشارات المرور", q:"ماذا تعني الإشارة المثلثة الحمراء ذات الحدود الحمراء؟", nl:"Wat betekent een omgekeerde rode driehoek?", a:["إشارة تحذير من خطر","إشارة منع / أولوية لغيرك","إشارة إلزام","إشارة نهاية القيود"], correct:1, exp:"المثلث المقلوب ذو الحدود الحمراء هو إشارة منع تمنح الأولوية للآخرين (Voorrang verlenen)." },
-  { cat:"إشارات المرور", q:"الإشارة الدائرية الحمراء ذات الشريط الأفقي الأبيض تعني:", nl:"Een ronde rode bord met een witte horizontale streep betekent:", a:["ممنوع الدخول","ممنوع الوقوف","ممنوع المرور في الاتجاهين","ممنوع التجاوز"], correct:0, exp:"هي إشارة 'ممنوع الدخول' (Verboden toegang) – لا يمكنك دخول هذا الطريق." },
-  { cat:"إشارات المرور", q:"الإشارة المثلثة ذات الخلفية البيضاء والحدود الحمراء والرمز الأسود هي:", nl:"Een driehoekig bord met witte achtergrond, rode rand en zwart symbool is:", a:["إشارة إلزام","إشارة تحذير","إشارة أولوية","إشارة معلومات"], correct:1, exp:"المثلث ذو الحدود الحمراء هو إشارة تحذير (Waarschuwingsbord) تنبهك لخطر قادم." },
-  { cat:"إشارات المرور", q:"الإشارة الدائرية الزرقاء ذات السهم الأبيض تعني:", nl:"Een rond blauw bord met een witte pijl betekent:", a:["اتجاه إلزامي","ممنوع الاتجاه","طريق ذو اتجاه واحد","نهاية الطريق السريع"], correct:0, exp:"الإشارات الزرقاء الدائرية هي إشارات إلزام (Gebodsborden) – يجب اتباع الاتجاه المحدد." },
-  { cat:"إشارات المرور", q:"إشارة 'نهاية القيود' تكون عادة:", nl:"Een bord 'einde verbod' is meestal:", a:["دائرية زرقاء","دائرية بيضاء بخط أسود مائل","مثلثة حمراء","مربعة زرقاء"], correct:1, exp:"إشارة نهاية القيود دائرية بيضاء مع خط أسود مائل (Einde van een verbod)." },
+<h3>نظام الدرجات والأخطاء</h3>
 
-  // 2. الأولوية
-  { cat:"الأولوية", q:"في تقاطع بدون إشارات، من له الأولوية؟", nl:"Op een kruispunt zonder borden, wie heeft voorrang?", a:["القادم من اليسار","القادم من اليمين","الأسرع","الشاحنات"], correct:1, exp:"قاعدة الأولوية العامة في بلجيكا: الأولوية لليمين (Voorrang van rechts)." },
-  { cat:"الأولوية", q:"عند دخول دوّار (Rotonde) بدون إشارات، من له الأولوية؟", nl:"Bij het binnenrijden van een rotonde zonder borden, wie heeft voorrang?", a:["القادم من اليمين","من هو داخل الدوار","من يدخل الدوار","الشاحنات"], correct:1, exp:"في الدوارات البلجيكية، من هو داخل الدوار له الأولوية (voorrang aan links) ما لم تُشِر إشارات أخرى." },
-  { cat:"الأولوية", q:"سيارة إسعاف قادمة بأضواء وصفارات – ماذا تفعل؟", nl:"Een ambulance met zwaailicht en sirene nadert – wat doe je?", a:["تسرع لتسبقها","تفسح لها الطريق فوراً","تتجاهلها","تتوقف في مكانك"], correct:1, exp:"سيارات الطوارئ (Voorrangsvoertuigen) لها أولوية مطلقة – يجب إفساح الطريق فوراً." },
-  { cat:"الأولوية", q:"عند معبر مشاة غير محمي بإشارات، من له الأولوية؟", nl:"Bij een zebrapad zonder verkeerslichten, wie heeft voorrang?", a:["السيارات","المشاة","الدراجات","لا أحد"], correct:1, exp:"المشاة على معبر المشاة (Zebrapad) لهم الأولوية المطلقة – يجب التوقف لهم." },
-  { cat:"الأولوية", q:"إشارة 'أولوية المرور' (مثلث أصفر على قمته) تعني:", nl:"Een bord 'voorrangskruispunt' (gele ruit) betekent:", a:["أنت على طريق ذي أولوية","يجب أن تعطي الأولوية","ممنوع التجاوز","نهاية الأولوية"], correct:0, exp:"المعيّن الأصفر يعني أنك تسير على طريق ذي أولوية (Voorrangsweg)." },
+<ul>
+<li>الخطأ العادي: خصم نقطة واحدة.</li>
+<li>الخطأ الجسيم: خصم 5 نقاط.</li>
+<li>مخالفة السرعة المصنفة خطأً جسيماً: خصم 5 نقاط.</li>
+<li>خطان جسيمان يؤديان إلى الرسوب.</li>
+<li>تحتاج إلى 41 نقطة على الأقل من أصل 50 للنجاح.</li>
+<li>بعد الرسوب مرتين، يجب حضور 12 ساعة من الدروس النظرية في مدرسة تعليم قيادة معتمدة قبل إعادة الامتحان.</li>
+</ul>
 
-  // 3. السرعة
-  { cat:"السرعة", q:"السرعة القصوى داخل المنطقة السكنية (bebouwde kom) في بلجيكا هي:", nl:"De maximumsnelheid binnen de bebouwde kom in België is:", a:["30 كم/س","50 كم/س","70 كم/س","90 كم/س"], correct:1, exp:"داخل المدن والمناطق السكنية: 50 كم/س ما لم تُشِر إشارة أخرى." },
-  { cat:"السرعة", q:"السرعة القصوى على الطرق خارج المناطق السكنية (buiten de bebouwde kom) هي:", nl:"De maximumsnelheid buiten de bebouwde kom is:", a:["50 كم/س","70 كم/س","90 كم/س","120 كم/س"], correct:1, exp:"خارج المناطق السكنية على الطرق العادية: 70 كم/س في فلاندرز (ما لم تُشِر إشارة أخرى)." },
-  { cat:"السرعة", q:"السرعة القصوى على الطرق السريعة (Autosnelweg) هي:", nl:"De maximumsnelheid op de autosnelweg is:", a:["90 كم/س","100 كم/س","120 كم/س","130 كم/س"], correct:2, exp:"على الطرق السريعة في بلجيكا: 120 كم/س كحد أقصى." },
-  { cat:"السرعة", q:"في منطقة 30 (Zone 30)، السرعة القصوى هي:", nl:"In een zone 30 is de maximumsnelheid:", a:["20 كم/س","30 كم/س","40 كم/س","50 كم/س"], correct:1, exp:"منطقة 30 تعني 30 كم/س كحد أقصى حتى نهاية المنطقة." },
-  { cat:"السرعة", q:"مسافة التوقف (Stopafstand) تتكون من:", nl:"De stopafstand bestaat uit:", a:["مسافة رد الفعل فقط","مسافة الفرملة فقط","مسافة رد الفعل + مسافة الفرملة","مسافة الأمان فقط"], correct:2, exp:"مسافة التوقف = مسافة رد الفعل (Reactieafstand) + مسافة الفرملة (Remafstand)." },
+<div class="warning">
+<strong>ملاحظة:</strong>
+هذه هي المعلومات الأساسية للامتحان، ويجب مراجعة الرسوم وشروط إعادة الامتحان لدى مركز الامتحان قبل الحجز.
+</div>
+</section>
 
-  // 4. التجاوز وتغيير الاتجاه
-  { cat:"التجاوز", q:"التجاوز في بلجيكا يتم عادة من:", nl:"Inhalen in België gebeurt normaal gezien van:", a:["اليمين","اليسار","أي جهة","حسب الطريق"], correct:1, exp:"القاعدة العامة: التجاوز من اليسار (Links inhalen)." },
-  { cat:"التجاوز", q:"متى يُمنع التجاوز؟", nl:"Wanneer is inhalen verboden?", a:["عند خط متصل","عند خط متقطع","على الطريق السريع","عند وجود مساحة كافية"], correct:0, exp:"الخط المتصل (Doorgetrokken streep) يعني منع التجاوز تماماً." },
-  { cat:"التجاوز", q:"قبل الانعطاف يميناً يجب:", nl:"Voor het rechts afslaan moet je:", a:["الإشارة يميناً والاقتراب من الحافة اليمنى","التسريع","التجاوز أولاً","إطفاء الأضواء"], correct:0, exp:"استخدم إشارة الاتجاه اليمنى (Richtingaanwijzer) واقترب من الحافة اليمنى قبل الانعطاف." },
-  { cat:"التجاوز", q:"عند تغيير الحارة يجب:", nl:"Bij het wisselen van rijstrook moet je:", a:["الإشارة والتحقق من المرايا والنقطة العمياء","التسريع فوراً","عدم الإشارة","التوقف"], correct:0, exp:"أشِر أولاً، تحقق من المرايا والنقطة العمياء (Dode hoek)، ثم غيّر الحارة بأمان." },
-  { cat:"التجاوز", q:"الخط المتقطع (Onderbroken streep) يعني:", nl:"Een onderbroken streep betekent:", a:["ممنوع التجاوز","التجاوز مسموح إذا كان آمناً","ممنوع الوقوف","نهاية الطريق"], correct:1, exp:"الخط المتقطع يسمح بالتجاوز إذا كانت الظروف آمنة." },
+<!-- الموضوع الأول -->
 
-  // 5. الطريق والحارات
-  { cat:"الطريق والحارات", q:"ممر الطوارئ (Pechstrook) على الطريق السريع مخصص لـ:", nl:"De pechstrook op de autosnelweg is bedoeld voor:", a:["التجاوز السريع","الطوارئ والأعطال فقط","الدراجات","الشاحنات"], correct:1, exp:"ممر الطوارئ (Pechstrook) مخصص فقط لحالات الطوارئ والأعطال – القيادة عليه ممنوعة." },
-  { cat:"الطريق والحارات", q:"الطريق ذو الاتجاه الواحد (Eénrichtingsverkeer) يعني:", nl:"Eénrichtingsverkeer betekent:", a:["القيادة في اتجاه واحد فقط","القيادة في الاتجاهين","ممنوع الدخول","طريق سريع"], correct:0, exp:"الطريق ذو الاتجاه الواحد يُسمح بالسير فيه باتجاه واحد فقط." },
-  { cat:"الطريق والحارات", q:"مسار الدراجات (Fietspad) مخصص لـ:", nl:"Een fietspad is bedoeld voor:", a:["السيارات","الدراجات فقط","المشاة","الشاحنات"], correct:1, exp:"مسار الدراجات مخصص للدراجات فقط – لا يُسمح للسيارات بالسير عليه." },
-  { cat:"الطريق والحارات", q:"على الطريق السريع، الحارة اليسرى تُستخدم عادة لـ:", nl:"Op de autosnelweg wordt de linkerrijstrook normaal gebruikt voor:", a:["القيادة العادية","التجاوز","الشاحنات","التوقف"], correct:1, exp:"الحارة اليسرى على الطريق السريع مخصصة للتجاوز (Inhalen) ثم العودة لليمين." },
+<section class="card">
+<h2>1️⃣ إشارات المرور – Verkeersborden</h2>
 
-  // 6. السلامة
-  { cat:"السلامة", q:"حزام الأمان إلزامي لـ:", nl:"De veiligheidsgordel is verplicht voor:", a:["السائق فقط","السائق والركاب الأماميين فقط","جميع ركاب السيارة","لا أحد"], correct:2, exp:"حزام الأمان إلزامي لجميع ركاب السيارة (Voor- en achterpassagiers)." },
-  { cat:"السلامة", q:"الأطفال دون 12 سنة أو أقل من 1.35 م يجب:", nl:"Kinderen onder 12 jaar of kleiner dan 1,35 m moeten:", a:["الجلوس في الأمام","استخدام مقعد أطفال مناسب","ربط الحزام فقط","لا شيء"], correct:1, exp:"يجب استخدام مقعد أطفال (Kinderzitje) مناسب لعمر ووزن الطفل." },
-  { cat:"السلامة", q:"الحد الأقصى للكحول في الدم للسائق المبتدئ هو:", nl:"Het maximaal toegestane alcoholgehalte voor beginnende bestuurders is:", a:["0.5 ‰","0.2 ‰","0.8 ‰","0.0 ‰"], correct:1, exp:"للسائقين المبتدئين (minder dan 2 jaar rijbewijs): 0.2 ‰. للسائقين العاديين: 0.5 ‰." },
-  { cat:"السلامة", q:"استخدام الهاتف المحمول أثناء القيادة:", nl:"Het gebruik van de gsm tijdens het rijden is:", a:["مسموح","مسموح مع سماعة","ممنوع إلا بنظام يدوي حر","ممنوع تماماً إلا بالسماعة اللاسلكية"], correct:3, exp:"ممنوع استخدام الهاتف باليد أثناء القيادة – يُسمح فقط بالسماعة اللاسلكية (Handsfree)." },
-  { cat:"السلامة", q:"مسافة الأمان المناسبة تعتمد على:", nl:"De veilige volgafstand hangt af van:", a:["السرعة والظروف الجوية","لون السيارة","عدد الركاب","نوع الوقود"], correct:0, exp:"مسافة الأمان تعتمد على السرعة (قاعدة الثانية الواحدة على الأقل) والظروف الجوية." },
+<p>من أهم أجزاء الامتحان معرفة أشكال الإشارات ومعانيها.</p>
 
-  // 7. السيارة ومعداتها
-  { cat:"السيارة", q:"الفحص الفني للسيارة (Keuring) في بلجيكا إلزامي:", nl:"De technische keuring van de auto in België is verplicht:", a:["كل 6 أشهر","كل سنة","كل سنتين","مرة واحدة فقط"], correct:1, exp:"الفحص الفني (Autokeuring) إلزامي سنوياً للسيارات الخاصة في بلجيكا." },
-  { cat:"السيارة", q:"أضواء الضباب الخلفية (Mistachterlicht) تُستخدم:", nl:"Het mistachterlicht mag gebruikt worden:", a:["دائماً","عند الضباب الكثيف فقط","في الليل","عند المطر الخفيف"], correct:1, exp:"ضوء الضباب الخلفي يُستخدم فقط عند الضباب الكثيف (minder dan 50 m zicht) لتجنب إبهار الآخرين." },
-  { cat:"السيارة", q:"المرايا الجانبية (Buitenspiegels) ضرورية لـ:", nl:"De buitenspiegels zijn nodig om:", a:["رؤية الخلف والجانب","التزيين","التحقق من الإطارات","قياس السرعة"], correct:0, exp:"المرايا تسمح برؤية ما خلفك وجانبيك دون الالتفات – ضرورية للسلامة." },
-  { cat:"السيارة", q:"الحد الأدنى لعمق نقش الإطار (Profieldiepte) هو:", nl:"De minimale profieldiepte van een band is:", a:["1 مم","1.6 مم","3 مم","5 مم"], correct:1, exp:"الحد الأدنى القانوني لعمق نقش الإطارات في بلجيكا هو 1.6 مم." },
+<div class="topic">
+<h3>أولاً: إشارات التحذير</h3>
+<span class="dutch">Gevaarsborden</span>
+<ul>
+<li>منحنى خطير.</li>
+<li>منحنيان متتاليان.</li>
+<li>طريق زلق.</li>
+<li>أعمال على الطريق.</li>
+<li>عبور أطفال.</li>
+<li>عبور مشاة.</li>
+<li>عبور حيوانات.</li>
+<li>تقاطع طرق.</li>
+<li>إشارة المرور أمامك.</li>
+</ul>
+</div>
 
-  // 8. مستخدمو الطريق
-  { cat:"مستخدمو الطريق", q:"عند تجاوز راكب دراجة، يجب ترك مسافة جانبية لا تقل عن:", nl:"Bij het inhalen van een fietser moet je een zijdelingse afstand laten van minstens:", a:["0.5 م","1 م","1.5 م","2 م"], correct:1, exp:"داخل المناطق السكنية: 1 متر على الأقل. خارجها: 1.5 متر." },
-  { cat:"مستخدمو الطريق", q:"عند اقتراب حافلة مدرسية متوقفة، يجب:", nl:"Bij een stilstaande schoolbus moet je:", a:["التجاوز بسرعة","التوقف والانتظار حتى ينزل الأطفال","التجاوز ببطء وحذر شديد","إطلاق البوق"], correct:2, exp:"يجب التجاوز بحذر شديد والانتباه للأطفال الذين قد يعبرون الطريق." },
-  { cat:"مستخدمو الطريق", q:"المشاة على الرصيف (Trottoir) لهم الأولوية:", nl:"Voetgangers op het trottoir hebben voorrang:", a:["لا، السيارات أولاً","نعم، الرصيف للمشاة","فقط في الليل","لا يوجد رصيف"], correct:1, exp:"الرصيف مخصص للمشاة – السيارات ممنوعة من السير عليه." },
-  { cat:"مستخدمو الطريق", q:"الدراجات البخارية (Bromfietsen) تسير عادة:", nl:"Bromfietsen rijden normaal gezien:", a:["على الطريق السريع","على مسار الدراجات","على الرصيف","على ممر الطوارئ"], correct:1, exp:"الدراجات البخارية تسير على مسار الدراجات (Fietspad) عندما يكون موجوداً." },
+<div class="topic">
+<h3>ثانياً: إشارات المنع</h3>
+<span class="dutch">Verbodsborden</span>
+<ul>
+<li>ممنوع الدخول.</li>
+<li>ممنوع التجاوز.</li>
+<li>ممنوع الوقوف.</li>
+<li>ممنوع التوقف.</li>
+<li>ممنوع مرور الشاحنات.</li>
+<li>ممنوع استخدام طريق معين.</li>
+<li>حد أقصى للسرعة.</li>
+</ul>
+</div>
 
-  // 9. مواقف خاصة
-  { cat:"مواقف خاصة", q:"عند معبر سكة حديد (Spoorwegovergang) مع إشارة حمراء وامضة، يجب:", nl:"Bij een spoorwegovergang met knipperend rood licht moet je:", a:["الإسراع للعبور","التوقف تماماً والانتظار","التجاوز","إطلاق البوق"], correct:1, exp:"الضوء الأحمر الوامض يعني توقفاً إلزامياً – لا تعبر حتى تتوقف الإشارة تماماً." },
-  { cat:"مواقف خاصة", q:"داخل نفق (Tunnel) يُمنع:", nl:"In een tunnel is het verboden:", a:["استخدام الأضواء","التوقف والتجاوز والالتفاف","القيادة بسرعة منخفضة","تشغيل الراديو"], correct:1, exp:"في الأنفاق: ممنوع التوقف، التجاوز، الالتفاف، والرجوع للخلف. يجب تشغيل الأضواء." },
-  { cat:"مواقف خاصة", q:"الوقوف (Parkeren) على معبر المشاة (Zebrapad):", nl:"Parkeren op een zebrapad is:", a:["مسموح","مسموح ليلاً","ممنوع تماماً","مسموح لـ 5 دقائق"], correct:2, exp:"الوقوف على معبر المشاة ممنوع تماماً – حتى لا تحجب الرؤية عن المشاة." },
-  { cat:"مواقف خاصة", q:"عند وقوع حادث، أول شيء يجب فعله:", nl:"Bij een ongeval is het eerste dat je moet doen:", a:["تصوير الحادث","تأمين المكان وإسعاف المصابين","الاتصال بالصحافة","مغادرة المكان"], correct:1, exp:"أولاً: تأمين مكان الحادث (gevarendriehoek, veiligheidsvest) ثم إسعاف المصابين والاتصال بالطوارئ (112)." },
-  { cat:"مواقف خاصة", q:"مثلث التحذير (Gevaardriehoek) يوضع على مسافة:", nl:"De gevarendriehoek wordt geplaatst op een afstand van:", a:["10 م","30 م","100 م","على السيارة"], correct:1, exp:"مثلث التحذير يوضع على مسافة 30 متراً خلف السيارة (على الطريق السريع: 100 متر)." },
+<div class="topic">
+<h3>ثالثاً: إشارات الإلزام</h3>
+<span class="dutch">Gebodsborden</span>
+<ul>
+<li>إلزامي الاتجاه إلى اليمين.</li>
+<li>إلزامي الاتجاه إلى اليسار.</li>
+<li>السير إلى الأمام فقط.</li>
+<li>مسار إجباري للدراجات.</li>
+<li>الالتزام باتجاه محدد.</li>
+</ul>
+</div>
 
-  // أسئلة إضافية
-  { cat:"إشارات المرور", q:"إشارة 'قف' (STOP) هي:", nl:"Een STOP-bord is:", a:["مثلثة حمراء","ثمانية الأضلاع حمراء","دائرية زرقاء","مربعة صفراء"], correct:1, exp:"إشارة STOP هي ثمانية الأضلاع حمراء (Achthoekig rood bord) مع كلمة STOP – توقف إلزامي." },
-  { cat:"الأولوية", q:"إذا أعطتك إشارة 'أولوية لليمين' (Voorrang van rechts), فأنت:", nl:"Als een bord 'voorrang van rechts' aangeeft, dan:", a:["لديك الأولوية","يجب أن تعطي الأولوية للقادم من اليمين","تتوقف تماماً","تسرع"], correct:1, exp:"الإشارة تعني أن الأولوية للقادم من اليمين – يجب أن تنتظر." },
-  { cat:"السرعة", q:"في منطقة سكنية (Woonerf)، السرعة القصوى هي:", nl:"In een woonerf is de maximumsnelheid:", a:["20 كم/س","30 كم/س","50 كم/س","10 كم/س"], correct:0, exp:"في Woonerf (منطقة سكنية خاصة): 20 كم/س والمشاة لهم الأولوية." },
-  { cat:"السيارة", q:"متى يجب تشغيل الأضواء الأمامية (Dimlichten)?", nl:"Wanneer moeten de dimlichten aan?", a:["فقط في الليل","عند الرؤية الضعيفة (مطر، ضباب، ليل)","فقط في الأنفاق","دائماً"], correct:1, exp:"الأضواء الأمامية إلزامية عند ضعف الرؤية: ليلاً، مطراً، ضباباً، وداخل الأنفاق." },
-  { cat:"السلامة", q:"القيادة تحت تأثير المخدرات:", nl:"Rijden onder invloed van drugs is:", a:["مسموح بكميات صغيرة","ممنوع تماماً ويعاقب عليه القانون","مسموح في عطلة نهاية الأسبوع","مسموح مع وصفة طبية"], correct:1, exp:"القيادة تحت تأثير المخدرات ممنوعة تماماً – تعرضك للسجن وسحب الرخصة." }
-];
+<div class="topic">
+<h3>رابعاً: إشارات الأولوية</h3>
+<span class="dutch">Voorrangsborden</span>
+<ul>
+<li>قف – STOP.</li>
+<li>أعطِ الأولوية – Voorrang verlenen.</li>
+<li>طريق له أولوية.</li>
+<li>نهاية طريق الأولوية.</li>
+<li>أولوية في الطريق الضيق.</li>
+</ul>
+</div>
 
-/* ============ حالة التطبيق ============ */
-let state = {
-  questionCount: 20,
-  lang: "both",
-  mode: "exam",
-  questions: [],
-  currentIndex: 0,
-  answers: [],
-  timerInterval: null,
-  timeLeft: 0,
-  totalTime: 0,
-  finished: false
-};
+<div class="topic">
+<h3>خامساً: إشارات نهاية القيود</h3>
+<span class="dutch">Einde van verboden</span>
+<ul>
+<li>نهاية تحديد السرعة.</li>
+<li>نهاية منع التجاوز.</li>
+<li>نهاية القيود السابقة.</li>
+</ul>
+</div>
+</section>
 
-/* ============ عناصر DOM ============ */
-const setupScreen = document.getElementById('setupScreen');
-const examScreen = document.getElementById('examScreen');
-const resultsScreen = document.getElementById('resultsScreen');
-const startBtn = document.getElementById('startBtn');
-const restartBtn = document.getElementById('restartBtn');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const qCurrent = document.getElementById('qCurrent');
-const qTotal = document.getElementById('qTotal');
-const timerEl = document.getElementById('timer');
-const progressFill = document.getElementById('progressFill');
-const categoryTag = document.getElementById('categoryTag');
-const questionText = document.getElementById('questionText');
-const questionNl = document.getElementById('questionNl');
-const answersEl = document.getElementById('answers');
-const explanationEl = document.getElementById('explanation');
+<!-- الموضوع الثاني -->
 
-/* ============ اختيار الإعدادات ============ */
-document.querySelectorAll('#countOptions .option-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#countOptions .option-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    state.questionCount = parseInt(btn.dataset.count);
-  });
-});
-document.querySelectorAll('#langOptions .option-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#langOptions .option-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    state.lang = btn.dataset.lang;
-  });
-});
-document.querySelectorAll('#modeOptions .option-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#modeOptions .option-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    state.mode = btn.dataset.mode;
-  });
-});
+<section class="card">
+<h2>2️⃣ الأولوية – Voorrang</h2>
 
-/* ============ بدء الامتحان ============ */
-startBtn.addEventListener('click', startExam);
-restartBtn.addEventListener('click', () => {
-  resultsScreen.style.display = 'none';
-  setupScreen.style.display = 'block';
-});
+<p>الأولوية من أهم الموضوعات التي يجب فهمها جيداً.</p>
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+<div class="topic">
+<h3>أولوية اليمين</h3>
+<span class="dutch">Voorrang van rechts</span>
+<ul>
+<li>إعطاء الأولوية للمركبة القادمة من اليمين عندما تنطبق قاعدة أولوية اليمين.</li>
+<li>فهم الأولوية عند التقاطعات غير المنظمة.</li>
+<li>الانتباه إلى إشارات الأولوية التي تغير القاعدة.</li>
+</ul>
+</div>
 
-function startExam() {
-  // اختيار أسئلة عشوائية
-  const shuffled = shuffle(QUESTIONS);
-  state.questions = shuffled.slice(0, state.questionCount);
-  state.currentIndex = 0;
-  state.answers = new Array(state.questions.length).fill(null);
-  state.finished = false;
+<div class="topic">
+<h3>الأولوية عند التقاطعات</h3>
+<span class="dutch">Voorrang op kruispunten</span>
+<ul>
+<li>التقاطعات التي بها إشارات.</li>
+<li>التقاطعات التي بها إشارات ضوئية.</li>
+<li>التقاطعات بدون إشارات.</li>
+<li>الطرق الرئيسية والفرعية.</li>
+</ul>
+</div>
 
-  // الوقت: 30 دقيقة لكل 50 سؤال، مع تقريب
-  const minutesPerQ = 30 / 50;
-  state.totalTime = Math.round(state.questionCount * minutesPerQ * 60);
-  state.timeLeft = state.totalTime;
+<div class="topic">
+<h3>الدوارات</h3>
+<span class="dutch">Rotondes</span>
+<ul>
+<li>كيفية دخول الدوار.</li>
+<li>إعطاء الأولوية وفق الإشارات الموجودة.</li>
+<li>استخدام إشارات الاتجاه عند الخروج.</li>
+<li>اختيار المسار الصحيح.</li>
+</ul>
+</div>
 
-  setupScreen.style.display = 'none';
-  resultsScreen.style.display = 'none';
-  examScreen.style.display = 'block';
+<div class="topic">
+<h3>المشاة والدراجات</h3>
+<span class="dutch">Voorrang voor voetgangers en fietsers</span>
+<ul>
+<li>احترام ممر المشاة.</li>
+<li>الانتباه لراكبي الدراجات.</li>
+<li>الحذر عند الانعطاف وعبور مسارات الدراجات.</li>
+</ul>
+</div>
 
-  qTotal.textContent = state.questionCount;
-  startTimer();
-  renderQuestion();
-}
+<div class="topic">
+<h3>سيارات الطوارئ</h3>
+<span class="dutch">Prioritaire voertuigen</span>
+<ul>
+<li>سيارات الإسعاف.</li>
+<li>سيارات الشرطة.</li>
+<li>سيارات الإطفاء.</li>
+<li>كيفية إفساح الطريق للمركبات ذات الأولوية.</li>
+</ul>
+</div>
+</section>
 
-/* ============ المؤقت ============ */
-function startTimer() {
-  clearInterval(state.timerInterval);
-  updateTimerDisplay();
-  state.timerInterval = setInterval(() => {
-    state.timeLeft--;
-    updateTimerDisplay();
-    if (state.timeLeft <= 0) {
-      clearInterval(state.timerInterval);
-      finishExam(true);
-    }
-  }, 1000);
-}
-function updateTimerDisplay() {
-  const m = Math.floor(Math.max(0, state.timeLeft) / 60);
-  const s = Math.max(0, state.timeLeft) % 60;
-  timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  if (state.timeLeft <= 60) timerEl.classList.add('warning');
-  else timerEl.classList.remove('warning');
-}
+<!-- الموضوع الثالث -->
 
-/* ============ عرض السؤال ============ */
-function renderQuestion() {
-  const idx = state.currentIndex;
-  const q = state.questions[idx];
-  const answered = state.answers[idx] !== null;
-  const showExp = state.mode === 'practice' && answered;
+<section class="card">
+<h2>3️⃣ السرعة – Snelheid</h2>
 
-  qCurrent.textContent = idx + 1;
-  progressFill.style.width = ((idx) / state.questions.length * 100) + '%';
+<div class="topic">
+<h3>حدود السرعة</h3>
+<span class="dutch">Snelheidslimieten</span>
+<ul>
+<li>حدود السرعة داخل المدن.</li>
+<li>حدود السرعة خارج المدن.</li>
+<li>حدود السرعة على الطرق السريعة.</li>
+<li>مناطق السرعة 30 كم/ساعة.</li>
+<li>مناطق السرعة 50 كم/ساعة.</li>
+<li>مناطق السرعة 70 كم/ساعة.</li>
+<li>مناطق السرعة 90 كم/ساعة.</li>
+<li>السرعة 120 كم/ساعة على الطرق السريعة حيث يسمح بذلك.</li>
+</ul>
+</div>
 
-  categoryTag.textContent = q.cat;
-  questionText.textContent = q.q;
-  questionNl.textContent = state.lang === 'both' ? q.nl : '';
-  questionNl.style.display = state.lang === 'both' ? 'block' : 'none';
+<div class="topic">
+<h3>مسافة التوقف والفرملة</h3>
+<span class="dutch">Remweg en stopafstand</span>
+<ul>
+<li>مسافة رد الفعل.</li>
+<li>مسافة الفرملة.</li>
+<li>مسافة التوقف الكاملة.</li>
+<li>تأثير السرعة على مسافة التوقف.</li>
+<li>تأثير المطر والثلج على الفرملة.</li>
+<li>الحفاظ على مسافة أمان مناسبة.</li>
+</ul>
+</div>
 
-  answersEl.innerHTML = '';
-  q.a.forEach((ans, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="answer-letter">${String.fromCharCode(65+i)}</span><span>${ans}</span>`;
+<div class="warning">
+<strong>مهم:</strong>
+حدود السرعة ليست واحدة في جميع الطرق والمناطق البلجيكية. يجب الانتباه إلى نوع الطريق والإشارات وقواعد الإقليم.
+</div>
+</section>
 
-    if (answered) {
-      btn.disabled = true;
-      if (i === q.correct) btn.classList.add('correct');
-      if (i === state.answers[idx] && i !== q.correct) btn.classList.add('wrong');
-    } else {
-      btn.addEventListener('click', () => selectAnswer(i));
-    }
-    answersEl.appendChild(btn);
-  });
+<!-- الموضوع الرابع -->
 
-  // شرح
-  if (showExp) {
-    explanationEl.innerHTML = `<strong>💡 التفسير:</strong> ${q.exp}`;
-    explanationEl.classList.add('show');
-  } else {
-    explanationEl.classList.remove('show');
-  }
+<section class="card">
+<h2>4️⃣ التجاوز وتغيير الاتجاه – Inhalen en afslaan</h2>
 
-  // أزرار التنقل
-  prevBtn.disabled = idx === 0;
-  if (answered) {
-    nextBtn.disabled = false;
-    if (idx === state.questions.length - 1) {
-      nextBtn.textContent = '✅ عرض النتيجة';
-    } else {
-      nextBtn.textContent = 'التالي ➡';
-    }
-  } else {
-    nextBtn.disabled = true;
-    nextBtn.textContent = 'التالي ➡';
-  }
-}
+<div class="topic">
+<h3>التجاوز</h3>
+<span class="dutch">Inhalen</span>
+<ul>
+<li>التجاوز من اليسار كقاعدة عامة.</li>
+<li>متى يسمح بالتجاوز؟</li>
+<li>متى يمنع التجاوز؟</li>
+<li>التجاوز بالقرب من التقاطعات.</li>
+<li>التجاوز عند الخط المتصل.</li>
+<li>التجاوز بالقرب من معابر المشاة.</li>
+<li>التأكد من خلو الطريق قبل التجاوز.</li>
+</ul>
+</div>
 
-/* ============ اختيار إجابة ============ */
-function selectAnswer(answerIndex) {
-  const idx = state.currentIndex;
-  if (state.answers[idx] !== null) return; // مُجاب مسبقاً
+<div class="topic">
+<h3>تغيير الحارة</h3>
+<span class="dutch">Van rijstrook veranderen</span>
+<ul>
+<li>فحص المرايا.</li>
+<li>فحص النقطة العمياء.</li>
+<li>استخدام إشارة الاتجاه.</li>
+<li>التأكد من عدم وجود مركبة في المسار الجديد.</li>
+</ul>
+</div>
 
-  state.answers[idx] = answerIndex;
+<div class="topic">
+<h3>الانعطاف</h3>
+<span class="dutch">Afslaan</span>
+<ul>
+<li>الانعطاف يميناً.</li>
+<li>الانعطاف يساراً.</li>
+<li>تحديد المسار المناسب.</li>
+<li>استخدام إشارات الاتجاه.</li>
+<li>مراعاة المشاة والدراجات.</li>
+</ul>
+</div>
+</section>
 
-  // في وضع التدريب: عرض الشرح فوراً
-  if (state.mode === 'practice') {
-    const q = state.questions[idx];
-    const btns = answersEl.querySelectorAll('.answer-btn');
-    btns.forEach((btn, i) => {
-      btn.disabled = true;
-      if (i === q.correct) btn.classList.add('correct');
-      if (i === answerIndex && i !== q.correct) btn.classList.add('wrong');
-    });
-    explanationEl.innerHTML = `<strong>💡 التفسير:</strong> ${q.exp}`;
-    explanationEl.classList.add('show');
+<!-- الموضوع الخامس -->
 
-    prevBtn.disabled = false;
-    nextBtn.disabled = false;
-    if (idx === state.questions.length - 1) nextBtn.textContent = '✅ عرض النتيجة';
-  } else {
-    // وضع الامتحان: ننتقل تلقائياً
-    setTimeout(() => {
-      if (idx < state.questions.length - 1) {
-        state.currentIndex++;
-        renderQuestion();
-      } else {
-        // آخر سؤال
-        prevBtn.disabled = false;
-        nextBtn.disabled = false;
-        nextBtn.textContent = '✅ عرض النتيجة';
-        // تحديث الأزرار
-        const q = state.questions[idx];
-        const btns = answersEl.querySelectorAll('.answer-btn');
-        btns.forEach((btn, i) => {
-          btn.disabled = true;
-          if (i === q.correct) btn.classList.add('correct');
-          if (i === state.answers[idx] && i !== q.correct) btn.classList.add('wrong');
-        });
-      }
-    }, 300);
-  }
+<section class="card">
+<h2>5️⃣ الطريق والحارات – De weg en rijstroken</h2>
 
-  // تحديث شريط التقدم
-  const answeredCount = state.answers.filter(a => a !== null).length;
-  progressFill.style.width = (answeredCount / state.questions.length * 100) + '%';
-}
+<div class="topic">
+<h3>خطوط الطريق</h3>
+<span class="dutch">Wegmarkeringen</span>
+<ul>
+<li>الخط المتصل.</li>
+<li>الخط المتقطع.</li>
+<li>الخطوط المزدوجة.</li>
+<li>خط التوقف.</li>
+<li>الأسهم الأرضية.</li>
+</ul>
+</div>
 
-/* ============ التنقل ============ */
-prevBtn.addEventListener('click', () => {
-  if (state.currentIndex > 0) {
-    state.currentIndex--;
-    renderQuestion();
-  }
-});
+<div class="topic">
+<h3>أنواع الطرق</h3>
+<span class="dutch">Soorten wegen</span>
+<ul>
+<li>الطرق ذات الاتجاه الواحد.</li>
+<li>الطرق ذات الاتجاهين.</li>
+<li>الطرق السريعة.</li>
+<li>الطرق الإقليمية.</li>
+<li>الشوارع السكنية.</li>
+<li>مناطق المشاة.</li>
+</ul>
+</div>
 
-nextBtn.addEventListener('click', () => {
-  const idx = state.currentIndex;
-  if (state.answers[idx] === null && state.mode === 'exam') {
-    return; // لا يمكن التقدم بدون إجابة
-  }
-  if (idx < state.questions.length - 1) {
-    state.currentIndex++;
-    renderQuestion();
-  } else {
-    finishExam(false);
-  }
-});
+<div class="topic">
+<h3>مسارات خاصة</h3>
+<span class="dutch">Speciale rijstroken</span>
+<ul>
+<li>مسارات الدراجات.</li>
+<li>مسارات الحافلات.</li>
+<li>ممر الطوارئ.</li>
+<li>مسارات المركبات المخصصة.</li>
+</ul>
+</div>
+</section>
 
-/* ============ إنهاء الامتحان ============ */
-function finishExam(timeUp) {
-  clearInterval(state.timerInterval);
-  state.finished = true;
+<!-- الموضوع السادس -->
 
-  let correct = 0;
-  let unanswered = 0;
-  state.questions.forEach((q, i) => {
-    if (state.answers[i] === null) unanswered++;
-    else if (state.answers[i] === q.correct) correct++;
-  });
+<section class="card">
+<h2>6️⃣ السلامة – Verkeersveiligheid</h2>
 
-  const total = state.questions.length;
-  const pct = Math.round(correct / total * 100);
-  const passThreshold = Math.round(total * 0.82);
-  const passed = correct >= passThreshold;
+<div class="topic">
+<h3>حزام الأمان</h3>
+<span class="dutch">Veiligheidsgordel</span>
+<ul>
+<li>استخدام حزام الأمان.</li>
+<li>مسؤولية السائق والركاب.</li>
+<li>الاستخدام الصحيح للحزام.</li>
+</ul>
+</div>
 
-  examScreen.style.display = 'none';
-  resultsScreen.style.display = 'block';
+<div class="topic">
+<h3>مقاعد الأطفال</h3>
+<span class="dutch">Kinderzitjes</span>
+<ul>
+<li>قواعد نقل الأطفال.</li>
+<li>مقاعد الأطفال المناسبة.</li>
+<li>تركيب المقعد بطريقة صحيحة.</li>
+<li>الانتباه للوسادة الهوائية.</li>
+</ul>
+</div>
 
-  document.getElementById('resultIcon').textContent = passed ? '🎉' : '😔';
-  const titleEl = document.getElementById('resultTitle');
-  titleEl.textContent = passed ? 'مبروك! نجحت في الامتحان' : 'للأسف، لم تنجح';
-  titleEl.className = 'result-title ' + (passed ? 'pass' : 'fail');
+<div class="topic">
+<h3>مسافة الأمان</h3>
+<span class="dutch">Veilige afstand</span>
+<ul>
+<li>المسافة بين سيارتك والسيارة الأمامية.</li>
+<li>زيادة المسافة عند المطر.</li>
+<li>زيادة المسافة عند الثلج والجليد.</li>
+</ul>
+</div>
 
-  document.getElementById('resultScore').innerHTML =
-    `${correct} <small>/ ${total} (${pct}%)</small>`;
+<div class="topic">
+<h3>الكحول والمخدرات</h3>
+<span class="dutch">Alcohol en drugs</span>
+<ul>
+<li>القيادة تحت تأثير الكحول.</li>
+<li>الحد القانوني للكحول.</li>
+<li>تأثير المخدرات على القيادة.</li>
+<li>العقوبات والمخالفات.</li>
+</ul>
+</div>
 
-  document.getElementById('resultDetails').innerHTML = `
-    <div class="detail-item"><div class="val">${correct}</div><div class="lbl">إجابات صحيحة</div></div>
-    <div class="detail-item"><div class="val">${total - correct}</div><div class="lbl">إجابات خاطئة</div></div>
-    <div class="detail-item"><div class="val">${unanswered}</div><div class="lbl">بدون إجابة</div></div>
-    <div class="detail-item"><div class="val">${passThreshold}</div><div class="lbl">حد النجاح</div></div>
-  `;
+<div class="topic">
+<h3>الهاتف المحمول</h3>
+<span class="dutch">Gsm-gebruik</span>
+<ul>
+<li>استخدام الهاتف أثناء القيادة.</li>
+<li>قواعد استخدام الأجهزة الإلكترونية.</li>
+<li>مخاطر تشتيت الانتباه.</li>
+</ul>
+</div>
+</section>
 
-  let msg = '';
-  if (timeUp) msg += '⏰ انتهى الوقت! ';
-  if (passed) {
-    msg += 'أداء ممتاز! أنت مستعد لامتحان النظري الرسمي. تذكر أن امتحان فلاندرز الرسمي يتطلب 41/50.';
-  } else {
-    msg += `تحتاج ${passThreshold} إجابة صحيحة للنجاح. راجع المواضيع التي أخطأت فيها وأعد المحاولة.`;
-  }
-  document.getElementById('resultMessage').textContent = msg;
+<!-- الموضوع السابع -->
 
-  // مراجعة الأخطاء
-  const reviewSection = document.getElementById('reviewSection');
-  const wrongItems = [];
-  state.questions.forEach((q, i) => {
-    if (state.answers[i] !== q.correct) {
-      const yourAns = state.answers[i] !== null ? q.a[state.answers[i]] : 'لم تجب';
-      wrongItems.push(`
-        <div class="review-item">
-          <div class="rq">❌ ${q.q}</div>
-          <div class="ra">إجابتك: ${yourAns}</div>
-          <div class="ra">✅ الصحيح: ${q.a[q.correct]}</div>
-          <div class="ra" style="color:#ecc94b;">💡 ${q.exp}</div>
-        </div>
-      `);
-    }
-  });
+<section class="card">
+<h2>7️⃣ السيارة ومعداتها – Voertuigkennis</h2>
 
-  if (wrongItems.length > 0) {
-    reviewSection.innerHTML = `<h3>📝 مراجعة الأخطاء (${wrongItems.length})</h3>` + wrongItems.join('');
-  } else {
-    reviewSection.innerHTML = `<h3>🌟 لا أخطاء! أداء مثالي</h3>`;
-  }
-}
-</script>
+<div class="topic">
+<h3>أضواء السيارة</h3>
+<span class="dutch">Autoverlichting</span>
+<ul>
+<li>أضواء الموضع.</li>
+<li>الأضواء المنخفضة.</li>
+<li>الأضواء العالية.</li>
+<li>أضواء الضباب.</li>
+<li>أضواء الفرامل.</li>
+<li>إشارات الاتجاه.</li>
+<li>أضواء الرجوع للخلف.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>الإطارات</h3>
+<span class="dutch">Banden</span>
+<ul>
+<li>ضغط الإطارات.</li>
+<li>عمق النقشة.</li>
+<li>حالة الإطارات.</li>
+<li>الإطارات الشتوية.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>الفرامل والمرايا</h3>
+<span class="dutch">Remmen en spiegels</span>
+<ul>
+<li>الفرامل الرئيسية.</li>
+<li>فرامل التوقف.</li>
+<li>المرايا الجانبية.</li>
+<li>مرآة الرؤية الخلفية.</li>
+<li>النقطة العمياء.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>أوراق السيارة</h3>
+<span class="dutch">Voertuigdocumenten</span>
+<ul>
+<li>رخصة التسجيل.</li>
+<li>شهادة التأمين.</li>
+<li>شهادة الفحص الفني عند وجوبها.</li>
+<li>رخصة القيادة.</li>
+</ul>
+</div>
+</section>
+
+<!-- الموضوع الثامن -->
+
+<section class="card">
+<h2>8️⃣ مستخدمو الطريق – Weggebruikers</h2>
+
+<div class="topic">
+<h3>المشاة</h3>
+<span class="dutch">Voetgangers</span>
+<ul>
+<li>معابر المشاة.</li>
+<li>المشاة عند التقاطعات.</li>
+<li>الأطفال بالقرب من المدارس.</li>
+<li>كبار السن.</li>
+<li>ذوو الاحتياجات الخاصة.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>راكبو الدراجات</h3>
+<span class="dutch">Fietsers</span>
+<ul>
+<li>مسارات الدراجات.</li>
+<li>التجاوز الآمن للدراجات.</li>
+<li>الانتباه عند الانعطاف.</li>
+<li>الدراجات الكهربائية.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>مستخدمون آخرون</h3>
+<span class="dutch">Andere weggebruikers</span>
+<ul>
+<li>الدراجات النارية.</li>
+<li>الشاحنات.</li>
+<li>الحافلات.</li>
+<li>الجرارات الزراعية.</li>
+<li>المركبات البطيئة.</li>
+</ul>
+</div>
+</section>
+
+<!-- الموضوع التاسع -->
+
+<section class="card">
+<h2>9️⃣ مواقف الطريق الخاصة – Bijzondere verkeerssituaties</h2>
+
+<div class="topic">
+<h3>الأنفاق</h3>
+<span class="dutch">Tunnels</span>
+<ul>
+<li>قواعد القيادة داخل الأنفاق.</li>
+<li>مسافة الأمان.</li>
+<li>التصرف عند حدوث حريق.</li>
+<li>التصرف عند تعطل السيارة.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>معابر السكك الحديدية</h3>
+<span class="dutch">Overwegen</span>
+<ul>
+<li>إشارات عبور القطارات.</li>
+<li>الحواجز المغلقة.</li>
+<li>الأضواء الحمراء.</li>
+<li>التصرف عند تعطل السيارة على المعبر.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>الطرق الضيقة</h3>
+<span class="dutch">Smalle wegen</span>
+<ul>
+<li>المرور عند ضيق الطريق.</li>
+<li>إعطاء الأولوية حسب الإشارات.</li>
+<li>التعامل مع المركبات القادمة من الاتجاه المعاكس.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>الوقوف والتوقف</h3>
+<span class="dutch">Stilstaan en parkeren</span>
+<ul>
+<li>الفرق بين التوقف والركن.</li>
+<li>أماكن منع الوقوف.</li>
+<li>أماكن منع التوقف.</li>
+<li>الركن بالقرب من التقاطعات.</li>
+<li>الركن بالقرب من معابر المشاة.</li>
+<li>الركن على الأرصفة.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>الحوادث والطوارئ</h3>
+<span class="dutch">Ongevallen en noodsituaties</span>
+<ul>
+<li>التصرف عند وقوع حادث.</li>
+<li>تأمين مكان الحادث.</li>
+<li>طلب الإسعاف والشرطة عند الحاجة.</li>
+<li>استخدام مثلث التحذير.</li>
+<li>التصرف عند تعطل السيارة.</li>
+</ul>
+</div>
+</section>
+
+<!-- خطة الدراسة -->
+
+<section class="card">
+<h2>📅 خطة مذاكرة لمدة 10 أيام</h2>
+
+<table>
+<thead>
+<tr>
+<th>اليوم</th>
+<th>الموضوع</th>
+<th>الهولندية</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>إشارات المرور</td>
+<td>Verkeersborden</td>
+</tr>
+<tr>
+<td>2</td>
+<td>الأولوية والتقاطعات</td>
+<td>Voorrang en kruispunten</td>
+</tr>
+<tr>
+<td>3</td>
+<td>السرعة ومسافة التوقف</td>
+<td>Snelheid en stopafstand</td>
+</tr>
+<tr>
+<td>4</td>
+<td>التجاوز وتغيير الاتجاه</td>
+<td>Inhalen en afslaan</td>
+</tr>
+<tr>
+<td>5</td>
+<td>الوقوف والركن</td>
+<td>Stilstaan en parkeren</td>
+</tr>
+<tr>
+<td>6</td>
+<td>الطرق السريعة والأنفاق</td>
+<td>Autosnelwegen en tunnels</td>
+</tr>
+<tr>
+<td>7</td>
+<td>الكحول والمخالفات</td>
+<td>Alcohol en overtredingen</td>
+</tr>
+<tr>
+<td>8</td>
+<td>السلامة والسيارة</td>
+<td>Veiligheid en voertuigkennis</td>
+</tr>
+<tr>
+<td>9</td>
+<td>الدراجات والمشاة</td>
+<td>Fietsers en voetgangers</td>
+</tr>
+<tr>
+<td>10</td>
+<td>امتحانات تجريبية شاملة</td>
+<td>Proefexamens</td>
+</tr>
+</tbody>
+</table>
+
+<div class="success">
+<strong>نصيحة:</strong>
+خصص وقتاً يومياً لحفظ الإشارات، وفهم القواعد، وحل الأسئلة باللغة الهولندية مع مراجعة الترجمة العربية.
+</div>
+</section>
+
+<!-- المصطلحات -->
+
+<section class="card">
+<h2>📚 أهم المصطلحات الهولندية</h2>
+
+<table>
+<thead>
+<tr>
+<th>الهولندية</th>
+<th>العربية</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Verkeersborden</td><td>إشارات المرور</td></tr>
+<tr><td>Voorrang</td><td>الأولوية</td></tr>
+<tr><td>Voorrang van rechts</td><td>أولوية اليمين</td></tr>
+<tr><td>Kruispunt</td><td>تقاطع</td></tr>
+<tr><td>Rotonde</td><td>دوار</td></tr>
+<tr><td>Snelheid</td><td>السرعة</td></tr>
+<tr><td>Snelheidslimiet</td><td>حد السرعة</td></tr>
+<tr><td>Inhalen</td><td>التجاوز</td></tr>
+<tr><td>Afslaan</td><td>الانعطاف</td></tr>
+<tr><td>Rijstrook</td><td>حارة السير</td></tr>
+<tr><td>Wegmarkeringen</td><td>علامات الطريق</td></tr>
+<tr><td>Remweg</td><td>مسافة الفرملة</td></tr>
+<tr><td>Stopafstand</td><td>مسافة التوقف</td></tr>
+<tr><td>Veiligheidsgordel</td><td>حزام الأمان</td></tr>
+<tr><td>Kinderzitje</td><td>مقعد الأطفال</td></tr>
+<tr><td>Voetganger</td><td>مشاة</td></tr>
+<tr><td>Fietser</td><td>راكب دراجة</td></tr>
+<tr><td>Parkeren</td><td>الركن</td></tr>
+<tr><td>Stilstaan</td><td>التوقف</td></tr>
+<tr><td>Autosnelweg</td><td>طريق سريع</td></tr>
+<tr><td>Verkeersongeval</td><td>حادث مروري</td></tr>
+<tr><td>Verlichting</td><td>الإضاءة</td></tr>
+<tr><td>Spiegels</td><td>المرايا</td></tr>
+<tr><td>Remmen</td><td>الفرامل</td></tr>
+<tr><td>Overweg</td><td>معبر سكة حديد</td></tr>
+<tr><td>Verkeersveiligheid</td><td>السلامة المرورية</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- المصادر -->
+
+<section class="card">
+<h2>🌐 مصادر الدراسة الرسمية</h2>
+
+<div class="topic">
+<h3>1. Vlaanderen.be</h3>
+<p>الموقع الرسمي لحكومة فلاندرز، ويشرح شروط امتحان النظري.</p>
+<a href="https://www.vlaanderen.be/het-rijbewijs-b/het-theorie-examen-voor-rijbewijs-b"
+target="_blank">زيارة الموقع الرسمي</a>
+</div>
+
+<div class="topic">
+<h3>2. Mijn Rijbewijs B</h3>
+<p>منصة تعليمية للتحضير لرخصة القيادة B والتدرب على الأسئلة.</p>
+<a href="https://www.mijnrijbewijsb.be/"
+target="_blank">زيارة الموقع</a>
+</div>
+
+<div class="warning">
+تأكد من لغة الامتحان المتاحة، ومواعيد الحجز، والرسوم الحالية من مركز الامتحان في فلاندرز.
+</div>
+</section>
+
+<!-- نهاية -->
+
+<section class="card">
+<h2>🎯 هدفك النهائي</h2>
+
+<div class="success">
+<strong>الهدف هو اجتياز امتحان النظري البلجيكي B بنجاح.</strong>
+
+<ul>
+<li>فهم إشارات المرور.</li>
+<li>إتقان قواعد الأولوية.</li>
+<li>حفظ حدود السرعة.</li>
+<li>فهم قواعد الوقوف والركن.</li>
+<li>التدرب على الأسئلة الهولندية.</li>
+<li>الحصول على 41 نقطة على الأقل من 50.</li>
+</ul>
+</div>
+</section>
+
+</div>
+
+<footer>
+<p>🚗 Belgium Driving Theory – Rijbewijs B</p>
+<p>دليل الدراسة باللغة العربية والهولندية</p>
+<p>بالتوفيق في امتحان القيادة البلجيكي 🇧🇪</p>
+</footer>
 
 </body>
 </html>
