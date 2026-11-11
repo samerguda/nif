@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفعيل حساب  integration log in  - Agentschap Integratie & Inburgering</title>
+    <style>
+        :root {
+            --primary-color: #2b5797;
+            --primary-hover: #1e3d6b;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+            --success-color: #28a745;
+            --code-bg: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 650px;
+            padding: 30px;
+            border-top: 6px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .instruction-step {
+            margin-bottom: 20px;
+        }
+
+        .instruction-step h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .field-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-top: 6px;
+            direction: ltr;
+        }
+
+        .field-value {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 15px;
+            color: #222;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            white-space: nowrap;
+            margin-left: 10px;
+            font-family: inherit;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.97);
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success-color);
+        }
+
+        .action-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .action-link:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .note-box {
+            background-color: #e8f4f8;
+            border-right: 4px solid var(--primary-color);
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>تفعيل حساب Google التعليمي</h1>
+        <div class="subtitle">Agentschap Integratie & Inburgering - Cursus Maatschappelijke Oriëntatie</div>
+
+        <div class="instruction-step">
+            <h3>1. للانتقال إلى صفحة تسجيل الدخول:</h3>
+            <a href="http://accounts.google.com" target="_blank" class="action-link">الذهاب إلى Google Accounts 🔗</a>
+        </div>
+
+        <div class="instruction-step" style="margin-top: 20px;">
+            <h3>2. البريد الإلكتروني (e-mailadres):</h3>
+            <div class="field-group">
+                <span class="field-value" id="email">samerguda.alsaadni@mijninburgering.be</span>
+                <button class="copy-btn" onclick="copyText('email', this)">نسخ البريد</button>
+            </div>
+        </div>
+
+        <div class="instruction-step">
+            <h3>3. كلمة المرور المؤقتة (start wachtwoord):</h3>
+            <div class="field-group">
+                <span class="field-value" id="password">Dq47mF4j</span>
+                <button class="copy-btn" onclick="copyText('password', this)">نسخ كلمة المرور</button>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <strong>ملاحظة مهمة:</strong> سيُطلب منك تغيير كلمة المرور الموضحة أعلاه بكلمة مرور جديدة خاصة بك عند تسجيل الدخول لأول مرة. بعد النجاح في الدخول ستتمكن من استخدام <strong>Google Classroom</strong>.
+        </div>
+
+        <div class="footer">
+            في حال مواجهة أي مشكلة في الدخول، يُرجى التواصل مع المعلم (docent) أو موظف المسار (trajectbegeleider).
+        </div>
+    </div>
+
+    <div id="toast" class="toast">تم النسخ بنجاح!</div>
+
+    <script>
+        function copyText(elementId, btn) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast();
+                
+                // تغيير نص وزر النسخ مؤقتاً
+                const originalText = btn.innerText;
+                btn.innerText = 'تم النسخ ✓';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
