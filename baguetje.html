@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>'t Baguetje Harelbeke - Google Maps Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #e5e8ec;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .sheet-container {
+      width: 100%;
+      max-width: 414px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      color: #202124;
+    }
+
+    /* Handle bar */
+    .drag-handle {
+      width: 36px;
+      height: 4px;
+      background-color: #dadce0;
+      border-radius: 2px;
+      margin: 10px auto 12px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px 12px;
+    }
+
+    .header h1 {
+      font-size: 21px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f1f3f4;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #3c4043;
+      font-size: 16px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #e8eaed;
+      padding: 0 16px;
+      gap: 24px;
+      overflow-x: auto;
+    }
+
+    .tab {
+      padding: 10px 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #5f6368;
+      text-decoration: none;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: #007b83;
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #007b83;
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* Content Area */
+    .content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-card {
+      background-color: #f1f3f4;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    /* Hours Section */
+    .hours-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .hours-status {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #d93025;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .hours-table {
+      width: 100%;
+      padding-left: 34px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .hours-table td {
+      padding: 6px 0;
+      color: #202124;
+    }
+
+    .hours-table td:first-child {
+      width: 45%;
+    }
+
+    .link-action {
+      display: inline-block;
+      margin-top: 14px;
+      padding-left: 34px;
+      color: #007b83;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    /* Address & Website Rows */
+    .row-card {
+      background-color: #f1f3f4;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .row-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .row-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #5f6368;
+    }
+
+    .icon-svg {
+      width: 20px;
+      height: 20px;
+      fill: #202124;
+      flex-shrink: 0;
+    }
+
+    /* Suggest an edit */
+    .suggest-edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      color: #007b83;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    /* Popular times */
+    .popular-times {
+      background-color: #f1f3f4;
+      border-radius: 14px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .day-pill {
+      background-color: #e3e6e8;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Bottom Action Bar */
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px 20px;
+      border-top: 1px solid #f1f3f4;
+      overflow-x: auto;
+    }
+
+    .circle-action {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .circle-action.primary {
+      background-color: #007b83;
+      color: #ffffff;
+    }
+
+    .circle-action.secondary {
+      background-color: #e0f2f3;
+      color: #004d52;
+    }
+
+    .pill-action {
+      background-color: #e0f2f3;
+      color: #004d52;
+      border: none;
+      border-radius: 21px;
+      padding: 0 16px;
+      height: 42px;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sheet-container">
+    <div class="drag-handle"></div>
+
+    <!-- Header -->
+    <div class="header">
+      <h1>'t Baguetje Harelbe...</h1>
+      <div class="header-actions">
+        <button class="icon-btn" title="Save">🔖</button>
+        <button class="icon-btn" title="Share">📤</button>
+        <button class="icon-btn" title="Close">✕</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+      <a href="#" class="tab active">Overview</a>
+      <a href="#" class="tab">Reviews</a>
+      <a href="#" class="tab">Photos</a>
+      <a href="#" class="tab">Updates</a>
+      <a href="#" class="tab">About</a>
+    </nav>
+
+    <!-- Main Info -->
+    <div class="content">
+      <!-- Opening Hours Card -->
+      <div class="info-card">
+        <div class="hours-header">
+          <div class="hours-status">
+            <span>🕒</span>
+            <span>Closed</span>
+          </div>
+          <span>⌃</span>
+        </div>
+
+        <table class="hours-table">
+          <tr>
+            <td>Saturday</td>
+            <td>5 AM–5 PM</td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>6 AM–5 PM</td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>5 AM–6:30 PM</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>5 AM–6:30 PM</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>5 AM–6:30 PM</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>5 AM–6:30 PM</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>5 AM–6:30 PM</td>
+          </tr>
+        </table>
+
+        <a href="#" class="link-action">Suggest new hours</a>
+      </div>
+
+      <!-- Address Card -->
+      <div class="row-card">
+        <div class="row-left">
+          <span>📍</span>
+          <div>
+            Kortrijksestraat 37, 8530<br>
+            Harelbeke, Belgium
+          </div>
+        </div>
+        <div class="row-right">
+          <span>🔊</span>
+          <span>⌄</span>
+        </div>
+      </div>
+
+      <!-- Website Card -->
+      <div class="row-card">
+        <div class="row-left">
+          <span>🌐</span>
+          <span>tbaguetje.be</span>
+        </div>
+      </div>
+
+      <!-- Suggest an edit -->
+      <a href="#" class="suggest-edit">
+        <span>✏️</span>
+        <span>Suggest an edit</span>
+      </a>
+
+      <!-- Popular times -->
+      <div class="popular-times">
+        <div class="row-left">
+          <span>👥</span>
+          <span>Popular times</span>
+        </div>
+        <div class="row-right">
+          <div class="day-pill">Saturday ▾</div>
+          <span>ⓘ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Action Buttons -->
+    <div class="bottom-bar">
+      <button class="circle-action primary" title="Directions">↱</button>
+      <button class="circle-action secondary" title="Start">➤</button>
+      <button class="pill-action">📤 Share</button>
+      <button class="pill-action">🔖 Save</button>
+      <button class="pill-action">🌐 Web</button>
+    </div>
+  </div>
+
+</body>
+</html>
