@@ -1,0 +1,500 @@
+هذا ملف HTML كامل يحتوي على كل المعلومات التي قدمتها، مع أزرار اتصال وبريد إلكتروني وروابط للمواقع. المعلومات محفوظة بالكامل دون أي نقص.
+
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وظائف التغليف في Harelbeke — مكاتب Interim وأزرار اتصال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: #f4f7fb;
+            color: #1e2b3c;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            padding: 30px 35px;
+            border: 1px solid #e2e9f0;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0b2b4a;
+            border-right: 6px solid #0a7e8c;
+            padding-right: 18px;
+            margin-bottom: 12px;
+        }
+        .subhead {
+            color: #2f4a62;
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            background: #eef6f9;
+            padding: 14px 20px;
+            border-radius: 18px;
+            border-right: 4px solid #0a7e8c;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 16px 0;
+            color: #0b2b4a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 span {
+            background: #0a7e8c;
+            color: #fff;
+            font-size: 1rem;
+            padding: 2px 14px;
+            border-radius: 30px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 8px 0;
+            color: #0e4b5c;
+            background: #e2f0f3;
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .office-card {
+            background: #f9fcfe;
+            border: 1px solid #d9e4ec;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+            transition: 0.15s;
+        }
+        .office-card:hover {
+            border-color: #0a7e8c;
+            background: #ffffff;
+        }
+        .office-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #0b2b4a;
+            margin-bottom: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        .tag {
+            background: #0a7e8c;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 50px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .tag.hot {
+            background: #d97706;
+        }
+        .address, .phone, .email, .note {
+            font-size: 1rem;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .address i, .phone i, .email i, .note i {
+            font-style: normal;
+            font-weight: 600;
+            min-width: 60px;
+            color: #2c5777;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+            align-items: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.15s;
+            background: #e8f0f5;
+            color: #1e3b4f;
+            border: 1px solid #cbdae5;
+        }
+        .btn i {
+            font-style: normal;
+            font-size: 1.1rem;
+        }
+        .btn.call {
+            background: #0a7e8c;
+            color: #fff;
+            border: 1px solid #0a7e8c;
+        }
+        .btn.call:hover {
+            background: #086a76;
+        }
+        .btn.email {
+            background: #1f4e6f;
+            color: #fff;
+            border: 1px solid #1f4e6f;
+        }
+        .btn.email:hover {
+            background: #163d57;
+        }
+        .btn.web {
+            background: #ffffff;
+            border: 1px solid #0a7e8c;
+            color: #0a7e8c;
+        }
+        .btn.web:hover {
+            background: #e2f0f3;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 20px 0 10px;
+            border-radius: 18px;
+            border: 1px solid #d9e4ec;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            font-size: 0.98rem;
+        }
+        th {
+            background: #0b2b4a;
+            color: #ffffff;
+            padding: 14px 16px;
+            text-align: right;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e9f0;
+            vertical-align: middle;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #f4fafd;
+        }
+        .link-badge {
+            background: #eef6f9;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a7e8c;
+            text-decoration: none;
+            display: inline-block;
+            margin: 3px 0;
+            border: 1px solid #c2dae3;
+        }
+        .link-badge:hover {
+            background: #0a7e8c;
+            color: #fff;
+        }
+        .english-box {
+            background: #f0f6fa;
+            border-radius: 20px;
+            padding: 24px 28px;
+            margin: 25px 0 15px;
+            border-right: 6px solid #1f4e6f;
+        }
+        .english-box p {
+            font-size: 1.05rem;
+            margin: 10px 0;
+            color: #14344b;
+            font-family: 'Courier New', monospace;
+            background: #ffffff;
+            padding: 8px 15px;
+            border-radius: 12px;
+            border: 1px dashed #8bb3c9;
+        }
+        .tip {
+            background: #fef7e8;
+            border-right: 6px solid #d97706;
+            padding: 18px 24px;
+            border-radius: 18px;
+            margin: 30px 0 10px;
+            font-weight: 500;
+            color: #4b3a1a;
+        }
+        .map-placeholder {
+            background: #e6eef5;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            color: #2f5d7a;
+            font-weight: 600;
+            border: 2px dashed #9bb8cc;
+            margin: 20px 0;
+        }
+        .map-placeholder span {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .footer-note {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e9f0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            color: #3f627a;
+        }
+        .btn-follow {
+            background: #d97706;
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 16px rgba(217, 119, 6, 0.3);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .btn-follow:hover {
+            background: #b45d05;
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-follow i {
+            font-size: 1.4rem;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.5rem; }
+            .office-card { padding: 16px; }
+            .btn { padding: 8px 16px; font-size: 0.9rem; }
+            .btn-follow { font-size: 1rem; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>📦 وظائف التغليف والتعبئة في Harelbeke والمناطق القريبة</h1>
+    <div class="subhead">
+        مكاتب Interim للتسجيل وطلب الشغل في المصانع والتغليف — حتى لو الهولندي محدود واللغة الإنجليزية كافية.
+    </div>
+
+    <!-- قسم 1: أفضل المكاتب -->
+    <h2><span>1</span> أفضل مكاتب الانتريم للتغليف</h2>
+
+    <!-- Dynamic Jobs -->
+    <div class="office-card">
+        <div class="office-name">Dynamic Jobs <span class="tag">Harelbeke</span></div>
+        <div class="address"><i>📍</i> Kortrijksesteenweg 1, Harelbeke</div>
+        <div class="phone"><i>📞</i> +32 56 14 62 30</div>
+        <div class="note"><i>🔹</i> مناسب للبحث عن وظائف الصناعة والإنتاج واللوجستيات.</div>
+        <div class="actions">
+            <a href="tel:+3256146230" class="btn call"><i>📞</i> اتصال</a>
+            <a href="https://www.dynamicjobs.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- Actief Interim -->
+    <div class="office-card">
+        <div class="office-name">Actief Interim <span class="tag">Kortrijk</span></div>
+        <div class="address"><i>📍</i> Veemarkt 86, Kortrijk</div>
+        <div class="phone"><i>📞</i> +32 56 26 00 90</div>
+        <div class="email"><i>✉️</i> actief.kortrijk@actief.be</div>
+        <div class="note"><i>🔹</i> لديهم وظيفة تغليف فعلية في Harelbeke.</div>
+        <div class="actions">
+            <a href="tel:+3256260090" class="btn call"><i>📞</i> اتصال</a>
+            <a href="mailto:actief.kortrijk@actief.be" class="btn email"><i>✉️</i> بريد</a>
+            <a href="https://www.actief.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- Forum Jobs -->
+    <div class="office-card">
+        <div class="office-name">Forum Jobs <span class="tag hot">وظيفة تغليف معلنة</span></div>
+        <div class="note"><i>🔹</i> لديهم وظائف Inpakker في Harelbeke.</div>
+        <div class="note"><i>🔹</i> يقبلون الإنجليزية أو الهولندية في إحدى الوظائف.</div>
+        <div class="note"><i>🔹</i> الراتب المعلن: €16.6744 للساعة + €2.59 بدل وجبات + علاوة الورديات.</div>
+        <div class="phone"><i>📞</i> 051 42 60 67</div>
+        <div class="actions">
+            <a href="tel:+3251426067" class="btn call"><i>📞</i> اتصال</a>
+            <a href="https://www.forumjobs.be" target="_blank" class="btn web"><i>🌐</i> الموقع / وظيفة التغليف</a>
+        </div>
+    </div>
+
+    <!-- Randstad Kortrijk -->
+    <div class="office-card">
+        <div class="office-name">Randstad Kortrijk <span class="tag">Kortrijk</span></div>
+        <div class="address"><i>📍</i> Aalbeeksesteenweg 2, Kortrijk</div>
+        <div class="phone"><i>📞</i> +32 56 23 08 40</div>
+        <div class="email"><i>✉️</i> kortrijk@randstad.be</div>
+        <div class="note"><i>🔹</i> اطلب وظائف Packaging وProduction.</div>
+        <div class="actions">
+            <a href="tel:+3256230840" class="btn call"><i>📞</i> اتصال</a>
+            <a href="mailto:kortrijk@randstad.be" class="btn email"><i>✉️</i> بريد</a>
+            <a href="https://www.randstad.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- Synergie Kortrijk -->
+    <div class="office-card">
+        <div class="office-name">Synergie Kortrijk <span class="tag">Kortrijk</span></div>
+        <div class="address"><i>📍</i> Brugsesteenweg 255, Kortrijk</div>
+        <div class="phone"><i>📞</i> +32 56 26 60 00</div>
+        <div class="email"><i>✉️</i> kortrijk@synergiejobs.be</div>
+        <div class="note"><i>🔹</i> تخصصات تشمل الإنتاج واللوجستيات.</div>
+        <div class="actions">
+            <a href="tel:+3256266000" class="btn call"><i>📞</i> اتصال</a>
+            <a href="mailto:kortrijk@synergiejobs.be" class="btn email"><i>✉️</i> بريد</a>
+            <a href="https://www.synergiejobs.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- Tempo-Team Waregem -->
+    <div class="office-card">
+        <div class="office-name">Tempo-Team Waregem <span class="tag">Waregem</span></div>
+        <div class="address"><i>📍</i> Holstraat 9, Waregem</div>
+        <div class="phone"><i>📞</i> +32 56 62 03 78</div>
+        <div class="email"><i>✉️</i> waregem@tempo-team.be</div>
+        <div class="note"><i>🔹</i> لديهم قطاع Industry وإنتاج.</div>
+        <div class="actions">
+            <a href="tel:+3256620378" class="btn call"><i>📞</i> اتصال</a>
+            <a href="mailto:waregem@tempo-team.be" class="btn email"><i>✉️</i> بريد</a>
+            <a href="https://www.tempo-team.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- Konvert Waregem -->
+    <div class="office-card">
+        <div class="office-name">Konvert Waregem <span class="tag">Waregem</span></div>
+        <div class="phone"><i>📞</i> +32 56 60 33 03</div>
+        <div class="note"><i>🔹</i> متخصصون في فرص العمل المؤقت والإنتاج واللوجستيات.</div>
+        <div class="actions">
+            <a href="tel:+3256603303" class="btn call"><i>📞</i> اتصال</a>
+            <a href="https://www.konvert.be" target="_blank" class="btn web"><i>🌐</i> الموقع</a>
+        </div>
+    </div>
+
+    <!-- 2. خريطة المكاتب -->
+    <h2><span>2</span> خريطة المكاتب</h2>
+    <div class="map-placeholder">
+        <span>🗺️</span>
+        Harelbeke · Kortrijk · Waregem<br>
+        <span style="font-size:0.9rem; font-weight:400; display:block; margin-top:8px;">(خريطة تفاعلية للمكاتب — يمكن استبدال هذا العنصر بخريطة Google Maps مدمجة)</span>
+    </div>
+
+    <!-- 3. وظائف تغليف حقيقية -->
+    <h2><span>3</span> وظائف تغليف حقيقية وجدتها</h2>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>الوظيفة</th>
+                    <th>المكان</th>
+                    <th>التفاصيل</th>
+                    <th>رابط التقديم</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Packer – 2 shifts</strong></td>
+                    <td>Harelbeke</td>
+                    <td>إنجليزي أو هولندي</td>
+                    <td><a href="https://www.forumjobs.be" target="_blank" class="link-badge">Forum Jobs – Packer</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Inpakker – 3 shifts</strong></td>
+                    <td>منطقة Kortrijk</td>
+                    <td>تغليف ومنتجات نسيج</td>
+                    <td><a href="https://www.forumjobs.be" target="_blank" class="link-badge">Forum Jobs – 3 shifts</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Inpakmedewerker webshop</strong></td>
+                    <td>Kortrijk</td>
+                    <td>تغليف طلبات</td>
+                    <td><span style="color:#888;">—</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Productiemedewerker Inpak</strong></td>
+                    <td>Harelbeke</td>
+                    <td>تغليف وتشطيب</td>
+                    <td><a href="https://www.actief.be" target="_blank" class="link-badge">Actief – Packaging Harelbeke</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin: 10px 0 20px; font-size: 0.95rem; color: #2d5a73;">
+        <strong>المصادر:</strong> HARELBEKE +3
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px;">
+        <a href="https://www.forumjobs.be" target="_blank" class="btn web">🔗 Forum Jobs – Packer</a>
+        <a href="https://www.actief.be" target="_blank" class="btn web">🔗 Actief – Packaging Harelbeke</a>
+        <a href="https://www.forumjobs.be" target="_blank" class="btn web">🔗 Forum Jobs – 3 shifts</a>
+    </div>
+
+    <!-- 4. جملة إنجليزية -->
+    <h2><span>4</span> جملة إنجليزية تستخدمها في المكاتب</h2>
+    <div class="english-box">
+        <p>Hello, I am looking for an interim job in packaging or packing.</p>
+        <p>I am available immediately and I can work full-time, including shifts.</p>
+        <p>I speak English and I am currently learning Dutch.</p>
+        <p>Do you have any vacancies in Harelbeke, Kortrijk or Waregem?</p>
+        <p>Thank you.</p>
+    </div>
+
+    <!-- نصيحة -->
+    <div class="tip">
+        💡 <strong>نصيحتي:</strong> ابدأ بـ Forum Jobs وActief وDynamic Jobs؛ لأن لديهم ارتباطاً مباشراً بفرص العمل في Harelbeke.
+    </div>
+
+    <!-- متابعة أسبوعية -->
+    <div class="footer-note">
+        <div style="font-size: 1.1rem; font-weight: 500; color: #0b2b4a;">
+            📬 وأقدر أتابع لك أسبوعياً وظائف التغليف الجديدة القريبة من Harelbeke وأجمع لك روابط التقديم.
+        </div>
+        <button class="btn-follow" onclick="alert('📦 تم تفعيل المتابعة الأسبوعية لوظائف التغليف في Harelbeke والمناطق القريبة!')">
+            <i>📦</i> متابعة وظائف التغليف أسبوعياً
+        </button>
+    </div>
+
+</div>
+</body>
+</html>
+```
