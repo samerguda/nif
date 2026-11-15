@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>نسخ البريد الإلكترونيMondeling -Wouter -My eamil google classroom </title>
+    <style>
+        /* تنسيق بسيط للزرار */
+        .copy-btn {
+            background-color: #f1f3f4;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #e8eaed;
+        }
+        .copy-btn.copied {
+            background-color: #ceead6;
+            border-color: #34a853;
+            color: #0d652d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- عرض الإيميل والزرار بجانبه -->
+    <div style="display: flex; align-items: center; font-family: Arial, sans-serif; margin: 20px;">
+        <span id="email-text">samer.alsaadni@cursist.hetcvo.be</span>
+        <button class="copy-btn" id="copyButton">نسخ</button>
+    </div>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            // جلب نص الإيميل
+            var email = document.getElementById('email-text').innerText;
+            var button = this;
+
+            // استخدام واجهة الحافظة (Clipboard API)
+            navigator.clipboard.writeText(email).then(function() {
+                // تغيير نص الزرار عند النجاح
+                button.innerText = 'تم النسخ!';
+                button.classList.add('copied');
+
+                // إعادة الزرار لشكله الطبيعي بعد ثانيتين
+                setTimeout(function() {
+                    button.innerText = 'نسخ';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('فشل في النسخ: ', err);
+                alert('حدث خطأ أثناء محاولة النسخ.');
+            });
+        });
+    </script>
+
+</body>
+</html>
