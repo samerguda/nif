@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaalRecht 2.1 –  mondeling قائمة الوحدات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f8f5f0 0%, #eae5df 100%);
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            max-width: 950px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25), 0 8px 18px -6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.005);
+        }
+
+        .header {
+            background: #1e3c4f;
+            background-image: radial-gradient(circle at 20% 30%, #2b5a72, #0f2a38);
+            padding: 2rem 2rem 1.8rem 2rem;
+            text-align: center;
+            color: #f0e9d8;
+            border-bottom: 4px solid #c7a86b;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 0.35rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .header .sub {
+            font-size: 1.15rem;
+            color: #d9cfb8;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px dashed #c7a86b;
+            padding-top: 0.8rem;
+            display: inline-block;
+            margin-top: 0.25rem;
+        }
+
+        .list-container {
+            padding: 1.8rem 1.8rem 2rem 1.8rem;
+            background: #fefcf9;
+        }
+
+        .thema-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .thema-item {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 0.85rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #ece6de;
+            transition: all 0.2s ease;
+            flex-wrap: wrap;
+        }
+
+        .thema-item:hover {
+            background: #faf7f2;
+            border-color: #d6c9b8;
+            box-shadow: 0 8px 14px -6px rgba(30, 60, 79, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .thema-number {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #c7a86b;
+            background: #1e3c4f10;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            letter-spacing: 0.5px;
+            min-width: 100px;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            border: 1px solid #1e3c4f20;
+            margin-left: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .thema-content {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem 0.8rem;
+        }
+
+        .thema-title-nl {
+            font-weight: 600;
+            color: #1e3c4f;
+            font-size: 1.1rem;
+            direction: ltr;
+            text-align: left;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        .thema-title-ar {
+            color: #4a5c68;
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        .page-badge {
+            background: #c7a86b20;
+            color: #6a4f2b;
+            font-weight: 600;
+            padding: 0.25rem 0.9rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: 1px solid #c7a86b40;
+            letter-spacing: 0.3px;
+            margin-right: 0.5rem;
+        }
+
+        .page-badge span {
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a7e6f;
+            border-top: 1px solid #e2d9ce;
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-note i {
+            font-style: normal;
+            background: #ece5db;
+            padding: 0.2rem 0.9rem;
+            border-radius: 2rem;
+            color: #3b4b55;
+        }
+
+        /* تحسين العرض للشاشات الصغيرة */
+        @media (max-width: 700px) {
+            body { padding: 1rem 0.8rem; }
+            .header h1 { font-size: 2rem; }
+            .header .sub { font-size: 0.95rem; letter-spacing: 1px; }
+            .list-container { padding: 1.2rem 1rem; }
+            .thema-item { padding: 0.8rem 1rem; }
+            .thema-number {
+                min-width: 80px;
+                font-size: 0.95rem;
+                margin-left: 0.6rem;
+            }
+            .thema-title-nl { font-size: 1rem; }
+            .thema-title-ar { font-size: 0.95rem; }
+            .page-badge { font-size: 0.8rem; padding: 0.2rem 0.7rem; }
+        }
+
+        @media (max-width: 480px) {
+            .thema-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+            .thema-item {
+                align-items: flex-start;
+            }
+            .thema-number {
+                margin-top: 0.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>TaalRecht 2.1</h1>
+            <div class="sub">قائمة الوحدات · Thema’s</div>
+        </div>
+        <div class="list-container">
+            <div class="thema-grid">
+
+                <!-- Thema 1 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 1</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Ik zoek een woning</span>
+                        <span class="thema-title-ar">أنا أبحث عن سكن</span>
+                        <span class="page-badge">صفحة <span>15</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 2 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 2</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Kun je me helpen?</span>
+                        <span class="thema-title-ar">هل يمكنك مساعدتي؟</span>
+                        <span class="page-badge">صفحة <span>25</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 3 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 3</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Ik ben verhuisd</span>
+                        <span class="thema-title-ar">لقد انتقلتُ إلى سكن جديد</span>
+                        <span class="page-badge">صفحة <span>35</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 4 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 4</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Maak het gezellig!</span>
+                        <span class="thema-title-ar">اجعل المكان دافئاً ومريحاً!</span>
+                        <span class="page-badge">صفحة <span>43</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 5 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 5</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Bij de VDAB</span>
+                        <span class="thema-title-ar">في مكتب العمل VDAB</span>
+                        <span class="page-badge">صفحة <span>51</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 6 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 6</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Nieuwe buren</span>
+                        <span class="thema-title-ar">جيران جدد</span>
+                        <span class="page-badge">صفحة <span>59</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 7 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 7</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">In het gemeentehuis</span>
+                        <span class="thema-title-ar">في البلدية</span>
+                        <span class="page-badge">صفحة <span>67</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 8 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 8</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">In de winkel</span>
+                        <span class="thema-title-ar">في المتجر</span>
+                        <span class="page-badge">صفحة <span>75</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 9 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 9</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Op school</span>
+                        <span class="thema-title-ar">في المدرسة</span>
+                        <span class="page-badge">صفحة <span>83</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 10 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 10</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Eva aan het werk</span>
+                        <span class="thema-title-ar">إيفا في العمل</span>
+                        <span class="page-badge">صفحة <span>93</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 11 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 11</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Het etentje</span>
+                        <span class="thema-title-ar">العشاء / وجبة الطعام الجماعية</span>
+                        <span class="page-badge">صفحة <span>101</span></span>
+                    </div>
+                </div>
+
+                <!-- Thema 12 -->
+                <div class="thema-item">
+                    <div class="thema-number">Thema 12</div>
+                    <div class="thema-content">
+                        <span class="thema-title-nl">Op bezoek bij oma</span>
+                        <span class="thema-title-ar">في زيارة عند الجدة</span>
+                        <span class="page-badge">صفحة <span>109</span></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer-note">
+                <i>📘 12 وحدة</i>
+                <i>🇳🇱 Nederlands · العربية</i>
+                <i>📄 TaalRecht 2.1</i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
